@@ -1,3 +1,5 @@
 Graf
-List
-Array
+List (soalnya blm 100 niali ku)
+
+Blm pada diedit sesuai kebutuhan
+nanti aja apus2 fungsi yg gak dibutuhinnya
