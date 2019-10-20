@@ -10,7 +10,7 @@
 #define BLANK ' '
 
 typedef struct {
-  char bagunan;
+  char bangunan;
   int val;
 } Kata;
 

@@ -50,11 +50,11 @@ void SalinKata(){
     while (CC != BLANK){
 		if (CC == 'C' || CC == 'V' || CC == 'T' || CC == 'F'){
 			CKata.bangunan = CC;
-			CToken.val = -1;
+			CKata.val = -1;
 			ADV();
 		}
 		else{
-			CToken.tkn = 'val';
+			CKata.bangunan = 'v';
 			while (CC != BLANK){
 				if (CC == '0'){
 					CI = 0;
