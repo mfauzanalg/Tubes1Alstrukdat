@@ -54,7 +54,7 @@ void SalinKata(){
 			ADV();
 		}
 		else{
-			CKata.bangunan = 'v';
+			CKata.bangunan = 'A';
 			while (CC != BLANK){
 				if (CC == '0'){
 					CI = 0;

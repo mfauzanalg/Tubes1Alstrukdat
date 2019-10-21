@@ -11,10 +11,10 @@ boolean IsEmpty (Queue Q){
 boolean IsFull (Queue Q){
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu mengandung elemen sebanyak MaxEl */
-	return (NBElmt(Q) == MaxEl(Q));
+	return (NBElmtMat(Q) == MaxEl(Q));
 }
 
-int NBElmt (Queue Q){
+int NBElmtMat (Queue Q){
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
 	if (IsEmpty(Q)){
 		return 0;

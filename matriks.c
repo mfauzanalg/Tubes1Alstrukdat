@@ -46,9 +46,9 @@ boolean IsIdxEff (MATRIKS M, indeks i, indeks j){
 	return (((i >= BrsMin) && (i <= GetLastIdxBrs(M))) && ((j >= KolMin) && (j <= GetLastIdxKol(M))));
 }
 
-ElType GetElmtDiagonal (MATRIKS M, indeks i){
+ElType GetElmtMatDiagonal (MATRIKS M, indeks i){
 /* Mengirimkan elemen M(i,i) */
-	return (Elmt(M,i,i));
+	return (ElmtMat(M,i,i));
 }
 
 
@@ -60,7 +60,7 @@ void CopyMATRIKS (MATRIKS MIn, MATRIKS * MHsl){
 	MakeMATRIKS(MIn.NBrsEff, MIn.NKolEff, &*MHsl);
 	for (i = 1; i <= NBrsEff(MIn); i++){
 		for (j = 1; j <= NKolEff(MIn); j++){
-			Elmt(*MHsl, i, j) = Elmt(MIn, i, j);
+			ElmtMat(*MHsl, i, j) = ElmtMat(MIn, i, j);
 		}
 	}
 }
@@ -84,7 +84,7 @@ void BacaMATRIKS (MATRIKS * M, int NB, int NK){
 
 	for (i = 1; i <= NBrsEff(*M); i++){
 		for( j = 1; j <= NKolEff(*M); j++){
-			scanf("%d", &Elmt(*M, i, j));
+			scanf("%d", &ElmtMat(*M, i, j));
 		}
 	}
 }
@@ -105,9 +105,9 @@ void TulisMATRIKS (MATRIKS M){
 
 	for (i = 1; i <= NBrsEff(M); i++){
 		for (j = 1; j <= NKolEff(M)-1; j++){
-			printf("%d ", Elmt(M,i,j));
+			printf("%d ", ElmtMat(M,i,j));
 		}
-		printf("%d", Elmt(M, i, NKolEff(M)));
+		printf("%d", ElmtMat(M, i, NKolEff(M)));
 
 		if (j == NKolEff(M)){
 			if (i != NBrsEff(M)){
@@ -129,7 +129,7 @@ MATRIKS TambahMATRIKS (MATRIKS M1, MATRIKS M2){
 
     for (i = 1; i <= NBrsEff(M1); i++){
         for (j = 1; j <= NKolEff(M1); j++){
-            Elmt(M3, i, j) = Elmt(M1, i, j) + Elmt (M2, i,j);
+            ElmtMat(M3, i, j) = ElmtMat(M1, i, j) + ElmtMat (M2, i,j);
         }
     }
 
@@ -147,7 +147,7 @@ MATRIKS KurangMATRIKS (MATRIKS M1, MATRIKS M2){
 
     for (i = 1; i <= NBrsEff(M1); i++){
         for (j = 1; j <= NKolEff(M1); j++){
-            Elmt(M3, i, j) = Elmt(M1, i, j) - Elmt (M2, i,j);
+            ElmtMat(M3, i, j) = ElmtMat(M1, i, j) - ElmtMat (M2, i,j);
         }
     }
 
@@ -168,7 +168,7 @@ MATRIKS KaliMATRIKS (MATRIKS M1, MATRIKS M2){
     for (i = 1; i <= NBrsEff(M3); i++){
     	for (j = 1; j <= NKolEff(M3); j++){
 			for (k = 1; k <= NKolEff(M1); k++){
-				Elmt(M3, i, j) += (Elmt(M1,i,k)*Elmt(M2,k,j));
+				ElmtMat(M3, i, j) += (ElmtMat(M1,i,k)*ElmtMat(M2,k,j));
 			}
     	}
     }
@@ -185,7 +185,7 @@ MATRIKS KaliKons (MATRIKS M, ElType X){
 
     for (i = 1; i <= NBrsEff(M); i++){
         for (j = 1; j <= NKolEff(M); j++){
-            Elmt(M2, i, j) = (Elmt(M, i, j) * X);
+            ElmtMat(M2, i, j) = (ElmtMat(M, i, j) * X);
         }
     }
     return M2;
@@ -200,14 +200,14 @@ void PKaliKons (MATRIKS * M, ElType K){
 
     for (i = 1; i <= NBrsEff(*M); i++){
         for (j = 1; j <= NKolEff(*M); j++){
-            Elmt(*M, i, j) = (Elmt(*M, i, j)*K);
+            ElmtMat(*M, i, j) = (ElmtMat(*M, i, j)*K);
         }
     }
 }
 
 /* ********** KELOMPOK OPERASI RELASIONAL TERHADAP MATRIKS ********** */
 boolean EQ (MATRIKS M1, MATRIKS M2){
-/* Mengirimkan true jika M1 = M2, yaitu NBElmt(M1) = NBElmt(M2) dan */
+/* Mengirimkan true jika M1 = M2, yaitu NBElmtMat(M1) = NBElmtMat(M2) dan */
 /* untuk setiap i,j yang merupakan indeks baris dan kolom M1(i,j) = M2(i,j) */
 /* Juga merupakan strong EQ karena GetFirstIdxBrs(M1) = GetFirstIdxBrs(M2)
    dan GetLastIdxKol(M1) = GetLastIdxKol(M2) */
@@ -220,7 +220,7 @@ boolean EQ (MATRIKS M1, MATRIKS M2){
 	
 	for (i = 1; i <= NBrsEff(M1); i++){
 		for (j = 1; j <= NKolEff(M1); j++){
-			if (Elmt(M1,i,j) != Elmt (M2, i, j)){
+			if (ElmtMat(M1,i,j) != ElmtMat (M2, i, j)){
 				return false;
 			}
 		}
@@ -242,7 +242,7 @@ boolean EQSize (MATRIKS M1, MATRIKS M2){
 }
 
 /* ********** Operasi lain ********** */
-int NBElmt (MATRIKS M){
+int NBElmtMat (MATRIKS M){
 /* Mengirimkan banyaknya elemen M */
 	return(NBrsEff(M) * NKolEff(M));
 }
@@ -264,7 +264,7 @@ boolean IsSimetri (MATRIKS M){
 	else{
 		for (i = 1; i <= NBrsEff(M); i++){
 			for (j = 1; j <= NKolEff(M); j++){
-				if (Elmt(M,i,j) != Elmt(M,j,i)){
+				if (ElmtMat(M,i,j) != ElmtMat(M,j,i)){
 					return false;
 				}
 			}
@@ -287,13 +287,13 @@ boolean IsSatuan (MATRIKS M){
 		for (i = 1; i <= NBrsEff(M); i++){
 			for (j = 1; j <= NBrsEff(M); j++){
 				if (i != j){
-					if (Elmt(M, i, j) != 0){
+					if (ElmtMat(M, i, j) != 0){
 						return false;
 						
 					}
 				}
 				else {
-					if (Elmt(M, i, j) != 1){
+					if (ElmtMat(M, i, j) != 1){
 						return false;
 					}
 				}
@@ -311,12 +311,12 @@ boolean IsSparse (MATRIKS M){
 	int j;
 	int jumlah;
 
-	sparse = (5*NBElmt(M))/100;
+	sparse = (5*NBElmtMat(M))/100;
 
 	jumlah = 0;
 	for (i = 1; i <= NBrsEff(M); i++){
 		for (j = 1; j <= NKolEff(M); j++){
-			if (Elmt(M,i,j) != 0){
+			if (ElmtMat(M,i,j) != 0){
 				jumlah += 1;
 			}
 		}
@@ -337,7 +337,7 @@ MATRIKS Inverse1 (MATRIKS M){
 
 	for (i = 1; i <= NBrsEff(M); i++){
 		for (j = 1; j <= NKolEff(M); j++){
-			Elmt(M,i,j) = Elmt(M,i,j)*-1;
+			ElmtMat(M,i,j) = ElmtMat(M,i,j)*-1;
 		}
 	}
 	return M;
@@ -355,7 +355,7 @@ MATRIKS MatriksKecil (MATRIKS M, int kolom){
 	for (i = GetFirstIdxBrs(M)+1; i <= NBrsEff(M); i++){
 		for (j = 2; j <= NKolEff(M); j++){
 			if (j != kolom){
-				Elmt(M2,i,kolomke) = Elmt(M,i,j);
+				ElmtMat(M2,i,kolomke) = ElmtMat(M,i,j);
 				kolomke += 1;
 			}
 			if (kolomke > NKolEff(M2)){
@@ -381,10 +381,10 @@ float Determinan (MATRIKS M){
 	hasil = 0;
 
 	if ((NBrsEff(M) == 1) && (NKolEff(M) == 1)){
-		hasil = (Elmt(M,1,1)*1.0);
+		hasil = (ElmtMat(M,1,1)*1.0);
 	}
 	if ((NBrsEff(M) == 2) && (NKolEff(M) == 2)){
-		hasil = hasil + (Elmt(M,1,1)*Elmt(M,2,2))-(Elmt(M,1,2)*Elmt(M,2,1));
+		hasil = hasil + (ElmtMat(M,1,1)*ElmtMat(M,2,2))-(ElmtMat(M,1,2)*ElmtMat(M,2,1));
 	}
 	else {
 		for (x = 1; x <= NKolEff(M);x++){
@@ -395,7 +395,7 @@ float Determinan (MATRIKS M){
 			for (a = 2; a <= NBrsEff(M); a++){
 				for (j = 1; j <= NKolEff(M); j++){
 					if (j != x){
-						Elmt(M2,a-1,kolomke) = Elmt(M,a,j);
+						ElmtMat(M2,a-1,kolomke) = ElmtMat(M,a,j);
 						kolomke += 1;
 					}
 					if (kolomke > NKolEff(M2)){
@@ -407,10 +407,10 @@ float Determinan (MATRIKS M){
 
 			if (x%2==0){
 				temp = (-1) * Determinan(M2);
-				hasil = hasil + Elmt(M,1,x) * temp;
+				hasil = hasil + ElmtMat(M,1,x) * temp;
 			}
 			else{
-				hasil = hasil + Elmt(M,1,x) * Determinan(M2);
+				hasil = hasil + ElmtMat(M,1,x) * Determinan(M2);
 			}		
 		}
 	}
@@ -435,7 +435,7 @@ void Transpose (MATRIKS * M){
 
 	for (i = 1; i <= NBrsEff(*M); i++){
 		for (j = 1; j <= NKolEff(*M); j++){
-			Elmt(M2, j, i) = Elmt(*M, i, j);
+			ElmtMat(M2, j, i) = ElmtMat(*M, i, j);
 		}
 	}
 
@@ -454,7 +454,7 @@ float RataBrs (MATRIKS M, indeks i){
 	
 	for (j = 1; j <= NKolEff(M); j++){
 		count = count + 1;
-		total = total + Elmt(M, i, j);
+		total = total + ElmtMat(M, i, j);
 	}
 	
 	hasil = total/count;
@@ -472,7 +472,7 @@ float RataKol (MATRIKS M, indeks j){
 	
 	for (i = 1; i <= NBrsEff(M); i++){
 		count = count + 1;
-		total = total + Elmt(M, i, j);
+		total = total + ElmtMat(M, i, j);
 	}
 	
 	hasil = total/count;
@@ -491,11 +491,11 @@ void MaxMinBrs (MATRIKS M, indeks i, ElType * max, ElType * min){
 	*min = 9999;
 	
 	for (j = 1; j <= NKolEff(M); j++){
-		if (Elmt (M, i, j) > *max){
-			*max = Elmt (M, i, j);
+		if (ElmtMat (M, i, j) > *max){
+			*max = ElmtMat (M, i, j);
 		}
-		if (Elmt (M, i, j) < *min){
-			*min = Elmt (M, i, j);
+		if (ElmtMat (M, i, j) < *min){
+			*min = ElmtMat (M, i, j);
 		}
 	}
 }
@@ -510,11 +510,11 @@ void MaxMinKol (MATRIKS M, indeks j, ElType * max, ElType * min){
 	*min = 9999;
 	
 	for (i = 1; i <= NBrsEff(M); i++){
-		if (Elmt (M, i, j) > *max){
-			*max = Elmt (M, i, j);
+		if (ElmtMat (M, i, j) > *max){
+			*max = ElmtMat (M, i, j);
 		}
-		if (Elmt (M, i, j) < *min){
-			*min = Elmt (M, i, j);
+		if (ElmtMat (M, i, j) < *min){
+			*min = ElmtMat (M, i, j);
 		}
 	}
 }
@@ -525,7 +525,7 @@ int CountXBrs (MATRIKS M, indeks i, ElType X){
 	int count = 0;
 	
 	for (j = 1; j <= NKolEff(M); j++){
-		if (Elmt(M, i, j) == X){
+		if (ElmtMat(M, i, j) == X){
 			count = count +1;
 		}
 	}
@@ -539,7 +539,7 @@ int CountXKol (MATRIKS M, indeks j, ElType X){
 	int count = 0;
 	
 	for (i = 1; i <= NBrsEff(M); i++){
-		if (Elmt(M, i, j) == X){
+		if (ElmtMat(M, i, j) == X){
 			count = count +1;
 		}
 	}

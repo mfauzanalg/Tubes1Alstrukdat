@@ -32,3 +32,7 @@ void ADV() {
 	/* Algoritma */
 	retval = fscanf(pita,"%c",&CC);
 }
+
+void CLOSE(){
+       fclose (pita);
+}
