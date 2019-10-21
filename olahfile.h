@@ -5,11 +5,11 @@
 #include "array.h"
 #include "matriks.h"
 #include "mesinkata.h"
+#include "mesinkar.h"
 #include "point.h"
 #include "queue.h"
 #include "stack.h"
 #include "list.h"
-#include "mesinkata.h"
 
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2, List *L3);

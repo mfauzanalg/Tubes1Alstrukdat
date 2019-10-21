@@ -7,22 +7,22 @@
 
 #include "boolean.h"
 
-#define Nil 0
-#define MaxEl 10
-/* Nil adalah stack dengan elemen kosong . */
+#define NilStack 0
+#define MaxElStack 10
+/* NilStack adalah stack dengan elemen kosong . */
 /* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
 
 typedef int infotype;
-typedef int address;   /* indeks tabel */
+typedef int addressstack;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct {
-  infotype T[MaxEl+1]; /* tabel penyimpan elemen */
-  address TOP;  /* alamat TOP: elemen puncak */
+  infotype T[MaxElStack+1]; /* tabel penyimpan elemen */
+  addressstack TOP;  /* alamat TOP: elemen puncak */
 } Stack;
-/* Definisi stack S kosong : S.TOP = Nil */
-/* Elemen yang dipakai menyimpan nilai Stack T[1]..T[MaxEl] */
+/* Definisi stack S kosong : S.TOP = NilStack */
+/* Elemen yang dipakai menyimpan nilai Stack T[1]..T[MaxElStack] */
 /* Jika S adalah Stack maka akses elemen : */
    /* S.T[(S.TOP)] untuk mengakses elemen TOP */
    /* S.TOP adalah alamat elemen TOP */
@@ -33,16 +33,16 @@ typedef struct {
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty (Stack *S);
+void CreateEmptyStack (Stack *S);
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
-/* Ciri stack kosong : TOP bernilai Nil */
+/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxElStack */
+/* jadi indeksnya antara 1.. MaxElStack+1 karena 0 tidak dipakai */
+/* Ciri stack kosong : TOP bernilai NilStack */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmpty (Stack S);
+boolean IsEmptyStack (Stack S);
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFull (Stack S);
+boolean IsFullStack (Stack S);
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */

@@ -15,7 +15,7 @@
 /* Indeks minimum array */
 #define IdxUndef -999
 /* Indeks tak terdefinisi*/
-#define ValUndef 0
+#define ValUndef -888
 /* Nilai elemen tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
@@ -25,10 +25,10 @@ typedef Bangunan ElType;  /* type elemen tabel */
 typedef struct
 {
   ElType *TI; /* memori tempat penyimpan elemen (container) */
-  int MaxEl;  /* ukuran elemen */
+  int MaxElArr;  /* ukuran elemen */
 } TabBang;
 
-/* Indeks yang digunakan [IdxMin..MaxEl] */
+/* Indeks yang digunakan [IdxMin..MaxElArr] */
 /* Jika T adalah TabBang, cara deklarasi dan akses: */
 /* Deklarasi : T : TabBang */
 /* Maka cara akses:
@@ -43,28 +43,25 @@ typedef struct
 /* ********** SELEKTOR ********** */
 #define TI(T) (T).TI
 #define Elmt(T, i) (T).TI[(i)]
-#define MaxEl(T) (T).MaxEl
+#define MaxElArr(T) (T).MaxElArr
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create tabel kosong  */
-void MakeEmpty(TabBang *Arr, int maxel);
+void CreateEmptyArray(TabBang *Arr, int maxel);
 /* I.S. T sembarang, maxel > 0 */
 /* F.S. Terbentuk tabel T kosong dengan kapasitas maxel + 1 */
 /* Proses: Inisialisasi semua elemen tabel T dengan ValUndef */
 
-void Dealokasi(TabBang *Arr);
+void DealokasiArr(TabBang *Arr);
 /* I.S. T terdefinisi; */
-/* F.S. TI(T) dikembalikan ke system, MaxEl(T)=0; Neff(T)=0 */
+/* F.S. TI(T) dikembalikan ke system, MaxElArr(T)=0; Neff(T)=0 */
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
 /* *** Banyaknya elemen *** */
-int NbElmtMat(TabBang T);
+int NbElmtArr(TabBang T);
 /* Mengirimkan banyaknya elemen efektif tabel */
 /* Mengirimkan nol jika tabel kosong */
 /* *** Daya tampung container *** */
-int MaxElement(TabBang T);
-/* Mengirimkan maksimum elemen yang dapat ditampung oleh tabel */
-/* *** Selektor INDEKS *** */
 IdxType GetFirstIdx(TabBang T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen T pertama */
@@ -82,10 +79,10 @@ boolean IsIdxEff(TabBang T, IdxType i);
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test tabel kosong *** */
-boolean IsEmpty(TabBang T);
+boolean IsEmptyArr(TabBang T);
 /* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
 /* *** Test tabel penuh *** */
-boolean IsFull(TabBang T);
+boolean IsFullArr(TabBang T);
 /* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
 
 #endif

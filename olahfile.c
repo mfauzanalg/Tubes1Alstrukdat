@@ -5,8 +5,8 @@
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2, List *L3){
 	int i;
 	int j;
-	address P1;
-	address P2;
+	addresslist P1;
+	addresslist P2;
 	
 	STARTKATA();
 	*N = CKata.val;
@@ -16,6 +16,12 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 
 	ADVKATA();
 	*J = CKata.val;
+
+	CreateEmptyMatriks(*J, *J, &*Mat);
+	CreateEmptyList(&*L1);
+	CreateEmptyList(&*L2);
+	CreateEmptyList(&*L3);
+	CreateEmptyArray(&*Arr, *J);
 
 	for (i = 1; i <= *J; i++){
 		ADVKATA();
@@ -69,6 +75,6 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 	InsVFirst(&*L2, 2);
 
 	for (i = 3; i <= *J; i++){
-		InsVFirst(&L3, i);
+		InsVFirst(&*L3, i);
 	}
 }
