@@ -5,6 +5,7 @@
 #include "point.h"
 
 typedef struct {
+	char type;
     int milik;
     int jum;
     int lev;

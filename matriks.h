@@ -7,9 +7,9 @@
 
 /* Ukuran minimum dan maksimum baris dan kolom */
 #define BrsMin 1
-#define BrsMax 100
+#define BrsMax 30
 #define KolMin 1
-#define KolMax 100
+#define KolMax 30
 
 typedef int indeks; /* indeks baris, kolom */
 typedef int ElTypeMat;

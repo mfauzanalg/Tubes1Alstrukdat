@@ -23,5 +23,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 // Array of bangunan
 // Matriks untuk Graf
 
+void CetakPeta(TabBang Arr);
+// Mencatak Peta sesuai dengan file yang sudah di load
 
 #endif

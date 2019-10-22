@@ -30,24 +30,28 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 		Elmt(*Arr,i).lev = 1;
 
 		if(CKata.bangunan == 'C'){
+			Elmt(*Arr,i).type = 'C';
 			Elmt(*Arr,i).A = 10;
 			Elmt(*Arr,i).M = 40;
 			Elmt(*Arr,i).P = false;
 			Elmt(*Arr,i).U = 40;
 		}
 		else if(CKata.bangunan == 'T'){
+			Elmt(*Arr,i).type = 'T';
 			Elmt(*Arr,i).A = 5;
 			Elmt(*Arr,i).M = 20;
 			Elmt(*Arr,i).P = true;
 			Elmt(*Arr,i).U = 30;
 		}
 		else if(CKata.bangunan == 'F'){
+			Elmt(*Arr,i).type = 'F';
 			Elmt(*Arr,i).A = 10;
 			Elmt(*Arr,i).M = 20;
 			Elmt(*Arr,i).P = false;
 			Elmt(*Arr,i).U = 80;
 		}
 		else if(CKata.bangunan == 'V'){
+			Elmt(*Arr,i).type = 'V';
 			Elmt(*Arr,i).A = 5;
 			Elmt(*Arr,i).M = 20;
 			Elmt(*Arr,i).P = false;
@@ -93,5 +97,39 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 		Prec = P;
 		P = Alokasi(i);
 		InsertAfter(&*L3, P, Prec);
+	}
+}
+
+void CetakPeta(TabBang Arr){
+	MATRIKS peta;
+	int i;
+	int j;
+	CreateEmptyMatriks (NbElmtArr(Arr)+2, NbElmtArr(Arr)+2, &peta);
+
+	for (i = GetFirstIdxBrs(peta); i <= GetLastIdxBrs(peta); i ++){
+		for (j = GetFirstIdxKol(peta); j <= GetLastIdxKol(peta); j++){
+			if (i == 1 || i == GetLastIdxKol(peta)){
+				if (j == GetLastIdxKol(peta)){
+					printf("*\n");
+				}
+				else{
+					printf("*");
+				}
+			}
+			else if (j == GetFirstIdxKol(peta)){
+				printf("*");
+			}
+			else if (j == GetLastIdxKol(peta)){
+				printf("*\n");
+			}
+			else{
+				if (i == Elmt(Arr,i).letak.X + 1 && j ==  Elmt(Arr,j).letak.Y + 1){
+					printf("%c", Elmt(Arr,i).type);
+				}
+				else{
+					printf(" ");
+				}
+			}
+		}
 	}
 }

@@ -15,7 +15,6 @@ int main(){
     J = 0;
     
     LoadFile (&N, &M, &J, &Arr, &Mat, &L1, &L2, &L3);
-
-    printf("%d", N);
+    CetakPeta(Arr);
     return 0;
 }
