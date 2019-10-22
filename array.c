@@ -73,25 +73,3 @@ IdxType GetLastIdx(TabBang T){
 	return (NbElmtArr(T));
 
 }
-
-boolean IsIdxValid(TabBang T, IdxType i){
-/* Mengirimkan true jika i adalah indeks yang valid utk ukuran tabel */
-/* yaitu antara indeks yang terdefinisi utk container*/
-	return ((i >= IdxMin) && (i <= MaxElArr(T)));
-}
-
-boolean IsIdxEff(TabBang T, IdxType i){
-/* Mengirimkan true jika i adalah indeks yang terdefinisi utk tabel */
-/* yaitu antara FirstIdx(T)..LastIdx(T) */
-	return ((i >= IdxMin) && (i <= NbElmtArr(T)));
-}
-
-boolean IsEmptyArr(TabBang T){
-/* Mengirimkan true jika tabel T kosong, mengirimkan false jika tidak */
-	return (NbElmtArr(T) == 0);
-}
-
-boolean IsFullArr(TabBang T){
-/* Mengirimkan true jika tabel T penuh, mengirimkan false jika tidak */
-	return (NbElmtArr(T) == MaxElArr(T));
-}

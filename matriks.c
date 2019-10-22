@@ -48,7 +48,6 @@ void CopyMATRIKS (MATRIKS MIn, MATRIKS * MHsl){
 	}
 }
 
-	
 
 void TulisMATRIKS (MATRIKS M){
 /* I.S. M terdefinisi */

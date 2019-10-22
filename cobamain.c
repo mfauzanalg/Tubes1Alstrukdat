@@ -3,12 +3,12 @@
 #include <stdlib.h>
 
 int main(){
-    int N;
-    int M;
-    int J;
-    TabBang Arr;
-    MATRIKS Mat;
-    List L1, L2, L3;
+    int N; //baris
+    int M; //kolom
+    int J; //jumlah bangunan
+    TabBang Arr; //Arr menyimpan tipe data bangunan
+    MATRIKS Mat; //Matriks menyimpan data untk graf
+    List L1, L2, L3; //List untuk kepemilikan bangunan
 
     N = 0;
     M = 0;
