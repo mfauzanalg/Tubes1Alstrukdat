@@ -8,6 +8,7 @@
 #include "mesinkar.h"
 
 #define BLANK ' '
+#define ENTER 0x0A
 
 typedef struct {
   char bangunan;

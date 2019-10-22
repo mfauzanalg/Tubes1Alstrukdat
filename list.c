@@ -23,7 +23,7 @@ addresslist Alokasi (infotype X){
 /* menghasilkan P, maka Info(P)=X, Next(P)=NilList */
 /* Jika alokasi gagal, mengirimkan NilList */
 	addresslist P;
-	P = (addresslist) malloc(1*sizeof(ElmtMatList));
+	P =  malloc(1*sizeof(infotype));
 
 	if (P == NilList){
 		return P;
@@ -150,7 +150,7 @@ void InsertFirst (List *L, addresslist P){
 }
 
 
-void InsertAfter (List *L, addresslist P, addresslist Prec){ //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+void InsertAfter (List *L, addresslist P, addresslist Prec){
 /* I.S. Prec pastilah elemen list dan bukan elemen terakhir, */
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */

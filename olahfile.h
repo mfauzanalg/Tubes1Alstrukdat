@@ -11,6 +11,8 @@
 #include "stack.h"
 #include "list.h"
 
+extern int i;
+extern int z;
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2, List *L3);
 // Load file data inisialisasi awal

@@ -3,14 +3,13 @@
 #include <stdio.h>
 
 Kata CKata;
-boolean EndKata;
 
 void IgnoreBlank(){
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : CC sembarang
    F.S. : CC ≠ BLANK*/
   //  char CC;
-    while (CC == BLANK){
+    while (CC == BLANK || CC == ENTER){
         ADV();
     }
 }
@@ -21,7 +20,6 @@ void STARTKATA(){
           CC karakter pertama sesudah karakter terakhir kata */
     START();
     IgnoreBlank();
-    EndKata = false;
     SalinKata();
 }
 
@@ -33,7 +31,6 @@ void ADVKATA(){
    Proses : Akuisisi kata menggunakan procedure SalinKata */
   IgnoreBlank();
   SalinKata();
-  IgnoreBlank();
 }
 
 void SalinKata(){
@@ -47,7 +44,7 @@ void SalinKata(){
     int hasil = 0;
     int CI = 0;
     
-    while (CC != BLANK){
+    while (CC != BLANK && CC != ENTER){
 		if (CC == 'C' || CC == 'V' || CC == 'T' || CC == 'F'){
 			CKata.bangunan = CC;
 			CKata.val = -1;
@@ -55,7 +52,7 @@ void SalinKata(){
 		}
 		else{
 			CKata.bangunan = 'A';
-			while (CC != BLANK){
+			while (CC != BLANK && CC != ENTER){
 				if (CC == '0'){
 					CI = 0;
 				}
@@ -93,4 +90,21 @@ void SalinKata(){
 		}
 		i++;
     }
+}
+
+void SalinLast(){
+/* Mengakuisisi Token dan menyimpan hasilnya dalam CToken
+   I.S. : CC adalah karakter pertama dari Token
+   F.S. : CToken berisi Token yang sudah diakuisisi;
+          CC = BLANK
+          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
+          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+    IgnoreBlank();
+	CKata.bangunan = 'A';
+	if (CC == '0'){
+		CKata.val = 0;
+	}
+	else{
+		CKata.val = 1;
+	}
 }

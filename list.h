@@ -14,7 +14,7 @@ typedef struct tElmtMatlist *addresslist;
 typedef struct tElmtMatlist {
 	infotype info;
 	addresslist next;
-} ElmtMatList;
+} ElmtList;
 typedef struct {
 	addresslist First;
 } List;
