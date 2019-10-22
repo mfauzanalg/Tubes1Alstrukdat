@@ -15,6 +15,6 @@ int main(){
     J = 0;
     
     LoadFile (&N, &M, &J, &Arr, &Mat, &L1, &L2, &L3);
-    CetakPeta(Arr);
+    CetakPeta(N,M,Arr);
     return 0;
 }

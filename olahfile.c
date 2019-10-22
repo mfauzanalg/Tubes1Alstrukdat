@@ -100,15 +100,18 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 	}
 }
 
-void CetakPeta(TabBang Arr){
+void CetakPeta(int N, int M, TabBang Arr){ //N itu baris M itu kolom
 	MATRIKS peta;
 	int i;
 	int j;
-	CreateEmptyMatriks (NbElmtArr(Arr)+2, NbElmtArr(Arr)+2, &peta);
+	int k;
+	boolean found;
+	CreateEmptyMatriks (N+2, M+2, &peta);
 
 	for (i = GetFirstIdxBrs(peta); i <= GetLastIdxBrs(peta); i ++){
 		for (j = GetFirstIdxKol(peta); j <= GetLastIdxKol(peta); j++){
-			if (i == 1 || i == GetLastIdxKol(peta)){
+
+			if (i == GetFirstIdxBrs(peta) || i == GetLastIdxBrs(peta)){
 				if (j == GetLastIdxKol(peta)){
 					printf("*\n");
 				}
@@ -123,8 +126,15 @@ void CetakPeta(TabBang Arr){
 				printf("*\n");
 			}
 			else{
-				if (i == Elmt(Arr,i).letak.X + 1 && j ==  Elmt(Arr,j).letak.Y + 1){
-					printf("%c", Elmt(Arr,i).type);
+				found = false;
+				for (k = 1; k <= NbElmtArr(Arr); k++){
+					if (i == Elmt(Arr,k).letak.X + 1 && j ==  Elmt(Arr,k).letak.Y + 1){
+						found = true;
+						break;
+					}
+				}
+				if (found){
+					printf("%c", Elmt(Arr,k).type);
 				}
 				else{
 					printf(" ");
