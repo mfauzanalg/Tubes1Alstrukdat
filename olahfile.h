@@ -12,8 +12,9 @@
 #include "list.h"
 #include "pcolor.h"
 
-extern int i;
-extern int z;
+#define P1 L1
+#define P2 L2
+#define P3 L3
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2, List *L3);
 // Load file data inisialisasi awal
@@ -26,5 +27,8 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 
 void CetakPeta(int N, int M, TabBang Arr);
 // Mencatak Peta sesuai dengan file yang sudah di load
+
+void DaftarBangunan(List L, TabBang Arr);
+// Mencetak Daftar Bangunan yang dimiliki oleh Playe P
 
 #endif

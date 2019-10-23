@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include "olahfile.h"
 
-int i;
-int z;
+
 addresslist P;
 addresslist Prec;
+
+int i;
+int z;
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2, List *L3){
 	STARTKATA();
@@ -28,6 +30,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 		Elmt(*Arr,i).milik = 0;
 		Elmt(*Arr,i).jum = 0;
 		Elmt(*Arr,i).lev = 1;
+		Elmt(*Arr,i).nomor = i;
 
 		if(CKata.bangunan == 'C'){
 			Elmt(*Arr,i).type = 'C';
@@ -151,5 +154,44 @@ void CetakPeta(int N, int M, TabBang Arr){ //N itu baris M itu kolom
 				}
 			}
 		}
+	}
+}
+
+void DaftarBangunan(List L, TabBang Arr){
+	int i =1;
+	int num = 1;
+	boolean found;
+	addresslist P;
+	P = First(L);
+
+	printf("info P %d\n", Info(P));
+	
+	printf("Daftar bangunan :\n");
+	while (Info(P) != NbElmtArr(Arr)){
+		i = 1;
+		found = false;
+		while (i <= NbElmtArr(Arr) && !(found)){
+			if (Info(P) == Elmt(Arr,i).nomor){
+				printf("%d. ", num);
+				num++;
+				if(Elmt(Arr,i).type == 'C'){
+					printf("Castle (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'T'){
+					printf("Tower (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'V'){
+					printf("Village (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'F'){
+					printf("Fort (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				found = true;
+			}
+			else{
+				i++;
+			}
+		}
+		P = Next(P);
 	}
 }

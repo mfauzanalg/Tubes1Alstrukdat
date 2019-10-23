@@ -16,5 +16,12 @@ int main(){
     
     LoadFile (&N, &M, &J, &Arr, &Mat, &L1, &L2, &L3);
     CetakPeta(N,M,Arr);
+    PrintInfo(L1);
+    PrintInfo(L2);
+    PrintInfo(L3);
+    printf("\n");
+    DaftarBangunan(L3, Arr);
+  //  DaftarBangunan(P2, Arr);
+    //DaftarBangunan(L3, Arr);
     return 0;
 }
