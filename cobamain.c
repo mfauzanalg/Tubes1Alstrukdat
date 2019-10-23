@@ -1,4 +1,5 @@
 #include "olahfile.h"
+#include "typebentukan.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,16 +9,18 @@ int main(){
     int J; //jumlah bangunan
     TabBang Arr; //Arr menyimpan tipe data bangunan
     MATRIKS Mat; //Matriks menyimpan data untk graf
-    List L1, L2, L3; //List untuk kepemilikan bangunan
+    List L3; //List untuk kepemilikan bangunan
+    PLAYER P1, P2; 
 
-    N = 0;
-    M = 0;
-    J = 0;
+
+    LoadFile (&N, &M, &J, &Arr, &Mat, &P1.Bang, &P2.Bang, &L3);
+    CreateEmptyQueue(&P1.Skill, 1);
+    CreateEmptyQueue(&P2.Skill, 1);
+    Add (&P1.Skill, 1);
+    Add (&P2.Skill, 1);
     
-    LoadFile (&N, &M, &J, &Arr, &Mat, &L1, &L2, &L3);
+
     CetakPeta(N,M,Arr);
-    DaftarBangunan(P1, Arr);
-    DaftarBangunan(P2, Arr);
-    DaftarBangunan(P3, Arr);
+    
     return 0;
 }
