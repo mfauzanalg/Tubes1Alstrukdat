@@ -10,6 +10,7 @@
 #include "boolean.h"
 #include "typebentukan.h"
 
+
 /*  Kamus Umum */
 #define IdxMin 1
 /* Indeks minimum array */

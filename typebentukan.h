@@ -11,6 +11,9 @@
 #include "stack.h"
 #include "list.h"
 #include "pcolor.h"
+#include "mesinchar.h"
+#include "mesinword.h"
+
 
 typedef struct {
     int nomor; //indeks bangunan

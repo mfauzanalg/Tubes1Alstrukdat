@@ -5,7 +5,8 @@
 #include "array.h"
 
 
-void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2, List *L3);
+
+void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2);
 // Load file data inisialisasi awal
 // Akan terbentuk
 // N = tinggi peta

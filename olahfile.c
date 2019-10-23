@@ -9,7 +9,7 @@ addresslist Prec;
 int i;
 int z;
 
-void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2, List *L3){
+void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2){
 	STARTKATA();
 	*N = CKata.val;
 
@@ -22,7 +22,6 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 	CreateEmptyMatriks(*J, *J, &*Mat);
 	CreateEmptyList(&*L1);
 	CreateEmptyList(&*L2);
-	CreateEmptyList(&*L3);
 	CreateEmptyArray(&*Arr, *J);
 
 	for (i = 1; i <= *J; i++){
@@ -93,14 +92,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 	InsertFirst(&*L1, P);
 	P = Alokasi(2);
 	InsertFirst(&*L2, P);
-	P = Alokasi(3);
-	InsertFirst(&*L3, P);
 
-	for (i = 4; i <= *J; i++){
-		Prec = P;
-		P = Alokasi(i);
-		InsertAfter(&*L3, P, Prec);
-	}
 }
 
 void CetakPeta(int N, int M, TabBang Arr){ //N itu baris M itu kolom
@@ -170,7 +162,7 @@ void DaftarBangunan(List L, TabBang Arr){
 		i = 1;
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
-			if (Info(P) == Elmt(Arr,i).nomor){
+			if (Info(P) == i){
 				printf("%d. ", num);
 				num++;
 

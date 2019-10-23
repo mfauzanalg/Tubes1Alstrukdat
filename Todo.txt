@@ -1,0 +1,4 @@
+1. Pelajarin Graf Multilist dari matriks
+2. List yang menunjuk ke array apakah bisa OKK
+3. Undo(?)
+4. query of array of char

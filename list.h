@@ -11,10 +11,12 @@
 
 typedef int infotype;
 typedef struct tElmtMatlist *addresslist;
+
 typedef struct tElmtMatlist {
 	infotype info;
 	addresslist next;
 } ElmtList;
+
 typedef struct {
 	addresslist First;
 } List;
@@ -125,9 +127,6 @@ void PrintInfo (List L);
 int NbElmtList (List L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
-/*** Prekondisi untuk Max/Min/rata-rata : List tidak kosong ***/
-infotype Max (List L);
-/* Mengirimkan nilai Info(P) yang maksimum */
 
 /****************** PROSES TERHADAP LIST ******************/
 void Konkat1 (List *L1, List *L2, List *L3);

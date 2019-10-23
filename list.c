@@ -303,22 +303,6 @@ int NbElmtList (List L){
 	}
 }
 
-/*** Prekondisi untuk Max/Min/rata-rata : List tidak kosong ***/
-infotype Max (List L){
-/* Mengirimkan nilai Info(P) yang maksimum */
-	addresslist P;
-	infotype maks;
-	P = First(L);
-
-	maks = Info(P);
-	while (P != NilList){
-		if (Info(P) > maks){
-			maks = Info(P);
-		}
-		P = Next(P);
-	}
-	return maks;
-}
 
 /****************** PROSES TERHADAP LIST ******************/
 void Konkat1 (List *L1, List *L2, List *L3){
