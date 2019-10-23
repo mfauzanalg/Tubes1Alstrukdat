@@ -155,6 +155,7 @@ void CetakPeta(int N, int M, TabBang Arr){ //N itu baris M itu kolom
 			}
 		}
 	}
+	printf("\n");
 }
 
 void DaftarBangunan(List L, TabBang Arr){
@@ -163,17 +164,16 @@ void DaftarBangunan(List L, TabBang Arr){
 	boolean found;
 	addresslist P;
 	P = First(L);
-
-	printf("info P %d\n", Info(P));
 	
 	printf("Daftar bangunan :\n");
-	while (Info(P) != NbElmtArr(Arr)){
+	while (P != NilList){
 		i = 1;
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
 			if (Info(P) == Elmt(Arr,i).nomor){
 				printf("%d. ", num);
 				num++;
+
 				if(Elmt(Arr,i).type == 'C'){
 					printf("Castle (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
 				}
@@ -194,4 +194,5 @@ void DaftarBangunan(List L, TabBang Arr){
 		}
 		P = Next(P);
 	}
+	printf("\n");
 }
