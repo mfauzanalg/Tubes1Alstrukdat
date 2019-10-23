@@ -134,7 +134,17 @@ void CetakPeta(int N, int M, TabBang Arr){ //N itu baris M itu kolom
 					}
 				}
 				if (found){
-					printf("%c", Elmt(Arr,k).type);
+					if (Elmt(Arr,k).milik == 1){
+						print_red(Elmt(Arr,k).type);
+					}
+					else if (Elmt(Arr,k).milik == 2){
+						print_yellow(Elmt(Arr,k).type);
+					}
+					else
+					{
+						printf("%c", Elmt(Arr,k).type);
+					}
+					
 				}
 				else{
 					printf(" ");

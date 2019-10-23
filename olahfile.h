@@ -10,6 +10,7 @@
 #include "queue.h"
 #include "stack.h"
 #include "list.h"
+#include "pcolor.h"
 
 extern int i;
 extern int z;
