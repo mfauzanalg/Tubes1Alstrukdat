@@ -10,12 +10,13 @@ int main(){
     int M; //kolom
     int J; //jumlah bangunan
     TabBang Arr; //Arr menyimpan tipe data bangunan
+    TabGraph ArrGraph; //Arr menyimpan graf
     MATRIKS Mat; //Matriks menyimpan data untk graf
     List L3; //List untuk kepemilikan bangunan
     PLAYER P1, P2; 
     boolean exit = false;
 
-    LoadFile (&N, &M, &J, &Arr, &Mat, &P1.Bang, &P2.Bang);
+    LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.Bang, &P2.Bang);
     CreateEmptyQueue(&P1.Skill, 10);
     CreateEmptyQueue(&P2.Skill, 10);
 

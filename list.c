@@ -48,19 +48,24 @@ addresslist Search (List L, infotype X){
 /* Mencari apakah ada elemen list dengan Info(P)= X */
 /* Jika ada, mengirimkan addresslist elemen tersebut. */
 /* Jika tidak ada, mengirimkan NilList */
-	addresslist P;
-	P = First(L);
-
-	while (P != NilList){
-		if (Info(P) == X){
-			return P;
-		}
-		else{
-			P = Next(P);
-		}
-	}
-
-	return P;
+    addresslist P;
+    boolean found;
+    P = First(L);
+    found = false;
+    while ((P != NilList) && (!found)){
+        if (X == Info(P)){
+            found = true;
+        }
+        else{
+            P = Next(P);
+        }
+    }
+    if (found){
+        return P;
+    }
+    else{
+        return NilList;
+    }
 }
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
