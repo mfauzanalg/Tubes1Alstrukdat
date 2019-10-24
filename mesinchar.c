@@ -7,7 +7,7 @@
 char CC;
 boolean EOP;
 
-static char *pita[10];
+static char *pita[20];
 static int retval;
 
 void STARTCHAR() {

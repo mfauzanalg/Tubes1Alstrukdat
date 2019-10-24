@@ -7,12 +7,13 @@
 #include "boolean.h"
 #include "mesinkar.h"
 
+#define NMax 50
 #define BLANK ' '
 #define ENTER 0x0A
 
 typedef struct {
-  char bangunan;
-  int val;
+  char TabKata[NMax+1];
+  int Length;
 } Kata;
 
 /* State Mesin Kata */
@@ -44,5 +45,11 @@ void SalinKata();
           CC = BLANK atau CC = MARK;
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+
+int CharToInt(char CC);
+// Mengubah  Char ke Integer
+
+int StringToInteger(Kata CKata);
+// Mengubah String ke Integer
 
 #endif

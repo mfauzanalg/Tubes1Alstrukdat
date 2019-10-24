@@ -60,7 +60,7 @@ void SalinWord(){
           CC = BLANK atau CC = MARK;
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-    int i = 1;
+    int i = 0;
     CWord.Length = 0;
     while (CC != MARK && CC != BLANK){
         if (i <= NMax){

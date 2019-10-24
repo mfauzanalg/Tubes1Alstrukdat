@@ -9,17 +9,24 @@
 
 #define NilQueue 0
 /* Konstanta untuk mendefinisikan addressqueue tak terdefinisi */
+typedef struct 
+{
+    char Kata[5];
+} String;
 
 /* Definisi elemen dan addressqueue */
-typedef int infotype;
+typedef String infotypequeue;
 typedef int addressqueue;   /* indeks tabel */
 /* Contoh deklarasi variabel bertype Queue : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */
-typedef struct { infotype * T;   /* tabel penyimpan elemen */
+typedef struct { infotypequeue * T;   /* tabel penyimpan elemen */
                  addressqueue HEAD;  /* alamat penghapusan */
                  addressqueue TAIL;  /* alamat penambahan */
                  int MaxElQueue;     /* Max elemen queue */
                } Queue;
+
+
+
 /* Definisi Queue kosong: HEAD=NilQueue; TAIL=NilQueue. */
 /* Catatan implementasi: T[0] tidak pernah dipakai */
 
@@ -54,12 +61,12 @@ void DeAlokasi(Queue * Q);
 /* I.S. Q pernah dialokasi */
 /* F.S. Q menjadi tidak terdefinisi lagi, MaxElQueue(Q) diset 0 */
 
-/* *** Primitif Add/Delete *** */
-void Add (Queue * Q, infotype X);
+/* *** Primitif AddQueue/Delete *** */
+void AddQueue (Queue * Q, infotypequeue X);
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X menjadi TAIL yang baru, TAIL "maju" dengan mekanisme circular buffer */
-void Del (Queue * Q, infotype * X);
+void Del (Queue * Q, infotypequeue * X);
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer; 

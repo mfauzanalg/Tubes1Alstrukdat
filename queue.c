@@ -37,7 +37,7 @@ void CreateEmptyQueue (Queue * Q, int Max){
 /* Jika alokasi berhasil, Tabel memori dialokasi berukuran Max+1 */
 /* atau : jika alokasi gagal, Q kosong dg MaxElQueue=0 */
 /* Proses : Melakukan alokasi, membuat sebuah Q kosong */
-	(*Q).T = (int*) malloc((Max+1)*sizeof(int));
+	(*Q).T = (infotypequeue*) malloc((Max+1)*sizeof(infotypequeue));
 	if ((*Q).T == NULL){
 	    MaxElQueue(*Q) = 0;
 	}
@@ -55,8 +55,8 @@ void DeAlokasi(Queue * Q){
 	MaxElQueue (*Q) = 0;
 }
 
-/* *** Primitif Add/Delete *** */
-void Add (Queue * Q, infotype X){
+/* *** Primitif AddQueue/Delete *** */
+void AddQueue (Queue * Q, infotypequeue X){
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X menjadi TAIL yang baru, TAIL "maju" dengan mekanisme circular buffer */
@@ -76,7 +76,7 @@ void Add (Queue * Q, infotype X){
 }
 
 
-void Del (Queue * Q, infotype * X){
+void Del (Queue * Q, infotypequeue * X){
 /* Proses: Menghapus X pada Q dengan aturan FIFO */
 /* I.S. Q tidak mungkin kosong */
 /* F.S. X = nilai elemen HEAD pd I.S., HEAD "maju" dengan mekanisme circular buffer; 
