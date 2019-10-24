@@ -140,7 +140,7 @@ void attack(PLAYER player_serang){
                     printf("(%d,%d) ", mau_attack[infop].letak);
                     printf("%d ", mau_attack[infop].jum)
                     printf("lv. ");
-                    printf("%d\n",mau_attack[infop]. lev);
+                    printf("%d\n",mau_attack[infop].lev);
                 } 
                 
                 printf("Bangunan yang digunakan untuk menyerang: ");
