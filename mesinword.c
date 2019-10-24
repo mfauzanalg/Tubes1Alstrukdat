@@ -60,7 +60,8 @@ void SalinWord(){
           CC = BLANK atau CC = MARK;
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-    int i = 1;
+    int i = 0;
+    MakeEmptyWord();
     CWord.Length = 0;
     while (CC != MARK && CC != BLANK){
         if (i <= NMax){
@@ -70,4 +71,11 @@ void SalinWord(){
         }
         ADVCHAR();
     }
+}
+
+void MakeEmptyWord(){
+  int i;
+  for (i = 0; i <= 10; i++){
+    CWord.TabKata[i] = '\0';
+  }
 }

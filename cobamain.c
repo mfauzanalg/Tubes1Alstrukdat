@@ -2,6 +2,7 @@
 #include "typebentukan.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(){
     int i;
@@ -14,20 +15,42 @@ int main(){
     PLAYER P1, P2; 
     boolean exit = false;
 
-
     LoadFile (&N, &M, &J, &Arr, &Mat, &P1.Bang, &P2.Bang);
- //   CreateEmptyQueue(&P1.Skill, 1);
- //   CreateEmptyQueue(&P2.Skill, 1);
- //   Add (&P1.Skill, 1);
- //  Add (&P2.Skill, 1);
+    CreateEmptyQueue(&P1.Skill, 10);
+    CreateEmptyQueue(&P2.Skill, 10);
+
+    //input.Kata[1] = 'I';
+    //input.Kata[2] = 'U';
+    //AddQueue (&P1.Skill, input);
+    //AddQueue (&P2.Skill, input);
+
     CetakPeta(N,M,Arr);
     DaftarBangunan(P1.Bang, Arr);
     printf("Ayo isi woy : ");
+
     STARTWORD();
-    for (i = 1; i <= 10; i++){
-        printf("%c", CWord.TabKata[i]);
+    for (i = 0; i <= 10; i++){
+        printf("%c",CWord.TabKata[i]);
+    }    
+    if (strcmp(CWord.TabKata, "Lia") == 0) {
+        printf("uyey sama\n");
     }
 
+    STARTWORD();
+    for (i = 0; i <= 10; i++){
+        printf("%c",CWord.TabKata[i]);
+    }    
+    if (strcmp(CWord.TabKata, "Fauzan") == 0) {
+        printf("uyey sama lagi\n");
+    }
+
+    STARTWORD();
+    for (i = 0; i <= 10; i++){
+        printf("%c",CWord.TabKata[i]);
+    }    
+    if (strcmp(CWord.TabKata, "Lia") == 0) {
+        printf("uyey sama lagi lagi\n");
+    }
     
     return 0;
 }

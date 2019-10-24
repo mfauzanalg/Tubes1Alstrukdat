@@ -13,7 +13,7 @@
 
 typedef struct {
   char TabKata[NMax+1]; /* container penyimpan kata, indeks yang dipakai [1..NMax] */
-    int Length;
+  int Length;
 } Word;
 
 /* State Mesin Kata */
@@ -45,5 +45,7 @@ void SalinWord();
           CC = BLANK atau CC = MARK;
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+
+void MakeEmptyWord();
 
 #endif

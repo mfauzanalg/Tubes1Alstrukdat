@@ -11,13 +11,13 @@ int z;
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2){
 	STARTKATA();
-	*N = CKata.val;
+	*N = StringToInteger(CKata);
 
 	ADVKATA();
-	*M = CKata.val;
+	*M = StringToInteger(CKata);
 
 	ADVKATA();
-	*J = CKata.val;
+	*J = StringToInteger(CKata);
 
 	CreateEmptyMatriks(*J, *J, &*Mat);
 	CreateEmptyList(&*L1);
@@ -31,28 +31,28 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 		Elmt(*Arr,i).lev = 1;
 		Elmt(*Arr,i).nomor = i;
 
-		if(CKata.bangunan == 'C'){
+		if(CKata.TabKata[1] == 'C'){
 			Elmt(*Arr,i).type = 'C';
 			Elmt(*Arr,i).A = 10;
 			Elmt(*Arr,i).M = 40;
 			Elmt(*Arr,i).P = false;
 			Elmt(*Arr,i).U = 40;
 		}
-		else if(CKata.bangunan == 'T'){
+		else if(CKata.TabKata[1] == 'T'){
 			Elmt(*Arr,i).type = 'T';
 			Elmt(*Arr,i).A = 5;
 			Elmt(*Arr,i).M = 20;
 			Elmt(*Arr,i).P = true;
 			Elmt(*Arr,i).U = 30;
 		}
-		else if(CKata.bangunan == 'F'){
+		else if(CKata.TabKata[1] == 'F'){
 			Elmt(*Arr,i).type = 'F';
 			Elmt(*Arr,i).A = 10;
 			Elmt(*Arr,i).M = 20;
 			Elmt(*Arr,i).P = false;
 			Elmt(*Arr,i).U = 80;
 		}
-		else if(CKata.bangunan == 'V'){
+		else if(CKata.TabKata[1] == 'V'){
 			Elmt(*Arr,i).type = 'V';
 			Elmt(*Arr,i).A = 5;
 			Elmt(*Arr,i).M = 20;
@@ -61,9 +61,9 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 		}
 
 		ADVKATA();
-		Elmt(*Arr,i).letak.X = CKata.val;
+		Elmt(*Arr,i).letak.X = StringToInteger(CKata);
 		ADVKATA();
-		Elmt(*Arr,i).letak.Y = CKata.val;
+		Elmt(*Arr,i).letak.Y = StringToInteger(CKata);
 	}
 
 	Elmt(*Arr,1).milik = 1;
@@ -75,12 +75,12 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, Lis
 		while (z <= *J){
 			if (i == *J && z == *J){
 				SalinLast();
-				ElmtMat(*Mat, i, z) = CKata.val;
+				ElmtMat(*Mat, i, z) = StringToInteger(CKata);
 				z++;
 			}
 			else{
 				ADVKATA();
-				ElmtMat(*Mat, i, z) = CKata.val;
+				ElmtMat(*Mat, i, z) = StringToInteger(CKata);
 				z++;
 			}
 		}
