@@ -2,6 +2,8 @@
 /* Implementasi Mesin Karakter */
 
 #include "mesinkar.h"
+#include "mesinchar.h"
+#include "mesinword.h"
 #include <stdio.h>
 
 char CC;
@@ -17,7 +19,9 @@ void START() {
           Jika CC = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-	pita = fopen("pitakar.txt","r");
+  printf("Masukan nama file konfigurasi : ");
+  STARTWORD();
+	pita = fopen(CWord.TabKata,"r");
 	ADV();
 }
 

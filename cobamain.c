@@ -14,8 +14,6 @@ int main(){
     List L3; //List untuk kepemilikan bangunan
     PLAYER P1, P2; 
     boolean exit = false;
-    String input;
-    char p[3];
 
     LoadFile (&N, &M, &J, &Arr, &Mat, &P1.Bang, &P2.Bang);
     CreateEmptyQueue(&P1.Skill, 10);
@@ -28,15 +26,31 @@ int main(){
 
     CetakPeta(N,M,Arr);
     DaftarBangunan(P1.Bang, Arr);
-    //printf("Ayo isi woy : ");
-    //STARTWORD();
-    
-    //if (strcmp(CWord.TabKata, "Fauzan") == 0) {
-    //    printf("uyey sama\n");
-    //}
+    printf("Ayo isi woy : ");
 
+    STARTWORD();
+    for (i = 0; i <= 10; i++){
+        printf("%c",CWord.TabKata[i]);
+    }    
+    if (strcmp(CWord.TabKata, "Lia") == 0) {
+        printf("uyey sama\n");
+    }
 
+    STARTWORD();
+    for (i = 0; i <= 10; i++){
+        printf("%c",CWord.TabKata[i]);
+    }    
+    if (strcmp(CWord.TabKata, "Fauzan") == 0) {
+        printf("uyey sama lagi\n");
+    }
 
+    STARTWORD();
+    for (i = 0; i <= 10; i++){
+        printf("%c",CWord.TabKata[i]);
+    }    
+    if (strcmp(CWord.TabKata, "Lia") == 0) {
+        printf("uyey sama lagi lagi\n");
+    }
     
     return 0;
 }
