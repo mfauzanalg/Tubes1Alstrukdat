@@ -23,5 +23,9 @@ void DaftarBangunan(List L, TabBang Arr);
 // Mencetak Daftar Bangunan yang dimiliki oleh Playe P
 
 void StartPlayer (PLAYER *P);
+// Status player waktu baru mulai
+
+void Tambah (List L, TabBang *Arr);
+// Penambahan tiap turnnya
 
 #endif

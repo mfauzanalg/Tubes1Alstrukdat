@@ -29,6 +29,7 @@ int main(){
 
     while (playing){
         CetakPeta(N,M,Arr);
+        Tambah (P1.ListB, &Arr);
         while ((playing) && (P1turn)){
             printf("PLayer 1\n");
             DaftarBangunan(P1.ListB, Arr);
@@ -43,6 +44,7 @@ int main(){
         system("CLS");
 
         CetakPeta(N,M,Arr);
+        Tambah (P2.ListB, &Arr);
         while ((playing) && !(P1turn)){
             printf("PLayer 2\n");
             DaftarBangunan(P2.ListB, Arr);

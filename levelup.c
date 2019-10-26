@@ -16,7 +16,6 @@ void levelUp(TabBang Arr, TabBang Arr2, PLAYER P, int i)
         printf("Jumlah pasukan Castle kurang untuk level up\n");
 
 
-
     }
     else
     {

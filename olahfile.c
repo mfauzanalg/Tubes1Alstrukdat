@@ -199,3 +199,27 @@ void StartPlayer (PLAYER *P){
 	CriticalHit(*P) = false;
 }
 
+void Tambah (List L, TabBang *Arr){
+	int i =1;
+	boolean found;
+	addresslist P;
+	P = First(L);
+
+	while (P != NilList){
+		i = 1;
+		found = false;
+		while (i <= NbElmtArr(*Arr) && !(found)){
+			if (Info(P) == i){
+				if (!(Elmt(*(Arr),i).jum >= Elmt(*(Arr),i).M)){
+					Elmt(*(Arr),i).jum += Elmt(*(Arr),i).A ;
+				}
+				found = true;
+			}
+			else{
+				i++;
+			}
+		}
+		P = Next(P);
+	}
+
+}
