@@ -23,6 +23,9 @@ int NBElmtQueue (Queue Q){
 		if (Head(Q) < Tail(Q)){
 			return (Tail(Q) - Head(Q) + 1);
 		}
+		else if (Head(Q) == Tail(Q)){
+			return 1;
+		}
 		else{
 			return (MaxElQueue(Q) - Head(Q) + Tail (Q) + 1);
 		}

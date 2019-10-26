@@ -52,3 +52,10 @@ void Popp (stackp * S, infotypestackp* X){
 		Top(*S) -= 1;
 	}
 }
+
+void CopyPlayer (PLAYER Pin, PLAYER *Pout){
+	(*Pout).Skill = Pin.Skill;
+	(*Pout).Shield = Pin.Shield;
+	CopyList(Pin.ListB, &(*Pout).ListB);
+
+}

@@ -14,17 +14,57 @@ int main(){
     TabGraph ArrGraph; //Arr menyimpan graf
     MATRIKS Mat; //Matriks menyimpan data untk graf
     List L3; //List untuk kepemilikan bangunan
-    PLAYER P1, P2; 
+    PLAYER P1, P2, P3; 
     boolean exit = false;
     Stack SBang;
+    stackp SP1;
+    addresslist P;
 
     LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     CreateEmptyQueue(&P1.Skill, 10);
-    CreateEmptyQueue(&P2.Skill, 10);
 
-    //AddQueue (&P1.Skill, input);
-    //AddQueue (&P2.Skill, input);
-    //CreateEmptyStack(&SBang);
+    CreateEmptystackp(&SP1);
+
+    AddQueue (&P1.Skill, 1);
+
+    P1.Shield = true;
+    P = Alokasi(9);
+    InsertLast(&P1.ListB, P);
+
+    printf ("shield %d\n", P1.Shield);
+    printf ("Nbelmt Queue %d\n", NBElmtQueue(P1.Skill));
+    PrintInfo (P1.ListB);
+    printf("\n");
+
+    CopyPlayer(P1, &P3);
+    Pushp (&SP1, P3);
+
+    AddQueue (&P1.Skill, 1);
+    P1.Shield = false;
+    P = Alokasi(7);
+    InsertLast(&P1.ListB, P);
+
+    AddQueue (&P1.Skill, 1);
+    P1.Shield = false;
+    P = Alokasi(7);
+    InsertLast(&P1.ListB, P);
+
+    printf ("shield %d\n", P1.Shield);
+    printf ("Nbelmt Queue %d\n", NBElmtQueue(P1.Skill));
+    PrintInfo (P1.ListB);
+    printf("\n");
+
+    Popp(&SP1, &P1);
+
+    printf ("shield %d\n", P1.Shield);
+    printf ("Nbelmt Queue %d\n", NBElmtQueue(P1.Skill));
+    PrintInfo (P1.ListB);
+    printf("\n");
+    
+
+
+
+    CreateEmptyStack(&SBang);
    // CetakPeta(N,M,Arr);
    // DaftarBangunan(P1.Bang, Arr);
   //  printf("Ayo isi woy : ");
@@ -52,7 +92,7 @@ int main(){
     printf("%d\n", NBElmtQueue(P1.Skill));
 */
 
-/*
+
     Elmt(Arr,1).A = 100;
     Elmt(Arr,1).jum = 10;
     
@@ -74,8 +114,6 @@ int main(){
     Pop (&SBang, &Arr);
     printf("tiga %d ", Elmt(Arr,1).jum);
     printf("satu %d ", Elmt(Arr,1).A);
-*/
-
 
     return 0;
 }

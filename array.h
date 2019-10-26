@@ -71,6 +71,6 @@ IdxType GetLastIdx(TabBang T);
 /* Prekondisi : Tabel T tidak kosong */
 /* Mengirimkan indeks elemen T terakhir */
 
-TabBang CopyArr (TabBang Tabin, TabBang *Tabout);
+void CopyArr (TabBang Tabin, TabBang *Tabout);
 
 #endif

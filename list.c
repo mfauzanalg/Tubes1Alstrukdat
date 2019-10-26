@@ -176,9 +176,8 @@ void InsertLast (List *L, addresslist P){
 		while (Next(Last) != NilList){
 			Last = Next(Last);
 		}
+		Next(Last) = P;
 	}
-
-	Next(Last) = P;
 }
 /*** PENGHAPUSAN SEBUAH ELEMEN ***/
 void DelFirst (List *L, addresslist *P){
@@ -334,4 +333,21 @@ void Konkat1 (List *L1, List *L2, List *L3){
 
 	CreateEmptyList(L1);
 	CreateEmptyList(L2);
+}
+
+void CopyList (List L1, List *L2){
+	int x;
+	addresslist P;
+	addresslist P1;
+	int i;
+	
+	CreateEmptyList(&*L2);
+	P = First(L1);
+	
+	for (i = 1; i <= NbElmtList(L1); i++){
+		P1 = Alokasi(Info(P));
+		InsertLast(&*L2, P1);
+		P = Next(P);
+	}
+
 }
