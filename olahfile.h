@@ -3,7 +3,7 @@
 
 #include "boolean.h"
 #include "array.h"
-
+#include "typebentukan.h"
 
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, MATRIKS *Mat, List *L1, List *L2);

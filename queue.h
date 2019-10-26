@@ -9,13 +9,9 @@
 
 #define NilQueue 0
 /* Konstanta untuk mendefinisikan addressqueue tak terdefinisi */
-typedef struct 
-{
-    char Kata[5];
-} String;
 
 /* Definisi elemen dan addressqueue */
-typedef String infotypequeue;
+typedef int infotypequeue;
 typedef int addressqueue;   /* indeks tabel */
 /* Contoh deklarasi variabel bertype Queue : */
 /* Versi I : tabel dinamik, Head dan Tail eksplisit, ukuran disimpan */

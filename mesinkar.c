@@ -19,9 +19,10 @@ void START() {
           Jika CC = MARK maka EOP akan menyala (true) */
 
 	/* Algoritma */
-  printf("Masukan nama file konfigurasi : ");
-  STARTWORD();
-	pita = fopen(CWord.TabKata,"r");
+  //printf("Masukan nama file konfigurasi : ");
+  //STARTWORD();
+  //CWord.TabKata
+	pita = fopen("pitakar.txt","r");
 	ADV();
 }
 

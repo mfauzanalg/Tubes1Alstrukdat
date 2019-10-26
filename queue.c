@@ -44,6 +44,8 @@ void CreateEmptyQueue (Queue * Q, int Max){
 	else{
 	    MaxElQueue(*Q) = Max;
 	}
+	Head(*Q) = NilQueue;
+	Tail(*Q) = NilQueue;
 }
 
 /* *** Destruktor *** */

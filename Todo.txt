@@ -1,4 +1,16 @@
-1. Pelajarin Graf Multilist dari matriks
-2. List yang menunjuk ke array apakah bisa OKK
+1. Pelajarin Graf Multilist dari matriks 	OKK Raras
+2. List yang menunjuk ke array apakah bisa 	OKK 
 3. Undo(?)
-4. query of array of char
+4. queue of array of char			OKK jadinya int aja
+
+Skill yang ada statusnya :
+Shield
+Critical Hit
+Attack Up
+ExtraTurn
+
+untuk Undo apa aja ya stacknya :
+Player (Skill(Queue) dan Bangunan(List))
+Array (Bangunan)
+
+Skill apa aja yg aktif(ada di player)

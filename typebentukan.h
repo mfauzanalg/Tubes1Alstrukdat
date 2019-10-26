@@ -8,7 +8,6 @@
 #include "mesinkar.h"
 #include "point.h"
 #include "queue.h"
-#include "stack.h"
 #include "list.h"
 #include "pcolor.h"
 #include "mesinchar.h"
@@ -32,8 +31,6 @@ typedef struct {
     int num; //Player.num = 1 maksudnya adalah player 1
     Queue Skill; //Skill yang dimiliki oleh Player
     List Bang; //List Bangunan yang dimiliki oleh Player
-    Stack State; //State Player untuk mengaplikasikan fungsi Undo nanti
 } PLAYER;
-
 
 #endif
