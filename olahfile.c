@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "olahfile.h"
 
-
 addresslist P;
 addresslist Prec;
 
@@ -30,6 +29,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 		Elmt(*Arr,i).jum = 0;
 		Elmt(*Arr,i).lev = 1;
 		Elmt(*Arr,i).nomor = i;
+		Elmt(*Arr,i).attack = false;
 
 		if(CKata.TabKata[1] == 'C'){
 			Elmt(*Arr,i).type = 'C';
@@ -190,3 +190,12 @@ void DaftarBangunan(List L, TabBang Arr){
 	}
 	printf("\n");
 }
+
+void StartPlayer (PLAYER *P){
+	CreateEmptyQueue(&(*P).Skill, 10);
+	AddQueue(&(*P).Skill, 1);
+	Shield(*P) = false;
+	AttackUp(*P) = false;
+	CriticalHit(*P) = false;
+}
+

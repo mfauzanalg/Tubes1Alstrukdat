@@ -22,4 +22,6 @@ void CetakPeta(int N, int M, TabBang Arr);
 void DaftarBangunan(List L, TabBang Arr);
 // Mencetak Daftar Bangunan yang dimiliki oleh Playe P
 
+void StartPlayer (PLAYER *P);
+
 #endif

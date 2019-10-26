@@ -36,7 +36,7 @@ int main(){
     Elmt(Arr, 1).U=30;
     Elmt(Arr, 1).letak.X=1;
     Elmt(Arr, 1).letak.Y=13;
-    Elmt(Arr, 1).attacked=false;
+    Elmt(Arr, 1).attack=false;
 
 
     levelUp(Arr, Arr2, P1, 1);
@@ -92,8 +92,6 @@ int main(){
   //  printf("Ayo isi woy : ");
 
    // STARTWORD();
-   // for (i = 0; i <= 10; i++){
-   //     printf("%c",CWord.TabKata[i]);
    // }    
    // if (strcmp(CWord.TabKata, "Lia") == 0) {
    //     printf("uyey sama\n");

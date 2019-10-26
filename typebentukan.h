@@ -25,21 +25,23 @@ typedef struct {
     boolean P; //pertahanan
     int U; //pasukan awal
     POINT letak; //letak pasukan
-    boolean attacked; //berisi informasi apakah bangunan sudah pernah menyerang
+    boolean attack; //true : masih bisa menyerang
 } Bangunan;
 
 typedef struct {
-    int num; //Player.num = 1 maksudnya adalah player 1
-    Queue Skill; //Skill yang dimiliki oleh Player
-    List ListB; //List Bangunan yang dimiliki oleh Player
-    boolean Shield; //menyatakan shield aktif
+    Queue Skill;        //Skill yang dimiliki oleh Player
+    List ListB;         //List Bangunan yang dimiliki oleh Player
+    boolean Shield;     //menyatakan shield player aktif/tidak
+    boolean AttackUp;   //menyatakan attack up player aktif/tidak
+    boolean CriticalHit;//menyatakan critical hit player aktif/tidak
 } PLAYER;
 
+#define Skill(PLAYER)       (PLAYER).Skill
+#define ListB(PLAYER)       (PLAYER).ListB
+#define Shield(PLAYER)      (PLAYER).Shield
+#define AttackUp(PLAYER)    (PLAYER).AttackUp
+#define CriticalHit(PLAYER) (PLAYER).CriticalHit
 
-#define num(PLAYER)     (PLAYER).num
-#define Skill(PLAYER)   (PLAYER).Skill
-#define ListB(PLAYER)   (PLAYER).ListB
-#define State(PLAYER)   (PLAYER).State
 #define nomor(Bangunan) (Bangunan).nomor
 #define type(Bangunan)  (Bangunan).type
 #define milik(Bangunan) (Bangunan).milik
