@@ -1,1 +1,1 @@
-gcc -o cobamain cobamain.c array.c list.c matriks.c mesinkar.c mesinkata.c olahfile.c pcolor.c queue.c stack.c mesinchar.c mesinword.c graph.c
+gcc -o cobamain cobamain.c array.c list.c matriks.c mesinkar.c mesinkata.c olahfile.c pcolor.c queue.c stack.c mesinchar.c mesinword.c graph.c levelup.c
