@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "levelup.h"
 
 int main(){
     int i;
@@ -22,6 +23,27 @@ int main(){
 
     LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     CreateEmptyQueue(&P1.Skill, 10);
+    CreateEmptyQueue(&P2.Skill, 10);
+    CreateEmptyArray(&Arr, 18);
+    Elmt(Arr, 1).nomor=1;
+    Elmt(Arr, 1).type='T';
+    Elmt(Arr, 1).milik=1;
+    Elmt(Arr, 1).jum=50;
+    Elmt(Arr, 1).lev=1;
+    Elmt(Arr, 1).A=5;
+    Elmt(Arr, 1).M=20;
+    Elmt(Arr, 1).P=false;
+    Elmt(Arr, 1).U=30;
+    Elmt(Arr, 1).letak.X=1;
+    Elmt(Arr, 1).letak.Y=13;
+    Elmt(Arr, 1).attacked=false;
+
+
+    levelUp(Arr, Arr2, P1, 1);
+    printf("%d\n", Elmt(Arr, 1).jum);
+    printf("%d\n", Elmt(Arr, 1).lev);
+    
+    
 
     CreateEmptystackp(&SP1);
 
