@@ -11,7 +11,6 @@ int main(){
     int M; //kolom
     int J; //jumlah bangunan
     TabBang Arr, Arr2; //Arr menyimpan tipe data bangunan
-    TabBang Arr; //Arr menyimpan tipe data bangunan
     TabGraph ArrGraph; //Arr menyimpan graf
     MATRIKS Mat; //Matriks menyimpan data untk graf
     List L3; //List untuk kepemilikan bangunan
@@ -19,15 +18,13 @@ int main(){
     boolean exit = false;
     Stack SBang;
 
-    LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.Bang, &P2.Bang);
+    LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     CreateEmptyQueue(&P1.Skill, 10);
     CreateEmptyQueue(&P2.Skill, 10);
 
-    //input.Kata[1] = 'I';
-    //input.Kata[2] = 'U';
     //AddQueue (&P1.Skill, input);
     //AddQueue (&P2.Skill, input);
-    CreateEmptyStack(&SBang);
+    //CreateEmptyStack(&SBang);
    // CetakPeta(N,M,Arr);
    // DaftarBangunan(P1.Bang, Arr);
   //  printf("Ayo isi woy : ");
@@ -55,24 +52,29 @@ int main(){
     printf("%d\n", NBElmtQueue(P1.Skill));
 */
 
-
-    Elmt(Arr,1).jum = 100;
+/*
+    Elmt(Arr,1).A = 100;
+    Elmt(Arr,1).jum = 10;
+    
     CopyArr(Arr, &Arr2);
 	Push (&SBang, Arr2);
-	printf("satu %d ", Elmt(Arr,1).jum);
+
+	printf("satu %d ", Elmt(Arr,1).A);
     
-    Elmt(Arr,1).jum = 80;
-    printf("satu %d ", Elmt(Arr,1).jum);
+    Elmt(Arr,1).A = 80;
+    printf("satu %d ", Elmt(Arr,1).A);
 
     CopyArr(Arr, &Arr2);
     Push (&SBang, Arr2);
 
-    Elmt(Arr,1).jum = 90;
-    printf("satu %d ", Elmt(Arr,1).jum);
+    Elmt(Arr,1).jum = 20;
+    Elmt(Arr,1).A = 90;
+    printf("satu %d ", Elmt(Arr,1).A);
     
     Pop (&SBang, &Arr);
-    Pop (&SBang, &Arr);
     printf("tiga %d ", Elmt(Arr,1).jum);
+    printf("satu %d ", Elmt(Arr,1).A);
+*/
 
 
     return 0;

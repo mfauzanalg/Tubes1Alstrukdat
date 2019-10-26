@@ -14,3 +14,6 @@ Player (Skill(Queue) dan Bangunan(List))
 Array (Bangunan)
 
 Skill apa aja yg aktif(ada di player)
+
+CopyArr(Arr, &Arr2);
+Push (&SBang, Arr2);

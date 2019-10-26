@@ -31,11 +31,10 @@ typedef struct {
 typedef struct {
     int num; //Player.num = 1 maksudnya adalah player 1
     Queue Skill; //Skill yang dimiliki oleh Player
-    List Bang; //List Bangunan yang dimiliki oleh Player
     List ListB; //List Bangunan yang dimiliki oleh Player
-    Stack State; //State Player untuk mengaplikasikan fungsi Undo nanti
     boolean Shield; //menyatakan shield aktif
 } PLAYER;
+
 
 #define num(PLAYER)     (PLAYER).num
 #define Skill(PLAYER)   (PLAYER).Skill
