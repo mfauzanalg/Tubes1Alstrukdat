@@ -111,6 +111,7 @@ void levelUp(TabBang Arr, TabBang Arr2, PLAYER P, int i)
     ElmtMat(MV,4,3)=0;
     ElmtMat(MV,4,4)=0;
 
+    /*
     TulisMATRIKS(MC);
     printf("\n");
     printf("\n");
@@ -123,7 +124,7 @@ void levelUp(TabBang Arr, TabBang Arr2, PLAYER P, int i)
     TulisMATRIKS(MV);
     printf("\n");
     printf("\n");
-
+    */
     
     if (Elmt(Arr, i).type=='C')
     {
