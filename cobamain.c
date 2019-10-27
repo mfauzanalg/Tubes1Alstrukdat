@@ -42,7 +42,9 @@ int main(){
     levelUp(Arr, Arr2, P1, 1);
     printf("%d\n", Elmt(Arr, 1).jum);
     printf("%d\n", Elmt(Arr, 1).lev);
-    
+    printf("%d\n", Elmt(Arr, 1).A);
+    printf("%d\n", Elmt(Arr, 1).M);
+    printf("%d\n", Elmt(Arr, 1).P);
     
 
     CreateEmptystackp(&SP1);
