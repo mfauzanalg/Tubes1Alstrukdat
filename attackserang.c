@@ -11,6 +11,7 @@ void attack(PLAYER player_serang){
     int infop;
     array arr_temp, arr_diserang;
     int diserang;
+    int diserang2;
     int infop2;
     array arr2_temp, arr2_diserang;
     int jum_pasukan;
@@ -60,7 +61,7 @@ void attack(PLAYER player_serang){
                 
                 
                 */ if (!(IsEmpty(L2))){
-            P2 = First(L2);
+            P2 = First(L2); 
             P2_next = next(First(L2));
             for (int i =1 ; i<= NbElmtList(L2); i++){
                 printf("%d. ", i);  
@@ -85,27 +86,30 @@ void attack(PLAYER player_serang){
                     else if(mau_attack2[infop].type == 'v'){
                         printf("Village ");
                     }
+            }
                     printf("(%d,%d) ", mau_attack2[infop].letak);
                     printf("%d ", mau_attack2[infop].jum)
                     printf("lv. ");
                     printf("%d\n",mau_attack2[infop]. lev);
-
+            }       
+                    printf("Bangunan yang diserang");
+                    scanf("%d\n", diserang2);
                     printf("Jumlah pasukan: ");
                     scanf("%d\n", jum_pasukan);
-                    mau_attack[diserang].jum - jum_pasukan;
-                    if (jum_pasukan >= mau_attack2[jum_pasukan].jum){
-                        mau_attack2[jum_pasukan].jum = jum_pasukan - mau_attack2[jum_pasukan].jum;
+                    mau_attack[diserang].jum= mau_attack[diserang] - jum_pasukan;
+                    if (jum_pasukan >= mau_attack2[diserang2].jum){
+                        mau_attack2[diserang2].jum = jum_pasukan - mau_attack2[diserang2].jum;
                         printf("Bangunan menjadi milikmu");
                         DelP(*L2,pindah_pemilik );
                         InsertVFirst(*L1, pindah_pemilik);
 
                     }
-                    else if (jum_pasukan < mau_attack2[jum_pasukan].jum){
-                        mau_attack2[jum_pasukan].jum = mau_attack2[jum_pasukan].jum - jum_pasukan;
+                    else if (jum_pasukan < mau_attack2[diserang2].jum){
+                        mau_attack2[diserang2].jum = mau_attack2[diserang2].jum - jum_pasukan;
                         printf("Bangunan gagal direbut");
 
                     }
-        } 
+                    mau_attack[jum_pasukan].checkserang = false;
         }
     }
     else //yang nyerang pemain 2
@@ -181,27 +185,32 @@ void attack(PLAYER player_serang){
                     printf("%d ", mau_attack2[infop].jum)
                     printf("lv. ");
                     printf("%d\n",mau_attack2[infop]. lev);
-
+            }       printf("Bangunan yang diserang");
+                    scanf("%d\n", diserang2);
                     printf("Jumlah pasukan: ");
                     scanf("%d\n", jum_pasukan);
                     mau_attack[diserang].jum - jum_pasukan;
-                    if (jum_pasukan >= mau_attack2[jum_pasukan].jum){
-                        mau_attack2[jum_pasukan].jum = jum_pasukan - mau_attack2[jum_pasukan].jum;
+                    if (jum_pasukan >= mau_attack2[diserang2].jum){
+                        mau_attack2[diserang2].jum = jum_pasukan - mau_attack2[diserang2].jum;
                         printf("Bangunan menjadi milikmu");
                         DelP(*L1,pindah_pemilik );
                         InsertVFirst(*L2, pindah_pemilik);
 
                     }
-                    else if (jum_pasukan < mau_attack2[jum_pasukan].jum){
-                        mau_attack2[jum_pasukan].jum = mau_attack2[jum_pasukan].jum - jum_pasukan;
+                    else if (jum_pasukan < mau_attack2[diserang2].jum){
+                        mau_attack2[diserang2].jum = mau_attack2[diserang2].jum - jum_pasukan;
                         printf("Bangunan gagal direbut");
 
                     }
         
         } 
-        }} 
+         
     }
 
 
 
 }
+
+/* masih salah elemen arraynya
+addresss juga salajhhh
+*/
