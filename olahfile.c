@@ -30,6 +30,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 		Elmt(*Arr,i).lev = 1;
 		Elmt(*Arr,i).nomor = i;
 		Elmt(*Arr,i).attack = false;
+		Elmt(*Arr,i).move = false;
 
 		if(CKata.TabKata[1] == 'C'){
 			Elmt(*Arr,i).type = 'C';
@@ -152,13 +153,15 @@ void CetakPeta(int N, int M, TabBang Arr){ //N itu baris M itu kolom
 	printf("\n");
 }
 
-void DaftarBangunan(List L, TabBang Arr){
-	int i =1;
+void DaftarBangunan(List L, TabBang Arr, TabInt *TOut){
+	int i = 1;
+	int j = 1;
 	int num = 1;
 	boolean found;
 	addresslist P;
 	P = First(L);
-	
+	Neff(*TOut) = 0;
+
 	printf("Daftar bangunan :\n");
 	while (P != NilList){
 		i = 1;
@@ -167,6 +170,9 @@ void DaftarBangunan(List L, TabBang Arr){
 			if (Info(P) == i){
 				printf("%d. ", num);
 				num++;
+				ElmtStat(*TOut,j) = i;
+				Neff(*TOut) ++;
+				j++;
 
 				if(Elmt(Arr,i).type == 'C'){
 					printf("Castle (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
@@ -199,7 +205,7 @@ void StartPlayer (PLAYER *P){
 	CriticalHit(*P) = false;
 }
 
-void Tambah (List L, TabBang *Arr){
+void UpdateBangunan (List L, TabBang *Arr){
 	int i =1;
 	boolean found;
 	addresslist P;
@@ -210,10 +216,12 @@ void Tambah (List L, TabBang *Arr){
 		found = false;
 		while (i <= NbElmtArr(*Arr) && !(found)){
 			if (Info(P) == i){
-				if (!(Elmt(*(Arr),i).jum >= Elmt(*(Arr),i).M)){
+				if (!(Elmt(*(Arr),i).jum >= Elmt(*(Arr),i).M)){ //kalo blm lebih dari M maka ditambah
 					Elmt(*(Arr),i).jum += Elmt(*(Arr),i).A ;
 				}
 				found = true;
+				Elmt(*(Arr),i).attack = true;
+				Elmt(*(Arr),i).attack = true;
 			}
 			else{
 				i++;
@@ -221,5 +229,29 @@ void Tambah (List L, TabBang *Arr){
 		}
 		P = Next(P);
 	}
-
 }
+
+void CetakSkill (int x){
+	if (x == 1){
+		printf ("IU");
+	}
+	else if (x == 2){
+		printf ("S");
+	}
+	else if (x == 3){
+		printf ("ET");
+	}
+	else if (x == 4){
+		printf ("AU");
+	}
+	else if (x == 5){
+		printf ("CH");
+	}
+	else if (x == 6){
+		printf ("IR");
+	}
+	else if (x == 7){
+		printf ("B");
+	}
+}
+

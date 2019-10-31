@@ -39,7 +39,7 @@ int main(){
     Elmt(Arr, 1).attack=false;
 
 
-    levelUp(Arr, Arr2, P1, 1);
+  //  levelUp(Arr, Arr2, P1, 1);
     printf("%d\n", Elmt(Arr, 1).jum);
     printf("%d\n", Elmt(Arr, 1).lev);
     printf("%d\n", Elmt(Arr, 1).A);
@@ -93,11 +93,19 @@ int main(){
    // DaftarBangunan(P1.Bang, Arr);
   //  printf("Ayo isi woy : ");
 
-   // STARTWORD();
-   // }    
-   // if (strcmp(CWord.TabKata, "Lia") == 0) {
-   //     printf("uyey sama\n");
-    //}
+   STARTWORD();  
+
+
+
+
+    if (strcmp("Fauzannnn", "Fauzan") == 0) {
+        printf("uyey sama\n");
+    }
+    STARTWORD();     
+    if (strcmp(CWord.TabKata, "Lia") == 0) {
+        printf("uyey sama\n");
+    }
+
 
 /*
     CreateEmptyQueue(&P1.Skill, 10);

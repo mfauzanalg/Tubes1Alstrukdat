@@ -20,43 +20,102 @@ int main(){
     MATRIKS Mat;        //Matriks menyimpan data untk graf
     PLAYER P1, P2;      //Pemain 
     addresslist P;
+    TabInt T; 
+    int X;
 
     LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     StartPlayer(&P1);
     StartPlayer(&P2);
     playing = true;
     P1turn = true;
+    system("CLS");
 
     while (playing){
-        CetakPeta(N,M,Arr);
-        Tambah (P1.ListB, &Arr);
+        UpdateBangunan (P1.ListB, &Arr);
         while ((playing) && (P1turn)){
+            CetakPeta(N,M,Arr);
             printf("PLayer 1\n");
-            DaftarBangunan(P1.ListB, Arr);
+            DaftarBangunan(P1.ListB, Arr, &T);
+            printf("Skill Available : "); 
+            CetakSkill(InfoHead(P1.Skill));
+            printf("\n");
+            printf("ENTER COMMAND : ");
             STARTWORD();
+    
             if (strcmp(CWord.TabKata, "EXIT") == 0){
                 playing = false;
             }
+
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){
                 P1turn = false;
             }
-        } 
-        system("CLS");
 
-        CetakPeta(N,M,Arr);
-        Tambah (P2.ListB, &Arr);
+            else if (strcmp(CWord.TabKata, "ATTACK") == 0){
+                printf("nanti ya\n");
+            }
+
+            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
+                DaftarBangunan(P1.ListB, Arr, &T);
+                printf("Bangunan yang akan di level up : ");
+                STARTWORD();
+                X = WStringToInteger(CWord);
+                LevelUpUp(&Arr, P1, ElmtStat(T, X));
+            }
+
+            else if (strcmp(CWord.TabKata, "SKILL") == 0){
+                printf("nanti ya\n");
+            }
+            else if (strcmp(CWord.TabKata, "UNDO") == 0){
+                printf("nanti ya\n");
+            }
+            else if (strcmp(CWord.TabKata, "MOVE") == 0){
+                printf("nanti ya\n");
+            }
+            system("CLS");
+        } 
+
+        UpdateBangunan (P2.ListB, &Arr);
         while ((playing) && !(P1turn)){
+            CetakPeta(N,M,Arr);
             printf("PLayer 2\n");
-            DaftarBangunan(P2.ListB, Arr);
+            DaftarBangunan(P2.ListB, Arr, &T);
+            printf("Skill Available : "); 
+            CetakSkill(InfoHead(P2.Skill));
+            printf("\n");
+            printf("ENTER COMMAND : "); 
             STARTWORD();
             if (strcmp(CWord.TabKata, "EXIT") == 0){
                 playing = false;
             }
+
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){
                 P1turn = true;
             }
+
+            else if (strcmp(CWord.TabKata, "ATTACK") == 0){
+                printf("nanti ya\n");
+            }
+
+            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
+                DaftarBangunan(P2.ListB, Arr, &T);
+                printf("Bangunan yang akan di level up : ");
+                STARTWORD();
+                X = WStringToInteger(CWord);
+                LevelUpUp(&Arr, P2, ElmtStat(T, X));
+            }
+
+            else if (strcmp(CWord.TabKata, "SKILL") == 0){
+                printf("nanti ya\n");
+            }
+            else if (strcmp(CWord.TabKata, "UNDO") == 0){
+                printf("nanti ya\n");
+            }
+            else if (strcmp(CWord.TabKata, "MOVE") == 0){
+                printf("nanti ya\n");
+            }
+            system("CLS");
         }
-        system("CLS");
+        
 
     } 
 	return 0;

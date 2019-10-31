@@ -6,7 +6,6 @@
 #include "typebentukan.h"
 #include "graph.h"
 
-
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS *Mat, List *L1, List *L2);
 // Load file data inisialisasi awal
 // Akan terbentuk
@@ -19,13 +18,16 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 void CetakPeta(int N, int M, TabBang Arr);
 // Mencatak Peta sesuai dengan file yang sudah di load
 
-void DaftarBangunan(List L, TabBang Arr);
+void DaftarBangunan(List L, TabBang Arr, TabInt *TOut);
 // Mencetak Daftar Bangunan yang dimiliki oleh Playe P
 
 void StartPlayer (PLAYER *P);
 // Status player waktu baru mulai
 
-void Tambah (List L, TabBang *Arr);
+void UpdateBangunan (List L, TabBang *Arr);
 // Penambahan tiap turnnya
+
+void CetakSkill (int x);
+// Cetak skill karena di queue isinya integer
 
 #endif

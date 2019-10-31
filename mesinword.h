@@ -48,4 +48,8 @@ void SalinWord();
 
 void MakeEmptyWord();
 
+int WStringToInteger (Word CWord);
+
+int WCharToInt(char CC);
+
 #endif

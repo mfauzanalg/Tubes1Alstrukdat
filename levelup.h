@@ -10,9 +10,7 @@
 #include "typebentukan.h"
 #include "stack.h"
 
-void levelUp(TabBang Arr, TabBang Arr2, PLAYER P, int N);
-
-
+void LevelUpUp(TabBang *(Arr), PLAYER P, int i);
 
 
 #endif

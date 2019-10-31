@@ -49,6 +49,8 @@ void SalinKata();
 int CharToInt(char CC);
 // Mengubah  Char ke Integer
 
+void SalinLast();
+
 int StringToInteger(Kata CKata);
 // Mengubah String ke Integer
 
