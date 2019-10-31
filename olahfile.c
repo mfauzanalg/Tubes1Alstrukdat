@@ -203,6 +203,8 @@ void StartPlayer (PLAYER *P){
 	Shield(*P) = false;
 	AttackUp(*P) = false;
 	CriticalHit(*P) = false;
+	Askill(*P) = false;
+	Aend(*P) = false;
 }
 
 void UpdateBangunan (List L, TabBang *Arr){

@@ -4,7 +4,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "boolean.h"
 #include "point.h"
 #include "typebentukan.h"

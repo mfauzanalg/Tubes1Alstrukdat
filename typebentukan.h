@@ -34,11 +34,13 @@ typedef struct {
 } Bangunan;
 
 typedef struct {
-    Queue Skill;        //Skill yang dimiliki oleh Player
-    List ListB;         //List Bangunan yang dimiliki oleh Player
-    boolean Shield;     //menyatakan shield player aktif/tidak
-    boolean AttackUp;   //menyatakan attack up player aktif/tidak
-    boolean CriticalHit;//menyatakan critical hit player aktif/tidak
+    Queue Skill;         //Skill yang dimiliki oleh Player
+    List ListB;          //List Bangunan yang dimiliki oleh Player
+    boolean Shield;      //menyatakan shield player aktif/tidak
+    boolean AttackUp;    //menyatakan attack up player aktif/tidak
+    boolean CriticalHit; //menyatakan critical hit player aktif/tidak
+    boolean Askill;      //After Skill
+    boolean Aend;        //After END_TURN
 } PLAYER;
 
 #define Neff(T)             (T).Neff
@@ -50,6 +52,8 @@ typedef struct {
 #define Shield(PLAYER)      (PLAYER).Shield
 #define AttackUp(PLAYER)    (PLAYER).AttackUp
 #define CriticalHit(PLAYER) (PLAYER).CriticalHit
+#define Askill(PLAYER)      (PLAYER).Askill
+#define Aend(PLAYER)        (PLAYER).Aend
 
 #define nomor(Bangunan) (Bangunan).nomor
 #define type(Bangunan)  (Bangunan).type
