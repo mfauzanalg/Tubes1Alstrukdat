@@ -31,6 +31,7 @@ int main(){
     CreateEmptystackp(&SP1);
     CreateEmptystackp(&SP2);
     CreateEmptyStack(&SBang);
+    Aend(P1) = true;
     system("CLS");
 
     while (playing){
@@ -51,17 +52,18 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
                 P1turn = false;
-                Aend(P1) = true;
+                Aend(P2) = true;
             }
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                //PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
             }
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){ //sudah jalan
+                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
                 DaftarBangunan(P1.ListB, Arr, &T);
                 printf("Bangunan yang akan di level up : ");
                 STARTWORD();
@@ -69,31 +71,31 @@ int main(){
                 LevelUpUp(&Arr, P1, ElmtStat(T, X));
                 Aend(P1) = false;
                 Askill(P1) = false;
-                //PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
-                CopyArr (Arr, &Arr2);
-                Push (&SBang, Arr2);
-                //CopyPlayer(P1, &P3);
-                //Pushp (&SP1, P3);
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
                 printf("nanti ya\n");
                 Askill(P1) = true;
-                //PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
-                //UndoAll (&Arr, &SBang, &P1, &SP1);
-                Pop (&SBang, &Arr);
-                //Popp (&SP1, &P1);
-                printf("nanti ya\n");
+                if (Aend(P1)){
+                    printf("Anda baru saja memulai permainan, tidak bisa UNDO\n");
+                }
+                else if (Askill(P1)){
+                    printf("Anda baru saja menggunakan skill, tidak bisa UNDO\n");
+                }
+                else{
+                    UndoAll (&Arr, &SBang, &P1, &SP1);
+                }
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                //PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
             }
             //system("CLS");
         } 
@@ -114,17 +116,18 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){
                 P1turn = true;
-                Aend(P1) = true;
+                Aend(P2) = true;
             }
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
+                PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                //PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
             }
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
+                PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
                 DaftarBangunan(P2.ListB, Arr, &T);
                 printf("Bangunan yang akan di level up : ");
                 STARTWORD();
@@ -132,24 +135,32 @@ int main(){
                 LevelUpUp(&Arr, P2, ElmtStat(T, X));
                 Aend(P1) = false;
                 Askill(P1) = false;
-                //PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
+                PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
                 printf("nanti ya\n");
                 Askill(P1) = true;
-                //PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
+                
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
-                printf("nanti ya\n");
+                if (Aend(P2)){
+                    printf("Anda baru saja memulai permainan, tidak bisa UNDO\n");
+                }
+                else if (Askill(P2)){
+                    printf("Anda baru saja menggunakan skill, tidak bisa UNDO\n");
+                }
+                else{
+                    UndoAll (&Arr, &SBang, &P1, &SP1);
+                }
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
+                PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                //PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
             }
 
             //system("CLS");
