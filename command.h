@@ -11,6 +11,8 @@
 
 void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P, PLAYER *Pcop, stackp *SPlayer);
 
+void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P, stackp *SPlayer);
+
 void LevelUpUp(TabBang *(Arr), PLAYER P, int i);
 
 #endif

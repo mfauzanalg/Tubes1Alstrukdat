@@ -55,15 +55,17 @@ typedef struct {
 #define Askill(PLAYER)      (PLAYER).Askill
 #define Aend(PLAYER)        (PLAYER).Aend
 
-#define nomor(Bangunan) (Bangunan).nomor
-#define type(Bangunan)  (Bangunan).type
-#define milik(Bangunan) (Bangunan).milik
-#define jum(Bangunan)   (Bangunan).jum
-#define lev(Bangunan)   (Bangunan).lev
-#define A(Bangunan)     (Bangunan).A
-#define M(Bangunan)     (Bangunan).M
-#define P(Bangunan)     (Bangunan).P
-#define U(Bangunan)     (Bangunan).U
-#define letak(Bangunan) (Bangunan).letak
+#define nomor(Bangunan)     (Bangunan).nomor
+#define type(Bangunan)      (Bangunan).type
+#define milik(Bangunan)     (Bangunan).milik
+#define jum(Bangunan)       (Bangunan).jum
+#define lev(Bangunan)       (Bangunan).lev
+#define A(Bangunan)         (Bangunan).A
+#define M(Bangunan)         (Bangunan).M
+#define P(Bangunan)         (Bangunan).P
+#define U(Bangunan)         (Bangunan).U
+#define letak(Bangunan)     (Bangunan).letak
+#define attack(Bangunan)    (Bangunan).attack
+#define move(Bangunan)      (Bangunan).move  
 
 #endif

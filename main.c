@@ -58,7 +58,7 @@ int main(){
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                //PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
             }
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){ //sudah jalan
@@ -69,16 +69,23 @@ int main(){
                 LevelUpUp(&Arr, P1, ElmtStat(T, X));
                 Aend(P1) = false;
                 Askill(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                //PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                CopyArr (Arr, &Arr2);
+                Push (&SBang, Arr2);
+                //CopyPlayer(P1, &P3);
+                //Pushp (&SP1, P3);
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
                 printf("nanti ya\n");
                 Askill(P1) = true;
-                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                //PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
+                //UndoAll (&Arr, &SBang, &P1, &SP1);
+                Pop (&SBang, &Arr);
+                //Popp (&SP1, &P1);
                 printf("nanti ya\n");
             }
 
@@ -86,9 +93,9 @@ int main(){
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                //PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
             }
-            system("CLS");
+            //system("CLS");
         } 
 
         UpdateBangunan (P2.ListB, &Arr);
@@ -114,7 +121,7 @@ int main(){
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
+                //PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
             }
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
@@ -125,13 +132,13 @@ int main(){
                 LevelUpUp(&Arr, P2, ElmtStat(T, X));
                 Aend(P1) = false;
                 Askill(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
+                //PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
                 printf("nanti ya\n");
                 Askill(P1) = true;
-                PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
+                //PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
@@ -142,10 +149,10 @@ int main(){
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
+                //PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
             }
 
-            system("CLS");
+            //system("CLS");
         } 
 
     } 

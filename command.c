@@ -7,6 +7,11 @@ void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P, PLAYER *Pcop
     Pushp(&*SPlayer, *Pcop);
 }
 
+void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P, stackp *SPlayer){
+    Pop (&*SBang, &*Arr);
+    Popp (&*SPlayer, &*P);
+}
+
 void LevelUpUp(TabBang *(Arr), PLAYER P, int i){
     MATRIKS MC, MT, MF, MV;
     CreateEmptyMatriks(4,4, &MC);
