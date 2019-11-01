@@ -77,6 +77,59 @@ void AttackUp (PLAYER Pl, TabBang Arr){
     }
 }
 
+void Critical_Hit(PLAYER aktif){
+    queue Q;
+    infotype X;
+    Pop(*Q,*X);  
+    int temp_Critical += 1;
+}
+
+
+ void Instant_Reinforcement(PLAYER aktif){
+    
+    infotype X;
+    Pop(*Q,*X);   
+    if (aktif.num == 1){
+        P = First(*L1); 
+}
+    else //kalau buat player 2
+    {
+        P = First(*L2);
+    }
+    while (P != Nil){
+            
+            Elmt(Arr,Info(P)).jum += 5;
+        } 
+
+    }
+
+}
+
+void barrage(PLAYER aktif){
+    
+    infotype X;
+    Pop(*Q,*X);
+    int i;
+    if (aktif.num == 1){
+       address P = First(*L2);
+        } 
+
+    else //kalau buat player 2
+    {
+        address P = First(*L1);
+    }
+    while (next(P) != Nil){
+            
+            Elmt(Arr,Info(P)).jum -= 10;
+            P = Next(P);
+        } 
+
+    }
+
+
+
+
+
 void UseSkill(Queue Skill, PLAYER P, TabBang Arr){
     if (InfoHead(Skill) == 1){
         InstantUpgrade(P,Arr);

@@ -79,3 +79,48 @@ void MakeEmptyWord(){
     CWord.TabKata[i] = '\0';
   }
 }
+
+int WStringToInteger (Word CWord){
+	int i = 0;
+	int hasil = 0;
+	int CI = 0;
+
+	for (i = 0; i <= CWord.Length-1; i++){
+		CI = WCharToInt(CWord.TabKata[i]);
+		hasil = (hasil*10) + CI;
+	}
+	return hasil;
+}
+
+int WCharToInt(char CC){
+	if (CC == '0'){
+		return 0;
+	}
+	else if (CC == '1'){
+		return 1;
+	}
+	else if (CC == '2'){
+		return 2;
+	}
+	else if (CC == '3'){
+		return 3;
+	}
+	else if (CC == '4'){
+		return 4;
+	}
+	else if (CC == '5'){
+		return 5;
+	}
+	else if (CC == '6'){
+		return 6;
+	}
+	else if (CC == '7'){
+		return 7;
+	}
+	else if (CC == '8'){
+		return 8;
+	}
+	else if (CC == '9'){
+		return 9;
+	}
+}

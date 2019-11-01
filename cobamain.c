@@ -24,6 +24,7 @@ int main(){
     LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     CreateEmptyQueue(&P1.Skill, 10);
     CreateEmptyQueue(&P2.Skill, 10);
+    /*
     CreateEmptyArray(&Arr, 18);
     Elmt(Arr, 1).nomor=1;
     Elmt(Arr, 1).type='T';
@@ -37,15 +38,15 @@ int main(){
     Elmt(Arr, 1).letak.X=1;
     Elmt(Arr, 1).letak.Y=13;
     Elmt(Arr, 1).attack=false;
+    
 
-
-    levelUp(Arr, Arr2, P1, 1);
+  //  levelUp(Arr, Arr2, P1, 1);
     printf("%d\n", Elmt(Arr, 1).jum);
     printf("%d\n", Elmt(Arr, 1).lev);
     printf("%d\n", Elmt(Arr, 1).A);
     printf("%d\n", Elmt(Arr, 1).M);
     printf("%d\n", Elmt(Arr, 1).P);
-    
+    */
 
     CreateEmptystackp(&SP1);
 
@@ -93,11 +94,19 @@ int main(){
    // DaftarBangunan(P1.Bang, Arr);
   //  printf("Ayo isi woy : ");
 
-   // STARTWORD();
-   // }    
-   // if (strcmp(CWord.TabKata, "Lia") == 0) {
-   //     printf("uyey sama\n");
-    //}
+  // STARTWORD();  
+
+
+
+/*
+    if (strcmp("Fauzannnn", "Fauzan") == 0) {
+        printf("uyey sama\n");
+    }
+    STARTWORD();     
+    if (strcmp(CWord.TabKata, "Lia") == 0) {
+        printf("uyey sama\n");
+    }
+*/
 
 /*
     CreateEmptyQueue(&P1.Skill, 10);
@@ -115,27 +124,24 @@ int main(){
 */
 
 
-    Elmt(Arr,1).A = 100;
-    Elmt(Arr,1).jum = 10;
+    Elmt(Arr,1).lev = 1;
     
     CopyArr(Arr, &Arr2);
 	Push (&SBang, Arr2);
 
-	printf("satu %d ", Elmt(Arr,1).A);
+	printf("satu %d \n", Elmt(Arr,1).lev);
     
-    Elmt(Arr,1).A = 80;
-    printf("satu %d ", Elmt(Arr,1).A);
+    Elmt(Arr,1).lev = 2;
+    printf("satu %d \n", Elmt(Arr,1).lev);
 
-    CopyArr(Arr, &Arr2);
-    Push (&SBang, Arr2);
+    //CopyArr(Arr, &Arr2);
+    //Push (&SBang, Arr2);
 
-    Elmt(Arr,1).jum = 20;
-    Elmt(Arr,1).A = 90;
-    printf("satu %d ", Elmt(Arr,1).A);
+    //Elmt(Arr,1).jum = 20;
+    //printf("satu %d \n", Elmt(Arr,1).lev);
     
     Pop (&SBang, &Arr);
-    printf("tiga %d ", Elmt(Arr,1).jum);
-    printf("satu %d ", Elmt(Arr,1).A);
+    printf("satu %d \n", Elmt(Arr,1).lev);
 
     return 0;
 }

@@ -13,6 +13,10 @@
 #include "mesinchar.h"
 #include "mesinword.h"
 
+typedef struct { 
+  int TI[1000]; /* memori tempat penyimpan elemen (container) */
+  int Neff; /* >=0, banyaknya elemen efektif */
+} TabInt;
 
 typedef struct {
     int nomor; //indeks bangunan
@@ -26,31 +30,42 @@ typedef struct {
     int U; //pasukan awal
     POINT letak; //letak pasukan
     boolean attack; //true : masih bisa menyerang
+    boolean move; //true : masih bisa move
 } Bangunan;
 
 typedef struct {
-    Queue Skill;        //Skill yang dimiliki oleh Player
-    List ListB;         //List Bangunan yang dimiliki oleh Player
-    boolean Shield;     //menyatakan shield player aktif/tidak
-    boolean AttackUp;   //menyatakan attack up player aktif/tidak
-    boolean CriticalHit;//menyatakan critical hit player aktif/tidak
+    Queue Skill;         //Skill yang dimiliki oleh Player
+    List ListB;          //List Bangunan yang dimiliki oleh Player
+    boolean Shield;      //menyatakan shield player aktif/tidak
+    boolean AttackUp;    //menyatakan attack up player aktif/tidak
+    boolean CriticalHit; //menyatakan critical hit player aktif/tidak
+    boolean Askill;      //After Skill
+    boolean Aend;        //After END_TURN
 } PLAYER;
+
+#define Neff(T)             (T).Neff
+#define T(T)                (T).T
+#define ElmtStat(T,i)       (T).TI[(i)]
 
 #define Skill(PLAYER)       (PLAYER).Skill
 #define ListB(PLAYER)       (PLAYER).ListB
 #define Shield(PLAYER)      (PLAYER).Shield
 #define AttackUp(PLAYER)    (PLAYER).AttackUp
 #define CriticalHit(PLAYER) (PLAYER).CriticalHit
+#define Askill(PLAYER)      (PLAYER).Askill
+#define Aend(PLAYER)        (PLAYER).Aend
 
-#define nomor(Bangunan) (Bangunan).nomor
-#define type(Bangunan)  (Bangunan).type
-#define milik(Bangunan) (Bangunan).milik
-#define jum(Bangunan)   (Bangunan).jum
-#define lev(Bangunan)   (Bangunan).lev
-#define A(Bangunan)     (Bangunan).A
-#define M(Bangunan)     (Bangunan).M
-#define P(Bangunan)     (Bangunan).P
-#define U(Bangunan)     (Bangunan).U
-#define letak(Bangunan) (Bangunan).letak
+#define nomor(Bangunan)     (Bangunan).nomor
+#define type(Bangunan)      (Bangunan).type
+#define milik(Bangunan)     (Bangunan).milik
+#define jum(Bangunan)       (Bangunan).jum
+#define lev(Bangunan)       (Bangunan).lev
+#define A(Bangunan)         (Bangunan).A
+#define M(Bangunan)         (Bangunan).M
+#define P(Bangunan)         (Bangunan).P
+#define U(Bangunan)         (Bangunan).U
+#define letak(Bangunan)     (Bangunan).letak
+#define attack(Bangunan)    (Bangunan).attack
+#define move(Bangunan)      (Bangunan).move  
 
 #endif

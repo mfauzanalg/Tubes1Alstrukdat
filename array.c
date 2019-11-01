@@ -78,14 +78,18 @@ void CopyArr (TabBang Tabin, TabBang *Tabout){
 	int i;
 	CreateEmptyArray (&*Tabout, MaxElArr(Tabin));
 	for (i = 1; i <= GetLastIdx(Tabin); i++){
+		Elmt(*Tabout,i).nomor = Elmt(Tabin,i).nomor;
+		Elmt(*Tabout,i).type = Elmt(Tabin,i).type;
 		Elmt(*Tabout,i).milik = Elmt(Tabin,i).milik;
 		Elmt(*Tabout,i).jum = Elmt(Tabin,i).jum;
 		Elmt(*Tabout,i).lev = Elmt(Tabin,i).lev;
 		Elmt(*Tabout,i).A = Elmt(Tabin,i).A;
 		Elmt(*Tabout,i).M = Elmt(Tabin,i).M;
-		Elmt(*Tabout,i).P =Elmt(Tabin,i).P;
+		Elmt(*Tabout,i).P = Elmt(Tabin,i).P;
 		Elmt(*Tabout,i).U = Elmt(Tabin,i).U; 
 		Elmt(*Tabout,i).letak.X = Elmt(Tabin,i).letak.X; 
 		Elmt(*Tabout,i).letak.Y = Elmt(Tabin,i).letak.Y; 
+		Elmt(*Tabout,i).attack = Elmt(Tabin,i).attack; 
+		Elmt(*Tabout,i).move = Elmt(Tabin,i).move; 
 	}
 }
