@@ -13,6 +13,12 @@ void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P, PLAYER *Pcop
 
 void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P, stackp *SPlayer);
 
+void HitungJum (JumlahB *Jumlah, PLAYER P, TabBang Arr);
+//Menghitung jumlah bangunan yang dimiliki 
+
+void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi);
+//Mengecek kemungkinan penambahan skill
+
 void LevelUpUp(TabBang *(Arr), PLAYER P, int i);
 
 #endif

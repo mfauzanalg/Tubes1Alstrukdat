@@ -8,20 +8,23 @@
 
 int main(){
 	int i;
-    int N; 			    //Jumlah baris
-    int M;			    //Jumlah kolom
-    int J; 			    //Jumlah bangunan
-    boolean playing;    //Status bermain
+    int N; 			            //Jumlah baris
+    int M;			            //Jumlah kolom
+    int J; 			            //Jumlah bangunan
+    boolean playing;            //Status bermain
     boolean P1turn;
-    TabBang Arr, Arr2; 	//Array menyimpan tipe data bangunan
-    TabGraph ArrGraph;  //Array menyimpan graf
-    Stack SBang;        //Stack menyimpan Array Bangunan
-    stackp SP1, SP2;    //Stack menyimpan data Player
-    MATRIKS Mat;        //Matriks menyimpan data untk graf
-    PLAYER P1, P2, P3;  //Pemain 
+    TabBang Arr, Arr2; 	        //Array menyimpan tipe data bangunan
+    TabGraph ArrGraph;          //Array menyimpan graf
+    Stack SBang;                //Stack menyimpan Array Bangunan
+    stackp SP1, SP2;            //Stack menyimpan data Player
+    MATRIKS Mat;                //Matriks menyimpan data untk graf
+    PLAYER P1, P2, P3;          //Pemain 
     addresslist P;
-    TabInt T; 
-    int X;
+    JumlahB Jumlah1, Jumlah2;    //Jumlah bangunan yang dimiliki pemain1
+    TabInt T;                   //Tab untuk membuat bangunan yang dapat dipilih
+    int X;                      //Untuk input memilih bangunan
+    Condition Kondisi;
+    int ET;
 
     LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     StartPlayer(&P1);
@@ -35,8 +38,12 @@ int main(){
     system("CLS");
 
     while (playing){
+        //PLAYER 1
         UpdateBangunan (P1.ListB, &Arr);
         while ((playing) && (P1turn)){
+            HitungJum (&Jumlah1, P1, Arr);
+            HitungJum (&Jumlah2, P2, Arr);
+            CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             CetakPeta(N,M,Arr);
             printf("PLayer 1\n");
             DaftarBangunan(P1.ListB, Arr, &T);
@@ -92,16 +99,38 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
+                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
                 printf("nanti ya\n");
                 Aend(P1) = false;
                 Askill(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+            }
+            HitungJum (&Jumlah1, P1, Arr);
+            HitungJum (&Jumlah2, P2, Arr);
+            if (Kondisi.S){
+                if (JTotal(Jumlah2) == 2){
+                    AddQueue(&P2.Skill, 2);
+                }
+            }
+            if (Kondisi.AU){
+                if (JTower(Jumlah2) == 3){
+                    AddQueue(&P1.Skill, 4);
+                }
+            }
+            if (Kondisi.B){
+                if (JTotal(Jumlah1) == 10){
+                    AddQueue(&P2.Skill, 8);
+                }
             }
             //system("CLS");
         } 
 
+
+        //PLAYER 2
         UpdateBangunan (P2.ListB, &Arr);
         while ((playing) && !(P1turn)){
+            HitungJum (&Jumlah1, P1, Arr);
+            HitungJum (&Jumlah2, P2, Arr);
+            CekKondisi (Jumlah2, Jumlah1, &Kondisi);
             CetakPeta(N,M,Arr);
             printf("PLayer 2\n");
             DaftarBangunan(P2.ListB, Arr, &T);

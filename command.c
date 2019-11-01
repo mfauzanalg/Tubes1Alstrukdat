@@ -12,6 +12,62 @@ void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P, stackp *SPlayer){
     Popp (&*SPlayer, &*P);
 }
 
+void HitungJum (JumlahB *Jumlah, PLAYER P1, TabBang Arr){
+    addresslist P;
+    int i;
+    boolean found;
+    JCastle(*Jumlah) = 0;
+    JTotal(*Jumlah) = 0;
+    JVillage(*Jumlah) = 0;
+    JFort(*Jumlah) = 0;
+    JTotal(*Jumlah) =0;
+
+    P = First(P1.ListB);
+    while (P != NilList){
+        i = 1;
+        found = false;
+        while (i <= NbElmtArr(Arr) && !(found)){
+            if (Info(P) == i){ //kalo misalnya dia sama kayak indeks bangunan
+                if(Elmt(Arr,i).type == 'C'){
+                    JCastle(*Jumlah)++;
+				}
+				else if(Elmt(Arr,i).type == 'T'){
+                    JTower(*Jumlah)++;
+				}
+				else if(Elmt(Arr,i).type == 'V'){
+                    JVillage(*Jumlah)++;
+				}
+				else if(Elmt(Arr,i).type == 'F'){
+                    JFort(*Jumlah)++;
+				}
+				found = true;
+			}
+			else{
+				i++;
+			}
+		}
+		P = Next(P);
+    }
+    JTotal(*Jumlah) = JCastle(*Jumlah) + JFort(*Jumlah) + JVillage(*Jumlah) + JTower(*Jumlah);
+}
+
+void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
+    (*Kondisi).AU = false;
+    (*Kondisi).S = false;
+    (*Kondisi).B = false;
+    (*Kondisi).ET = true;
+    
+    if (JTotal(jumlahlawan) == 3){
+        (*Kondisi).S = true;
+    }
+    else if (JTower(jumlahlawan) == 4){
+        (*Kondisi).AU = true;
+    }
+    else if (JTotal(jumlahku) == 9){
+        (*Kondisi).B = true;
+    }
+}
+
 void LevelUpUp(TabBang *(Arr), PLAYER P, int i){
     MATRIKS MC, MT, MF, MV;
     CreateEmptyMatriks(4,4, &MC);

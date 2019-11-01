@@ -18,6 +18,21 @@ typedef struct {
   int Neff; /* >=0, banyaknya elemen efektif */
 } TabInt;
 
+typedef struct{
+    int JCastle;
+    int JTower;
+    int JFort;
+    int JVillage;
+    int JTotal;
+} JumlahB;
+
+typedef struct{
+    boolean S;
+    boolean ET;
+    boolean AU;
+    boolean B;
+} Condition;
+
 typedef struct {
     int nomor; //indeks bangunan
 	char type; //type bangunann
@@ -42,6 +57,12 @@ typedef struct {
     boolean Askill;      //After Skill
     boolean Aend;        //After END_TURN
 } PLAYER;
+
+#define JCastle(JumlahB) (JumlahB).JCastle
+#define JTower(JumlahB)  (JumlahB).JTower
+#define JFort(JumlahB)   (JumlahB).JFort
+#define JVillage(JumlahB) (JumlahB).JVillage
+#define JTotal(JumlahB)  (JumlahB).JTotal
 
 #define Neff(T)             (T).Neff
 #define T(T)                (T).T
