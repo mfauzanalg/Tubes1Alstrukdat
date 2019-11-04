@@ -1,8 +1,7 @@
 void attack(PLAYER player_serang){
     int temp_critical, temp_Attack_Up;
-    List L1, L2;
-    address P, P_next;
-    address P2, P2_next;
+    List L1, L2, L3;
+    address P, P2, P3;
     address P_player1att, P_player2att;
     Bangunan mau_attack;
     Bangunan mau_attack2;
@@ -59,12 +58,19 @@ void attack(PLAYER player_serang){
                 */ if (!(IsEmpty(L2))){
             P2 = First(L2);
             
-            for (int i =1 ; i<= NbElmtList(L2); i++){
-                printf("%d. ", i);  
-                
-                    infop2 = info(P2);
-                    arr2_temp[i] = infop2;
+            for (int k =1 ; k<= NbElmtList(L2); k++){
+                printf("%d. ", k);
 
+                if (IsAdjacent(*arr, info(P2), diserang)){
+                    infop2 = info(&P_player2att);
+                    arr2_temp[k] = infop2;
+                     P2 = Next(P2);
+
+                  }
+                  else
+                  {
+                      P2 = Next(P2);
+                  }
 
                 
                     if (mau_attack2[infop2].type == 'c'){
@@ -82,6 +88,9 @@ void attack(PLAYER player_serang){
                     printf("%d ", mau_attack2[infop2].jum);
                     printf("lv. ");
                     printf("%d\n",mau_attack2[infop2]. lev);
+
+                    P3= First(L3);
+
 
                     printf("Jumlah pasukan: ");
                     scanf("%d\n", jum_pasukan);
@@ -115,6 +124,7 @@ void attack(PLAYER player_serang){
                 
                     infop = info(P);
                     arr_temp[i] = infop;
+                    P = Next(P);
 
                     if (mau_attack[infop].type == 'c'){
                         printf("Castle ");
@@ -145,10 +155,17 @@ void attack(PLAYER player_serang){
             
             for (int i =1 ; i<= NbElmtList(L1); i++){
                 printf("%d. ", i);  
-               
+                  if (IsAdjacent(*arr, info(P2), diserang)){
                     infop2 = info(&P_player2att);
                     arr2_temp[i] = infop2;
+                     P2 = Next(P2);
 
+                  }
+                  else
+                  {
+                      P2 = Next(P2);
+                  }
+                  
            
                     if (mau_attack2[infop2].type == 'c'){
                         printf("Castle ");
