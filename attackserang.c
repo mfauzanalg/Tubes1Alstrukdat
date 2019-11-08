@@ -202,7 +202,7 @@ void attack(PLAYER player_serang){
                     }
         
         }               mau_attack[jum_pasukan].checkserang = false;
-        }} 
+        }
     }
 
 

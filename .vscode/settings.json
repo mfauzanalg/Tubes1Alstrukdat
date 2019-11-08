@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "mesinkar.h": "c"
+        "mesinkar.h": "c",
+        "stack.h": "c"
     }
 }

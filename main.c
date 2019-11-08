@@ -13,6 +13,7 @@ int main(){
     int J; 			            //Jumlah bangunan
     boolean playing;            //Status bermain
     boolean P1turn;
+    boolean ada;                //Ada bangunan yang dapat diserang atau ngga
     TabBang Arr, Arr2; 	        //Array menyimpan tipe data bangunan
     TabGraph ArrGraph;          //Array menyimpan graf
     Stack SBang;                //Stack menyimpan Array Bangunan
@@ -20,9 +21,11 @@ int main(){
     MATRIKS Mat;                //Matriks menyimpan data untk graf
     PLAYER P1, P2, P3;          //Pemain 
     addresslist P;
-    JumlahB Jumlah1, Jumlah2;    //Jumlah bangunan yang dimiliki pemain1
-    TabInt T;                   //Tab untuk membuat bangunan yang dapat dipilih
+    JumlahB Jumlah1, Jumlah2;   //Jumlah bangunan yang dimiliki pemain1
+    TabInt T1, T2;              //Tab untuk membuat bangunan yang dapat dipilih
+    List Tetangga;              //List yang berisi tetangga dari suatu bangunan
     int X;                      //Untuk input memilih bangunan
+    int FAwal, FAkhir;          //Untuk mengecek jumlah fort apakah berkurang 1
     Condition Kondisi;
     int ET;
 
@@ -44,9 +47,10 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
+            FAwal = JFort(Jumlah2);
             CetakPeta(N,M,Arr);
             printf("PLayer 1\n");
-            DaftarBangunan(P1.ListB, Arr, &T);
+            DaftarBangunan(P1.ListB, Arr, &T1);
             printf("Skill Available : "); 
             CetakSkill(InfoHead(P1.Skill));
             printf("\n");
@@ -63,19 +67,32 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
-                printf("nanti ya\n");
+                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
+                DaftarBangunan(P1.ListB, Arr, &T1);
+                printf("Pilih bangunan untuk menyerang : ");
+                STARTWORD();
+                X = WStringToInteger(CWord);
+                Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
+                DaftarSerang(Tetangga, Arr, &T1, 1, &ada);
+                if (ada){
+                    printf("Pilih bangunan yang ingin diserang : ");
+                    STARTWORD();
+                    X = WStringToInteger(CWord);
+                }
+                else {
+                    printf("Tidak ada bangunan yang dapat diserang\n");
+                }
                 Aend(P1) = false;
                 Askill(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
             }
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){ //sudah jalan
                 PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
-                DaftarBangunan(P1.ListB, Arr, &T);
+                DaftarBangunan(P1.ListB, Arr, &T1);
                 printf("Bangunan yang akan di level up : ");
                 STARTWORD();
                 X = WStringToInteger(CWord);
-                LevelUpUp(&Arr, P1, ElmtStat(T, X));
+                LevelUpUp(&Arr, P1, ElmtStat(T1, X));
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -100,12 +117,26 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
-                printf("nanti ya\n");
+                DaftarBangunan(P1.ListB, Arr, &T1);
+                printf("Pilih bangunan untuk dipindahkan : ");
+                STARTWORD();
+                X = WStringToInteger(CWord);
+                Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
+                DaftarMove(Tetangga, Arr, &T1, 1, &ada);
+                if (ada){
+                    printf("Pilih bangunan tujuan pemindahan : ");
+                    STARTWORD();
+                    X = WStringToInteger(CWord);
+                }
+                else {
+                    printf("Tidak ada tujuan yang tersedia\n");
+                }
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
+            FAkhir = JFort(Jumlah2);
             if (Kondisi.S){
                 if (JTotal(Jumlah2) == 2){
                     AddQueue(&P2.Skill, 2);
@@ -121,6 +152,9 @@ int main(){
                     AddQueue(&P2.Skill, 8);
                 }
             }
+            if (FAkhir == FAwal-1){
+                AddQueue(&P2.Skill, 3);
+            }
             //system("CLS");
         } 
 
@@ -131,9 +165,10 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah2, Jumlah1, &Kondisi);
+            FAwal = JFort(Jumlah1);
             CetakPeta(N,M,Arr);
             printf("PLayer 2\n");
-            DaftarBangunan(P2.ListB, Arr, &T);
+            DaftarBangunan(P2.ListB, Arr, &T1);
             printf("Skill Available : "); 
             CetakSkill(InfoHead(P2.Skill));
             printf("\n");
@@ -157,11 +192,11 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
                 PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
-                DaftarBangunan(P2.ListB, Arr, &T);
+                DaftarBangunan(P2.ListB, Arr, &T1);
                 printf("Bangunan yang akan di level up : ");
                 STARTWORD();
                 X = WStringToInteger(CWord);
-                LevelUpUp(&Arr, P2, ElmtStat(T, X));
+                LevelUpUp(&Arr, P2, ElmtStat(T1, X));
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -191,7 +226,27 @@ int main(){
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
-
+            HitungJum (&Jumlah1, P1, Arr);
+            HitungJum (&Jumlah2, P2, Arr);
+            FAkhir = JFort(Jumlah1);
+            if (Kondisi.S){
+                if (JTotal(Jumlah1) == 2){
+                    AddQueue(&P1.Skill, 2);
+                }
+            }
+            if (Kondisi.AU){
+                if (JTower(Jumlah1) == 3){
+                    AddQueue(&P2.Skill, 4);
+                }
+            }
+            if (Kondisi.B){
+                if (JTotal(Jumlah2) == 10){
+                    AddQueue(&P1.Skill, 8);
+                }
+            }
+            if (FAkhir == FAwal-1){
+                AddQueue(&P1.Skill, 3);
+            }
             //system("CLS");
         } 
 

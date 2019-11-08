@@ -197,6 +197,99 @@ void DaftarBangunan(List L, TabBang Arr, TabInt *TOut){
 	printf("\n");
 }
 
+
+void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
+	int i = 1;
+	int j = 1;
+	int num = 1;
+	boolean found;
+	addresslist P;
+	P = First(L);
+	Neff(*TOut) = 0;
+	*ada = false;
+
+	printf("Daftar bangunan Untuk diserang :\n");
+	while (P != NilList){
+		i = 1;
+		found = false;
+		while (i <= NbElmtArr(Arr) && !(found)){
+			if (Info(P) == i && Elmt(Arr,i).milik != player){
+				*ada = true;
+				printf("%d. ", num);
+				num++;
+				ElmtStat(*TOut,j) = i;
+				Neff(*TOut) ++;
+				j++;
+
+				if(Elmt(Arr,i).type == 'C'){
+					printf("Castle (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'T'){
+					printf("Tower (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'V'){
+					printf("Village (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'F'){
+					printf("Fort (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				found = true;
+			}
+			else{
+				i++;
+			}
+		}
+		P = Next(P);
+	}
+	printf("\n");
+}
+
+void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
+	int i = 1;
+	int j = 1;
+	int num = 1;
+	boolean found;
+	addresslist P;
+	P = First(L);
+	Neff(*TOut) = 0;
+	*ada = false;
+
+	printf("Daftar bangunan tujuan pemindahan pasukan :\n");
+	while (P != NilList){
+		i = 1;
+		found = false;
+		while (i <= NbElmtArr(Arr) && !(found)){
+			if (Info(P) == i && Elmt(Arr,i).milik == player){
+				*ada = true;
+				printf("%d. ", num);
+				num++;
+				ElmtStat(*TOut,j) = i;
+				Neff(*TOut) ++;
+				j++;
+
+				if(Elmt(Arr,i).type == 'C'){
+					printf("Castle (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'T'){
+					printf("Tower (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'V'){
+					printf("Village (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				else if(Elmt(Arr,i).type == 'F'){
+					printf("Fort (%d,%d) %d lv. %d\n", Elmt(Arr,i).letak.X, Elmt(Arr,i).letak.Y, Elmt(Arr,i).jum, Elmt(Arr,i).lev);
+				}
+				found = true;
+			}
+			else{
+				i++;
+			}
+		}
+		P = Next(P);
+	}
+	printf("\n");
+}
+
 void StartPlayer (PLAYER *P){
 	CreateEmptyQueue(&(*P).Skill, 10);
 	AddQueue(&(*P).Skill, 1);
