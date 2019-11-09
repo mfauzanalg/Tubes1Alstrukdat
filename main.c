@@ -64,6 +64,7 @@ int main(){
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
                 P1turn = false;
                 Aend(P2) = true;
+                Askill(P1) = false;
             }
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
@@ -100,6 +101,7 @@ int main(){
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
                 printf("nanti ya\n");
                 Askill(P1) = true;
+                Aend(P1) = false;
                 PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
             }
 
@@ -180,14 +182,15 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){
                 P1turn = true;
-                Aend(P2) = true;
+                Aend(P1) = true;
+                Askill(P2) = false;
             }
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
                 printf("nanti ya\n");
-                Aend(P1) = false;
-                Askill(P1) = false;
+                Aend(P2) = false;
+                Askill(P2) = false;
             }
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
@@ -197,15 +200,15 @@ int main(){
                 STARTWORD();
                 X = WStringToInteger(CWord);
                 LevelUpUp(&Arr, P2, ElmtStat(T1, X));
-                Aend(P1) = false;
-                Askill(P1) = false;
+                Aend(P2) = false;
+                Askill(P2) = false;
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
                 PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
                 printf("nanti ya\n");
-                Askill(P1) = true;
-                
+                Askill(P2) = true;
+                Aend(P2) = false;
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
@@ -223,8 +226,8 @@ int main(){
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
                 printf("nanti ya\n");
-                Aend(P1) = false;
-                Askill(P1) = false;
+                Aend(P2) = false;
+                Askill(P2) = false;
             }
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
