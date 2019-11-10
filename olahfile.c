@@ -197,8 +197,30 @@ void DaftarBangunan(List L, TabBang Arr, TabInt *TOut){
 	printf("\n");
 }
 
+void AdaSerang (List L, TabBang Arr, int player, boolean *ada){
+	int i = 1;
+	boolean found;
+	addresslist P;
+	P = First(L);
+	*ada = false;
 
-void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
+	while (P != NilList){
+		i = 1;
+		found = false;
+		while (i <= NbElmtArr(Arr) && !(found)){
+			if (Info(P) == i && Elmt(Arr,i).milik != player){
+				*ada = true;
+				found = true;
+			}
+			else{
+				i++;
+			}
+		}
+		P = Next(P);
+	}
+}
+
+void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player){
 	int i = 1;
 	int j = 1;
 	int num = 1;
@@ -206,7 +228,6 @@ void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
 	addresslist P;
 	P = First(L);
 	Neff(*TOut) = 0;
-	*ada = false;
 
 	printf("Daftar bangunan Untuk diserang :\n");
 	while (P != NilList){
@@ -214,7 +235,6 @@ void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
 			if (Info(P) == i && Elmt(Arr,i).milik != player){
-				*ada = true;
 				printf("%d. ", num);
 				num++;
 				ElmtStat(*TOut,j) = i;
@@ -241,10 +261,32 @@ void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
 		}
 		P = Next(P);
 	}
-	printf("\n");
 }
 
-void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
+void AdaMove (List L, TabBang Arr, int player, boolean *ada){
+	int i = 1;
+	boolean found;
+	addresslist P;
+	P = First(L);
+	*ada = false;
+
+	while (P != NilList){
+		i = 1;
+		found = false;
+		while (i <= NbElmtArr(Arr) && !(found)){
+			if (Info(P) == i && Elmt(Arr,i).milik == player){
+				*ada = true;
+				found = true;
+			}
+			else{
+				i++;
+			}
+		}
+		P = Next(P);
+	}
+}
+
+void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player){
 	int i = 1;
 	int j = 1;
 	int num = 1;
@@ -252,7 +294,6 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
 	addresslist P;
 	P = First(L);
 	Neff(*TOut) = 0;
-	*ada = false;
 
 	printf("Daftar bangunan tujuan pemindahan pasukan :\n");
 	while (P != NilList){
@@ -260,7 +301,6 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
 			if (Info(P) == i && Elmt(Arr,i).milik == player){
-				*ada = true;
 				printf("%d. ", num);
 				num++;
 				ElmtStat(*TOut,j) = i;
@@ -287,7 +327,6 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada){
 		}
 		P = Next(P);
 	}
-	printf("\n");
 }
 
 void StartPlayer (PLAYER *P){
@@ -316,7 +355,7 @@ void UpdateBangunan (List L, TabBang *Arr){
 				}
 				found = true;
 				Elmt(*(Arr),i).attack = true;
-				Elmt(*(Arr),i).attack = true;
+				Elmt(*(Arr),i).move = true;
 			}
 			else{
 				i++;

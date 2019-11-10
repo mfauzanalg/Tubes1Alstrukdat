@@ -21,10 +21,16 @@ void CetakPeta(int N, int M, TabBang Arr);
 void DaftarBangunan(List L, TabBang Arr, TabInt *TOut);
 // Mencetak Daftar Bangunan yang dimiliki oleh Playe P
 
-void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada);
+void AdaSerang (List L, TabBang Arr, int player, boolean *ada);
+//Apakah ada
+
+void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player);
 //Mencetak Daftar Bangunan yang dapat diserang
 
-void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, boolean *ada);
+void AdaMove (List L, TabBang Arr, int player, boolean *ada);
+//Apakah ada
+
+void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player);
 //Mencetak Daftar Bangunan yang dapat dipindahkan
 
 void StartPlayer (PLAYER *P);

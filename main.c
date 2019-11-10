@@ -41,6 +41,7 @@ int main(){
     system("CLS");
 
     while (playing){
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
         UpdateBangunan (P1.ListB, &Arr);
         while ((playing) && (P1turn)){
@@ -73,16 +74,27 @@ int main(){
                 printf("Pilih bangunan untuk menyerang : ");
                 STARTWORD();
                 X = WStringToInteger(CWord);
-                Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                DaftarSerang(Tetangga, Arr, &T1, 1, &ada);
-                if (ada){
-                    printf("Pilih bangunan yang ingin diserang : ");
-                    STARTWORD();
-                    X = WStringToInteger(CWord);
+
+            
+                if (Elmt(Arr,X).attack){
+                    Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
+                    AdaSerang (Tetangga, Arr, 1, &ada);
+                    if (ada){
+                        DaftarSerang(Tetangga, Arr, &T1, 1);
+                        printf("Pilih bangunan yang ingin diserang : ");
+                        STARTWORD();
+                        X = WStringToInteger(CWord);
+                    }
+                    else {
+                        printf("Tidak ada bangunan yang dapat diserang\n");
+                    }
+                    Elmt(Arr,X).attack = false;
                 }
-                else {
-                    printf("Tidak ada bangunan yang dapat diserang\n");
+                else{
+                    printf("Bangunan sudah menyerang pada turn ini\n");
                 }
+
+
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -123,16 +135,26 @@ int main(){
                 printf("Pilih bangunan untuk dipindahkan : ");
                 STARTWORD();
                 X = WStringToInteger(CWord);
-                Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                DaftarMove(Tetangga, Arr, &T1, 1, &ada);
-                if (ada){
-                    printf("Pilih bangunan tujuan pemindahan : ");
-                    STARTWORD();
-                    X = WStringToInteger(CWord);
+
+                if (Elmt(Arr,X).move){
+                    Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
+                    AdaMove (Tetangga, Arr, 1, &ada);
+                    if (ada){
+                        DaftarMove(Tetangga, Arr, &T1, 1);
+                        printf("Pilih bangunan tujuan pemindahan : ");
+                        STARTWORD();
+                        X = WStringToInteger(CWord);
+                    }
+                    else {
+                        printf("Tidak ada tujuan yang tersedia\n");
+                    }
+                    Elmt(Arr,X).move == false;
                 }
-                else {
-                    printf("Tidak ada tujuan yang tersedia\n");
+                else{
+                    printf("Bangunan sudah memindahkan pasukan pada turn ini\n");
                 }
+
+
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -160,7 +182,7 @@ int main(){
             //system("CLS");
         } 
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 2
         UpdateBangunan (P2.ListB, &Arr);
         while ((playing) && !(P1turn)){
@@ -188,9 +210,31 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
-                printf("nanti ya\n");
-                Aend(P2) = false;
-                Askill(P2) = false;
+                DaftarBangunan(P2.ListB, Arr, &T1);
+                printf("Pilih bangunan untuk menyerang : ");
+                STARTWORD();
+                X = WStringToInteger(CWord);
+
+                if (Elmt(Arr,X).attack){
+                    Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
+                    AdaSerang (Tetangga, Arr, 2, &ada);
+                    if (ada){
+                        DaftarSerang(Tetangga, Arr, &T1, 2);
+                        printf("Pilih bangunan yang ingin diserang : ");
+                        STARTWORD();
+                        X = WStringToInteger(CWord);
+                    }
+                    else {
+                        printf("Tidak ada bangunan yang dapat diserang\n");
+                    }
+                    Elmt(Arr,X).attack = false;
+                }
+                else{
+                    printf("Bangunan sudah menyerang pada turn ini\n");
+                }
+
+                Aend(P1) = false;
+                Askill(P1) = false;
             }
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
@@ -225,10 +269,32 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P2, &P3, &SP2);
-                printf("nanti ya\n");
+                DaftarBangunan(P2.ListB, Arr, &T1);
+                printf("Pilih bangunan untuk dipindahkan : ");
+                STARTWORD();
+                X = WStringToInteger(CWord);
+
+                if (Elmt(Arr,X).move){
+                    Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
+                    AdaMove (Tetangga, Arr, 2, &ada);
+                    if (ada){
+                        DaftarMove(Tetangga, Arr, &T1, 2);
+                        printf("Pilih bangunan tujuan pemindahan : ");
+                        STARTWORD();
+                        X = WStringToInteger(CWord);
+                    }
+                    else {
+                        printf("Tidak ada tujuan yang tersedia\n");
+                    }
+                    Elmt(Arr,X).move == false;
+                }
+                else{
+                    printf("Bangunan sudah memindahkan pasukan pada turn ini\n");
+                }
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
+
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah1);
