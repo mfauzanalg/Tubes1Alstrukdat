@@ -17,7 +17,7 @@
 /* Nilai elemen tak terdefinisi*/
 
 /* Definisi elemen dan koleksi objek */
-typedef int IdxType; /* type indeks */
+typedef int IdxTypeGraf; /* type indeks */
 typedef List ElType1; /* type elemen */
 
 typedef struct
