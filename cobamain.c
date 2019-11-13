@@ -20,7 +20,7 @@ int main(){
     Stack SBang;
     stackp SP1;
     addresslist P;
-
+    printf("Hello aku masuk sini");
     LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     CreateEmptyQueue(&P1.Skill, 10);
     CreateEmptyQueue(&P2.Skill, 10);

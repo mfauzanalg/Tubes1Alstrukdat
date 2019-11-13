@@ -9,7 +9,7 @@ void IgnoreBlank(){
    I.S. : CC sembarang
    F.S. : CC ≠ BLANK*/
   //  char CC;
-    while (CC == BLANK || CC == ENTER){
+    while (CC == BLANK || CC == ENTER || CC == '\r'){
         ADV();
     }
 }
@@ -19,7 +19,6 @@ void STARTKATA(){
    F.S. : atau EndKata = false, CKata adalah kata yang sudah diakuisisi,          
           CC karakter pertama sesudah karakter terakhir kata */
     START();
-    IgnoreBlank();
     SalinKata();
 }
 
@@ -42,14 +41,13 @@ void SalinKata(){
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 1;
     CKata.Length = 0;
-    while (CC != ENTER && CC != BLANK){
-        if (i <= NMax){
-            CKata.TabKata[i] = CC;
-            CKata.Length++;
-            i++;
-        }
+    while (CC != ENTER && CC != BLANK && CC != '\r'){
+        CKata.TabKata[i] = CC;
+        CKata.Length++;
+        i++;
         ADV();
     }
+	IgnoreBlank();
 }
 
 void SalinLast(){
@@ -69,10 +67,9 @@ void SalinLast(){
 }
 
 int StringToInteger (Kata CKata){
-	int i = 0;
+	int i;
 	int hasil = 0;
-	int CI = 0;
-
+	int CI;
 	for (i = 1; i <= CKata.Length; i++){
 		CI = CharToInt(CKata.TabKata[i]);
 		hasil = (hasil*10) + CI;
@@ -108,7 +105,7 @@ int CharToInt(char CC){
 	else if (CC == '8'){
 		return 8;
 	}
-	else if (CC == '9'){
+	else{
 		return 9;
 	}
 }

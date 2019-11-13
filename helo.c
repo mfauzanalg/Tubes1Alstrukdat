@@ -1,5 +1,9 @@
 #include <stdio.h>
 
 int main (){
-    printf("saya keren");
+    char Xh;
+    Xh = getchar();
+    if (Xh == 0x0A){
+        printf("saya keren %c", Xh);
+    }
 }

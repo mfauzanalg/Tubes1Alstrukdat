@@ -11,18 +11,16 @@ int z;
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS *Mat, List *L1, List *L2){
 	STARTKATA();
 	*N = StringToInteger(CKata);
-
 	ADVKATA();
 	*M = StringToInteger(CKata);
-
 	ADVKATA();
 	*J = StringToInteger(CKata);
+	
 
 	CreateEmptyMatriks(*J, *J, &*Mat);
 	CreateEmptyList(&*L1);
 	CreateEmptyList(&*L2);
 	CreateEmptyArray(&*Arr, *J);
-
 	for (i = 1; i <= *J; i++){
 		ADVKATA();
 		Elmt(*Arr,i).milik = 0;
@@ -60,13 +58,12 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 			Elmt(*Arr,i).P = false;
 			Elmt(*Arr,i).U = 20;
 		}
-
 		ADVKATA();
 		Elmt(*Arr,i).letak.X = StringToInteger(CKata);
 		ADVKATA();
 		Elmt(*Arr,i).letak.Y = StringToInteger(CKata);
 	}
-
+	
 	Elmt(*Arr,1).milik = 1;
 	Elmt(*Arr,2).milik = 2;
 
