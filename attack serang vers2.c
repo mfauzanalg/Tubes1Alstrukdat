@@ -2,14 +2,11 @@ void attack(PLAYER player_serang){
     int temp_critical, temp_Attack_Up;
     List L1, L2, L3; //list bangunan
     address P, P2, P3;
-    address P_player1att, P_player2att;
-    Bangunan mau_attack;
-    Bangunan mau_attack2;
-    int infop;
+    Bangunan mau_attack; //mengambil array bangunan
+    int infop; //dari list diambil indeksnya
     array arr_temp, arr_diserang;
     int diserang, serang; //yang dipilih diserang dan menyerang kebalik
     int infop2;
-    array arr2_temp, arr2_diserang;
     int jum_pasukan;
     int pindah_pemilik;
     boolean Aserang;
@@ -180,20 +177,20 @@ if (temp_critical > 0){ //skill critical
 
 }
 
-if (mau_attack2[serang].p == true){ //kalau punya shield
+if (mau_attack[serang].p == true){ //kalau punya shield
     jum_pasukan = (3*jum_pasukan)/4;
     mau_attack[diserang].jum = mau_attack[diserang].jum - jum_pasukan;
      }
 
-        if (jum_pasukan >= mau_attack2[serang].jum){
-            mau_attack2[serang].jum = jum_pasukan - mau_attack2[serang].jum;
+        if (jum_pasukan >= mau_attack[serang].jum){
+            mau_attack[serang].jum = jum_pasukan - mau_attack[serang].jum;
             printf("Bangunan menjadi milikmu");
              DelP(*L2,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
 
             }
-         else if (jum_pasukan < mau_attack2[serang].jum){
-            mau_attack2[serang].jum = mau_attack2[serang].jum - jum_pasukan;
+         else if (jum_pasukan < mau_attack[serang].jum){
+            mau_attack[serang].jum = mau_attack[serang].jum - jum_pasukan;
             printf("Bangunan gagal direbut");
                     }
                      mau_attack[serang].checkserang = false;  //bangunan tak bisa nyerang lagi  
