@@ -1,22 +1,15 @@
 void attack(PLAYER player_serang){
     int temp_critical, temp_Attack_Up;
-    List L1, L2, L3; //list bangunan
-    address P, P2, P3;
+    List L1, L2, L3; //list bangunan milik p1,p2, dan tidak keduanya
+    address P, P2, P3; //menunjuk di list bangunan
     Bangunan mau_attack; //mengambil array bangunan
     int infop; //dari list diambil indeksnya
-    array arr_temp, arr_diserang;
+    array arr_temp; //buat array agar bisa ipilih bangunan ke berapa oleh user dari daftar bangunan
     int diserang, serang; //yang dipilih diserang dan menyerang kebalik
-    int infop2;
-    int jum_pasukan;
-    int pindah_pemilik;
-    boolean Aserang;
+    int jum_pasukan; //masukan user berapa pasukan yang digunakan untuk nyerang
+    infotypelist pindah_pemilik; //buat temp pindah kepemilikan
     int i,k;
     
-
-    
-    
-   
-
 
 void bangunan_sendiri() //mengeprint bangunan sendiri
 
@@ -70,7 +63,6 @@ infotype infop;
 
 void bangunan_diserang() //fungsi ngeprint bangunana yang bisa diserang
 {int k;
-infotype infop2;
 address P2;
 boolean terserang_Valid = false;
 
@@ -170,6 +162,11 @@ void deploy() //fungsi untuk hasil serang-menyerang
 {
 printf("Jumlah pasukan: ");
 scanf("%d\n", jum_pasukan);
+while (jum_pasukan > mau_attack[diserang]){
+    printf("Jumlah pasukan yang dimasukkan kurang dari total pasukan di bangunan anda, masukkan ulang!\n");
+    printf("Jumlah pasukan: ");
+    scanf("%d\n", jum_pasukan);
+}
 
 if (temp_critical > 0){ //skill critical
     jum_pasukan = 2*jum_pasukan;
@@ -179,7 +176,6 @@ if (temp_critical > 0){ //skill critical
 
 if (mau_attack[serang].p == true){ //kalau punya shield
     jum_pasukan = (3*jum_pasukan)/4;
-    mau_attack[diserang].jum = mau_attack[diserang].jum - jum_pasukan;
      }
 
         if (jum_pasukan >= mau_attack[serang].jum){
