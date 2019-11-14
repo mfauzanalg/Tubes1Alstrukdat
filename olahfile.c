@@ -24,7 +24,6 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 	for (i = 1; i <= *J; i++){
 		ADVKATA();
 		Elmt(*Arr,i).milik = 0;
-		Elmt(*Arr,i).jum = 0;
 		Elmt(*Arr,i).lev = 1;
 		Elmt(*Arr,i).nomor = i;
 		Elmt(*Arr,i).attack = false;
@@ -58,6 +57,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 			Elmt(*Arr,i).P = false;
 			Elmt(*Arr,i).U = 20;
 		}
+		Elmt(*Arr,i).jum = Elmt(*Arr,i).U;
 		ADVKATA();
 		Elmt(*Arr,i).letak.X = StringToInteger(CKata);
 		ADVKATA();
@@ -383,6 +383,20 @@ void CetakSkill (int x){
 	}
 	else if (x == 7){
 		printf ("B");
+	}
+}
+
+int owner (int i, List P1, List P2){
+	addresslist addr1 = Search(P1, i);
+	addresslist addr2 = Search(P2, i);
+	if(addr1 != NilList && addr2 == NilList){
+		return 1;
+	}
+	else if(addr1 == NilList && addr2 != NilList){
+		return 2;
+	}
+	else{
+		return 0;
 	}
 }
 

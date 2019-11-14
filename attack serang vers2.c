@@ -1,37 +1,27 @@
 void attack(PLAYER player_serang){
     int temp_critical, temp_Attack_Up;
-    List L1, L2, L3; //list bangunan
-    address P, P2, P3;
-    address P_player1att, P_player2att;
-    Bangunan mau_attack;
-    Bangunan mau_attack2;
-    address Psinggah;
-    address P2singgah;
-    int infop;
-    array arr_temp, arr_diserang;
+    List L1, L2, L3; //list bangunan milik p1,p2, dan tidak keduanya
+    address P, P2, P3; //menunjuk di list bangunan
+    Bangunan mau_attack; //mengambil array bangunan
+    int infop; //dari list diambil indeksnya
+    array arr_temp; //buat array agar bisa ipilih bangunan ke berapa oleh user dari daftar bangunan
     int diserang, serang; //yang dipilih diserang dan menyerang kebalik
-    int infop2;
-    array arr2_temp, arr2_diserang;
-    int jum_pasukan;
-    int pindah_pemilik;
-    boolean Aserang;
+    int jum_pasukan; //masukan user berapa pasukan yang digunakan untuk nyerang
+    infotypelist pindah_pemilik; //buat temp pindah kepemilikan
     int i,k;
     
 
-    printf("Daftar Bangunan\n");
-    
-   
-
-
-void bangunan_sendiri()
+void bangunan_sendiri() //mengeprint bangunan sendiri
 
 {address P;
 int i;
 infotype infop;
+
+    printf("Daftar Bangunan\n");
     if (player_serang.num == 1){
         P = First(L1);
     }
-    else //kalau player 2
+    else //kalau player 2 listnya akan menunjuk ke list l2
     {
         P = First(L2);
     }
@@ -71,9 +61,8 @@ infotype infop;
 }
 
 
-void bangunan_diserang()
+void bangunan_diserang() //fungsi ngeprint bangunana yang bisa diserang
 {int k;
-infotype infop2;
 address P2;
 boolean terserang_Valid = false;
 
@@ -87,7 +76,7 @@ if (player_serang.num == 1){
 
     k =1;
      if (P2 != Nil){
-         terserang_Valid = true;
+         
             
             while (P2 != Nil){
 
@@ -112,6 +101,7 @@ if (player_serang.num == 1){
                     printf("%d ", mau_attack[infop].jum);
                     printf("lv. ");
                     printf("%d\n",mau_attack[infop]. lev);
+                    terserang_Valid = true; //kalau gavalid minta bangunan untuk menyerang lagi
                      }
                      else //tak sesuai lanjut
                      {
@@ -122,7 +112,7 @@ if (player_serang.num == 1){
         }
 
         if (!IsEmpty(L3)){
-            terserang_Valid = true;
+            
             P2 = First(L3);
             while (P2 != Nil){
 
@@ -147,6 +137,7 @@ if (player_serang.num == 1){
                     printf("%d ", mau_attack[infop].jum);
                     printf("lv. ");
                     printf("%d\n",mau_attack[infop]. lev);
+                    terserang_Valid = true; //kalau gavalid minta bangunan untuk menyerang lagi
                      }
                      else //tak sesuai lanjut
                      {
@@ -163,27 +154,39 @@ if (player_serang.num == 1){
             mau_attack[serang].checkserang = false;  //bangunan di set agar tak bisa dipakai untuk mennyerang
             bangunan_sendiri(); //manggil fungsi untuk serang baru
         }
+        deploy(); //fungsi nyerang
 }
 
 
-void deploy()//fungsi untuk hasil serang-menyerang
+void deploy() //fungsi untuk hasil serang-menyerang
 {
 printf("Jumlah pasukan: ");
 scanf("%d\n", jum_pasukan);
+while (jum_pasukan > mau_attack[diserang]){
+    printf("Jumlah pasukan yang dimasukkan kurang dari total pasukan di bangunan anda, masukkan ulang!\n");
+    printf("Jumlah pasukan: ");
+    scanf("%d\n", jum_pasukan);
+}
 
-if (mau_attack2[serang].p == true){
+if (temp_critical > 0){ //skill critical
+    jum_pasukan = 2*jum_pasukan;
+    temp_critical -= 1;
+
+}
+
+if (mau_attack[serang].p == true){ //kalau punya shield
     jum_pasukan = (3*jum_pasukan)/4;
-    mau_attack[diserang].jum = mau_attack[diserang].jum - jum_pasukan;
      }
-        if (jum_pasukan >= mau_attack2[serang].jum){
-            mau_attack2[serang].jum = jum_pasukan - mau_attack2[serang].jum;
+
+        if (jum_pasukan >= mau_attack[serang].jum){
+            mau_attack[serang].jum = jum_pasukan - mau_attack[serang].jum;
             printf("Bangunan menjadi milikmu");
              DelP(*L2,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
 
             }
-         else if (jum_pasukan < mau_attack2[serang].jum){
-            mau_attack2[serang].jum = mau_attack2[serang].jum - jum_pasukan;
+         else if (jum_pasukan < mau_attack[serang].jum){
+            mau_attack[serang].jum = mau_attack[serang].jum - jum_pasukan;
             printf("Bangunan gagal direbut");
                     }
                      mau_attack[serang].checkserang = false;  //bangunan tak bisa nyerang lagi  
