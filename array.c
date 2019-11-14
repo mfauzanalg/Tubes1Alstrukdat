@@ -12,7 +12,6 @@ void CreateEmptyArray(TabBang *Arr, int maxel){
 	MaxElArr(*Arr) = maxel;
 	TI(*Arr) = (ElType*) malloc((maxel+1)*sizeof(ElType));
 	for (i = IdxMin;i <= MaxElArr(*Arr); i++){
-		Elmt(*Arr,i).milik = ValUndef;
 		Elmt(*Arr,i).jum = ValUndef;
 		Elmt(*Arr,i).lev = ValUndef;
 		Elmt(*Arr,i).A = ValUndef;
@@ -80,7 +79,6 @@ void CopyArr (TabBang Tabin, TabBang *Tabout){
 	for (i = 1; i <= GetLastIdx(Tabin); i++){
 		Elmt(*Tabout,i).nomor = Elmt(Tabin,i).nomor;
 		Elmt(*Tabout,i).type = Elmt(Tabin,i).type;
-		Elmt(*Tabout,i).milik = Elmt(Tabin,i).milik;
 		Elmt(*Tabout,i).jum = Elmt(Tabin,i).jum;
 		Elmt(*Tabout,i).lev = Elmt(Tabin,i).lev;
 		Elmt(*Tabout,i).A = Elmt(Tabin,i).A;

@@ -50,7 +50,7 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             FAwal = JFort(Jumlah2);
-            CetakPeta(N,M,Arr);
+            CetakPeta(N,M,Arr,P1,P2);
             printf("PLayer 1\n");
             DaftarBangunan(P1.ListB, Arr, &T1);
             printf("Skill Available : "); 
@@ -79,9 +79,9 @@ int main(){
             
                 if (Elmt(Arr,X).attack){
                     Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                    AdaSerang (Tetangga, Arr, 1, &ada);
+                    AdaSerang (Tetangga, Arr, 1, &ada,P1,P2);
                     if (ada){
-                        DaftarSerang(Tetangga, Arr, &T1, 1);
+                        DaftarSerang(Tetangga, Arr, &T1, 1, P1, P2);
                         printf("Pilih bangunan yang ingin diserang : ");
                         STARTWORD();
                         X = WStringToInteger(CWord);
@@ -139,9 +139,9 @@ int main(){
 
                 if (Elmt(Arr,X).move){
                     Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                    AdaMove (Tetangga, Arr, 1, &ada);
+                    AdaMove (Tetangga, Arr, 1, &ada, P1, P2);
                     if (ada){
-                        DaftarMove(Tetangga, Arr, &T1, 1);
+                        DaftarMove(Tetangga, Arr, &T1, 1, P1, P2);
                         printf("Pilih bangunan tujuan pemindahan : ");
                         STARTWORD();
                         X = WStringToInteger(CWord);
@@ -191,7 +191,7 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah2, Jumlah1, &Kondisi);
             FAwal = JFort(Jumlah1);
-            CetakPeta(N,M,Arr);
+            CetakPeta(N,M,Arr,P1,P2);
             printf("PLayer 2\n");
             DaftarBangunan(P2.ListB, Arr, &T1);
             printf("Skill Available : "); 
@@ -218,9 +218,9 @@ int main(){
 
                 if (Elmt(Arr,X).attack){
                     Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                    AdaSerang (Tetangga, Arr, 2, &ada);
+                    AdaSerang (Tetangga, Arr, 2, &ada, P1,P2);
                     if (ada){
-                        DaftarSerang(Tetangga, Arr, &T1, 2);
+                        DaftarSerang(Tetangga, Arr, &T1, 2, P1, P2);
                         printf("Pilih bangunan yang ingin diserang : ");
                         STARTWORD();
                         X = WStringToInteger(CWord);
@@ -277,9 +277,9 @@ int main(){
 
                 if (Elmt(Arr,X).move){
                     Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                    AdaMove (Tetangga, Arr, 2, &ada);
+                    AdaMove (Tetangga, Arr, 2, &ada, P1, P2);
                     if (ada){
-                        DaftarMove(Tetangga, Arr, &T1, 2);
+                        DaftarMove(Tetangga, Arr, &T1, 2, P1, P2);
                         printf("Pilih bangunan tujuan pemindahan : ");
                         STARTWORD();
                         X = WStringToInteger(CWord);

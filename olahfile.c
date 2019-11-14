@@ -23,7 +23,6 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 	CreateEmptyArray(&*Arr, *J);
 	for (i = 1; i <= *J; i++){
 		ADVKATA();
-		Elmt(*Arr,i).milik = 0;
 		Elmt(*Arr,i).lev = 1;
 		Elmt(*Arr,i).nomor = i;
 		Elmt(*Arr,i).attack = false;
@@ -64,8 +63,6 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 		Elmt(*Arr,i).letak.Y = StringToInteger(CKata);
 	}
 	
-	Elmt(*Arr,1).milik = 1;
-	Elmt(*Arr,2).milik = 2;
 
 	i = 1;
 	while (i <= *J){
@@ -95,7 +92,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 
 }
 
-void CetakPeta(int N, int M, TabBang Arr){ //N itu baris M itu kolom
+void CetakPeta(int N, int M, TabBang Arr, PLAYER P1, PLAYER P2){ //N itu baris M itu kolom
 	MATRIKS peta;
 	int i;
 	int j;
@@ -129,10 +126,10 @@ void CetakPeta(int N, int M, TabBang Arr){ //N itu baris M itu kolom
 					}
 				}
 				if (found){
-					if (Elmt(Arr,k).milik == 1){
+					if (owner(k, P1.ListB, P2.ListB) == 1){
 						print_red(Elmt(Arr,k).type);
 					}
-					else if (Elmt(Arr,k).milik == 2){
+					else if (owner(k, P1.ListB, P2.ListB) == 2){
 						print_yellow(Elmt(Arr,k).type);
 					}
 					else
@@ -194,7 +191,7 @@ void DaftarBangunan(List L, TabBang Arr, TabInt *TOut){
 	printf("\n");
 }
 
-void AdaSerang (List L, TabBang Arr, int player, boolean *ada){
+void AdaSerang (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER P2){
 	int i = 1;
 	boolean found;
 	addresslist P;
@@ -205,7 +202,7 @@ void AdaSerang (List L, TabBang Arr, int player, boolean *ada){
 		i = 1;
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
-			if (Info(P) == i && Elmt(Arr,i).milik != player){
+			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) != player){
 				*ada = true;
 				found = true;
 			}
@@ -217,7 +214,7 @@ void AdaSerang (List L, TabBang Arr, int player, boolean *ada){
 	}
 }
 
-void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player){
+void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER P2){
 	int i = 1;
 	int j = 1;
 	int num = 1;
@@ -231,7 +228,7 @@ void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player){
 		i = 1;
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
-			if (Info(P) == i && Elmt(Arr,i).milik != player){
+			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) != player){
 				printf("%d. ", num);
 				num++;
 				ElmtStat(*TOut,j) = i;
@@ -260,7 +257,7 @@ void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player){
 	}
 }
 
-void AdaMove (List L, TabBang Arr, int player, boolean *ada){
+void AdaMove (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER P2){
 	int i = 1;
 	boolean found;
 	addresslist P;
@@ -271,7 +268,7 @@ void AdaMove (List L, TabBang Arr, int player, boolean *ada){
 		i = 1;
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
-			if (Info(P) == i && Elmt(Arr,i).milik == player){
+			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) == player){
 				*ada = true;
 				found = true;
 			}
@@ -283,7 +280,7 @@ void AdaMove (List L, TabBang Arr, int player, boolean *ada){
 	}
 }
 
-void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player){
+void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER P2){
 	int i = 1;
 	int j = 1;
 	int num = 1;
@@ -297,7 +294,7 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player){
 		i = 1;
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
-			if (Info(P) == i && Elmt(Arr,i).milik == player){
+			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) == player){
 				printf("%d. ", num);
 				num++;
 				ElmtStat(*TOut,j) = i;

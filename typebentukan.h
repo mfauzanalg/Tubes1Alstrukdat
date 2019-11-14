@@ -36,7 +36,6 @@ typedef struct{
 typedef struct {
     int nomor; //indeks bangunan
 	char type; //type bangunann
-    int milik; //kepemilikan bangunan 0,1,2
     int jum; //jumlah pasukan dalam bangunan
     int lev; //level bangunan
     int A; //nilai penambahan pasukan
