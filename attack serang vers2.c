@@ -4,7 +4,7 @@ void attack(PLAYER player_serang){
     address P, P2, P3; //menunjuk di list bangunan
     Bangunan mau_attack; //mengambil array bangunan
     int infop; //dari list diambil indeksnya
-    array arr_temp; //buat array agar bisa ipilih bangunan ke berapa oleh user dari daftar bangunan
+    array arr_temp,arr_temp2; //buat array agar bisa ipilih bangunan ke berapa oleh user dari daftar bangunan
     int diserang, serang; //yang dipilih diserang dan menyerang kebalik
     int jum_pasukan; //masukan user berapa pasukan yang digunakan untuk nyerang
     infotypelist pindah_pemilik; //buat temp pindah kepemilikan
@@ -33,25 +33,25 @@ infotype infop;
                 printf("%d. ", i);  
                    
                     infop = info(P);
-                    arr_temp[i] = infop;
+                    Elmt(arr_temp,i) = infop;
                     P = Next(P);
                     i += 1;
 
                 
-                    if (mau_attack[infop].type == 'c'){
+                    if (Elmt(Arr,infop).type == 'c'){
                         printf("Castle ");
                     }
-                    else if (mau_attack[infop].type == 't'){
+                    else if (Elmt(Arr,infop).type == 't'){
                         printf("Tower ");
                     }
 
-                    else if(mau_attack[infop].type == 'v'){
+                    else if(Elmt(Arr,infop).type== 'v'){
                         printf("Village ");
                     }
-                    printf("(%d,%d) ", mau_attack[infop].letak);
-                    printf("%d ", mau_attack[infop].jum);
+                    printf("(%d,%d) ", Elmt(Arr,infop).letak);
+                    printf("%d ", Elmt(Arr,infop).jum;
                     printf("lv. ");
-                    printf("%d\n",mau_attack[infop]. lev);
+                    printf("%d\n",Elmt(Arr,infop).lev);
                 } 
         }
         printf("Bangunan yang digunakan untuk menyerang: ");
@@ -84,23 +84,23 @@ if (player_serang.num == 1){
                    
                     if (IsAdjacent(*arr, info(P2), diserang)){
                     infop = info(P2);
-                    arr_temp[k] = infop;
+                    Elmt(arr_temp2,k)= infop;
                     P2 = Next(P2);
                     k += 1;
-                    if (mau_attack[infop].type == 'c'){
+                    if (Elmt(Arr,infop).type == 'c'){
                         printf("Castle ");
                     }
-                    else if (mau_attack[infop].type == 't'){
+                    else if (Elmt(Arr,infop).type  == 't'){
                         printf("Tower ");
                     }
 
-                    else if(mau_attack[infop].type == 'v'){
+                    else if(Elmt(Arr,infop).type  == 'v'){
                         printf("Village ");
                     }
-                    printf("(%d,%d) ", mau_attack[infop].letak);
-                    printf("%d ", mau_attack[infop].jum);
+                    printf("(%d,%d) ", Elmt(Arr,infop).letak );
+                    printf("%d ", Elmt(Arr,infop).jum);
                     printf("lv. ");
-                    printf("%d\n",mau_attack[infop]. lev);
+                    printf("%d\n",Elmt(Arr,infop).lev);
                     terserang_Valid = true; //kalau gavalid minta bangunan untuk menyerang lagi
                      }
                      else //tak sesuai lanjut
@@ -120,23 +120,23 @@ if (player_serang.num == 1){
                    
                     if (IsAdjacent(*arr, info(P2), diserang)){
                     infop = info(P2);
-                    arr_temp[k] = infop;
+                    Elmt(arr_temp2,k) = infop;
                     P2 = Next(P2);
                     k += 1;
-                    if (mau_attack[infop].type == 'c'){
+                    if (Elmt(Arr,infop).type == 'c'){
                         printf("Castle ");
                     }
-                    else if (mau_attack[infop].type == 't'){
+                    else if (Elmt(Arr,infop).type == 't'){
                         printf("Tower ");
                     }
 
-                    else if(mau_attack[infop].type == 'v'){
+                    else if(Elmt(Arr,infop).type == 'v'){
                         printf("Village ");
                     }
-                    printf("(%d,%d) ", mau_attack[infop].letak);
-                    printf("%d ", mau_attack[infop].jum);
+                    printf("(%d,%d) ", Elmt(Arr,infop).letak);
+                    printf("%d ", Elmt(Arr,infop).jum);
                     printf("lv. ");
-                    printf("%d\n",mau_attack[infop]. lev);
+                    printf("%d\n",Elmt(Arr,infop).lev);
                     terserang_Valid = true; //kalau gavalid minta bangunan untuk menyerang lagi
                      }
                      else //tak sesuai lanjut
@@ -151,7 +151,6 @@ if (player_serang.num == 1){
         if (!terserang_Valid){
             printf("Tidak ada bangunan yang bisa diserang dengan bangunan yang anda pilih sekarang");
             printf("Pilih bangunan lain untuk menyerang");
-            mau_attack[serang].checkserang = false;  //bangunan di set agar tak bisa dipakai untuk mennyerang
             bangunan_sendiri(); //manggil fungsi untuk serang baru
         }
         deploy(); //fungsi nyerang
@@ -162,7 +161,7 @@ void deploy() //fungsi untuk hasil serang-menyerang
 {
 printf("Jumlah pasukan: ");
 scanf("%d\n", jum_pasukan);
-while (jum_pasukan > mau_attack[diserang]){
+while (jum_pasukan > Elmt(Arr,Elmt(arr_temp,diserang)).jum{
     printf("Jumlah pasukan yang dimasukkan kurang dari total pasukan di bangunan anda, masukkan ulang!\n");
     printf("Jumlah pasukan: ");
     scanf("%d\n", jum_pasukan);
@@ -174,22 +173,23 @@ if (temp_critical > 0){ //skill critical
 
 }
 
-if (mau_attack[serang].p == true){ //kalau punya shield
+if (Elmt(Arr,Elmt(arr_temp2,serang)).p == true){ //kalau punya shield
     jum_pasukan = (3*jum_pasukan)/4;
      }
 
-        if (jum_pasukan >= mau_attack[serang].jum){
-            mau_attack[serang].jum = jum_pasukan - mau_attack[serang].jum;
+        if (jum_pasukan >= Elmt(Arr,Elmt(arr_temp2,serang)).jum){
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum = jum_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).jum;
             printf("Bangunan menjadi milikmu");
              DelP(*L2,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
+            Elmt(Arr,Elmt(arr_temp,diserang)).checkserang = false;  //bangunan tak bisa nyerang lagi
 
             }
-         else if (jum_pasukan < mau_attack[serang].jum){
-            mau_attack[serang].jum = mau_attack[serang].jum - jum_pasukan;
+         else if (jum_pasukan < lmt(Arr,Elmt(arr_temp2,serang)).jum){
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum = Elmt(Arr,Elmt(arr_temp2,serang)).jum - jum_pasukan;
             printf("Bangunan gagal direbut");
                     }
-                     mau_attack[serang].checkserang = false;  //bangunan tak bisa nyerang lagi  
+                     Elmt(Arr,Elmt(arr_temp,diserang)).checkserang = false;  //bangunan tak bisa nyerang lagi  
 
 
 }
