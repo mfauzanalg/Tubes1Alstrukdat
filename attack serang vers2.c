@@ -5,8 +5,6 @@ void attack(PLAYER player_serang){
     address P_player1att, P_player2att;
     Bangunan mau_attack;
     Bangunan mau_attack2;
-    address Psinggah;
-    address P2singgah;
     int infop;
     array arr_temp, arr_diserang;
     int diserang, serang; //yang dipilih diserang dan menyerang kebalik
@@ -167,18 +165,26 @@ if (player_serang.num == 1){
             mau_attack[serang].checkserang = false;  //bangunan di set agar tak bisa dipakai untuk mennyerang
             bangunan_sendiri(); //manggil fungsi untuk serang baru
         }
+        deploy(); //fungsi nyerang
 }
 
 
-void deploy()//fungsi untuk hasil serang-menyerang
+void deploy() //fungsi untuk hasil serang-menyerang
 {
 printf("Jumlah pasukan: ");
 scanf("%d\n", jum_pasukan);
 
-if (mau_attack2[serang].p == true){
+if (temp_critical > 0){ //skill critical
+    jum_pasukan = 2*jum_pasukan;
+    temp_critical -= 1;
+
+}
+
+if (mau_attack2[serang].p == true){ //kalau punya shield
     jum_pasukan = (3*jum_pasukan)/4;
     mau_attack[diserang].jum = mau_attack[diserang].jum - jum_pasukan;
      }
+
         if (jum_pasukan >= mau_attack2[serang].jum){
             mau_attack2[serang].jum = jum_pasukan - mau_attack2[serang].jum;
             printf("Bangunan menjadi milikmu");
