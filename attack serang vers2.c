@@ -18,20 +18,22 @@ void attack(PLAYER player_serang){
     int i,k;
     
 
-    printf("Daftar Bangunan\n");
+    
     
    
 
 
-void bangunan_sendiri()
+void bangunan_sendiri() //mengeprint bangunan sendiri
 
 {address P;
 int i;
 infotype infop;
+
+    printf("Daftar Bangunan\n");
     if (player_serang.num == 1){
         P = First(L1);
     }
-    else //kalau player 2
+    else //kalau player 2 listnya akan menunjuk ke list l2
     {
         P = First(L2);
     }
@@ -71,7 +73,7 @@ infotype infop;
 }
 
 
-void bangunan_diserang()
+void bangunan_diserang() //fungsi ngeprint bangunana yang bisa diserang
 {int k;
 infotype infop2;
 address P2;
@@ -87,7 +89,7 @@ if (player_serang.num == 1){
 
     k =1;
      if (P2 != Nil){
-         terserang_Valid = true;
+         
             
             while (P2 != Nil){
 
@@ -112,6 +114,7 @@ if (player_serang.num == 1){
                     printf("%d ", mau_attack[infop].jum);
                     printf("lv. ");
                     printf("%d\n",mau_attack[infop]. lev);
+                    terserang_Valid = true; //kalau gavalid minta bangunan untuk menyerang lagi
                      }
                      else //tak sesuai lanjut
                      {
@@ -122,7 +125,7 @@ if (player_serang.num == 1){
         }
 
         if (!IsEmpty(L3)){
-            terserang_Valid = true;
+            
             P2 = First(L3);
             while (P2 != Nil){
 
@@ -147,6 +150,7 @@ if (player_serang.num == 1){
                     printf("%d ", mau_attack[infop].jum);
                     printf("lv. ");
                     printf("%d\n",mau_attack[infop]. lev);
+                    terserang_Valid = true; //kalau gavalid minta bangunan untuk menyerang lagi
                      }
                      else //tak sesuai lanjut
                      {
