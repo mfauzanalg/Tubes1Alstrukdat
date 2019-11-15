@@ -71,6 +71,31 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     }
 }
 
+void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph){
+    DaftarBangunan(P1.ListB, *Arr, &*T1);
+    printf("Pilih bangunan asal pemindahan : ");
+    STARTWORD();
+    *X = WStringToInteger(CWord);
+    
+    if (Elmt(*Arr,ElmtStat(*T1,*X)).move){
+            *Tetangga = Neighbors(&ArrGraph, ElmtStat(*T1,*X));
+            AdaMove (*Tetangga, *Arr, P, &*ada, P1, P2);
+            if (ada){
+                Elmt(*Arr,ElmtStat(*T1,*X)).move = false;
+                DaftarMove(*Tetangga, *Arr, &*T1, P, P1, P2);
+                printf("Pilih bangunan tujuan pemindahan : ");
+                STARTWORD();
+                *X = WStringToInteger(CWord);
+            }
+            else {
+                printf("Tidak ada tujuan yang tersedia\n");
+            }
+        }
+    else{
+        printf("Bangunan sudah memindahkan pasukan pada turn ini\n");
+    }
+}
+
 void LevelUpUp(TabBang *(Arr), PLAYER P, int i){
     MATRIKS MC, MT, MF, MV;
     CreateEmptyMatriks(4,4, &MC);

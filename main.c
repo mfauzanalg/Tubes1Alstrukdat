@@ -130,35 +130,11 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                DaftarBangunan(P1.ListB, Arr, &T1);
-                printf("Pilih bangunan asal pemindahan : ");
-                STARTWORD();
-                X = WStringToInteger(CWord);
-
-                if (Elmt(Arr,ElmtStat(T1,X)).move){
-                    Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                    AdaMove (Tetangga, Arr, 1, &ada, P1, P2);
-                    if (ada){
-                        printf("ini dia yang ku pilih %d\n", ElmtStat(T1,X));
-                        Elmt(Arr,ElmtStat(T1,X)).move = false;
-                        printf("ini status si 17 %d\n", Elmt(Arr,17).move);
-                        DaftarMove(Tetangga, Arr, &T1, 1, P1, P2);
-                        printf("Pilih bangunan tujuan pemindahan : ");
-                        STARTWORD();
-                        X = WStringToInteger(CWord);
-                    }
-                    else {
-                        printf("Tidak ada tujuan yang tersedia\n");
-                    }
-                }
-                else{
-                    printf("Bangunan sudah memindahkan pasukan pada turn ini\n");
-                }
-
-
+                Move(&Arr, &X, &T1, &Tetangga, P1, P2, 1, &ada, ArrGraph);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
+            
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah2);

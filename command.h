@@ -7,6 +7,8 @@
 #include "typebentukan.h"
 #include "stack.h"
 #include "array.h"
+#include "graph.h"
+#include "olahfile.h"
 
 
 void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P1, PLAYER P2, PLAYER *Pcop, stackp *SPlayer1, stackp *SPlayer2);
@@ -18,6 +20,9 @@ void HitungJum (JumlahB *Jumlah, PLAYER P, TabBang Arr);
 
 void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi);
 //Mengecek kemungkinan penambahan skill
+
+void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph);
+//Move pasukan
 
 void LevelUpUp(TabBang *(Arr), PLAYER P, int i);
 //Untuk level up
