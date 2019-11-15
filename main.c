@@ -38,13 +38,15 @@ int main(){
     CreateEmptystackp(&SP2);
     CreateEmptyStack(&SBang);
     Aend(P1) = true;
-    system("CLS");
 
     while (playing){
         //hello i am fauzan
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
         UpdateBangunan (P1.ListB, &Arr);
+        printf("%d", Elmt(Arr,1).move);
+        printf("%d", Elmt(Arr,17).move);
+        printf("%d", Elmt(Arr,16).move);
         while ((playing) && (P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
@@ -81,6 +83,7 @@ int main(){
                     Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
                     AdaSerang (Tetangga, Arr, 1, &ada,P1,P2);
                     if (ada){
+                        Elmt(Arr,X).attack = false;
                         DaftarSerang(Tetangga, Arr, &T1, 1, P1, P2);
                         printf("Pilih bangunan yang ingin diserang : ");
                         STARTWORD();
@@ -89,7 +92,6 @@ int main(){
                     else {
                         printf("Tidak ada bangunan yang dapat diserang\n");
                     }
-                    Elmt(Arr,X).attack = false;
                 }
                 else{
                     printf("Bangunan sudah menyerang pada turn ini\n");
@@ -133,7 +135,7 @@ int main(){
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, &P3, &SP1);
                 DaftarBangunan(P1.ListB, Arr, &T1);
-                printf("Pilih bangunan untuk dipindahkan : ");
+                printf("Pilih bangunan asal pemindahan : ");
                 STARTWORD();
                 X = WStringToInteger(CWord);
 
@@ -141,6 +143,7 @@ int main(){
                     Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
                     AdaMove (Tetangga, Arr, 1, &ada, P1, P2);
                     if (ada){
+                        Elmt(Arr,X).move == false;
                         DaftarMove(Tetangga, Arr, &T1, 1, P1, P2);
                         printf("Pilih bangunan tujuan pemindahan : ");
                         STARTWORD();
@@ -149,7 +152,6 @@ int main(){
                     else {
                         printf("Tidak ada tujuan yang tersedia\n");
                     }
-                    Elmt(Arr,X).move == false;
                 }
                 else{
                     printf("Bangunan sudah memindahkan pasukan pada turn ini\n");
@@ -220,6 +222,7 @@ int main(){
                     Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
                     AdaSerang (Tetangga, Arr, 2, &ada, P1,P2);
                     if (ada){
+                        Elmt(Arr,X).attack = false;
                         DaftarSerang(Tetangga, Arr, &T1, 2, P1, P2);
                         printf("Pilih bangunan yang ingin diserang : ");
                         STARTWORD();
@@ -228,7 +231,6 @@ int main(){
                     else {
                         printf("Tidak ada bangunan yang dapat diserang\n");
                     }
-                    Elmt(Arr,X).attack = false;
                 }
                 else{
                     printf("Bangunan sudah menyerang pada turn ini\n");
@@ -279,6 +281,7 @@ int main(){
                     Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
                     AdaMove (Tetangga, Arr, 2, &ada, P1, P2);
                     if (ada){
+                        Elmt(Arr,X).move == false;
                         DaftarMove(Tetangga, Arr, &T1, 2, P1, P2);
                         printf("Pilih bangunan tujuan pemindahan : ");
                         STARTWORD();
@@ -287,7 +290,6 @@ int main(){
                     else {
                         printf("Tidak ada tujuan yang tersedia\n");
                     }
-                    Elmt(Arr,X).move == false;
                 }
                 else{
                     printf("Bangunan sudah memindahkan pasukan pada turn ini\n");
