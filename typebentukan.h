@@ -50,9 +50,10 @@ typedef struct {
 typedef struct {
     Queue Skill;         //Skill yang dimiliki oleh Player
     List ListB;          //List Bangunan yang dimiliki oleh Player
-    boolean Shield;      //menyatakan shield player aktif/tidak
-    boolean AttackUp;    //menyatakan attack up player aktif/tidak
-    boolean CriticalHit; //menyatakan critical hit player aktif/tidak
+    boolean IsShield;      //menyatakan shield player aktif/tidak
+    boolean IsAttackUp;    //menyatakan attack up player aktif/tidak
+    boolean IsCriticalHit; //menyatakan critical hit player aktif/tidak
+    boolean IsAttack;      //Apakah sedang menyerang. aktif setelah dipanggil command attack
     boolean Askill;      //After Skill
     boolean Aend;        //After END_TURN
 } PLAYER;
@@ -69,9 +70,10 @@ typedef struct {
 
 #define Skill(PLAYER)       (PLAYER).Skill
 #define ListB(PLAYER)       (PLAYER).ListB
-#define Shield(PLAYER)      (PLAYER).Shield
-#define AttackUp(PLAYER)    (PLAYER).AttackUp
-#define CriticalHit(PLAYER) (PLAYER).CriticalHit
+#define IsShield(PLAYER)      (PLAYER).IsShield
+#define IsAttack(PLAYER)    (PLAYER).IsAttack
+#define IsAttackUp(PLAYER)    (PLAYER).IsAttackUp
+#define IsCriticalHit(PLAYER) (PLAYER).IsCriticalHit
 #define Askill(PLAYER)      (PLAYER).Askill
 #define Aend(PLAYER)        (PLAYER).Aend
 
