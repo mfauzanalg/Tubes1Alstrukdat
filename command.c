@@ -1,15 +1,18 @@
 #include "command.h"
 
-void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P, PLAYER *Pcop, stackp *SPlayer){
+void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P1, PLAYER P2, PLAYER *Pcop, stackp *SPlayer1, stackp *SPlayer2){
     CopyArr(Arr, &*Arrcop);
     Push(&*SBang, *Arrcop);
-    CopyPlayer(P, &*Pcop);
-    Pushp(&*SPlayer, *Pcop);
+    CopyPlayer(P1, &*Pcop);
+    Pushp(&*SPlayer1, *Pcop);
+    CopyPlayer(P2, &*Pcop);
+    Pushp(&*SPlayer2, *Pcop);
 }
 
-void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P, stackp *SPlayer){
+void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P1, PLAYER *P2, stackp *SPlayer1, stackp *SPlayer2){
     Pop (&*SBang, &*Arr);
-    Popp (&*SPlayer, &*P);
+    Popp (&*SPlayer1, &*P1);
+    Popp (&*SPlayer2, &*P2);
 }
 
 void HitungJum (JumlahB *Jumlah, PLAYER P1, TabBang Arr){

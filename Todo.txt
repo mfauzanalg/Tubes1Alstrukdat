@@ -1,19 +1,2 @@
-1. Pelajarin Graf Multilist dari matriks 	OKK Raras
-2. List yang menunjuk ke array apakah bisa 	OKK 
-3. Undo(?)
-4. queue of array of char			OKK jadinya int aja
-
-Skill yang ada statusnya :
-Shield
-Critical Hit
-Attack Up
-ExtraTurn
-
-untuk Undo apa aja ya stacknya :
-Player (Skill(Queue) dan Bangunan(List))
-Array (Bangunan)
-
-Skill apa aja yg aktif(ada di player)
-
-CopyArr(Arr, &Arr2);
-Push (&SBang, Arr2);
+1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
+2. Rapihin command masih berantakan bgt cuyy
