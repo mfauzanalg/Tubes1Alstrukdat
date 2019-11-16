@@ -56,7 +56,8 @@ void Popp (stackp * S, infotypestackp* X){
 void CopyPlayer (PLAYER Pin, PLAYER *Pout){
 	(*Pout).Skill = Pin.Skill;
 	CopyList(Pin.ListB, &(*Pout).ListB);
-	(*Pout).Shield = Pin.Shield;
-	(*Pout).AttackUp = Pin.AttackUp;
-	(*Pout).CriticalHit = Pin.CriticalHit;
+	(*Pout).IsShield = Pin.IsShield;
+	(*Pout).IsAttackUp = Pin.IsAttackUp;
+	(*Pout).IsCriticalHit = Pin.IsCriticalHit;
+	(*Pout).IsAttack = Pin.IsAttack;
 }

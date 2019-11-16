@@ -328,9 +328,9 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 void StartPlayer (PLAYER *P){
 	CreateEmptyQueue(&(*P).Skill, 10);
 	AddQueue(&(*P).Skill, 1);
-	Shield(*P) = false;
-	AttackUp(*P) = false;
-	CriticalHit(*P) = false;
+	IsShield(*P) = false;
+	IsAttackUp(*P) = false;
+	IsCriticalHit(*P) = false;
 	Askill(*P) = false;
 	Aend(*P) = false;
 }
