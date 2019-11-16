@@ -1,2 +1,7 @@
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
 2. Rapihin command masih berantakan bgt cuyy
+a. attack
+3. MOVE
+4. ATTACK
+5. SKILL
+6. Undo masih ccd gitu masih bisa undo walau stacknya kosong

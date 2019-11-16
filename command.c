@@ -1,4 +1,5 @@
 #include "command.h"
+#include <string.h>
 
 void HELP(){
     printf("Daftar Command yang dapat dilakukan : \n");
@@ -102,7 +103,11 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     }
 }
 
-void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3){
+void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3){
+    int Z;
+    char Bang1[10];
+    char Bang2[10];
+
     DaftarBangunan(P3.ListB, *Arr, &*T1);
     printf("Pilih bangunan asal pemindahan : ");
     STARTWORD();
@@ -113,10 +118,60 @@ void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P
             AdaMove (*Tetangga, *Arr, P, &*ada, P1, P2);
             if (*ada){
                 Elmt(*Arr,ElmtStat(*T1,*X)).move = false;
-                DaftarMove(*Tetangga, *Arr, &*T1, P, P1, P2);
+                DaftarMove(*Tetangga, *Arr, &*T2, P, P1, P2);
                 printf("Pilih bangunan tujuan pemindahan : ");
                 STARTWORD();
-                *X = WStringToInteger(CWord);
+                *Y = WStringToInteger(CWord);
+                printf("Jumlah pasukan yang tersedia : %d\n", Elmt(*Arr,ElmtStat(*T1,*X)).jum);
+                printf("Masukan jumlah pasukan yang ingin dipindahkan : ");
+                do{
+                    STARTWORD();
+                    Z = WStringToInteger(CWord);
+                    if  (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum){
+                        printf("Jumlah melebihi pasukan yang tersedia\n");
+                        printf("Masukan jumlah pasukan yang ingin dipindahkan : ");
+                    }
+                }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum);
+                printf("\n");
+
+                //Mengubah jumlah Pasukan
+                if(Elmt(*Arr,ElmtStat(*T1,*X)).type == 'C'){
+                    char Bang3[10] = "Castle";
+                    strcpy(Bang1, Bang3);
+                }
+                else if(Elmt(*Arr,ElmtStat(*T1,*X)).type == 'T'){
+                    char Bang3[10] = "Tower";
+                    strcpy(Bang1, Bang3);
+                }
+                else if(Elmt(*Arr,ElmtStat(*T1,*X)).type == 'F'){
+                    char Bang3[10] = "Fort";
+                    strcpy(Bang1, Bang3);
+                }
+                else if(Elmt(*Arr,ElmtStat(*T1,*X)).type == 'V'){
+                    char Bang3[10] = "Village";
+                    strcpy(Bang1, Bang3);
+                }
+                if(Elmt(*Arr,ElmtStat(*T2,*Y)).type == 'C'){
+                    char Bang3[10] = "Castle";
+                    strcpy(Bang2, Bang3);
+                }
+                else if(Elmt(*Arr,ElmtStat(*T2,*Y)).type == 'T'){
+                    char Bang3[10] = "Tower";
+                    strcpy(Bang2, Bang3);
+                }
+                else if(Elmt(*Arr,ElmtStat(*T2,*Y)).type == 'F'){
+                    char Bang3[10] = "Fort";
+                    strcpy(Bang2, Bang3);
+                }
+                else if(Elmt(*Arr,ElmtStat(*T2,*Y)).type == 'V'){
+                    char Bang3[10] = "Village";
+                    strcpy(Bang2, Bang3);
+                }
+
+                Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z;
+                Elmt(*Arr,ElmtStat(*T2,*Y)).jum += Z;
+            
+                printf("%d pasukan dari %s (%d,%d) telah berpindah ke %s (%d,%d)\n", Z, Bang1, Elmt(*Arr,ElmtStat(*T1,*X)).letak.X, Elmt(*Arr,ElmtStat(*T1,*X)).letak.Y, Bang2, Elmt(*Arr,ElmtStat(*T2,*Y)).letak.X, Elmt(*Arr,ElmtStat(*T2,*Y)).letak.Y);
             }
             else {
                 printf("Tidak ada tujuan yang tersedia\n");

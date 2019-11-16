@@ -24,7 +24,7 @@ int main(){
     JumlahB Jumlah1, Jumlah2;   //Jumlah bangunan yang dimiliki pemain1
     TabInt T1, T2;              //Tab untuk membuat bangunan yang dapat dipilih
     List Tetangga;              //List yang berisi tetangga dari suatu bangunan
-    int X;                      //Untuk input memilih bangunan
+    int X, Y;                      //Untuk input memilih bangunan
     int FAwal, FAkhir;          //Untuk mengecek jumlah fort apakah berkurang 1
     Condition Kondisi;
 
@@ -112,7 +112,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Move(&Arr, &X, &T1, &Tetangga, P1, P2, 1, &ada, ArrGraph, P1);
+                Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, ArrGraph, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -202,7 +202,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Move(&Arr, &X, &T1, &Tetangga, P1, P2, 2, &ada, ArrGraph, P2);
+                Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, ArrGraph, P2);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
