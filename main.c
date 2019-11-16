@@ -38,7 +38,7 @@ int main(){
     CreateEmptystackp(&SP2);
     CreateEmptyStack(&SBang);
     Aend(P1) = true;
-
+    HELP();
     while (playing){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
@@ -48,13 +48,8 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             FAwal = JFort(Jumlah2);
-            CetakPeta(N,M,Arr,P1,P2);
-            printf("PLayer 1\n");
-            DaftarBangunan(P1.ListB, Arr, &T1);
-            printf("Skill Available : "); 
-            CetakSkill(InfoHead(P1.Skill));
-            printf("\n");
-            printf("ENTER COMMAND : ");
+
+            CetakAwal(N,M,Arr, P1, P2, P1, 1, &T1);
             STARTWORD();
     
             if (strcmp(CWord.TabKata, "EXIT") == 0){ //sudah jalan
@@ -106,10 +101,10 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
+                PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 printf("nanti ya\n");
                 Askill(P1) = true;
                 Aend(P1) = false;
-                PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
@@ -121,6 +116,10 @@ int main(){
                 Move(&Arr, &X, &T1, &Tetangga, P1, P2, 1, &ada, ArrGraph, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
+            }
+            
+            else{
+                printf("Input Salah, jalankan command HELP untuk bantuan\n");
             }
             
             HitungJum (&Jumlah1, P1, Arr);
@@ -155,13 +154,8 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah2, Jumlah1, &Kondisi);
             FAwal = JFort(Jumlah1);
-            CetakPeta(N,M,Arr,P1,P2);
-            printf("PLayer 2\n");
-            DaftarBangunan(P2.ListB, Arr, &T1);
-            printf("Skill Available : "); 
-            CetakSkill(InfoHead(P2.Skill));
-            printf("\n");
-            printf("ENTER COMMAND : "); 
+
+            CetakAwal(N,M,Arr, P1, P2, P2, 2, &T1); 
             STARTWORD();
             if (strcmp(CWord.TabKata, "EXIT") == 0){
                 playing = false;
@@ -210,7 +204,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-               PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
+                PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 printf("nanti ya\n");
                 Askill(P2) = true;
                 Aend(P2) = false;
@@ -225,6 +219,10 @@ int main(){
                 Move(&Arr, &X, &T1, &Tetangga, P1, P2, 2, &ada, ArrGraph, P2);
                 Aend(P2) = false;
                 Askill(P2) = false;
+            }
+
+            else{
+                printf("Input Salah, jalankan command HELP untuk bantuan\n");
             }
 
             HitungJum (&Jumlah1, P1, Arr);

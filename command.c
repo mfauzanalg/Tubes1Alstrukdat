@@ -1,5 +1,28 @@
 #include "command.h"
 
+void HELP(){
+    printf("Daftar Command yang dapat dilakukan : \n");
+    printf("1. ATTACK \n");
+    printf("2. LEVEL_UP \n");
+    printf("3. SKILL \n");
+    printf("4. UNDO \n");
+    printf("5. END_TURN \n");
+    printf("6. MOVE\n");
+    printf("7. EXIT\n");
+    printf("8. SAVE (Mungkin)\n");
+    printf("\n");
+}
+
+void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, int Curr, TabInt *T1){
+    CetakPeta(N,M,Arr,P1,P2);
+    printf("PLayer %d\n", Curr);
+    DaftarBangunan(P3.ListB, Arr, &*T1);
+    printf("Skill Available : "); 
+    CetakSkill(InfoHead(P1.Skill));
+    printf("\n");
+    printf("ENTER COMMAND : ");
+}
+
 void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P1, PLAYER P2, PLAYER *Pcop, stackp *SPlayer1, stackp *SPlayer2){
     CopyArr(Arr, &*Arrcop);
     Push(&*SBang, *Arrcop);
