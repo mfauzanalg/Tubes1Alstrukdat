@@ -13,7 +13,7 @@
 
 void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P1, PLAYER P2, PLAYER *Pcop, stackp *SPlayer1, stackp *SPlayer2);
 
-void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P1, PLAYER *P2, stackp *SPlayer1, stackp *SPlayer2);
+void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P1, PLAYER *P2, stackp *SPlayer1, stackp *SPlayer2, PLAYER P3);
 
 void HitungJum (JumlahB *Jumlah, PLAYER P, TabBang Arr);
 //Menghitung jumlah bangunan yang dimiliki 
@@ -24,7 +24,7 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi);
 void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3);
 //Move pasukan
 
-void LevelUpUp(TabBang *(Arr), PLAYER P, int i);
+void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1);
 //Untuk level up
 
 #endif

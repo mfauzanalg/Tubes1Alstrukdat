@@ -100,11 +100,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){ //sudah jalan
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                DaftarBangunan(P1.ListB, Arr, &T1);
-                printf("Bangunan yang akan di level up : ");
-                STARTWORD();
-                X = WStringToInteger(CWord);
-                LevelUpUp(&Arr, P1, ElmtStat(T1, X));
+                LevelUpUp(&Arr, P1, &X, &T1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -117,15 +113,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
-                if (Aend(P1)){
-                    printf("Anda baru saja memulai permainan, tidak bisa UNDO\n");
-                }
-                else if (Askill(P1)){
-                    printf("Anda baru saja menggunakan skill, tidak bisa UNDO\n");
-                }
-                else{
-                    UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2);
-                }
+                UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P1);
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
@@ -216,11 +204,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                DaftarBangunan(P2.ListB, Arr, &T1);
-                printf("Bangunan yang akan di level up : ");
-                STARTWORD();
-                X = WStringToInteger(CWord);
-                LevelUpUp(&Arr, P2, ElmtStat(T1, X));
+                LevelUpUp(&Arr, P2, &X, &T1);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
@@ -233,15 +217,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
-                if (Aend(P2)){
-                    printf("Anda baru saja memulai permainan, tidak bisa UNDO\n");
-                }
-                else if (Askill(P2)){
-                    printf("Anda baru saja menggunakan skill, tidak bisa UNDO\n");
-                }
-                else{
-                    UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2);
-                }
+                UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P2);
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
