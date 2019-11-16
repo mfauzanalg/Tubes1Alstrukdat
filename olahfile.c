@@ -271,6 +271,7 @@ void AdaMove (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER P
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
 			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) == player){
+				printf("ini i %d", i);
 				*ada = true;
 				found = true;
 			}

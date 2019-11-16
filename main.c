@@ -130,7 +130,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Move(&Arr, &X, &T1, &Tetangga, P1, P2, 1, &ada, ArrGraph);
+                Move(&Arr, &X, &T1, &Tetangga, P1, P2, 1, &ada, ArrGraph, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -246,30 +246,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                DaftarBangunan(P2.ListB, Arr, &T1);
-
-                printf("Pilih bangunan untuk dipindahkan : ");
-                STARTWORD();
-                X = WStringToInteger(CWord);
-
-                if (Elmt(Arr,ElmtStat(T1,X)).move){
-                    Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                    AdaMove (Tetangga, Arr, 2, &ada, P1, P2);
-                    if (ada){
-                        Elmt(Arr,X).move = false;
-                        DaftarMove(Tetangga, Arr, &T1, 2, P1, P2);
-                        printf("Pilih bangunan tujuan pemindahan : ");
-                        STARTWORD();
-                        X = WStringToInteger(CWord);
-                    }
-                    else {
-                        printf("Tidak ada tujuan yang tersedia\n");
-                    }
-                }
-                else{
-                    printf("Bangunan sudah memindahkan pasukan pada turn ini\n");
-                }
-
+                Move(&Arr, &X, &T1, &Tetangga, P1, P2, 2, &ada, ArrGraph, P2);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }

@@ -21,7 +21,7 @@ void HitungJum (JumlahB *Jumlah, PLAYER P, TabBang Arr);
 void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi);
 //Mengecek kemungkinan penambahan skill
 
-void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph);
+void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3);
 //Move pasukan
 
 void LevelUpUp(TabBang *(Arr), PLAYER P, int i);
