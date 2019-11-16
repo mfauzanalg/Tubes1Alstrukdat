@@ -9,6 +9,7 @@
 #include "array.h"
 #include "graph.h"
 #include "olahfile.h"
+
 void HELP();
 // Untuk menampilkan command apa saja yang dapat dilakukan pada program
 
@@ -29,6 +30,9 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi);
 
 void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3);
 //Move pasukan
+
+void TambahSkill(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan);
+// Menambah skill atau tidak di akhir
 
 void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1);
 // Untuk level up

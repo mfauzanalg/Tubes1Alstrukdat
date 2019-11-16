@@ -112,7 +112,6 @@ void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P
             *Tetangga = Neighbors(&ArrGraph, ElmtStat(*T1,*X));
             AdaMove (*Tetangga, *Arr, P, &*ada, P1, P2);
             if (*ada){
-                printf("masuk sini kok\n");
                 Elmt(*Arr,ElmtStat(*T1,*X)).move = false;
                 DaftarMove(*Tetangga, *Arr, &*T1, P, P1, P2);
                 printf("Pilih bangunan tujuan pemindahan : ");
@@ -125,6 +124,27 @@ void Move (TabBang *Arr, int *X, TabInt *T1, List *Tetangga, PLAYER P1, PLAYER P
         }
     else{
         printf("Bangunan sudah memindahkan pasukan pada turn ini\n");
+    }
+}
+
+void TambahSkill(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan){
+    if (Kondisi.S){
+        if (JTotal(Jumlahlawan) == 2){
+            AddQueue(&(*Paku).Skill, 2);
+        }
+    }
+    if (Kondisi.AU){
+        if (JTower(Jumlahlawan) == 3){
+            AddQueue(&(*Paku).Skill, 4);
+        }
+    }
+    if (Kondisi.B){
+        if (JTotal(Jumlahku) == 10){
+            AddQueue(&(*Plawan).Skill, 8);
+        }
+    }
+    if (FAkhir == FAwal-1){
+        AddQueue(&(*Paku).Skill, 3);
     }
 }
 

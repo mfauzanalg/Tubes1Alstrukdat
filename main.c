@@ -27,7 +27,6 @@ int main(){
     int X;                      //Untuk input memilih bangunan
     int FAwal, FAkhir;          //Untuk mengecek jumlah fort apakah berkurang 1
     Condition Kondisi;
-    int ET;
 
     LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     StartPlayer(&P1);
@@ -117,6 +116,10 @@ int main(){
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
+
+            else if (strcmp(CWord.TabKata, "HELP") == 0){
+                HELP();
+            }
             
             else{
                 printf("Input Salah, jalankan command HELP untuk bantuan\n");
@@ -125,24 +128,7 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah2);
-            if (Kondisi.S){
-                if (JTotal(Jumlah2) == 2){
-                    AddQueue(&P2.Skill, 2);
-                }
-            }
-            if (Kondisi.AU){
-                if (JTower(Jumlah2) == 3){
-                    AddQueue(&P1.Skill, 4);
-                }
-            }
-            if (Kondisi.B){
-                if (JTotal(Jumlah1) == 10){
-                    AddQueue(&P2.Skill, 8);
-                }
-            }
-            if (FAkhir == FAwal-1){
-                AddQueue(&P2.Skill, 3);
-            }
+            TambahSkill(Jumlah1, Jumlah2, FAwal, FAkhir, Kondisi, &P1, &P2);
             //system("CLS");
         } 
 
@@ -220,7 +206,9 @@ int main(){
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
-
+            else if (strcmp(CWord.TabKata, "HELP") == 0){
+                HELP();
+            }
             else{
                 printf("Input Salah, jalankan command HELP untuk bantuan\n");
             }
@@ -228,24 +216,7 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah1);
-            if (Kondisi.S){
-                if (JTotal(Jumlah1) == 2){
-                    AddQueue(&P1.Skill, 2);
-                }
-            }
-            if (Kondisi.AU){
-                if (JTower(Jumlah1) == 3){
-                    AddQueue(&P2.Skill, 4);
-                }
-            }
-            if (Kondisi.B){
-                if (JTotal(Jumlah2) == 10){
-                    AddQueue(&P1.Skill, 8);
-                }
-            }
-            if (FAkhir == FAwal-1){
-                AddQueue(&P1.Skill, 3);
-            }
+            TambahSkill(Jumlah2, Jumlah1, FAwal, FAkhir, Kondisi, &P2, &P1);
             //system("CLS");
         } 
 
