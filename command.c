@@ -105,6 +105,34 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     }
 }
 
+void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3){
+    int Z;
+    char Bang1[10];
+    char Bang2[10];
+    DaftarBangunan(P3.ListB, *Arr, &*T1);
+    printf("Pilih bangunan untuk menyerang : ");
+    STARTWORD();
+    *X = WStringToInteger(CWord);
+
+    if (Elmt(*Arr,ElmtStat(*T1,*X)).attack){
+        *Tetangga = Neighbors(&ArrGraph, ElmtStat(*T1,*X));
+        AdaSerang (*Tetangga, *Arr, 1, &*ada,P1,P2);
+        if (ada){
+            Elmt(*Arr,ElmtStat(*T1,*X)).attack = false;
+            DaftarSerang(*Tetangga, *Arr, &*T1, P, P1, P2);
+            printf("Pilih bangunan yang ingin diserang : ");
+            STARTWORD();
+            *Y = WStringToInteger(CWord);
+        }
+        else {
+            printf("Tidak ada bangunan yang dapat diserang\n");
+        }
+    }
+    else{
+        printf("Bangunan sudah menyerang pada turn ini\n");
+    }
+}
+
 void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3){
     int Z;
     char Bang1[10];

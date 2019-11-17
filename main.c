@@ -48,8 +48,6 @@ int main(){
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             FAwal = JFort(Jumlah2);
 
-            printf("ini dia bisa undo ga end %d\n", P1.Aend);
-            printf("ini dia bisa undo ga skill %d\n", P1.Askill);
             CetakAwal(N,M,Arr, P1, P2, P1, 1, &T1);
             STARTWORD();
     
@@ -65,31 +63,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                DaftarBangunan(P1.ListB, Arr, &T1);
-                printf("Pilih bangunan untuk menyerang : ");
-                STARTWORD();
-                X = WStringToInteger(CWord);
-
-            
-                if (Elmt(Arr,ElmtStat(T1,X)).attack){
-                    Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                    AdaSerang (Tetangga, Arr, 1, &ada,P1,P2);
-                    if (ada){
-                        Elmt(Arr,X).attack = false;
-                        DaftarSerang(Tetangga, Arr, &T1, 1, P1, P2);
-                        printf("Pilih bangunan yang ingin diserang : ");
-                        STARTWORD();
-                        X = WStringToInteger(CWord);
-                    }
-                    else {
-                        printf("Tidak ada bangunan yang dapat diserang\n");
-                    }
-                }
-                else{
-                    printf("Bangunan sudah menyerang pada turn ini\n");
-                }
-
-
+                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, ArrGraph, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -157,29 +131,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                DaftarBangunan(P2.ListB, Arr, &T1);
-                printf("Pilih bangunan untuk menyerang : ");
-                STARTWORD();
-                X = WStringToInteger(CWord);
-
-                if (Elmt(Arr,ElmtStat(T1,X)).attack){
-                    Tetangga = Neighbors(&ArrGraph, ElmtStat(T1,X));
-                    AdaSerang (Tetangga, Arr, 2, &ada, P1,P2);
-                    if (ada){
-                        Elmt(Arr,X).attack = false;
-                        DaftarSerang(Tetangga, Arr, &T1, 2, P1, P2);
-                        printf("Pilih bangunan yang ingin diserang : ");
-                        STARTWORD();
-                        X = WStringToInteger(CWord);
-                    }
-                    else {
-                        printf("Tidak ada bangunan yang dapat diserang\n");
-                    }
-                }
-                else{
-                    printf("Bangunan sudah menyerang pada turn ini\n");
-                }
-
+                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, ArrGraph, P2);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
