@@ -48,6 +48,8 @@ int main(){
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             FAwal = JFort(Jumlah2);
 
+            printf("ini dia bisa undo ga end %d\n", P1.Aend);
+            printf("ini dia bisa undo ga skill %d\n", P1.Askill);
             CetakAwal(N,M,Arr, P1, P2, P1, 1, &T1);
             STARTWORD();
     

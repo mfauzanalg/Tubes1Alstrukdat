@@ -27,8 +27,10 @@ void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, int 
 void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P1, PLAYER P2, PLAYER *Pcop, stackp *SPlayer1, stackp *SPlayer2){
     CopyArr(Arr, &*Arrcop);
     Push(&*SBang, *Arrcop);
+
     CopyPlayer(P1, &*Pcop);
     Pushp(&*SPlayer1, *Pcop);
+
     CopyPlayer(P2, &*Pcop);
     Pushp(&*SPlayer2, *Pcop);
 }
