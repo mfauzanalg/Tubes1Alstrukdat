@@ -66,7 +66,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, ArrGraph, P1);
+                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, ArrGraph, P1, P2);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -108,9 +108,9 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah2);
             TambahSkill(Jumlah1, Jumlah2, FAwal, FAkhir, Kondisi, &P1, &P2);
-            printf("\nPress Enter to Continue...");
+            printf("\nPress Enter to Continue...\n");
             INPUTENTER();
-            clear;              //untuk clear console di ubuntu
+            //clear;              //untuk clear console di ubuntu
             //system("CLS");    //untuk clear console di windows
         } 
 
@@ -139,7 +139,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, ArrGraph, P2);
+                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, ArrGraph, P2, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -179,9 +179,9 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah1);
             TambahSkill(Jumlah2, Jumlah1, FAwal, FAkhir, Kondisi, &P2, &P1);
-            printf("\nPress Enter to Continue...");
+            printf("\nPress Enter to Continue...\n");
             INPUTENTER();
-            clear;              //untuk clear console di ubuntu
+            //clear;              //untuk clear console di ubuntu
             //system("CLS");    //untuk clear console di windows
         } 
 

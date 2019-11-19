@@ -128,10 +128,13 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     }
 }
 
-void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3){
-    int Z;
-    char Bang1[10];
-    char Bang2[10];
+void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3, PLAYER P4){
+    //P3 itu milik kita
+    //P4 itu milik lawan
+
+    int Z; //Jumlah Kita
+    int Tujuan; //Jumlah lawan
+    int Hasil;
     DaftarBangunan(P3.ListB, *Arr, &*T1);
     printf("Pilih bangunan untuk menyerang : ");
     STARTWORD();
@@ -142,10 +145,84 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
         AdaSerang (*Tetangga, *Arr, 1, &*ada,P1,P2);
         if (ada){
             Elmt(*Arr,ElmtStat(*T1,*X)).attack = false;
-            DaftarSerang(*Tetangga, *Arr, &*T1, P, P1, P2);
+            DaftarSerang(*Tetangga, *Arr, &*T2, P, P1, P2);
             printf("Pilih bangunan yang ingin diserang : ");
             STARTWORD();
-            *Y = WStringToInteger(CWord);
+            *Y = WStringToInteger(CWord); //ini masuk attack
+            printf("Jumlah pasukan yang tersedia : %d\n", Elmt(*Arr,ElmtStat(*T1,*X)).jum);
+            printf("Masukan jumlah pasukan yang ingin digunakan untuk menyerang : ");
+            do{
+                STARTWORD();
+                Z = WStringToInteger(CWord);
+                if  (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum){
+                    printf("Jumlah melebihi pasukan yang tersedia\n");
+                    printf("Masukan jumlah pasukan yang ingin duigunakan untuk menyerang : ");
+                }
+            }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum);
+            // Z itu jumlah penyerang
+            // Bangunan asal nya dikurangin sama Z dulu
+            Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z;
+            Tujuan = Elmt(*Arr,ElmtStat(*T2,*Y)).jum;
+
+            //Mulai penyerangan
+            if(P3.IsCriticalHit){           //Jika critical hit aktif
+                Z *= 2;
+                Tujuan -= Z;
+                if (Tujuan <= 0){           //Berpindah kepemilikan
+                    printf("pindah kepemilikan tapi belum di listnya");
+                    Tujuan *= (0.5);
+                }
+                else{
+                    printf("gak pindah kepemilikan");
+                }
+            }
+            else{                           //Jika critical hit tidak aktif
+                if(P3.IsAttackUp){          //Jika AttackUp Aktif
+                    Tujuan -= Z;
+                    if (Tujuan <= 0){       //Berpindah kepemilikan
+                    printf("pindah kepemilikan tapi belum di listnya");
+                    }
+                    else{                   //Tidak berpindah kepemilikan
+                        printf("gak pindah kepemilikan");
+                    }
+                }
+                else{                       //Jika AttackUp tidak Aktif
+                    if(P4.IsShield){        //Jika lawan memiliki shield
+                        Z *= (0.75);
+                        Tujuan -= Z;
+                        if (Tujuan <= 0){   //Berpindah kepemilikan
+                            printf("pindah kepemilikan tapi belum di listnya");
+                            Tujuan = (Tujuan*4)/3;
+                        }
+                        else{               //Tidak berpindah kepemilikan
+                            printf("gak pindah kepemilikan");
+                        }
+                    }
+                    else{                   //Jika lawan tidak memiliki shield
+                        if(Elmt(*Arr,ElmtStat(*T2,*Y)).P){  //Jika lawan memiliki pertahanan
+                            Z *= (0.75);
+                            Tujuan -= Z;
+                            if (Tujuan <= 0){   //Berpindah kepemilikan
+                                printf("pindah kepemilikan tapi belum di listnya");
+                                Tujuan = (Tujuan*4)/3;
+                            }
+                            else{               //Tidak berpindah kepemilikan
+                                printf("gak pindah kepemilikan");
+                            }
+                        }
+                        else{
+                            Tujuan -= Z;
+                            if (Tujuan <= 0){       //Berpindah kepemilikan
+                            printf("pindah kepemilikan tapi belum di listnya");
+                            }
+                            else{                   //Tidak berpindah kepemilikan
+                                printf("gak pindah kepemilikan");
+                            }
+                        }
+                    }
+                }
+            }
+            Elmt(*Arr,ElmtStat(*T2,*Y)).jum = Tujuan;
         }
         else {
             printf("Tidak ada bangunan yang dapat diserang\n");
@@ -185,7 +262,6 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
                         printf("Masukan jumlah pasukan yang ingin dipindahkan : ");
                     }
                 }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum);
-                printf("\n");
 
                 //Mengubah jumlah Pasukan
                 if(Elmt(*Arr,ElmtStat(*T1,*X)).type == 'C'){
@@ -221,8 +297,8 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
                     strcpy(Bang2, Bang3);
                 }
 
-                Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z;
-                Elmt(*Arr,ElmtStat(*T2,*Y)).jum += Z;
+                Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z; //Bangunan Asal
+                Elmt(*Arr,ElmtStat(*T2,*Y)).jum += Z; //Banguann Tujuan
             
                 printf("%d pasukan dari %s (%d,%d) telah berpindah ke %s (%d,%d)\n", Z, Bang1, Elmt(*Arr,ElmtStat(*T1,*X)).letak.X, Elmt(*Arr,ElmtStat(*T1,*X)).letak.Y, Bang2, Elmt(*Arr,ElmtStat(*T2,*Y)).letak.X, Elmt(*Arr,ElmtStat(*T2,*Y)).letak.Y);
             }
