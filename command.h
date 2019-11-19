@@ -10,6 +10,12 @@
 #include "graph.h"
 #include "olahfile.h"
 
+void Art1();
+// Untuk menampilkan Ascii Art player 1
+
+void Art2();
+// Untuk menampilkan Ascii Art player 1
+
 void HELP();
 // Untuk menampilkan command apa saja yang dapat dilakukan pada program
 

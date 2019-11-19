@@ -1,6 +1,29 @@
 #include "command.h"
 #include <string.h>
 
+void Art1(){
+    printf("       _                         __\n"); 
+    printf("      | |                       /_ |\n"); 
+    printf(" _ __ | | __ _ _   _  ___ _ __   | |\n"); 
+    printf("| '_ \\| |/ _` | | | |/ _ \\ '__|  | |\n"); 
+    printf("| |_) | | (_| | |_| |  __/ |     | |\n"); 
+    printf("| .__/|_|\\__,_|\\__, |\\___|_|     |_|\n"); 
+    printf("| |             __/ |\n"); 
+    printf("|_|            |___/\n\n");                
+}
+
+void Art2(){
+    printf("       _                         ___\n");
+    printf("      | |                       |__ \\\n");
+    printf(" _ __ | | __ _ _   _  ___ _ __     ) |\n");
+    printf("| '_ \\| |/ _` | | | |/ _ \\ '__|   / /\n");
+    printf("| |_) | | (_| | |_| |  __/ |     / /_\n");
+    printf("| .__/|_|\\__,_|\\__, |\\___|_|    |____|\n");
+    printf("| |             __/ |\n");
+    printf("|_|            |___/\n\n");
+}
+
+
 void HELP(){
     printf("Daftar Command yang dapat dilakukan : \n");
     printf("1. ATTACK \n");

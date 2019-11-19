@@ -38,9 +38,11 @@ int main(){
     CreateEmptyStack(&SBang);
     Aend(P1) = true;
     HELP();
+    
     while (playing){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
+        //Art1();
         UpdateBangunan (P1.ListB, &Arr);
         while ((playing) && (P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
@@ -56,6 +58,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
+                printf("Anda Berhasil Mengakhiri Turn Ini\n");
                 P1turn = false;
                 Aend(P2) = true;
                 Askill(P1) = false;
@@ -105,11 +108,15 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah2);
             TambahSkill(Jumlah1, Jumlah2, FAwal, FAkhir, Kondisi, &P1, &P2);
-            //system("CLS");
+            printf("\nPress Enter to Continue...");
+            INPUTENTER();
+            clear;              //untuk clear console di ubuntu
+            //system("CLS");    //untuk clear console di windows
         } 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 2
+        //Art2();
         UpdateBangunan (P2.ListB, &Arr);
         while ((playing) && !(P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
@@ -124,6 +131,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){
+                printf("Anda Berhasil Mengakhiri Turn Ini\n");
                 P1turn = true;
                 Aend(P1) = true;
                 Askill(P2) = false;
@@ -171,7 +179,10 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah1);
             TambahSkill(Jumlah2, Jumlah1, FAwal, FAkhir, Kondisi, &P2, &P1);
-            //system("CLS");
+            printf("\nPress Enter to Continue...");
+            INPUTENTER();
+            clear;              //untuk clear console di ubuntu
+            //system("CLS");    //untuk clear console di windows
         } 
 
     } 
