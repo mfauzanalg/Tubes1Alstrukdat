@@ -1,24 +1,18 @@
-void attack(PLAYER player_serang){
-    int temp_critical, temp_Attack_Up;
-    List L1, L2, L3; //list bangunan milik p1,p2, dan tidak keduanya
-    address P, P2, P3; //menunjuk di list bangunan
-    Bangunan mau_attack; //mengambil array bangunan
+
+
+void bangunan_sendiri() //mengeprint bangunan sendiri, fungsi utama
+
+{   int temp_critical, temp_Attack_Up;
+    List L1; //list bangunan milik p1,p2, dan tidak keduanya
+    address P; //menunjuk di list bangunan
     int infop; //dari list diambil indeksnya
-    array arr_temp,arr_temp2; //buat array agar bisa ipilih bangunan ke berapa oleh user dari daftar bangunan
+    array arr_temp; //buat array agar bisa ipilih bangunan ke berapa oleh user dari daftar bangunan
     int diserang, serang; //yang dipilih diserang dan menyerang kebalik
-    int jum_pasukan; //masukan user berapa pasukan yang digunakan untuk nyerang
-    infotypelist pindah_pemilik; //buat temp pindah kepemilikan
-    int i,k;
-    
 
-void bangunan_sendiri() //mengeprint bangunan sendiri
-
-{address P;
-int i;
-infotype infop;
+    int i;
 
     printf("Daftar Bangunan\n");
-    if (player_serang.num == 1){
+    if (player_serang.num == 1){//kalau player 1
         P = First(L1);
     }
     else //kalau player 2 listnya akan menunjuk ke list l2
@@ -55,9 +49,21 @@ infotype infop;
                 } 
         }
         printf("Bangunan yang digunakan untuk menyerang: ");
-        scanf("%d\n", diserang);
+        scanf("%d\n", &diserang);
+        while ((serang < 0) || (serang>k)){
+            printf("Tidak ada bangunan yang dimaksud, mohon input ulang!\n");
+            printf("Bangunan yang digunakan untuk menyerang: ");
+            scanf("%d\n", &diserang);
+        }
         printf("Daftar bangunan yang dapat diserang");
         bangunan_diserang(); //manggil fungsi bangunan yang dapat diserang
+        printf("Bangunan yang diserang: ");
+        scanf("%d\n", &serang);
+        while ((serang < 0) || (serang>k)){
+            printf("Tidak ada bangunan yang dimaksud, mohon input ulang!\n");
+            printf("Bangunan yang diserang: ");
+            scanf("%d\n", &serang);
+        }
 }
 
 
@@ -65,6 +71,8 @@ void bangunan_diserang() //fungsi ngeprint bangunana yang bisa diserang
 {int k;
 address P2;
 boolean terserang_Valid = false;
+List L2, L3; //list bangunan milik p1,p2, dan tidak keduanya
+array arr_temp2; //buat array agar bisa ipilih bangunan ke berapa oleh user dari daftar bangunan
 
 if (player_serang.num == 1){
         P2 = First(L2);
@@ -158,13 +166,15 @@ if (player_serang.num == 1){
 
 
 void deploy() //fungsi untuk hasil serang-menyerang
-{
+{    int jum_pasukan; //masukan user berapa pasukan yang digunakan untuk nyerang
+     infotypelist pindah_pemilik; //buat temp pindah kepemilikan
+     
 printf("Jumlah pasukan: ");
-scanf("%d\n", jum_pasukan);
-while (jum_pasukan > Elmt(Arr,Elmt(arr_temp,diserang)).jum{
-    printf("Jumlah pasukan yang dimasukkan kurang dari total pasukan di bangunan anda, masukkan ulang!\n");
+scanf("%d\n", &jum_pasukan);
+while ((jum_pasukan > Elmt(Arr,Elmt(arr_temp,diserang)).jum) || (jum_pasukan <=0)){
+    printf("Jumlah pasukan yang dimasukkan tidak sesuai dengan jumlah pasukan di bangunan anda, masukkan ulang!\n");
     printf("Jumlah pasukan: ");
-    scanf("%d\n", jum_pasukan);
+    scanf("%d\n", &jum_pasukan);
 }
 
 if (temp_critical > 0){ //skill critical
