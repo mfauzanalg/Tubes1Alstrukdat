@@ -13,13 +13,9 @@
 
 typedef struct tElmtMatlistG *addresslistG;
 
-typedef struct{
-  infotypelist induk;
-  List anak;
-}infotypelistGraph;
-
 typedef struct tElmtMatlistG {
-	infotypelistGraph infoG;
+	infotypelist infoG;
+	addresslist tetangga;
 	addresslistG nextG;
 } ElmtListGraph;
 
@@ -32,30 +28,24 @@ typedef struct {
 /* Setiap elemen dengan addresslist P dapat diacu Info(P), Next(P) */
 /* Elemen terakhir list : jika addressnya Last, maka Next(Last)=NilList */
 
-#define Info(P) (P)->info
-#define Next(P) (P)->next
-#define First(L) ((L).First)
-
-#define Induk(P) ((P)->infoG).induk
-#define Anak(P) ((P)->infoG).anak
+#define InfoG(P) (P)->infoG
 #define NextG(P) (P)->nextG
-#define FirstG(G) ((G).FirstG)
+#define Tetangga(P) (P)->tetangga
+#define FirstG(L) ((L).FirstG)
 
 
 /****************** Manajemen Memori ******************/
-addresslistG AlokasiGraph (infotypelist X, List L);
+addresslistG AlokasiGraph (infotypelist X);
 
 /****************** Penambahan Elemen ******************/
 void InsVFirstGraph (GraphList *Graph, infotypelist X, List L);
 
-void InsVLastGraph (GraphList *Graph, infotypelist X, List L);
-
 /****************** Konstruktor ******************/
-List CreateListNeighbors(int n, MATRIKS *Mat);
+List CreateListNeighbors(int n, MATRIKS Mat);
 
-void CreateEmptyGraph(GraphList *Graph, int maxel, MATRIKS *Mat);
+void CreateEmptyGraph(GraphList *Graph, MATRIKS Mat);
 
-boolean IsAdjacent(GraphList *Graph, int a, int b);
+boolean IsAdjacent(GraphList Graph, int a, int b);
 
 List Neighbors(GraphList Graph, int n);
 
