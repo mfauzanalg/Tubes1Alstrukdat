@@ -1,14 +1,22 @@
 BLM OKE
-4. ATTACK
+4. ATTACK blm di cek semua kondisi siih
 5. SKILL
 6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
 7. coba jangan pake strcmp
 9. Beresin fungsi2 sampah dari file
 10. SAVE
 11. LOAD
+12. Validasi input pilih bangunan
+13. UNDONYA KOK GAK BISA ABIS ATTACK TADI
 
 OKE
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
 2. Rapihin command masih berantakan bgt cuyy (ok)
 3. MOVE (ok)
 8. mesin yg bisa input enter (ok)
+
+Yang harus diperhatikan saat penyerangan adalah
+1. Apakah Critical hit aktif ->  ada di player
+2. Apakah Attack up aktif -> ada di player
+3. Apakah Shield Aktif -> ada di player
+4. Apakah Bangunan memiliki ->  ada di bangunan

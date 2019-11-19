@@ -34,7 +34,7 @@ void HitungJum (JumlahB *Jumlah, PLAYER P, TabBang Arr);
 void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi);
 //Mengecek kemungkinan penambahan skill
 
-void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3);
+void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER *P3, PLAYER *P4);
 //Attack
 
 void Move(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3);
