@@ -29,7 +29,7 @@ addresslistG AlokasiGraph(infotypelist X){
 }
 
 /****************** Penambahan Elemen ******************/
-void InsVFirstGraph (GraphList *Graph, infotypelist X, List L){
+void InsVFirstGraph (TabGraph *Graph, infotypelist X, List L){
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
@@ -54,7 +54,7 @@ List CreateListNeighbors(int n, MATRIKS Mat){
 	return L;
 }
 
-void CreateEmptyGraph(GraphList *Graph, MATRIKS Mat)
+void CreateEmptyGraph(TabGraph *Graph, MATRIKS Mat)
 /* array untuk representasi graph, array berisikan list of bangunan yang terhubung */
 {
 	FirstG(*Graph) = NilList;
@@ -64,7 +64,7 @@ void CreateEmptyGraph(GraphList *Graph, MATRIKS Mat)
 	}
 }
 
-boolean IsAdjacent(GraphList Graph, int a, int b)
+boolean IsAdjacent(TabGraph Graph, int a, int b)
 /* mengecek apakah bangunan a bersambung dengan bangunan b */
 {
 	List L;
@@ -85,7 +85,7 @@ boolean IsAdjacent(GraphList Graph, int a, int b)
 }
 
 
-List Neighbors(GraphList Graph, int n){
+List Neighbors(TabGraph Graph, int n){
 	List L;
 	addresslistG P;
 	addresslist Q, precR,R;

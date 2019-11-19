@@ -94,7 +94,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 	P = Alokasi(3);
 	InsertFirst(&*L2, P);
 
-	CreateEmptyGraph(ArrGraph, *J, Mat);
+	CreateEmptyGraph(ArrGraph, *Mat);
 
 }
 

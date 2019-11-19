@@ -7,7 +7,7 @@
 #include "typebentukan.h"
 #include "stack.h"
 #include "array.h"
-#include "graph.h"
+#include "graph_baru.h"
 #include "olahfile.h"
 
 void Art1();
