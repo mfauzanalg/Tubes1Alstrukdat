@@ -199,22 +199,26 @@ void DelP (List *L, infotypelist X){
 /* List mungkin menjadi kosong karena penghapusan */
 	addresslist P;
 	addresslist Prec;
-	P = First(*L);
-	Prec = NilList;
+	addresslist addr1 = Search(*L, X);
 
-	if (Info(P) ==  X){
-		First(*L) = Next(P);
-		DealokasiList(&P);
-	}
-	else{
-		while (Info(P) != X && P != NilList){
-			Prec = P;
-			P = Next(P);
-		}
+	if(addr1 != NilList){
+		P = First(*L);
+		Prec = NilList;
 
-		if (P != NilList){
-			Next(Prec) = (Next(Next(Prec)));
+		if (Info(P) ==  X){
+			First(*L) = Next(P);
 			DealokasiList(&P);
+		}
+		else{
+			while (Info(P) != X && P != NilList){
+				Prec = P;
+				P = Next(P);
+			}
+
+			if (P != NilList){
+				Next(Prec) = (Next(Next(Prec)));
+				DealokasiList(&P);
+			}
 		}
 	}
 }

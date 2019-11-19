@@ -128,14 +128,16 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     }
 }
 
-void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3, PLAYER P4){
-    //P3 itu milik kita
-    //P4 itu milik lawan
-
+void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER *P3, PLAYER *P4){
+    //*P3 itu milik kita
+    //*P4 itu milik lawan
+    PrintInfo((*P3).ListB);
+    PrintInfo((*P4).ListB);
+    addresslist A;
     int Z; //Jumlah Kita
     int Tujuan; //Jumlah lawan
     int Hasil;
-    DaftarBangunan(P3.ListB, *Arr, &*T1);
+    DaftarBangunan((*P3).ListB, *Arr, &*T1);
     printf("Pilih bangunan untuk menyerang : ");
     STARTWORD();
     *X = WStringToInteger(CWord);
@@ -165,34 +167,45 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
             Tujuan = Elmt(*Arr,ElmtStat(*T2,*Y)).jum;
 
             //Mulai penyerangan
-            if(P3.IsCriticalHit){           //Jika critical hit aktif
+            if((*P3).IsCriticalHit){           //Jika critical hit aktif
                 Z *= 2;
                 Tujuan -= Z;
                 if (Tujuan <= 0){           //Berpindah kepemilikan
                     printf("pindah kepemilikan tapi belum di listnya");
                     Tujuan *= (0.5);
+                    A = Alokasi(ElmtStat(*T2,*Y));
+                    DelP(&((*P4)).ListB, ElmtStat(*T2,*Y));
+                    InsertFirst(&((*P3)).ListB, A);
+                    Tujuan *= -1;
                 }
                 else{
                     printf("gak pindah kepemilikan");
                 }
             }
             else{                           //Jika critical hit tidak aktif
-                if(P3.IsAttackUp){          //Jika AttackUp Aktif
+                if((*P3).IsAttackUp){          //Jika AttackUp Aktif
                     Tujuan -= Z;
                     if (Tujuan <= 0){       //Berpindah kepemilikan
                     printf("pindah kepemilikan tapi belum di listnya");
+                    A = Alokasi(ElmtStat(*T2,*Y));
+                    DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
+                    InsertFirst(&((*P3)).ListB, A);
+                    Tujuan *= -1;
                     }
                     else{                   //Tidak berpindah kepemilikan
                         printf("gak pindah kepemilikan");
                     }
                 }
                 else{                       //Jika AttackUp tidak Aktif
-                    if(P4.IsShield){        //Jika lawan memiliki shield
+                    if((*P4).IsShield){        //Jika lawan memiliki shield
                         Z *= (0.75);
                         Tujuan -= Z;
                         if (Tujuan <= 0){   //Berpindah kepemilikan
                             printf("pindah kepemilikan tapi belum di listnya");
-                            Tujuan = (Tujuan*4)/3;
+                            A = Alokasi(ElmtStat(*T2,*Y));
+                            DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
+                            InsertFirst(&((*P3)).ListB, A);
+                            Tujuan = (Tujuan*4)/3*-1;
                         }
                         else{               //Tidak berpindah kepemilikan
                             printf("gak pindah kepemilikan");
@@ -204,16 +217,23 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                             Tujuan -= Z;
                             if (Tujuan <= 0){   //Berpindah kepemilikan
                                 printf("pindah kepemilikan tapi belum di listnya");
-                                Tujuan = (Tujuan*4)/3;
+                                A = Alokasi(ElmtStat(*T2,*Y));
+                                DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
+                                InsertFirst(&((*P3)).ListB, A);
+                                Tujuan = (Tujuan*4)/3*-1;
                             }
                             else{               //Tidak berpindah kepemilikan
                                 printf("gak pindah kepemilikan");
                             }
                         }
-                        else{
+                        else{                               //Jika lawan tidak memiliki pertahanan
                             Tujuan -= Z;
                             if (Tujuan <= 0){       //Berpindah kepemilikan
-                            printf("pindah kepemilikan tapi belum di listnya");
+                                printf("pindah kepemilikan tapi belum di listnya");
+                                A = Alokasi(ElmtStat(*T2,*Y));
+                                DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
+                                InsertFirst(&((*P3)).ListB, A);
+                                Tujuan *= -1;
                             }
                             else{                   //Tidak berpindah kepemilikan
                                 printf("gak pindah kepemilikan");
@@ -222,7 +242,10 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     }
                 }
             }
+            Elmt(*Arr,ElmtStat(*T2,*Y)).attack = true;
             Elmt(*Arr,ElmtStat(*T2,*Y)).jum = Tujuan;
+            PrintInfo((*P3).ListB);
+            PrintInfo((*P4).ListB);
         }
         else {
             printf("Tidak ada bangunan yang dapat diserang\n");

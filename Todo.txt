@@ -1,5 +1,5 @@
 BLM OKE
-4. ATTACK
+4. ATTACK blm di cek semua kondisi siih
 5. SKILL
 6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
 7. coba jangan pake strcmp
