@@ -3,7 +3,7 @@
 #include "matriks.h"
 #include "boolean.h"
 #include "list.h"
-#include "graph.h"
+#include "graph_baru.h"
 
 
 /****************** Manajemen Memori ******************/
@@ -121,4 +121,17 @@ boolean IsAdjacent(GraphList *Graph, int a, int b)
 		found = true;
 	}
 	return (found);
+}
+
+
+List Neighbors(GraphList Graph, int n){
+	List L;
+	addresslistG P;
+	P = FirstG(Graph);
+	while (P != NilList){
+		if (Induk(P) == n){
+			L = Anak(P);
+		}
+	}
+	return L;
 }

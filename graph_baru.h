@@ -57,5 +57,6 @@ void CreateEmptyGraph(GraphList *Graph, int maxel, MATRIKS *Mat);
 
 boolean IsAdjacent(GraphList *Graph, int a, int b);
 
+List Neighbors(GraphList Graph, int n);
 
 #endif
