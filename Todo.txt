@@ -5,9 +5,11 @@ BLM OKE
 7. coba jangan pake strcmp
 9. Beresin fungsi2 sampah dari file
 10. SAVE
-11. LOAD
+11. LOADn
 12. Validasi input pilih bangunan
 13. UNDONYA KOK GAK BISA ABIS ATTACK TADI
+14. Masih PrintInfo yang abis Attack jangan lupa diilangi
+15. Validasi Level Up kalo udh level 4
 
 OKE
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
@@ -20,3 +22,11 @@ Yang harus diperhatikan saat penyerangan adalah
 2. Apakah Attack up aktif -> ada di player
 3. Apakah Shield Aktif -> ada di player
 4. Apakah Bangunan memiliki ->  ada di bangunan
+
+if(Aend(Pl)){                   //kondisi setelah pemain mengetikkan end turn
+        if (P1turn == false){            //jika turn pemain 1: turn pemain -> 2 dan sebaliknya
+            P1turn = true;
+        }else if (P1turn == false){
+            P1turn = false;
+        }
+    }

@@ -334,7 +334,7 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
     }
 }
 
-void TambahSkill(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan){
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan){
     if (Kondisi.S){
         if (JTotal(Jumlahlawan) == 2){
             AddQueue(&(*Paku).Skill, 2);
@@ -355,13 +355,15 @@ void TambahSkill(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, C
     }
 }
 
-void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1){
-    DaftarBangunan(P.ListB, *Arr, &*T1);
-    printf("Bangunan yang akan di level up : ");
-    STARTWORD();
-    *i = WStringToInteger(CWord);
-
-    *i = ElmtStat(*T1, *i);
+void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
+    if(IsIU == 1){
+        DaftarBangunan(P.ListB, *Arr, &*T1);
+        printf("Bangunan yang akan di level up : ");
+        STARTWORD();
+        *i = WStringToInteger(CWord);
+        *i = ElmtStat(*T1, *i);
+    }
+    
     
     MATRIKS MC, MT, MF, MV;
     CreateEmptyMatriks(4,4, &MC);
@@ -454,8 +456,18 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1){
     ElmtMat(MV,4,4)=0;
     
     if (Elmt(*(Arr), *i).type == 'C'){
-        if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
-            printf("Jumlah pasukan Castle kurang untuk level up\n");
+        if (IsIU == 1){
+            if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
+                printf("Jumlah pasukan Castle kurang untuk level up\n");
+            }
+            else{
+                Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+                Elmt(*(Arr), *i).lev++;
+                Elmt(*(Arr), *i).A=ElmtMat(MC,Elmt(*(Arr), *i).lev,1);
+                Elmt(*(Arr), *i).M=ElmtMat(MC,Elmt(*(Arr), *i).lev,2);
+                Elmt(*(Arr), *i).P=ElmtMat(MC,Elmt(*(Arr), *i).lev,3);
+                printf("Level Castle-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
+            }
         }
         else{
             Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
@@ -463,12 +475,21 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1){
             Elmt(*(Arr), *i).A=ElmtMat(MC,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MC,Elmt(*(Arr), *i).lev,2);
             Elmt(*(Arr), *i).P=ElmtMat(MC,Elmt(*(Arr), *i).lev,3);
-            printf("Level Castle-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
         }
     }
     else if (Elmt(*(Arr), *i).type == 'T'){
-        if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
-            printf("Jumlah pasukan Tower kurang untuk level up\n");
+        if(IsIU == 1){
+            if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
+                printf("Jumlah pasukan Tower kurang untuk level up\n");
+            }
+            else{
+                Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+                Elmt(*(Arr), *i).lev++;
+                Elmt(*(Arr), *i).A=ElmtMat(MT,Elmt(*(Arr), *i).lev,1);
+                Elmt(*(Arr), *i).M=ElmtMat(MT,Elmt(*(Arr), *i).lev,2);
+                Elmt(*(Arr), *i).P=ElmtMat(MT,Elmt(*(Arr), *i).lev,3);
+                printf("Level Tower-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
+            }
         }
         else{
             Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
@@ -476,13 +497,22 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1){
             Elmt(*(Arr), *i).A=ElmtMat(MT,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MT,Elmt(*(Arr), *i).lev,2);
             Elmt(*(Arr), *i).P=ElmtMat(MT,Elmt(*(Arr), *i).lev,3);
-            printf("Level Tower-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
         }
     }
 
     else if (Elmt(*(Arr), *i).type == 'F'){
-        if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
-            printf("Jumlah pasukan Fort kurang untuk level up\n");
+        if(IsIU == 1){
+            if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
+                printf("Jumlah pasukan Fort kurang untuk level up\n");
+            }
+            else{
+                Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+                Elmt(*(Arr), *i).lev++;
+                Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
+                Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
+                Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
+                printf("Level Fort-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
+            }
         }
         else{
             Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
@@ -490,13 +520,22 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1){
             Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
             Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
-            printf("Level Fort-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
         }
     }
 
     else{
-        if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
-            printf("Jumlah pasukan Village kurang untuk level up\n");
+        if(IsIU== 1){
+            if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
+                printf("Jumlah pasukan Village kurang untuk level up\n");
+            }
+            else{
+                Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+                Elmt(*(Arr), *i).lev++;
+                Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
+                Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
+                Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
+                printf("Level Village-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
+            }
         }
         else{
             Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
@@ -504,7 +543,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1){
             Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
             Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
-            printf("Level Village-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
         }
     }
 }

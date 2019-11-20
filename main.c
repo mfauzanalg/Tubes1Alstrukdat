@@ -73,7 +73,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){ //sudah jalan
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                LevelUpUp(&Arr, P1, &X, &T1);
+                LevelUpUp(&Arr, P1, &X, &T1, 1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -87,6 +87,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P1);
+                printf("Anda Berhasil Meng-Undo Command Terakhir");
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
@@ -107,7 +108,7 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah2);
-            TambahSkill(Jumlah1, Jumlah2, FAwal, FAkhir, Kondisi, &P1, &P2);
+            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, FAkhir, Kondisi, &P1, &P2);
             printf("\nPress Enter to Continue...\n");
             INPUTENTER();
             //clear;              //untuk clear console di ubuntu
@@ -146,7 +147,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                LevelUpUp(&Arr, P2, &X, &T1);
+                LevelUpUp(&Arr, P2, &X, &T1, 1);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
@@ -160,6 +161,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P2);
+                printf("Anda Berhasil Meng-Undo Command Terakhir");
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
@@ -178,7 +180,7 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah1);
-            TambahSkill(Jumlah2, Jumlah1, FAwal, FAkhir, Kondisi, &P2, &P1);
+            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, FAkhir, Kondisi, &P2, &P1);
             printf("\nPress Enter to Continue...\n");
             INPUTENTER();
             //clear;              //untuk clear console di ubuntu

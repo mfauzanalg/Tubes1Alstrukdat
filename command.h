@@ -40,10 +40,10 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
 void Move(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3);
 //Move pasukan
 
-void TambahSkill(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan);
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan);
 // Menambah skill atau tidak di akhir
 
-void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1);
+void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU);
 // Untuk level up
 
 #endif
