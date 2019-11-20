@@ -43,7 +43,7 @@ void Move(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, 
 void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan);
 // Menambah skill atau tidak di akhir
 
-void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU);
+void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand);
 // Untuk level up
 
 #endif

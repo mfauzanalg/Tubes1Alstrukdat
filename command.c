@@ -246,6 +246,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
             Elmt(*Arr,ElmtStat(*T2,*Y)).jum = Tujuan;
             PrintInfo((*P3).ListB);
             PrintInfo((*P4).ListB);
+            (*P3).IsCriticalHit = false;
         }
         else {
             printf("Tidak ada bangunan yang dapat diserang\n");
@@ -353,10 +354,12 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhi
     if (FAkhir == FAwal-1){
         AddQueue(&(*Paku).Skill, 3);
     }
+    (*Paku).IsAttackUp = false;
+    (*Plawan).CountShield = -1;
 }
 
-void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
-    if(IsIU == 1){
+void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
+    if(IsCommand == 1){
         DaftarBangunan(P.ListB, *Arr, &*T1);
         printf("Bangunan yang akan di level up : ");
         STARTWORD();
@@ -456,7 +459,7 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
     ElmtMat(MV,4,4)=0;
     
     if (Elmt(*(Arr), *i).type == 'C'){
-        if (IsIU == 1){
+        if (IsCommand == 1){
             if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
                 printf("Jumlah pasukan Castle kurang untuk level up\n");
             }
@@ -470,7 +473,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
             }
         }
         else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MC,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MC,Elmt(*(Arr), *i).lev,2);
@@ -478,7 +480,7 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
         }
     }
     else if (Elmt(*(Arr), *i).type == 'T'){
-        if(IsIU == 1){
+        if(IsCommand == 1){
             if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
                 printf("Jumlah pasukan Tower kurang untuk level up\n");
             }
@@ -492,7 +494,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
             }
         }
         else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MT,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MT,Elmt(*(Arr), *i).lev,2);
@@ -501,7 +502,7 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
     }
 
     else if (Elmt(*(Arr), *i).type == 'F'){
-        if(IsIU == 1){
+        if(IsCommand == 1){
             if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
                 printf("Jumlah pasukan Fort kurang untuk level up\n");
             }
@@ -515,7 +516,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
             }
         }
         else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
@@ -524,7 +524,7 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
     }
 
     else{
-        if(IsIU== 1){
+        if(IsCommand== 1){
             if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
                 printf("Jumlah pasukan Village kurang untuk level up\n");
             }
@@ -538,7 +538,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsIU){
             }
         }
         else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);

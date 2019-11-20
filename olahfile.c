@@ -333,36 +333,56 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 void StartPlayer (PLAYER *P){
 	CreateEmptyQueue(&(*P).Skill, 10);
 	AddQueue(&(*P).Skill, 1);
+	AddQueue(&(*P).Skill, 2);
+	AddQueue(&(*P).Skill, 3);
+	AddQueue(&(*P).Skill, 4);
+	AddQueue(&(*P).Skill, 5);
+	AddQueue(&(*P).Skill, 6);
+	AddQueue(&(*P).Skill, 7);
 	IsShield(*P) = false;
 	IsAttackUp(*P) = false;
 	IsCriticalHit(*P) = false;
 	Askill(*P) = false;
 	Aend(*P) = false;
+	(*P).IsET = false;
+	(*P).CountShield = 0;
 }
 
-void UpdateBangunan (List L, TabBang *Arr){
+void UpdateBangunan (PLAYER Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr){
 	int i =1;
 	boolean found;
 	addresslist P;
-	P = First(L);
+	P = First(Pl.ListB);
 
-	while (P != NilList){
-		i = 1;
-		found = false;
-		while (i <= NbElmtArr(*Arr) && !(found)){
-			if (Info(P) == i){
-				if (!(Elmt(*(Arr),i).jum >= Elmt(*(Arr),i).M)){ //kalo blm lebih dari M maka ditambah
-					Elmt(*(Arr),i).jum += Elmt(*(Arr),i).A ;
+	if ((*Enemy).IsET){
+        if (*P1turn) {
+            *P1turn = false;
+			(*Enemy).IsET = false;
+        }
+        else{
+            *P1turn = true;
+			(*Enemy).IsET = false;
+        }
+    }
+	else{
+		while (P != NilList){
+			i = 1;
+			found = false;
+			while (i <= NbElmtArr(*Arr) && !(found)){
+				if (Info(P) == i){
+					if (!(Elmt(*(Arr),i).jum >= Elmt(*(Arr),i).M)){ //kalo blm lebih dari M maka ditambah
+						Elmt(*(Arr),i).jum += Elmt(*(Arr),i).A ;
+					}
+					found = true;
+					Elmt(*(Arr),i).attack = true;
+					Elmt(*(Arr),i).move = true;
 				}
-				found = true;
-				Elmt(*(Arr),i).attack = true;
-				Elmt(*(Arr),i).move = true;
+				else{
+					i++;
+				}
 			}
-			else{
-				i++;
-			}
+			P = Next(P);
 		}
-		P = Next(P);
 	}
 }
 

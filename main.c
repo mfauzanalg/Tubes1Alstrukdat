@@ -5,6 +5,7 @@
 #include "typebentukan.h"
 #include "stack.h"
 #include "command.h"
+#include "skill.h"
 
 int main(){
 	int i;
@@ -24,7 +25,7 @@ int main(){
     JumlahB Jumlah1, Jumlah2;   //Jumlah bangunan yang dimiliki pemain1
     TabInt T1, T2;              //Tab untuk membuat bangunan yang dapat dipilih
     List Tetangga;              //List yang berisi tetangga dari suatu bangunan
-    int X, Y;                      //Untuk input memilih bangunan
+    int X, Y;                   //Untuk input memilih bangunan
     int FAwal, FAkhir;          //Untuk mengecek jumlah fort apakah berkurang 1
     Condition Kondisi;
 
@@ -43,7 +44,7 @@ int main(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
         //Art1();
-        UpdateBangunan (P1.ListB, &Arr);
+        UpdateBangunan (P1, &P2, &P1turn, &Arr);
         while ((playing) && (P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
@@ -79,8 +80,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                printf("nanti ya\n");
+                UseSkill(&P1.Skill, P1, P2, &Arr, &P1.IsET);
                 Askill(P1) = true;
                 Aend(P1) = false;
             }
@@ -118,7 +118,7 @@ int main(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 2
         //Art2();
-        UpdateBangunan (P2.ListB, &Arr);
+        UpdateBangunan (P2, &P1, &P1turn, &Arr);
         while ((playing) && !(P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
@@ -153,7 +153,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
+                UseSkill(&P2.Skill, P2, P1, &Arr, &P2.IsET);
                 printf("nanti ya\n");
                 Askill(P2) = true;
                 Aend(P2) = false;

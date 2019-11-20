@@ -1,0 +1,19 @@
+Thoriq
+1. Point
+2. Array
+
+Kka Fonna
+3. Matriks
+4. Mesin Karakter-MesinKata
+
+LIa
+5. Queue
+6. Stack
+
+Raras
+7. List
+8. Graf
+
+Fauzan
+9 Lain-lain
+12. Program Utama
