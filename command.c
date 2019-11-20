@@ -246,6 +246,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
             Elmt(*Arr,ElmtStat(*T2,*Y)).jum = Tujuan;
             PrintInfo((*P3).ListB);
             PrintInfo((*P4).ListB);
+            (*P3).IsCriticalHit = false;
         }
         else {
             printf("Tidak ada bangunan yang dapat diserang\n");
@@ -353,6 +354,7 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhi
     if (FAkhir == FAwal-1){
         AddQueue(&(*Paku).Skill, 3);
     }
+    (*Paku).IsAttackUp = false;
 }
 
 void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
