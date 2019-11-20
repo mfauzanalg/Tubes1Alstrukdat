@@ -5,6 +5,7 @@
 #include "typebentukan.h"
 #include "stack.h"
 #include "command.h"
+#include "skill.h"
 
 int main(){
 	int i;
@@ -27,12 +28,14 @@ int main(){
     int X, Y;                      //Untuk input memilih bangunan
     int FAwal, FAkhir;          //Untuk mengecek jumlah fort apakah berkurang 1
     Condition Kondisi;
+    boolean IsET;
 
     LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
     StartPlayer(&P1);
     StartPlayer(&P2);
     playing = true;
     P1turn = true;
+    IsET = false;
     CreateEmptystackp(&SP1);
     CreateEmptystackp(&SP2);
     CreateEmptyStack(&SBang);
@@ -79,8 +82,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                printf("nanti ya\n");
+                UseSkill(&P1.Skill, P1, P2, &Arr, &IsET);
                 Askill(P1) = true;
                 Aend(P1) = false;
             }
@@ -153,7 +155,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
+                UseSkill(&P2.Skill, P2, P1, &Arr, &IsET);
                 printf("nanti ya\n");
                 Askill(P2) = true;
                 Aend(P2) = false;

@@ -10,6 +10,7 @@ BLM OKE
 13. UNDONYA KOK GAK BISA ABIS ATTACK TADI
 14. Masih PrintInfo yang abis Attack jangan lupa diilangi
 15. Validasi Level Up kalo udh level 4
+16. Jumlah pasukan awal
 
 OKE
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
