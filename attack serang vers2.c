@@ -173,10 +173,10 @@ if (player_serang.num == 1){
 
         if (!terserang_Valid){
             printf("Tidak ada bangunan yang bisa diserang dengan bangunan yang anda pilih sekarang");
-            printf("Pilih bangunan lain untuk menyerang");
-            bangunan_sendiri(); //manggil fungsi untuk serang baru
         }
+        else{
         deploy(); //fungsi nyerang
+        }
 }
 
 
