@@ -183,6 +183,7 @@ if (player_serang.num == 1){
 void deploy() //fungsi untuk hasil serang-menyerang
 {    int jum_pasukan; //masukan user berapa pasukan yang digunakan untuk nyerang
      infotypelist pindah_pemilik; //buat temp pindah kepemilikan
+     int temp_pasukan;
      
 printf("Jumlah pasukan: ");
 scanf("%d\n", &jum_pasukan);
@@ -211,13 +212,14 @@ if (Elmt(Arr,Elmt(arr_temp2,serang)).U > 0){ //untuk nyerang yang bukan punya si
 /*
 
 else if (temp_critical > 0){ //skill critical(belum selesai karena harus include semuanya) agak bingung jadi di komen dulu
+    temp_pasukan = jum_pasukan; //biar jumlah pasukan asli tak berpengaruh ketika serangan berhasil
     jum_pasukan = 2*jum_pasukan;
      (*Pl).IsCriticalHit = false;
 
      if (Elmt(Arr,Elmt(arr_temp2,serang)).U > 0){ //untuk nyerang yang bukan punya siapa2
             if (jum_pasukan >= Elmt(Arr,Elmt(arr_temp2,serang)).U){
             Elmt(Arr,Elmt(arr_temp2,serang)).U = 0;  //biar ga dianggep bukan punya siapa2
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = jum_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).U;
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum = temp_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).U;
             printf("Bangunan menjadi milikmu");
             DelP(*L3,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
@@ -237,8 +239,7 @@ else if (temp_critical > 0){ //skill critical(belum selesai karena harus include
     if (Elmt(Arr,Elmt(arr_temp2,serang)).U > 0){ //untuk nyerang yang bukan punya siapa2
             if (jum_pasukan >= Elmt(Arr,Elmt(arr_temp2,serang)).U){
             Elmt(Arr,Elmt(arr_temp2,serang)).U = 0; //biar ga dianggep bukan punya siapa2
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = jum_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).U;
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = 4/3 * Elmt(Arr,Elmt(arr_temp2,serang)).jum ;
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum = temp_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).U;
             printf("Bangunan menjadi milikmu");
             DelP(*L3,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
@@ -253,8 +254,7 @@ else if (temp_critical > 0){ //skill critical(belum selesai karena harus include
 }
     else{ //untuk nyerang pemain lain
         if (jum_pasukan >= Elmt(Arr,Elmt(arr_temp2,serang)).jum){
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = jum_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).jum;
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = 4/3 * Elmt(Arr,Elmt(arr_temp2,serang)).jum ;
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum = temp_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).jum;
             printf("Bangunan menjadi milikmu");
             DelP(*L2,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
@@ -295,9 +295,9 @@ else if (temp_critical > 0){ //skill critical(belum selesai karena harus include
 }
         else{ //untuk nyerang pemain lain
         if (jum_pasukan >= Elmt(Arr,Elmt(arr_temp2,serang)).jum){
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = jum_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).jum;
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum = temp_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).jum;
             printf("Bangunan menjadi milikmu");
-             DelP(*L2,pindah_pemilik );
+            DelP(*L2,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
             Elmt(Arr,Elmt(arr_temp,diserang)).attack = false;  //bangunan tak bisa nyerang lagi
             if (Elmt(Arr,Elmt(arr_temp2,serang)).lev != 1){ //kalau bangunan yang baru jadi milik pemain yang nyerang bukan level 1
@@ -341,13 +341,13 @@ else if (temp_critical > 0){ //skill critical(belum selesai karena harus include
 }
 
 else if (Elmt(Arr,Elmt(arr_temp2,serang)).p == true){ //kalau punya shield
+    temp_pasukan = jum_pasukan; //disimpan nilai asli jumlah pasukannya
     jum_pasukan = (3*jum_pasukan)/4;
     
     if (Elmt(Arr,Elmt(arr_temp2,serang)).U > 0){ //untuk nyerang yang bukan punya siapa2
             if (jum_pasukan >= Elmt(Arr,Elmt(arr_temp2,serang)).U){
             Elmt(Arr,Elmt(arr_temp2,serang)).U = 0; //biar ga dianggep bukan punya siapa2
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = jum_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).U;
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = 4/3 * Elmt(Arr,Elmt(arr_temp2,serang)).jum ;
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum = temp_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).U;
             printf("Bangunan menjadi milikmu");
             DelP(*L3,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
@@ -362,8 +362,7 @@ else if (Elmt(Arr,Elmt(arr_temp2,serang)).p == true){ //kalau punya shield
 }
     else{ //untuk nyerang pemain lain
         if (jum_pasukan >= Elmt(Arr,Elmt(arr_temp2,serang)).jum){
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = jum_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).jum;
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = 4/3 * Elmt(Arr,Elmt(arr_temp2,serang)).jum ;
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum = temp_pasukan - Elmt(Arr,Elmt(arr_temp2,serang)).jum;
             printf("Bangunan menjadi milikmu");
             DelP(*L2,pindah_pemilik );
             InsertVFirst(*L1, pindah_pemilik); //masuk ke list kepemilikan
