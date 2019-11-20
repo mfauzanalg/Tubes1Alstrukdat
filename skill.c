@@ -40,6 +40,7 @@ void Shield (PLAYER *Pl){
 /* seluruh bangunan yang dimiliki oleh pemain akan memiliki shield selama 2 turn */
 /* shield membuat jumlah pasukan yang dimiliki bertambah sebanyak 4/3 */
     (*Pl).IsShield = true;
+    (*Pl).CountShield = 2;
 }
 
 void ExtraTurn (boolean *ET){

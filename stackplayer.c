@@ -62,4 +62,6 @@ void CopyPlayer (PLAYER Pin, PLAYER *Pout){
 	(*Pout).IsAttack = Pin.IsAttack;
 	(*Pout).Askill = Pin.Askill;
 	(*Pout).Aend = Pin.Aend;
+	(*Pout).IsET = Pin.IsET;
+	(*Pout).CountShield = Pin.CountShield;
 }

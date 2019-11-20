@@ -12,6 +12,7 @@ BLM OKE
 15. Validasi Level Up kalo udh level 4
 16. Jumlah pasukan awal
 17. Kalo attack up sama critical hit
+18. Jangan lupa apus skill, player, list yang di print atau edit coba2
 
 OKE
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
@@ -29,6 +30,6 @@ if(Aend(Pl)){                   //kondisi setelah pemain mengetikkan end turn
         if (P1turn == false){            //jika turn pemain 1: turn pemain -> 2 dan sebaliknya
             P1turn = true;
         }else if (P1turn == false){
-            P1turn = false;
+            P1turn = true;;
         }
     }

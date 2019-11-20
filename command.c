@@ -355,6 +355,7 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhi
         AddQueue(&(*Paku).Skill, 3);
     }
     (*Paku).IsAttackUp = false;
+    (*Plawan).CountShield = -1;
 }
 
 void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
@@ -472,7 +473,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
             }
         }
         else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MC,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MC,Elmt(*(Arr), *i).lev,2);
@@ -494,7 +494,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
             }
         }
         else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MT,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MT,Elmt(*(Arr), *i).lev,2);
@@ -517,7 +516,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
             }
         }
         else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
@@ -540,7 +538,6 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
             }
         }
         else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
