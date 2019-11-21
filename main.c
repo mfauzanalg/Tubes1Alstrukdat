@@ -16,7 +16,7 @@ int main(){
     boolean P1turn;
     boolean ada;                //Ada bangunan yang dapat diserang atau ngga
     TabBang Arr, Arr2; 	        //Array menyimpan tipe data bangunan
-    TabGraph ArrGraph;          //Array menyimpan graf
+    GraphList Graph;          //Array menyimpan graf
     Stack SBang;                //Stack menyimpan Array Bangunan
     stackp SP1, SP2;            //Stack menyimpan data Player
     MATRIKS Mat;                //Matriks menyimpan data untk graf
@@ -29,7 +29,7 @@ int main(){
     int FAwal, FAkhir;          //Untuk mengecek jumlah fort apakah berkurang 1
     Condition Kondisi;
 
-    LoadFile (&N, &M, &J, &Arr, &ArrGraph, &Mat, &P1.ListB, &P2.ListB);
+    LoadFile (&N, &M, &J, &Arr, &Graph, &Mat, &P1.ListB, &P2.ListB);
     StartPlayer(&P1);
     StartPlayer(&P2);
     playing = true;
@@ -67,7 +67,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, ArrGraph, &P1, &P2);
+                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, &P1, &P2);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -92,7 +92,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, ArrGraph, P1);
+                Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -140,7 +140,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, ArrGraph, &P2, &P1);
+                Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, &P2, &P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
@@ -166,7 +166,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
-                Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, ArrGraph, P2);
+                Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, P2);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }

@@ -8,7 +8,7 @@ addresslist Prec;
 int i;
 int z;
 
-void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS *Mat, List *L1, List *L2){
+void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *Mat, List *L1, List *L2){
 	STARTKATA();
 	*N = StringToInteger(CKata);
 	ADVKATA();
@@ -94,7 +94,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 	P = Alokasi(3);
 	InsertFirst(&*L2, P);
 
-	CreateEmptyGraph(ArrGraph, *Mat);
+	CreateEmptyGraph(Graph, *Mat);
 
 }
 

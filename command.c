@@ -128,7 +128,7 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     }
 }
 
-void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER *P3, PLAYER *P4){
+void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, GraphList Graph, PLAYER *P3, PLAYER *P4){
     //*P3 itu milik kita
     //*P4 itu milik lawan
     PrintInfo((*P3).ListB);
@@ -143,7 +143,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
     *X = WStringToInteger(CWord);
 
     if (Elmt(*Arr,ElmtStat(*T1,*X)).attack){
-        *Tetangga = Neighbors(ArrGraph, ElmtStat(*T1,*X));
+        *Tetangga = Neighbors(Graph, ElmtStat(*T1,*X));
         AdaSerang (*Tetangga, *Arr, 1, &*ada,P1,P2);
         if (ada){
             Elmt(*Arr,ElmtStat(*T1,*X)).attack = false;
@@ -257,7 +257,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
     }
 }
 
-void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3){
+void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, GraphList Graph, PLAYER P3){
     int Z;
     char Bang1[10];
     char Bang2[10];
@@ -268,7 +268,7 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
     *X = WStringToInteger(CWord);
     
     if (Elmt(*Arr,ElmtStat(*T1,*X)).move){
-            *Tetangga = Neighbors(ArrGraph, ElmtStat(*T1,*X));
+            *Tetangga = Neighbors(Graph, ElmtStat(*T1,*X));
             AdaMove (*Tetangga, *Arr, P, &*ada, P1, P2);
             if (*ada){
                 Elmt(*Arr,ElmtStat(*T1,*X)).move = false;

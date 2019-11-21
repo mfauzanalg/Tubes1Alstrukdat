@@ -21,7 +21,7 @@ typedef struct tElmtMatlistG {
 
 typedef struct {
 	addresslistG FirstG;
-} TabGraph;
+} GraphList;
 
 /* Definisi list : */
 /* List kosong : First(L) = NilList */
@@ -38,15 +38,15 @@ typedef struct {
 addresslistG AlokasiGraph (infotypelist X);
 
 /****************** Penambahan Elemen ******************/
-void InsVFirstGraph (TabGraph *Graph, infotypelist X, List L);
+void InsVFirstGraph (GraphList *Graph, infotypelist X, List L);
 
 /****************** Konstruktor ******************/
 List CreateListNeighbors(int n, MATRIKS Mat);
 
-void CreateEmptyGraph(TabGraph *Graph, MATRIKS Mat);
+void CreateEmptyGraph(GraphList *Graph, MATRIKS Mat);
 
-boolean IsAdjacent(TabGraph Graph, int a, int b);
+boolean IsAdjacent(GraphList Graph, int a, int b);
 
-List Neighbors(TabGraph Graph, int n);
+List Neighbors(GraphList Graph, int n);
 
 #endif

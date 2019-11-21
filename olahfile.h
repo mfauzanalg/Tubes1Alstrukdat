@@ -6,7 +6,7 @@
 #include "typebentukan.h"
 #include "graph_baru.h"
 
-void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS *Mat, List *L1, List *L2);
+void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *Mat, List *L1, List *L2);
 // Load file data inisialisasi awal
 // Akan terbentuk
 // N = tinggi peta
