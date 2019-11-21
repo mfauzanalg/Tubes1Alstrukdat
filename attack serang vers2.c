@@ -193,6 +193,7 @@ while ((jum_pasukan > Elmt(Arr,Elmt(arr_temp,diserang)).jum) || (jum_pasukan <=0
     scanf("%d\n", &jum_pasukan);
 }
 
+Elmt(Arr,Elmt(arr_temp,diserang)).jum= Elmt(Arr,Elmt(arr_temp,diserang)).jum - jum_pasukan; //ngurangin pasukan di bangunan yang buat nyerang
 if (Elmt(Arr,Elmt(arr_temp2,serang)).U > 0){ //untuk nyerang yang bukan punya siapa2
             if (jum_pasukan >= Elmt(Arr,Elmt(arr_temp2,serang)).U){
             Elmt(Arr,Elmt(arr_temp2,serang)).U = 0;  //biar ga dianggep bukan punya siapa2
