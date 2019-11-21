@@ -205,7 +205,7 @@ if (Elmt(Arr,Elmt(arr_temp2,serang)).U > 0){ //untuk nyerang yang bukan punya si
 
             }
             else if (jum_pasukan < Elmt(Arr,Elmt(arr_temp2,serang)).U){
-            Elmt(Arr,Elmt(arr_temp2,serang)).U = Elmt(Arr,Elmt(arr_temp2,serang)).U - jum_pasukan; //masih dianggap kalau diserang ngurang ga konstan
+            Elmt(Arr,Elmt(arr_temp2,serang)).U -=  jum_pasukan; //masih dianggap kalau diserang ngurang ga konstan
             printf("Bangunan gagal direbut");
                     }
                      Elmt(Arr,Elmt(arr_temp,diserang)).attack = false;  //bangunan tak bisa nyerang lagi 
@@ -393,7 +393,7 @@ else if (Elmt(Arr,Elmt(arr_temp2,serang)).p == true){ //kalau punya shield
 
             }
             else if (jum_pasukan < Elmt(Arr,Elmt(arr_temp2,serang)).jum){
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = Elmt(Arr,Elmt(arr_temp2,serang)).jum - jum_pasukan;
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum -= jum_pasukan;
             printf("Bangunan gagal direbut");
             Elmt(Arr,Elmt(arr_temp,diserang)).attack = false;  //bangunan tak bisa nyerang lagi 
                     }
@@ -436,7 +436,7 @@ else{ //untuk nyerang pemain lain
 
             }
          else if (jum_pasukan < Elmt(Arr,Elmt(arr_temp2,serang)).jum){
-            Elmt(Arr,Elmt(arr_temp2,serang)).jum = Elmt(Arr,Elmt(arr_temp2,serang)).jum - jum_pasukan;
+            Elmt(Arr,Elmt(arr_temp2,serang)).jum -=  jum_pasukan;
             printf("Bangunan gagal direbut");
             Elmt(Arr,Elmt(arr_temp,diserang)).attack = false;  //bangunan tak bisa nyerang lagi  
                     }
