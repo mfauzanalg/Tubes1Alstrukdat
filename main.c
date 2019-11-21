@@ -52,6 +52,7 @@ int main(){
             FAwal = JFort(Jumlah2);
 
             CetakAwal(N,M,Arr, P1, P2, P1, 1, &T1);
+            
             STARTWORD();
     
             if (strcmp(CWord.TabKata, "EXIT") == 0){ //sudah jalan

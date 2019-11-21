@@ -42,7 +42,7 @@ void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, int 
     printf("PLayer %d\n", Curr);
     DaftarBangunan(P3.ListB, Arr, &*T1);
     printf("Skill Available : "); 
-    CetakSkill(InfoHead(P1.Skill));
+    CetakSkill(InfoHead(P3.Skill));
     printf("\n");
     printf("ENTER COMMAND : ");
 }
