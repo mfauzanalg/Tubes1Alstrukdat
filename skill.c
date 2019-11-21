@@ -22,8 +22,7 @@ void InstantUpgrade(PLAYER Pl, TabBang *Bang){
         i = 1;
         stop = false;                                    
         while((i <= NbElmtArr(*Bang)) && !stop){                //mencari daftar bangunan yang dimiliki pemain dalam array of bangunan dari 1 sampai NbElmt array of bangunan
-            if(Info(P) == i){   
-                printf("masuk\n");                              //jika isi dari list bangunan yang dimiliki player = list bangunan dalam array of bangunan
+            if(Info(P) == i){                                 //jika isi dari list bangunan yang dimiliki player = list bangunan dalam array of bangunan
                 LevelUpUp(&(*Bang), Pl, &i, &Tab, 0);           //naik 1 level untuk semua bangunan
                 stop = true;                                    //menghentikan pencarian jika bangunan x sudah naik level
             }else{
