@@ -3,7 +3,7 @@
 
 #include "typebentukan.h"
 #include "queue.h"
-#include "array.h"
+#include "Array/array.h"
 #include "stack.h"
 #include "command.h"
 

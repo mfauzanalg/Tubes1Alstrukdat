@@ -6,7 +6,7 @@
 #define stackpt_H
 
 #include "boolean.h"
-#include "array.h"
+#include "Array/array.h"
 
 #define Nilstackp 0
 #define MaxElstackp 100

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "typebentukan.h"
 #include "stack.h"
-#include "array.h"
+#include "Array/array.h"
 #include "graph.h"
 #include "olahfile.h"
 

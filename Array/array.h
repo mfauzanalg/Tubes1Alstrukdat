@@ -7,9 +7,9 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-#include "boolean.h"
-#include "typebentukan.h"
-#include "stackplayer.h"
+#include "../boolean.h"
+#include "../typebentukan.h"
+#include "../stackplayer.h"
 
 
 /*  Kamus Umum */
