@@ -152,8 +152,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                UseSkill(&P2.Skill, &P2, P1, &Arr, &P2.IsET);
-                printf("nanti ya\n");
+                UseSkill(&P2.Skill, &P2, P1, &Arr, &P2.IsET);;
                 Askill(P2) = true;
                 Aend(P2) = false;
             }

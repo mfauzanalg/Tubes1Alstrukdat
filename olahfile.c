@@ -89,8 +89,6 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	InsertFirst(&*L1, P);
 	P = Alokasi(2);
 	InsertFirst(&*L2, P);
-	P = Alokasi(4);
-	InsertFirst(&*L2, P);
 	P = Alokasi(3);
 	InsertFirst(&*L2, P);
 
