@@ -20,9 +20,9 @@ void bangunan_sendiri() //mengeprint bangunan sendiri, fungsi utama
         P = First(L2);
     }
 
-        if (P != Nil){
+        if (P != NilList){
             i =1;
-            while (P != Nil){
+            while (P != NilList){
 
                 printf("%d. ", i);  
                    
@@ -88,10 +88,10 @@ if (player_serang.num == 1){
     }
 
     k =1;
-     if (P2 != Nil){
+     if (P2 != NilList){
          
             
-            while (P2 != Nil){
+            while (P2 != NilList){
 
                 printf("%d. ", k);  
                    
@@ -129,10 +129,10 @@ if (player_serang.num == 1){
                 } 
         }
 
-        if (!IsEmpty(L3)){
+        if (!IsEmptyList(L3)){
             
             P2 = First(L3);
-            while (P2 != Nil){
+            while (P2 != NilList){
 
                 printf("%d. ", k);  
                    
@@ -173,7 +173,7 @@ if (player_serang.num == 1){
 
         if (!terserang_Valid){
             printf("Tidak ada bangunan yang bisa diserang dengan bangunan yang anda pilih sekarang");
-        }
+        } //ga jadi nyerang kalau ga ada bangunan yang bisa diserang oleh bangunan yang dipilih
         else{
         deploy(); //fungsi nyerang
         }
