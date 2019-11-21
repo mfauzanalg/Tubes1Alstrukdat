@@ -1,12 +1,23 @@
 BLM OKE
-5. SKILL
+5.  SKILL
+Penggunaan
 a. instant upgrade (ok)
 b. Shield (ok)
-c. Extra Turn
+c. Extra Turn (ok)
 d. Attack Up (ok)
 e. Critical Hit (ok)
-f. Instant Reinforcement
-g. Barrage
+f. Instant Reinforcement (ok)
+g. Barrage (ok)
+
+Skenario
+a. instant upgrade 
+b. Shield 
+c. Extra Turn 
+d. Attack Up 
+e. Critical Hit 
+f. Instant Reinforcement 
+g. Barrage 
+
 
 6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
 7. coba jangan pake strcmp

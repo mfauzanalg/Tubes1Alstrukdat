@@ -331,10 +331,10 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 void StartPlayer (PLAYER *P){
 	CreateEmptyQueue(&(*P).Skill, 10);
 	// AddQueue(&(*P).Skill, 1);
-	AddQueue(&(*P).Skill, 2);
+	// AddQueue(&(*P).Skill, 2);
 	// AddQueue(&(*P).Skill, 3);
-	AddQueue(&(*P).Skill, 4);
-	AddQueue(&(*P).Skill, 5);
+	// AddQueue(&(*P).Skill, 4);
+	// AddQueue(&(*P).Skill, 5);
 	// AddQueue(&(*P).Skill, 6);
 	// AddQueue(&(*P).Skill, 7);
 	IsShield(*P) = false;
