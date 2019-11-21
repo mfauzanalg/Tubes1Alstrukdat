@@ -21,7 +21,7 @@ void InstantReinforcement(PLAYER Pl, TabBang *Bang);
 
 void Barrage(PLAYER Enemy,TabBang *Bang);
 
-void UseSkill(Queue *Skill, PLAYER Pl, PLAYER Enemy, TabBang *Bang, boolean *ET);
+void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER Enemy, TabBang *Bang, boolean *ET);
 
 void ActiveTurn();
 

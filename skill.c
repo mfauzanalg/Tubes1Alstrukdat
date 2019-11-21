@@ -39,7 +39,7 @@ void Shield (PLAYER *Pl){
 /* seluruh bangunan yang dimiliki oleh pemain akan memiliki shield selama 2 turn */
 /* shield membuat jumlah pasukan yang dimiliki bertambah sebanyak 4/3 */
     (*Pl).IsShield = true;
-    (*Pl).CountShield = 2;
+    (*Pl).CountShield = 3;
 }
 
 void ExtraTurn (boolean *ET){
@@ -87,7 +87,7 @@ void InstantReinforcement(PLAYER Pl, TabBang *Bang){
     }
 }
 
-void Barrage(PLAYER Enemy,TabBang *Bang){
+void Barrage(PLAYER Enemy, TabBang *Bang){
 /* Jumlah pasukan pada seluruh bangunan musuh akan berkurang sebanyak 10 pasukan. */
     //KAMUS LOKAL
     addresslist P;
@@ -120,23 +120,33 @@ void Barrage(PLAYER Enemy,TabBang *Bang){
     }
 }
 
-void UseSkill(Queue *Skill, PLAYER Pl, PLAYER Enemy, TabBang *Bang, boolean *ET){
+void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER Enemy, TabBang *Bang, boolean *ET){
 /* procedure yang dipanggil setelah command *Skill */
     infotypequeue Q;
     if (InfoHead(*Skill) == 1){
-        InstantUpgrade(Pl,&(*Bang));
+        InstantUpgrade(*Pl,&(*Bang));
+        printf ("Anda berhasil menggunakan Skill Instant Upgrade!");
     } else if(InfoHead(*Skill) == 2){
-        Shield(&Pl);
+        Shield(&(*Pl));
+        printf ("Anda berhasil menggunakan Skill Shield!");
     } else if(InfoHead(*Skill) == 3){
         ExtraTurn(&(*ET));
+        printf ("Anda berhasil menggunakan SKill Extra Turn!");
     } else if(InfoHead(*Skill) == 4){
-        AttackUp(&Pl);
+        AttackUp(&(*Pl));
+        printf ("Anda berhasil menggunakan Skill Attack UP!");
     } else if(InfoHead(*Skill) == 5){
-        CriticalHit(&Pl);
+        CriticalHit(&(*Pl));
+        printf ("Anda berhasil menggunakan Skill Critical Hit!");
     } else if(InfoHead(*Skill) == 6){
-        InstantReinforcement(Pl,&(*Bang));
+        InstantReinforcement((*Pl),&(*Bang));
+        printf ("Anda berhasil menggunakan Skill Instant Reinforcement!");
     } else if(InfoHead(*Skill) == 7){
         Barrage(Enemy, &(*Bang));
+        printf ("Anda berhasil menggunakan Skill Barrage!");
+    }
+    else{
+        printf ("Anda tidak memiliki skill yang tersedia");
     }
     Del(&(*Skill),&Q);
 }

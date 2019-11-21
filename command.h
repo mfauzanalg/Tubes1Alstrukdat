@@ -19,7 +19,7 @@ void Art2();
 void HELP();
 // Untuk menampilkan command apa saja yang dapat dilakukan pada program
 
-void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, int Curr, TabInt *T1);
+void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, PLAYER P4, int Curr, TabInt *T1);
 // Cetak awal saat player baru dimulai
 
 void PushAll (TabBang Arr, TabBang *Arrcop, Stack *SBang, PLAYER P1, PLAYER P2, PLAYER *Pcop, stackp *SPlayer1, stackp *SPlayer2);

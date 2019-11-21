@@ -36,7 +36,7 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 void StartPlayer (PLAYER *P);
 // Status player waktu baru mulai
 
-void UpdateBangunan (PLAYER Pl, PLAYER *Enemy, boolean *P1turn,TabBang *Arr);
+void UpdateBangunan (PLAYER *Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr);
 // Penambahan tiap turnnya
 
 void CetakSkill (int x);

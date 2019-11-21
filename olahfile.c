@@ -332,13 +332,13 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 
 void StartPlayer (PLAYER *P){
 	CreateEmptyQueue(&(*P).Skill, 10);
-	AddQueue(&(*P).Skill, 1);
+	// AddQueue(&(*P).Skill, 1);
 	AddQueue(&(*P).Skill, 2);
-	AddQueue(&(*P).Skill, 3);
+	// AddQueue(&(*P).Skill, 3);
 	AddQueue(&(*P).Skill, 4);
 	AddQueue(&(*P).Skill, 5);
-	AddQueue(&(*P).Skill, 6);
-	AddQueue(&(*P).Skill, 7);
+	// AddQueue(&(*P).Skill, 6);
+	// AddQueue(&(*P).Skill, 7);
 	IsShield(*P) = false;
 	IsAttackUp(*P) = false;
 	IsCriticalHit(*P) = false;
@@ -348,11 +348,11 @@ void StartPlayer (PLAYER *P){
 	(*P).CountShield = 0;
 }
 
-void UpdateBangunan (PLAYER Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr){
+void UpdateBangunan (PLAYER *Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr){
 	int i =1;
 	boolean found;
 	addresslist P;
-	P = First(Pl.ListB);
+	P = First((*Pl).ListB);
 
 	if ((*Enemy).IsET){
         if (*P1turn) {
@@ -384,6 +384,10 @@ void UpdateBangunan (PLAYER Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr){
 			P = Next(P);
 		}
 	}
+	(*Pl).IsAttackUp = false;
+	(*Pl).IsCriticalHit = false;
+	if((*Enemy).CountShield > 0) (*Enemy).CountShield -= 1;
+	if((*Enemy).CountShield == 0) (*Enemy).IsShield = false;
 }
 
 void CetakSkill (int x){
@@ -407,6 +411,9 @@ void CetakSkill (int x){
 	}
 	else if (x == 7){
 		printf ("B");
+	}
+	else{
+		printf ("Kosong");
 	}
 }
 

@@ -1,6 +1,20 @@
 BLM OKE
 4. ATTACK blm di cek semua kondisi siih
-5. SKILL blm yg typenya ada di player
+a. polos
+b. shield
+c. pertahanan
+d. attack up
+e. critical hit
+
+5. SKILL
+a. instant upgrade (ok)
+b. Shield
+c. Extra Turn
+d. Attack Up
+e. Critical Hit
+f. Instant Reinforcement
+g. Barrage
+
 6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
 7. coba jangan pake strcmp
 9. Beresin fungsi2 sampah dari file
@@ -9,12 +23,15 @@ BLM OKE
 12. Validasi input pilih bangunan
 13. UNDONYA KOK GAK BISA ABIS ATTACK TADI
 14. Masih PrintInfo yang abis Attack jangan lupa diilangin
-15. Validasi Level Up kalo udh level 4
 16. Jumlah pasukan awal
 17. Kalo attack up sama critical hit
 18. Jangan lupa apus skill, player, list yang di print atau edit coba2
+19. Validasi pemilihan bangunan di move dan attack
+20. Keterangan setelah attack masih ccd
+21. Keterangan SKILL apa aja yang masih aktif
 
 OKE
+15. Validasi Level Up kalo udh level 4 (ok)
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
 2. Rapihin command masih berantakan bgt cuyy (ok)
 3. MOVE (ok)
@@ -25,11 +42,3 @@ Yang harus diperhatikan saat penyerangan adalah
 2. Apakah Attack up aktif -> ada di player
 3. Apakah Shield Aktif -> ada di player
 4. Apakah Bangunan memiliki ->  ada di bangunan
-
-if(Aend(Pl)){                   //kondisi setelah pemain mengetikkan end turn
-        if (P1turn == false){            //jika turn pemain 1: turn pemain -> 2 dan sebaliknya
-            P1turn = true;
-        }else if (P1turn == false){
-            P1turn = true;;
-        }
-    }

@@ -44,15 +44,13 @@ int main(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
         //Art1();
-        UpdateBangunan (P1, &P2, &P1turn, &Arr);
+        UpdateBangunan (&P1, &P2, &P1turn, &Arr);
         while ((playing) && (P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             FAwal = JFort(Jumlah2);
-
-            CetakAwal(N,M,Arr, P1, P2, P1, 1, &T1);
-            
+            CetakAwal(N,M,Arr, P1, P2, P1, P2, 1, &T1);
             STARTWORD();
     
             if (strcmp(CWord.TabKata, "EXIT") == 0){ //sudah jalan
@@ -81,7 +79,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                UseSkill(&P1.Skill, P1, P2, &Arr, &P1.IsET);
+                UseSkill(&P1.Skill, &P1, P2, &Arr, &P1.IsET);
                 Askill(P1) = true;
                 Aend(P1) = false;
             }
@@ -119,14 +117,14 @@ int main(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 2
         //Art2();
-        UpdateBangunan (P2, &P1, &P1turn, &Arr);
+        UpdateBangunan (&P2, &P1, &P1turn, &Arr);
         while ((playing) && !(P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah2, Jumlah1, &Kondisi);
             FAwal = JFort(Jumlah1);
 
-            CetakAwal(N,M,Arr, P1, P2, P2, 2, &T1); 
+            CetakAwal(N,M,Arr, P1, P2, P2, P1, 2, &T1); 
             STARTWORD();
             if (strcmp(CWord.TabKata, "EXIT") == 0){
                 playing = false;
@@ -154,7 +152,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                UseSkill(&P2.Skill, P2, P1, &Arr, &P2.IsET);
+                UseSkill(&P2.Skill, &P2, P1, &Arr, &P2.IsET);
                 printf("nanti ya\n");
                 Askill(P2) = true;
                 Aend(P2) = false;

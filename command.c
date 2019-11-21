@@ -37,10 +37,17 @@ void HELP(){
     printf("\n");
 }
 
-void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, int Curr, TabInt *T1){
+void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, PLAYER P4, int Curr, TabInt *T1){
     CetakPeta(N,M,Arr,P1,P2);
     printf("PLayer %d\n", Curr);
     DaftarBangunan(P3.ListB, Arr, &*T1);
+
+    printf("Skill Aktif : \n");
+    printf("Shield Lawan : "); if (P4.IsShield) printf("Aktif, sisa %d turn\n", P4.CountShield); else printf("Tidak aktif\n");
+    printf("Critical Hit : "); if (P3.IsCriticalHit) printf("Aktif\n"); else printf("Tidak aktif\n");
+    printf("Attack Up    : "); if (P3.IsAttackUp) printf("Aktif\n"); else printf("Tidak aktif\n\n");
+
+    printf("Banyaknya skill yang dimiliki player : %d\n", NBElmtQueue(P3.Skill));
     printf("Skill Available : "); 
     CetakSkill(InfoHead(P3.Skill));
     printf("\n");
@@ -139,8 +146,14 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
     int Hasil;
     DaftarBangunan((*P3).ListB, *Arr, &*T1);
     printf("Pilih bangunan untuk menyerang : ");
-    STARTWORD();
-    *X = WStringToInteger(CWord);
+    do{
+        STARTWORD();
+        *X = WStringToInteger(CWord);
+        if (*X > Neff(*T1) || *X <= 0){
+            printf("Pilihan tidak sesuai, silakan ulangi input\n");
+            printf("Pilih bangunan untuk menyerang : ");
+        }
+    }while(*X > Neff(*T1) || *X <= 0);
 
     if (Elmt(*Arr,ElmtStat(*T1,*X)).attack){
         *Tetangga = Neighbors(Graph, ElmtStat(*T1,*X));
@@ -149,18 +162,26 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
             Elmt(*Arr,ElmtStat(*T1,*X)).attack = false;
             DaftarSerang(*Tetangga, *Arr, &*T2, P, P1, P2);
             printf("Pilih bangunan yang ingin diserang : ");
-            STARTWORD();
-            *Y = WStringToInteger(CWord); //ini masuk attack
+
+            do{
+                STARTWORD();
+                *Y = WStringToInteger(CWord);
+                if (*Y > Neff(*T2) || *Y <= 0){
+                    printf("Pilihan tidak sesuai, silakan ulangi input\n");
+                    printf("Pilih bangunan yang ingin diserang : ");
+                }
+            }while(*Y > Neff(*T2) || *Y <= 0);
+
             printf("Jumlah pasukan yang tersedia : %d\n", Elmt(*Arr,ElmtStat(*T1,*X)).jum);
             printf("Masukan jumlah pasukan yang ingin digunakan untuk menyerang : ");
             do{
                 STARTWORD();
                 Z = WStringToInteger(CWord);
-                if  (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum){
-                    printf("Jumlah melebihi pasukan yang tersedia\n");
-                    printf("Masukan jumlah pasukan yang ingin duigunakan untuk menyerang : ");
+                if  (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum || Z < 0){
+                    printf("Jumlah tidak sesuai dengan pasukan yang tersedia\n");
+                    printf("Masukan jumlah pasukan yang ingin digunakan untuk menyerang : ");
                 }
-            }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum);
+            }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum || Z < 0);
             // Z itu jumlah penyerang
             // Bangunan asal nya dikurangin sama Z dulu
             Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z;
@@ -264,7 +285,15 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
 
     DaftarBangunan(P3.ListB, *Arr, &*T1);
     printf("Pilih bangunan asal pemindahan : ");
-    STARTWORD();
+    do{
+        STARTWORD();
+        *X = WStringToInteger(CWord);
+        if (*X > Neff(*T1) || *X <= 0){
+            printf("Pilihan tidak sesuai, silakan ulangi input\n");
+            printf("Pilih bangunan asal pemindahan : ");
+        }
+    }while(*X > Neff(*T1) || *X <= 0);
+
     *X = WStringToInteger(CWord);
     
     if (Elmt(*Arr,ElmtStat(*T1,*X)).move){
@@ -274,15 +303,21 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
                 Elmt(*Arr,ElmtStat(*T1,*X)).move = false;
                 DaftarMove(*Tetangga, *Arr, &*T2, P, P1, P2);
                 printf("Pilih bangunan tujuan pemindahan : ");
-                STARTWORD();
-                *Y = WStringToInteger(CWord);
+                do{
+                    STARTWORD();
+                    *Y = WStringToInteger(CWord);
+                    if (*Y > Neff(*T2) || *Y <= 0){
+                        printf("Pilihan tidak sesuai, silakan ulangi input\n");
+                        printf("Pilih bangunan tujuan pemindahan : ");
+                    }
+                }while(*Y > Neff(*T2) || *Y <= 0);
                 printf("Jumlah pasukan yang tersedia : %d\n", Elmt(*Arr,ElmtStat(*T1,*X)).jum);
                 printf("Masukan jumlah pasukan yang ingin dipindahkan : ");
                 do{
                     STARTWORD();
                     Z = WStringToInteger(CWord);
                     if  (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum){
-                        printf("Jumlah melebihi pasukan yang tersedia\n");
+                        printf("Jumlah tidak sesuai dengan pasukan yang tersedia\n");
                         printf("Masukan jumlah pasukan yang ingin dipindahkan : ");
                     }
                 }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum);
@@ -354,8 +389,6 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhi
     if (FAkhir == FAwal-1){
         AddQueue(&(*Paku).Skill, 3);
     }
-    (*Paku).IsAttackUp = false;
-    (*Plawan).CountShield = -1;
 }
 
 void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
