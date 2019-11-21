@@ -1,19 +1,23 @@
 BLM OKE
-4. ATTACK blm di cek semua kondisi siih
-a. polos
-b. shield
-c. pertahanan
-d. attack up
-e. critical hit
-
-5. SKILL
+5.  SKILL
+Penggunaan
 a. instant upgrade (ok)
-b. Shield
-c. Extra Turn
-d. Attack Up
-e. Critical Hit
-f. Instant Reinforcement
-g. Barrage
+b. Shield (ok)
+c. Extra Turn (ok)
+d. Attack Up (ok)
+e. Critical Hit (ok)
+f. Instant Reinforcement (ok)
+g. Barrage (ok)
+
+Skenario
+a. instant upgrade 
+b. Shield 
+c. Extra Turn 
+d. Attack Up 
+e. Critical Hit 
+f. Instant Reinforcement 
+g. Barrage 
+
 
 6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
 7. coba jangan pake strcmp
@@ -31,11 +35,19 @@ g. Barrage
 21. Keterangan SKILL apa aja yang masih aktif
 
 OKE
-15. Validasi Level Up kalo udh level 4 (ok)
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
 2. Rapihin command masih berantakan bgt cuyy (ok)
 3. MOVE (ok)
+
+4. ATTACK blm di cek semua kondisi siih
+a. polos (ok)
+b. shield (ok)
+c. pertahanan (ok)
+d. attack up (ok)
+e. critical hit (ok)
+
 8. mesin yg bisa input enter (ok)
+15. Validasi Level Up kalo udh level 4 (ok)
 
 Yang harus diperhatikan saat penyerangan adalah
 1. Apakah Critical hit aktif ->  ada di player

@@ -125,28 +125,28 @@ void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER Enemy, TabBang *Bang, boolean *ET
     infotypequeue Q;
     if (InfoHead(*Skill) == 1){
         InstantUpgrade(*Pl,&(*Bang));
-        printf ("Anda berhasil menggunakan Skill Instant Upgrade!");
+        printf ("Anda berhasil menggunakan Skill Instant Upgrade!\n");
     } else if(InfoHead(*Skill) == 2){
         Shield(&(*Pl));
-        printf ("Anda berhasil menggunakan Skill Shield!");
+        printf ("Anda berhasil menggunakan Skill Shield!\n");
     } else if(InfoHead(*Skill) == 3){
         ExtraTurn(&(*ET));
-        printf ("Anda berhasil menggunakan SKill Extra Turn!");
+        printf ("Anda berhasil menggunakan SKill Extra Turn!\n");
     } else if(InfoHead(*Skill) == 4){
         AttackUp(&(*Pl));
-        printf ("Anda berhasil menggunakan Skill Attack UP!");
+        printf ("Anda berhasil menggunakan Skill Attack UP!\n");
     } else if(InfoHead(*Skill) == 5){
         CriticalHit(&(*Pl));
-        printf ("Anda berhasil menggunakan Skill Critical Hit!");
+        printf ("Anda berhasil menggunakan Skill Critical Hit!\n");
     } else if(InfoHead(*Skill) == 6){
         InstantReinforcement((*Pl),&(*Bang));
-        printf ("Anda berhasil menggunakan Skill Instant Reinforcement!");
+        printf ("Anda berhasil menggunakan Skill Instant Reinforcement!\n");
     } else if(InfoHead(*Skill) == 7){
         Barrage(Enemy, &(*Bang));
-        printf ("Anda berhasil menggunakan Skill Barrage!");
+        printf ("Anda berhasil menggunakan Skill Barrage!\n");
     }
     else{
-        printf ("Anda tidak memiliki skill yang tersedia");
+        printf ("Anda tidak memiliki skill yang tersedia\n");
     }
     Del(&(*Skill),&Q);
 }
