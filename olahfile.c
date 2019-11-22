@@ -83,20 +83,31 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	}
 	CLOSE();
 
-	P = Alokasi(9);
-	InsertFirst(&*L1, P);
-	P = Alokasi(10);
-	InsertFirst(&*L1, P);
-
-
 	P = Alokasi(11);
+	InsertFirst(&*L1, P);
+	P = Alokasi(12);
+	InsertFirst(&*L1, P);
+
+
+	P = Alokasi(1);
 	InsertFirst(&*L2, P);
-	P = Alokasi(17);
+	P = Alokasi(2);
 	InsertFirst(&*L2, P);
-	P = Alokasi(6);
+	P = Alokasi(3);
 	InsertFirst(&*L2, P);
 	P = Alokasi(4);
 	InsertFirst(&*L2, P);
+	P = Alokasi(5);
+	InsertFirst(&*L2, P);
+	P = Alokasi(6);
+	InsertFirst(&*L2, P);
+	P = Alokasi(7);
+	InsertFirst(&*L2, P);
+	P = Alokasi(8);
+	InsertFirst(&*L2, P);
+	P = Alokasi(9);
+	InsertFirst(&*L2, P);
+
 
 
 	CreateEmptyGraph(Graph, *Mat);

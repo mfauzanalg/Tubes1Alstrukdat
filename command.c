@@ -76,6 +76,7 @@ void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P1, PLAYER *P2, stackp *SPlaye
         Pop (&*SBang, &*Arr);
         Popp (&*SPlayer1, &*P1);
         Popp (&*SPlayer2, &*P2);
+        printf("Anda Berhasil Meng-Undo Command Terakhir\n");
     }
 }
 
@@ -424,7 +425,7 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition
     }
     if (Kondisi.B){
         if (JTotal(Jumlahku) == 10){
-            AddQueue(&(*Plawan).Skill, 8);
+            AddQueue(&(*Plawan).Skill, 7);
         }
     }
     if (JFort(Jumlahlawan) == FAwal-1){

@@ -86,7 +86,6 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P1);
-                printf("Anda Berhasil Meng-Undo Command Terakhir");
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
