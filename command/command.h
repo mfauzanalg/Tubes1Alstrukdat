@@ -2,13 +2,15 @@
 #define COMMAND_H
 
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "stdio.h"
+#include "stdlib.h"
 #include "../typebentukan/typebentukan.h"
 #include "../stack/stack.h"
 #include "../array/array.h"
 #include "../olahfile/olahfile.h"
 #include "../graph/graph.h"
+#include "../queue/queue.h"
+#include "../command/command.h"
 
 void Art1();
 // Untuk menampilkan Ascii Art player 1
@@ -49,5 +51,23 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand);
 // Untuk level up
 
 void exitGame();
+
+void InstantUpgrade(PLAYER Pl, TabBang *Bang);
+
+void Shield(PLAYER *Pl);
+
+void ExtraTurn(boolean *ET);
+
+void AttackUp(PLAYER *Pl);
+
+void CriticalHit(PLAYER *Pl);
+
+void InstantReinforcement(PLAYER Pl, TabBang *Bang);
+
+void Barrage(PLAYER Enemy,TabBang *Bang);
+
+void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER *Enemy, TabBang *Bang, boolean *ET);
+
+void ActiveTurn();
 
 #endif

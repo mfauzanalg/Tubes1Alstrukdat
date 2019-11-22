@@ -4,10 +4,8 @@
 
 #include "olahfile/olahfile.h"
 #include "typebentukan/typebentukan.h"
-#include "stack/stack.h"
 #include "command/command.h"
 #include "skill/skill.h"
-#include "graph/graph.h"
 
 int main(){
 	int i;
@@ -18,7 +16,7 @@ int main(){
     boolean P1turn;
     boolean ada;                //Ada bangunan yang dapat diserang atau ngga
     TabBang Arr, Arr2; 	        //Array menyimpan tipe data bangunan
-    GraphList Graph;          //Array menyimpan graf
+    GraphList Graph;            //Array menyimpan graf
     Stack SBang;                //Stack menyimpan Array Bangunan
     stackp SP1, SP2;            //Stack menyimpan data Player
     MATRIKS Mat;                //Matriks menyimpan data untk graf
