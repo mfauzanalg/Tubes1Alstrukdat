@@ -3,13 +3,8 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include "../boolean/boolean.h"
-#include "../list/list.h"
-#include "../matriks/matriks.h"
-
 #include "../typebentukan/typebentukan.h"
 #include "../stack/stack.h"
-
 
 
 #define NilList NULL

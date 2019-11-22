@@ -12,8 +12,14 @@ typedef struct {
 	int Y; /* ordinat */
 } POINT;
 
+#define Absis(Q) (Q).X
+#define Ordinat(Q) (Q).Y
+
 /* *** Konstruktor membentuk POINT *** */
 POINT MakePOINT (float X, float Y);
 /* Membentuk sebuah POINT dari komponen X dan Y */
 
+void BacaPOINT (POINT * P);
+
+POINT MakePOINT (float X, float Y);
 #endif

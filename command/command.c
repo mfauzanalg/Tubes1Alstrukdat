@@ -1,5 +1,6 @@
+#include <string.h>
 #include "command.h"
-#include "string.h"
+
 
 void Art1(){
     printf("       _                         __\n"); 

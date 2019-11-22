@@ -1,16 +1,12 @@
 #ifndef __TYPEBENTUKAN_H__
 #define __TYPEBENTUKAN_H__
 
-#include "../boolean/boolean.h"
 #include "../point/point.h"
 #include "../matriks/matriks.h"
 #include "../mesinkata/mesinkata.h"
-#include "../mesinkar/mesinkar.h"
-#include "../point/point.h"
 #include "../queue/queue.h"
 #include "../list/list.h"
 #include "../pcolor/pcolor.h"
-#include "../mesinchar/mesinchar.h"
 #include "../mesinword/mesinword.h"
 
 typedef struct { 

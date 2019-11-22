@@ -1,9 +1,9 @@
-#include "typebentukan.h"
-#include "array.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "boolean.h"
 #include <math.h>
+#include "../typebentukan/typebentukan.h"
+#include "../boolean/boolean.h"
+#include "array.h"
 
 void print_array(TabBang *Arr, int maxel){
 int i;

@@ -1,11 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
 
 #include "olahfile/olahfile.h"
-#include "typebentukan/typebentukan.h"
 #include "command/command.h"
-#include "skill/skill.h"
 
 int main(){
 	int i;

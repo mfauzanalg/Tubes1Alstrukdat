@@ -12,6 +12,10 @@
         "mesinchar.h": "c",
         "mesinword.h": "c",
         "string.h": "c",
-        "graph.h": "c"
+        "graph.h": "c",
+        "list.h": "c",
+        "matriks.h": "c",
+        "point.h": "c",
+        "queue.h": "c"
     }
 }
