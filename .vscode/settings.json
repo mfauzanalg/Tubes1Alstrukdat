@@ -5,6 +5,9 @@
         "stack.h": "c",
         "command.h": "c",
         "typebentukan.h": "c",
-        "array.h": "c"
+        "array.h": "c",
+        "olahfile.h": "c",
+        "boolean.h": "c",
+        "skill.h": "c"
     }
 }

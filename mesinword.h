@@ -10,6 +10,7 @@
 #define NMax 50
 #define BLANK ' '
 #define ENTER 0x0A
+#define clear printf("\033[H\033[J")
 
 typedef struct {
   char TabKata[NMax+1]; /* container penyimpan kata, indeks yang dipakai [1..NMax] */
@@ -30,6 +31,8 @@ void STARTWORD();
    F.S. : EndKata = true, dan CC = MARK;
           atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
           CC karakter pertama sesudah karakter terakhir kata */
+
+void INPUTENTER();
 
 void ADVWORD();
 /* I.S. : CC adalah karakter pertama kata yang akan diakuisisi

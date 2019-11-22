@@ -37,6 +37,22 @@ void STARTWORD(){
     }   
 }
 
+void INPUTENTER(){
+/* I.S. : CC sembarang
+   F.S. : EndKata = true, dan CC = MARK;
+          atau EndKata = false, CKata adalah kata yang sudah diakuisisi,          
+          CC karakter pertama sesudah karakter terakhir kata */
+    STARTCHAR();
+
+    if (CC == MARK){
+        EndWord = true;
+    }
+    else{
+        EndWord = false;
+        SalinWord();
+    }   
+}
+
 void ADVWORD(){
 /* I.S. : CC adalah karakter pertama kata yang akan diakuisisi
    F.S. : CKata adalah kata terakhir yang sudah diakuisisi,

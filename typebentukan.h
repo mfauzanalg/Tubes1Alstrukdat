@@ -56,6 +56,8 @@ typedef struct {
     boolean IsAttack;      //Apakah sedang menyerang. aktif setelah dipanggil command attack
     boolean Askill;      //After Skill
     boolean Aend;        //After END_TURN
+    boolean IsET;       //Untuk 
+    int CountShield;     //untuk menerima 
 } PLAYER;
 
 #define JCastle(JumlahB) (JumlahB).JCastle

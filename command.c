@@ -1,6 +1,29 @@
 #include "command.h"
 #include <string.h>
 
+void Art1(){
+    printf("       _                         __\n"); 
+    printf("      | |                       /_ |\n"); 
+    printf(" _ __ | | __ _ _   _  ___ _ __   | |\n"); 
+    printf("| '_ \\| |/ _` | | | |/ _ \\ '__|  | |\n"); 
+    printf("| |_) | | (_| | |_| |  __/ |     | |\n"); 
+    printf("| .__/|_|\\__,_|\\__, |\\___|_|     |_|\n"); 
+    printf("| |             __/ |\n"); 
+    printf("|_|            |___/\n\n");                
+}
+
+void Art2(){
+    printf("       _                         ___\n");
+    printf("      | |                       |__ \\\n");
+    printf(" _ __ | | __ _ _   _  ___ _ __     ) |\n");
+    printf("| '_ \\| |/ _` | | | |/ _ \\ '__|   / /\n");
+    printf("| |_) | | (_| | |_| |  __/ |     / /_\n");
+    printf("| .__/|_|\\__,_|\\__, |\\___|_|    |____|\n");
+    printf("| |             __/ |\n");
+    printf("|_|            |___/\n\n");
+}
+
+
 void HELP(){
     printf("Daftar Command yang dapat dilakukan : \n");
     printf("1. ATTACK \n");
@@ -14,12 +37,19 @@ void HELP(){
     printf("\n");
 }
 
-void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, int Curr, TabInt *T1){
+void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, PLAYER P4, int Curr, TabInt *T1){
     CetakPeta(N,M,Arr,P1,P2);
     printf("PLayer %d\n", Curr);
     DaftarBangunan(P3.ListB, Arr, &*T1);
+
+    printf("Skill Aktif : \n");
+    printf("Shield Lawan : "); if (P4.IsShield) printf("Aktif, sisa %d turn\n", P4.CountShield); else printf("Tidak aktif\n");
+    printf("Critical Hit : "); if (P3.IsCriticalHit) printf("Aktif\n"); else printf("Tidak aktif\n");
+    printf("Attack Up    : "); if (P3.IsAttackUp) printf("Aktif\n\n"); else printf("Tidak aktif\n\n");
+
+    printf("Banyaknya skill yang dimiliki player : %d\n", NBElmtQueue(P3.Skill));
     printf("Skill Available : "); 
-    CetakSkill(InfoHead(P1.Skill));
+    CetakSkill(InfoHead(P3.Skill));
     printf("\n");
     printf("ENTER COMMAND : ");
 }
@@ -54,10 +84,10 @@ void HitungJum (JumlahB *Jumlah, PLAYER P1, TabBang Arr){
     int i;
     boolean found;
     JCastle(*Jumlah) = 0;
-    JTotal(*Jumlah) = 0;
+    JTower(*Jumlah) = 0;
     JVillage(*Jumlah) = 0;
     JFort(*Jumlah) = 0;
-    JTotal(*Jumlah) =0;
+    JTotal(*Jumlah) = 0;
 
     P = First(P1.ListB);
     while (P != NilList){
@@ -86,6 +116,7 @@ void HitungJum (JumlahB *Jumlah, PLAYER P1, TabBang Arr){
 		P = Next(P);
     }
     JTotal(*Jumlah) = JCastle(*Jumlah) + JFort(*Jumlah) + JVillage(*Jumlah) + JTower(*Jumlah);
+    printf("ini jumlah total : %d\n", JTotal(*Jumlah));
 }
 
 void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
@@ -93,6 +124,7 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     (*Kondisi).S = false;
     (*Kondisi).B = false;
     (*Kondisi).ET = true;
+    printf("masuk cek kondisi\n");
     
     if (JTotal(jumlahlawan) == 3){
         (*Kondisi).S = true;
@@ -105,24 +137,151 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     }
 }
 
-void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3){
-    int Z;
-    char Bang1[10];
-    char Bang2[10];
-    DaftarBangunan(P3.ListB, *Arr, &*T1);
+void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, GraphList Graph, PLAYER *P3, PLAYER *P4){
+    //*P3 itu milik kita
+    //*P4 itu milik lawan
+    addresslist A;
+    int Z; //Jumlah Kita
+    int Tujuan; //Jumlah lawan
+    int Hasil;
+    DaftarBangunan((*P3).ListB, *Arr, &*T1);
     printf("Pilih bangunan untuk menyerang : ");
-    STARTWORD();
-    *X = WStringToInteger(CWord);
+    do{
+        STARTWORD();
+        *X = WStringToInteger(CWord);
+        if (*X > Neff(*T1) || *X <= 0){
+            printf("Pilihan tidak sesuai, silakan ulangi input\n");
+            printf("Pilih bangunan untuk menyerang : ");
+        }
+    }while(*X > Neff(*T1) || *X <= 0);
 
     if (Elmt(*Arr,ElmtStat(*T1,*X)).attack){
-        *Tetangga = Neighbors(&ArrGraph, ElmtStat(*T1,*X));
+        *Tetangga = Neighbors(Graph, ElmtStat(*T1,*X));
         AdaSerang (*Tetangga, *Arr, 1, &*ada,P1,P2);
         if (ada){
             Elmt(*Arr,ElmtStat(*T1,*X)).attack = false;
-            DaftarSerang(*Tetangga, *Arr, &*T1, P, P1, P2);
-            printf("Pilih bangunan yang ingin diserang : ");
-            STARTWORD();
-            *Y = WStringToInteger(CWord);
+            DaftarSerang(*Tetangga, *Arr, &*T2, P, P1, P2);
+            printf("\nPilih bangunan yang ingin diserang : ");
+
+            do{
+                STARTWORD();
+                *Y = WStringToInteger(CWord);
+                if (*Y > Neff(*T2) || *Y <= 0){
+                    printf("Pilihan tidak sesuai, silakan ulangi input\n");
+                    printf("Pilih bangunan yang ingin diserang : ");
+                }
+            }while(*Y > Neff(*T2) || *Y <= 0);
+
+            printf("Jumlah pasukan yang tersedia : %d\n", Elmt(*Arr,ElmtStat(*T1,*X)).jum);
+            printf("Masukan jumlah pasukan yang ingin digunakan untuk menyerang : ");
+            do{
+                STARTWORD();
+                Z = WStringToInteger(CWord);
+                if  (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum || Z < 0){
+                    printf("Jumlah tidak sesuai dengan pasukan yang tersedia\n");
+                    printf("Masukan jumlah pasukan yang ingin digunakan untuk menyerang : ");
+                }
+            }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum || Z < 0);
+
+            // Z itu jumlah penyerang
+            // Bangunan asal nya dikurangin sama Z dulu
+            Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z;
+            Tujuan = Elmt(*Arr,ElmtStat(*T2,*Y)).jum;
+            printf("\n");
+            //Mulai penyerangan
+            if((*P3).IsCriticalHit){           //Jika critical hit aktif
+                Z *= 2;
+                Tujuan -= Z;
+                if (Tujuan <= 0){           //Berpindah kepemilikan
+                    printf("Bangunan menjadi milikmu!!!\n");
+                    Tujuan *= (0.5);
+                    A = Alokasi(ElmtStat(*T2,*Y));
+                    DelP(&((*P4)).ListB, ElmtStat(*T2,*Y));
+                    InsertFirst(&((*P3)).ListB, A);
+                    Tujuan *= -1;
+                    printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                    KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
+                }
+                else{
+                    printf("Bangunan gagal di rebut\n");
+                    printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
+                }
+            }
+            else{                           //Jika critical hit tidak aktif
+                if((*P3).IsAttackUp){          //Jika AttackUp Aktif
+                    Tujuan -= Z;
+                    if (Tujuan <= 0){       //Berpindah kepemilikan
+                    printf("Bangunan menjadi milikmu!!!\n");
+                    A = Alokasi(ElmtStat(*T2,*Y));
+                    DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
+                    InsertFirst(&((*P3)).ListB, A);
+                    Tujuan *= -1;
+                    printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                    KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
+                    }
+                    else{                   //Tidak berpindah kepemilikan
+                        printf("Bangunan gagal di rebut\n");
+                        printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
+                    }
+                }
+                else{                       //Jika AttackUp tidak Aktif
+                    if((*P4).IsShield){        //Jika lawan memiliki shield
+                        Z *= (0.75);
+                        Tujuan -= Z;
+                        if (Tujuan <= 0){   //Berpindah kepemilikan
+                            printf("Bangunan menjadi milikmu!!!\n");
+                            A = Alokasi(ElmtStat(*T2,*Y));
+                            DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
+                            InsertFirst(&((*P3)).ListB, A);
+                            Tujuan = (Tujuan*4)/3*-1;
+                            printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                            KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
+                        }
+                        else{               //Tidak berpindah kepemilikan
+                            printf("Bangunan gagal di rebut\n");
+                            printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
+                        }
+                    }
+                    else{                   //Jika lawan tidak memiliki shield
+                        if(Elmt(*Arr,ElmtStat(*T2,*Y)).P){  //Jika lawan memiliki pertahanan
+                            Z *= (0.75);
+                            Tujuan -= Z;
+                            if (Tujuan <= 0){   //Berpindah kepemilikan
+                                printf("Bangunan menjadi milikmu!!!\n");
+                                A = Alokasi(ElmtStat(*T2,*Y));
+                                DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
+                                InsertFirst(&((*P3)).ListB, A);
+                                Tujuan = (Tujuan*4)/3*-1;
+                                printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                                KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
+                            }
+                            else{               //Tidak berpindah kepemilikan
+                                printf("Bangunan gagal di rebut\n");
+                                printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
+                            }
+                        }
+                        else{                               //Jika lawan tidak memiliki pertahanan
+                            Tujuan -= Z;
+                            if (Tujuan <= 0){       //Berpindah kepemilikan
+                                printf("Bangunan menjadi milikmu!!!\n");
+                                A = Alokasi(ElmtStat(*T2,*Y));
+                                DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
+                                InsertFirst(&((*P3)).ListB, A);
+                                Tujuan *= -1;
+                                printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                                KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
+                            }
+                            else{                   //Tidak berpindah kepemilikan
+                                printf("Bangunan gagal di rebut\n");
+                                printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
+                            }
+                        }
+                    }
+                }
+            }
+            Elmt(*Arr,ElmtStat(*T2,*Y)).attack = true;
+            Elmt(*Arr,ElmtStat(*T2,*Y)).jum = Tujuan;
+            (*P3).IsCriticalHit = false;
         }
         else {
             printf("Tidak ada bangunan yang dapat diserang\n");
@@ -133,36 +292,73 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
     }
 }
 
-void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, TabGraph ArrGraph, PLAYER P3){
+void KeLevel1(Bangunan *Bang){
+    (*Bang).lev = 1;
+    if ((*Bang).type == 'C'){
+        (*Bang).A = 10;
+        (*Bang).M = 40;
+        (*Bang).P = false;
+    }
+    else if ((*Bang).type == 'T'){
+        (*Bang).A = 5;
+        (*Bang).M = 20;
+        (*Bang).P = true;
+    }
+    else if ((*Bang).type == 'F'){
+        (*Bang).A = 10;
+        (*Bang).M = 20;
+        (*Bang).P = false;
+    }
+    else if ((*Bang).type == 'V'){
+        (*Bang).A = 5;
+        (*Bang).M = 20;
+        (*Bang).P = true;
+    }
+}
+
+void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, GraphList Graph, PLAYER P3){
     int Z;
     char Bang1[10];
     char Bang2[10];
 
     DaftarBangunan(P3.ListB, *Arr, &*T1);
     printf("Pilih bangunan asal pemindahan : ");
-    STARTWORD();
+    do{
+        STARTWORD();
+        *X = WStringToInteger(CWord);
+        if (*X > Neff(*T1) || *X <= 0){
+            printf("Pilihan tidak sesuai, silakan ulangi input\n");
+            printf("Pilih bangunan asal pemindahan : ");
+        }
+    }while(*X > Neff(*T1) || *X <= 0);
+
     *X = WStringToInteger(CWord);
     
     if (Elmt(*Arr,ElmtStat(*T1,*X)).move){
-            *Tetangga = Neighbors(&ArrGraph, ElmtStat(*T1,*X));
+            *Tetangga = Neighbors(Graph, ElmtStat(*T1,*X));
             AdaMove (*Tetangga, *Arr, P, &*ada, P1, P2);
             if (*ada){
                 Elmt(*Arr,ElmtStat(*T1,*X)).move = false;
                 DaftarMove(*Tetangga, *Arr, &*T2, P, P1, P2);
                 printf("Pilih bangunan tujuan pemindahan : ");
-                STARTWORD();
-                *Y = WStringToInteger(CWord);
+                do{
+                    STARTWORD();
+                    *Y = WStringToInteger(CWord);
+                    if (*Y > Neff(*T2) || *Y <= 0){
+                        printf("Pilihan tidak sesuai, silakan ulangi input\n");
+                        printf("Pilih bangunan tujuan pemindahan : ");
+                    }
+                }while(*Y > Neff(*T2) || *Y <= 0);
                 printf("Jumlah pasukan yang tersedia : %d\n", Elmt(*Arr,ElmtStat(*T1,*X)).jum);
                 printf("Masukan jumlah pasukan yang ingin dipindahkan : ");
                 do{
                     STARTWORD();
                     Z = WStringToInteger(CWord);
                     if  (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum){
-                        printf("Jumlah melebihi pasukan yang tersedia\n");
+                        printf("Jumlah tidak sesuai dengan pasukan yang tersedia\n");
                         printf("Masukan jumlah pasukan yang ingin dipindahkan : ");
                     }
                 }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum);
-                printf("\n");
 
                 //Mengubah jumlah Pasukan
                 if(Elmt(*Arr,ElmtStat(*T1,*X)).type == 'C'){
@@ -198,8 +394,8 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
                     strcpy(Bang2, Bang3);
                 }
 
-                Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z;
-                Elmt(*Arr,ElmtStat(*T2,*Y)).jum += Z;
+                Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z; //Bangunan Asal
+                Elmt(*Arr,ElmtStat(*T2,*Y)).jum += Z; //Banguann Tujuan
             
                 printf("%d pasukan dari %s (%d,%d) telah berpindah ke %s (%d,%d)\n", Z, Bang1, Elmt(*Arr,ElmtStat(*T1,*X)).letak.X, Elmt(*Arr,ElmtStat(*T1,*X)).letak.Y, Bang2, Elmt(*Arr,ElmtStat(*T2,*Y)).letak.X, Elmt(*Arr,ElmtStat(*T2,*Y)).letak.Y);
             }
@@ -212,10 +408,13 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
     }
 }
 
-void TambahSkill(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan){
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr){
+    boolean stop = false;
+    addresslist PP = First((*Paku).ListB);
+
     if (Kondisi.S){
         if (JTotal(Jumlahlawan) == 2){
-            AddQueue(&(*Paku).Skill, 2);
+            AddQueue(&(*Plawan).Skill, 2);
         }
     }
     if (Kondisi.AU){
@@ -228,18 +427,32 @@ void TambahSkill(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, C
             AddQueue(&(*Plawan).Skill, 8);
         }
     }
-    if (FAkhir == FAwal-1){
-        AddQueue(&(*Paku).Skill, 3);
+    if (JFort(Jumlahlawan) == FAwal-1){
+        AddQueue(&(*Plawan).Skill, 3);
+    }
+    while (PP != NilList && !(stop)){
+        if (Elmt(Arr, Info(PP)).lev != 4){
+            stop = true;
+        }
+        else{ 
+            PP = Next(PP);
+        }
+    }
+
+    if (PP == NilList){
+        AddQueue(&(*Paku).Skill, 6);
     }
 }
 
-void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1){
-    DaftarBangunan(P.ListB, *Arr, &*T1);
-    printf("Bangunan yang akan di level up : ");
-    STARTWORD();
-    *i = WStringToInteger(CWord);
-
-    *i = ElmtStat(*T1, *i);
+void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
+    if(IsCommand == 1){
+        DaftarBangunan(P.ListB, *Arr, &*T1);
+        printf("Bangunan yang akan di level up : ");
+        STARTWORD();
+        *i = WStringToInteger(CWord);
+        *i = ElmtStat(*T1, *i);
+    }
+    
     
     MATRIKS MC, MT, MF, MV;
     CreateEmptyMatriks(4,4, &MC);
@@ -332,57 +545,101 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1){
     ElmtMat(MV,4,4)=0;
     
     if (Elmt(*(Arr), *i).type == 'C'){
-        if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
-            printf("Jumlah pasukan Castle kurang untuk level up\n");
+        if (IsCommand == 1){
+            if(Elmt(*(Arr), *i).lev == 4){
+                printf("Castle-mu sudah mencapai level masksimal");
+            }
+            else if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
+                printf("Jumlah pasukan Castle kurang untuk level up\n");
+            }
+            else{
+                Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+                Elmt(*(Arr), *i).lev++;
+                Elmt(*(Arr), *i).A=ElmtMat(MC,Elmt(*(Arr), *i).lev,1);
+                Elmt(*(Arr), *i).M=ElmtMat(MC,Elmt(*(Arr), *i).lev,2);
+                Elmt(*(Arr), *i).P=ElmtMat(MC,Elmt(*(Arr), *i).lev,3);
+                printf("Level Castle-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
+            }
         }
-        else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+        else if (Elmt(*(Arr), *i).lev < 4){
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MC,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MC,Elmt(*(Arr), *i).lev,2);
             Elmt(*(Arr), *i).P=ElmtMat(MC,Elmt(*(Arr), *i).lev,3);
-            printf("Level Castle-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
         }
     }
     else if (Elmt(*(Arr), *i).type == 'T'){
-        if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
-            printf("Jumlah pasukan Tower kurang untuk level up\n");
+        if(IsCommand == 1){
+            if(Elmt(*(Arr), *i).lev == 4){
+                printf("Tower-mu sudah mencapai level masksimal");
+            }
+            else if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
+                printf("Jumlah pasukan Tower kurang untuk level up\n");
+            }
+            else{
+                Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+                Elmt(*(Arr), *i).lev++;
+                Elmt(*(Arr), *i).A=ElmtMat(MT,Elmt(*(Arr), *i).lev,1);
+                Elmt(*(Arr), *i).M=ElmtMat(MT,Elmt(*(Arr), *i).lev,2);
+                Elmt(*(Arr), *i).P=ElmtMat(MT,Elmt(*(Arr), *i).lev,3);
+                printf("Level Tower-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
+            }
         }
-        else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+        else if (Elmt(*(Arr), *i).lev < 4){
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MT,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MT,Elmt(*(Arr), *i).lev,2);
             Elmt(*(Arr), *i).P=ElmtMat(MT,Elmt(*(Arr), *i).lev,3);
-            printf("Level Tower-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
         }
     }
 
     else if (Elmt(*(Arr), *i).type == 'F'){
-        if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
-            printf("Jumlah pasukan Fort kurang untuk level up\n");
+        if(IsCommand == 1){
+            if(Elmt(*(Arr), *i).lev == 4){
+                printf("Fort-mu sudah mencapai level masksimal");
+            }
+            else if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
+                printf("Jumlah pasukan Fort kurang untuk level up\n");
+            }
+            else{
+                Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+                Elmt(*(Arr), *i).lev++;
+                Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
+                Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
+                Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
+                printf("Level Fort-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
+            }
         }
-        else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+        else if (Elmt(*(Arr), *i).lev < 4){
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
             Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
-            printf("Level Fort-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
         }
     }
 
     else{
-        if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
-            printf("Jumlah pasukan Village kurang untuk level up\n");
+        if(IsCommand== 1){
+            if(Elmt(*(Arr), *i).lev == 4){
+                printf("Village-mu sudah mencapai level masksimal");
+            }
+            else if ((Elmt(*(Arr), *i).jum-Elmt(*(Arr), *i).M/2)<0){
+                printf("Jumlah pasukan Village kurang untuk level up\n");
+            }
+            else{
+                Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+                Elmt(*(Arr), *i).lev++;
+                Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
+                Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
+                Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
+                printf("Level Village-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
+            }
         }
-        else{
-            Elmt(*(Arr), *i).jum=(Elmt(*(Arr), *i).jum)-(Elmt(*(Arr), *i).M)/2;
+        else if (Elmt(*(Arr), *i).lev < 4){
             Elmt(*(Arr), *i).lev++;
             Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
             Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
             Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
-            printf("Level Village-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
         }
     }
 }

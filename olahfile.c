@@ -8,7 +8,7 @@ addresslist Prec;
 int i;
 int z;
 
-void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS *Mat, List *L1, List *L2){
+void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *Mat, List *L1, List *L2){
 	STARTKATA();
 	*N = StringToInteger(CKata);
 	ADVKATA();
@@ -83,14 +83,23 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS
 	}
 	CLOSE();
 
-	P = Alokasi(1);
+	P = Alokasi(9);
 	InsertFirst(&*L1, P);
+	P = Alokasi(10);
+	InsertFirst(&*L1, P);
+
+
+	P = Alokasi(11);
+	InsertFirst(&*L2, P);
 	P = Alokasi(17);
-	InsertFirst(&*L1, P);
-	P = Alokasi(2);
+	InsertFirst(&*L2, P);
+	P = Alokasi(6);
+	InsertFirst(&*L2, P);
+	P = Alokasi(4);
 	InsertFirst(&*L2, P);
 
-	CreateEmptyGraph(ArrGraph, *J, Mat);
+
+	CreateEmptyGraph(Graph, *Mat);
 
 }
 
@@ -132,7 +141,7 @@ void CetakPeta(int N, int M, TabBang Arr, PLAYER P1, PLAYER P2){ //N itu baris M
 						print_red(Elmt(Arr,k).type);
 					}
 					else if (owner(k, P1.ListB, P2.ListB) == 2){
-						print_yellow(Elmt(Arr,k).type);
+						print_green(Elmt(Arr,k).type);
 					}
 					else
 					{
@@ -328,38 +337,62 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 
 void StartPlayer (PLAYER *P){
 	CreateEmptyQueue(&(*P).Skill, 10);
-	AddQueue(&(*P).Skill, 1);
+	// AddQueue(&(*P).Skill, 1);
+	// AddQueue(&(*P).Skill, 2);
+	// AddQueue(&(*P).Skill, 3);
+	// AddQueue(&(*P).Skill, 4);
+	// AddQueue(&(*P).Skill, 5);
+	// AddQueue(&(*P).Skill, 6);
+	// AddQueue(&(*P).Skill, 7);
 	IsShield(*P) = false;
 	IsAttackUp(*P) = false;
 	IsCriticalHit(*P) = false;
 	Askill(*P) = false;
 	Aend(*P) = false;
+	(*P).IsET = false;
+	(*P).CountShield = 0;
 }
 
-void UpdateBangunan (List L, TabBang *Arr){
+void UpdateBangunan (PLAYER *Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr){
 	int i =1;
 	boolean found;
 	addresslist P;
-	P = First(L);
+	P = First((*Pl).ListB);
 
-	while (P != NilList){
-		i = 1;
-		found = false;
-		while (i <= NbElmtArr(*Arr) && !(found)){
-			if (Info(P) == i){
-				if (!(Elmt(*(Arr),i).jum >= Elmt(*(Arr),i).M)){ //kalo blm lebih dari M maka ditambah
-					Elmt(*(Arr),i).jum += Elmt(*(Arr),i).A ;
+	if ((*Enemy).IsET){
+        if (*P1turn) {
+            *P1turn = false;
+			(*Enemy).IsET = false;
+        }
+        else{
+            *P1turn = true;
+			(*Enemy).IsET = false;
+        }
+    }
+	else{
+		while (P != NilList){
+			i = 1;
+			found = false;
+			while (i <= NbElmtArr(*Arr) && !(found)){
+				if (Info(P) == i){
+					if (!(Elmt(*(Arr),i).jum >= Elmt(*(Arr),i).M)){ //kalo blm lebih dari M maka ditambah
+						Elmt(*(Arr),i).jum += Elmt(*(Arr),i).A ;
+					}
+					found = true;
+					Elmt(*(Arr),i).attack = true;
+					Elmt(*(Arr),i).move = true;
 				}
-				found = true;
-				Elmt(*(Arr),i).attack = true;
-				Elmt(*(Arr),i).move = true;
+				else{
+					i++;
+				}
 			}
-			else{
-				i++;
-			}
+			P = Next(P);
 		}
-		P = Next(P);
 	}
+	(*Pl).IsAttackUp = false;
+	(*Pl).IsCriticalHit = false;
+	if((*Enemy).CountShield > 0) (*Enemy).CountShield -= 1;
+	if((*Enemy).CountShield == 0) (*Enemy).IsShield = false;
 }
 
 void CetakSkill (int x){
@@ -383,6 +416,9 @@ void CetakSkill (int x){
 	}
 	else if (x == 7){
 		printf ("B");
+	}
+	else{
+		printf ("Kosong");
 	}
 }
 

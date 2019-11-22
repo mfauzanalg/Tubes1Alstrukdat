@@ -2,11 +2,11 @@
 #define __OLAHFILE_H__
 
 #include "boolean.h"
-#include "array.h"
+#include "Array/array.h"
 #include "typebentukan.h"
 #include "graph.h"
 
-void LoadFile (int *N, int *M, int *J, TabBang *Arr, TabGraph *ArrGraph, MATRIKS *Mat, List *L1, List *L2);
+void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *Mat, List *L1, List *L2);
 // Load file data inisialisasi awal
 // Akan terbentuk
 // N = tinggi peta
@@ -36,7 +36,7 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 void StartPlayer (PLAYER *P);
 // Status player waktu baru mulai
 
-void UpdateBangunan (List L, TabBang *Arr);
+void UpdateBangunan (PLAYER *Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr);
 // Penambahan tiap turnnya
 
 void CetakSkill (int x);

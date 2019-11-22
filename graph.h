@@ -8,38 +8,45 @@
 #include "matriks.h"
 
 
-/*  Kamus Umum */
-#define IdxMin 1
-/* Indeks minimum array */
-#define IdxUndef -999
-/* Indeks tak terdefinisi*/
-#define ValUndef -888
-/* Nilai elemen tak terdefinisi*/
+#define NilList NULL
 
-/* Definisi elemen dan koleksi objek */
-typedef int IdxTypeGraf; /* type indeks */
-typedef List ElType1; /* type elemen */
 
-typedef struct
-{
-  ElType1 *TI;
-  int MaxElArr;
-} TabGraph;
+typedef struct tElmtMatlistG *addresslistG;
 
-/* ********** SELEKTOR ********** */
-#define TI(T) (T).TI
-#define Elmt(T, i) (T).TI[(i)]
-#define MaxElArr(T) (T).MaxElArr
+typedef struct tElmtMatlistG {
+	infotypelist infoG;
+	addresslist tetangga;
+	addresslistG nextG;
+} ElmtListGraph;
 
-/* ********** KONSTRUKTOR ********** */
-void CreateEmptyGraph(TabGraph *Arr, int maxel, MATRIKS *Mat);
-/* array untuk representasi graph, array berisikan list of bangunan yang terhubung */
+typedef struct {
+	addresslistG FirstG;
+} GraphList;
 
-boolean IsAdjacent(TabGraph *Arr, int a, int b);
-/* mengecek apakah bangunan a bersambung dengan bangunan b */
+/* Definisi list : */
+/* List kosong : First(L) = NilList */
+/* Setiap elemen dengan addresslist P dapat diacu Info(P), Next(P) */
+/* Elemen terakhir list : jika addressnya Last, maka Next(Last)=NilList */
 
-List Neighbors(TabGraph *Arr, int a);
-/* mengembalikan list berisi bangunan yang berhubungan dengan bangunan a */
+#define InfoG(P) (P)->infoG
+#define NextG(P) (P)->nextG
+#define Tetangga(P) (P)->tetangga
+#define FirstG(L) ((L).FirstG)
 
+
+/****************** Manajemen Memori ******************/
+addresslistG AlokasiGraph (infotypelist X);
+
+/****************** Penambahan Elemen ******************/
+void InsVFirstGraph (GraphList *Graph, infotypelist X, List L);
+
+/****************** Konstruktor ******************/
+List CreateListNeighbors(int n, MATRIKS Mat);
+
+void CreateEmptyGraph(GraphList *Graph, MATRIKS Mat);
+
+boolean IsAdjacent(GraphList Graph, int a, int b);
+
+List Neighbors(GraphList Graph, int n);
 
 #endif
