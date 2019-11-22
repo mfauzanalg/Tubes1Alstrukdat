@@ -43,7 +43,7 @@ int main(){
     while (playing){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
-        //Art1();
+        Art1();
         UpdateBangunan (&P1, &P2, &P1turn, &Arr);
         while ((playing) && (P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
@@ -71,7 +71,7 @@ int main(){
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){ //sudah jalan
+            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 LevelUpUp(&Arr, P1, &X, &T1, 1);
                 Aend(P1) = false;
@@ -106,7 +106,7 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             // FAkhir = JFort(Jumlah2);
-            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, Kondisi, &P1, &P2, Arr);
+            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, Kondisi, &P1, &P2, Arr, J, P1turn);
             printf("\nPress Enter to Continue...\n");
             INPUTENTER();
             //clear;              //untuk clear console di ubuntu
@@ -115,7 +115,7 @@ int main(){
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 2
-        //Art2();
+        Art2();
         UpdateBangunan (&P2, &P1, &P1turn, &Arr);
         while ((playing) && !(P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
@@ -177,7 +177,7 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah1);
-            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, Kondisi, &P2, &P1, Arr);
+            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, Kondisi, &P2, &P1, Arr, J, P1turn);
             printf("\nPress Enter to Continue...\n");
             INPUTENTER();
             //clear;              //untuk clear console di ubuntu

@@ -42,7 +42,7 @@ void KeLevel1(Bangunan *Bang);
 void Move(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, GraphList Graph, PLAYER P3);
 //Move pasukan
 
-void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr);
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr, int J, boolean P1Turn);
 // Menambah skill atau tidak di akhir
 
 void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand);

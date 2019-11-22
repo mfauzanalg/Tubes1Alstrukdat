@@ -117,7 +117,6 @@ void HitungJum (JumlahB *Jumlah, PLAYER P1, TabBang Arr){
 		P = Next(P);
     }
     JTotal(*Jumlah) = JCastle(*Jumlah) + JFort(*Jumlah) + JVillage(*Jumlah) + JTower(*Jumlah);
-    printf("ini jumlah total : %d\n", JTotal(*Jumlah));
 }
 
 void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
@@ -125,7 +124,6 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     (*Kondisi).S = false;
     (*Kondisi).B = false;
     (*Kondisi).ET = true;
-    printf("masuk cek kondisi\n");
     
     if (JTotal(jumlahlawan) == 3){
         (*Kondisi).S = true;
@@ -409,7 +407,7 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
     }
 }
 
-void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr){
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr, int J, boolean P1Turn){
     boolean stop = false;
     addresslist PP = First((*Paku).ListB);
 
@@ -439,9 +437,18 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition
             PP = Next(PP);
         }
     }
-
     if (PP == NilList){
         AddQueue(&(*Paku).Skill, 6);
+    }
+    if (JTotal(Jumlahku) == J){
+        if(P1Turn){
+            printf("Player 1 Menang\n");
+            exit(0);
+        }
+        else{
+            printf("Player 2 Menang\n");
+            exit(0);
+        }
     }
 }
 

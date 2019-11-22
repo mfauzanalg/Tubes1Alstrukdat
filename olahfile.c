@@ -85,8 +85,6 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 
 	P = Alokasi(11);
 	InsertFirst(&*L1, P);
-	P = Alokasi(12);
-	InsertFirst(&*L1, P);
 
 
 	P = Alokasi(1);
@@ -107,11 +105,22 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	InsertFirst(&*L2, P);
 	P = Alokasi(9);
 	InsertFirst(&*L2, P);
-
-
+	P = Alokasi(10);
+	InsertFirst(&*L2, P);
+	P = Alokasi(12);
+	InsertFirst(&*L2, P);
+	P = Alokasi(13);
+	InsertFirst(&*L2, P);
+	P = Alokasi(14);
+	InsertFirst(&*L2, P);
+	P = Alokasi(15);
+	InsertFirst(&*L2, P);
+	P = Alokasi(16);
+	InsertFirst(&*L2, P);
+	P = Alokasi(17);
+	InsertFirst(&*L2, P);
 
 	CreateEmptyGraph(Graph, *Mat);
-
 }
 
 void CetakPeta(int N, int M, TabBang Arr, PLAYER P1, PLAYER P2){ //N itu baris M itu kolom
