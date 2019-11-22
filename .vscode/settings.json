@@ -8,6 +8,10 @@
         "array.h": "c",
         "olahfile.h": "c",
         "boolean.h": "c",
-        "skill.h": "c"
+        "skill.h": "c",
+        "mesinchar.h": "c",
+        "mesinword.h": "c",
+        "string.h": "c",
+        "graph.h": "c"
     }
 }

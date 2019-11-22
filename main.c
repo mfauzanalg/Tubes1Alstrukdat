@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "olahfile.h"
-#include "typebentukan.h"
-#include "stack.h"
-#include "command.h"
-#include "skill.h"
+
+#include "olahfile/olahfile.h"
+#include "typebentukan/typebentukan.h"
+#include "stack/stack.h"
+#include "command/command.h"
+#include "skill/skill.h"
+#include "graph/graph.h"
 
 int main(){
 	int i;
@@ -55,6 +57,7 @@ int main(){
     
             if (strcmp(CWord.TabKata, "EXIT") == 0){ //sudah jalan
                 playing = false;
+                exitGame();
             }
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
@@ -127,6 +130,7 @@ int main(){
             STARTWORD();
             if (strcmp(CWord.TabKata, "EXIT") == 0){
                 playing = false;
+                exitGame();
             }
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){
