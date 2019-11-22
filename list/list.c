@@ -340,6 +340,7 @@ void Konkat1 (List *L1, List *L2, List *L3){
 }
 
 void CopyList (List L1, List *L2){
+	//Mengcopy list
 	int x;
 	addresslist P;
 	addresslist P1;

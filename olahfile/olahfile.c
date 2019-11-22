@@ -9,6 +9,13 @@ int i;
 int z;
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *Mat, List *L1, List *L2){
+	// Load file data inisialisasi awal
+	// Akan terbentuk
+	// N = tinggi peta
+	// M = lebar peta
+	// J = Jumlah bangunan
+	// Array of bangunan
+	// Matriks untuk Graf
 	STARTKATA();
 	*N = StringToInteger(CKata);
 	ADVKATA();
@@ -21,7 +28,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	CreateEmptyList(&*L1);
 	CreateEmptyList(&*L2);
 	CreateEmptyArray(&*Arr, *J);
-	for (i = 1; i <= *J; i++){
+	for (i = 1; i <= *J; i++){		// Mengambil type bangunan
 		ADVKATA();
 		Elmt(*Arr,i).lev = 1;
 		Elmt(*Arr,i).nomor = i;
@@ -83,7 +90,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	}
 	CLOSE();
 
-	P = Alokasi(11);
+	P = Alokasi(11);			//Alokasi kepenilikan bangunan ke list
 	InsertFirst(&*L2, P);
 
 	P = Alokasi(1);
@@ -94,7 +101,8 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	CreateEmptyGraph(Graph, *Mat);
 }
 
-void CetakPeta(int N, int M, TabBang Arr, PLAYER P1, PLAYER P2){ //N itu baris M itu kolom
+void CetakPeta(int N, int M, TabBang Arr, PLAYER P1, PLAYER P2){
+	// Mencatak Peta sesuai dengan file yang sudah di load
 	MATRIKS peta;
 	int i;
 	int j;
@@ -150,6 +158,7 @@ void CetakPeta(int N, int M, TabBang Arr, PLAYER P1, PLAYER P2){ //N itu baris M
 }
 
 void DaftarBangunan(List L, TabBang Arr, TabInt *TOut){
+	// Mencetak Daftar Bangunan yang dimiliki oleh Playe P
 	int i = 1;
 	int j = 1;
 	int num = 1;
@@ -194,6 +203,8 @@ void DaftarBangunan(List L, TabBang Arr, TabInt *TOut){
 }
 
 void AdaSerang (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER P2){
+	// Apakah ada bangunan yang dapat diserang
+	// Mangubah nilai boolean ada
 	int i = 1;
 	boolean found;
 	addresslist P;
@@ -217,6 +228,7 @@ void AdaSerang (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER
 }
 
 void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER P2){
+	//Mencetak Daftar Bangunan yang dapat diserang
 	int i = 1;
 	int j = 1;
 	int num = 1;

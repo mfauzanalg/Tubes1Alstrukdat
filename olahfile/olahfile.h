@@ -19,7 +19,8 @@ void DaftarBangunan(List L, TabBang Arr, TabInt *TOut);
 // Mencetak Daftar Bangunan yang dimiliki oleh Playe P
 
 void AdaSerang (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER P2);
-//Apakah ada bangunan yang dapat diserang
+// Apakah ada bangunan yang dapat diserang
+// Mangubah nilai boolean ada
 
 void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER P2);
 //Mencetak Daftar Bangunan yang dapat diserang

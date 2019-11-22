@@ -138,5 +138,6 @@ void Konkat1 (List *L1, List *L2, List *L3);
 /* Tidak ada alokasi/dealokasi pada prosedur ini */
 
 void CopyList (List L1, List *L2);
+//Mengcopy list
 
 #endif
