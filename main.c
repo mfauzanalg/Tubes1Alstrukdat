@@ -79,14 +79,13 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                UseSkill(&P1.Skill, &P1, P2, &Arr, &P1.IsET);
+                UseSkill(&P1.Skill, &P1, &P2, &Arr, &P1.IsET);
                 Askill(P1) = true;
                 Aend(P1) = false;
             }
 
             else if (strcmp(CWord.TabKata, "UNDO") == 0){
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P1);
-                printf("Anda Berhasil Meng-Undo Command Terakhir");
             }
 
             else if (strcmp(CWord.TabKata, "MOVE") == 0){
@@ -106,8 +105,8 @@ int main(){
             
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
-            FAkhir = JFort(Jumlah2);
-            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, FAkhir, Kondisi, &P1, &P2);
+            // FAkhir = JFort(Jumlah2);
+            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, Kondisi, &P1, &P2, Arr);
             printf("\nPress Enter to Continue...\n");
             INPUTENTER();
             //clear;              //untuk clear console di ubuntu
@@ -152,7 +151,7 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "SKILL") == 0){
-                UseSkill(&P2.Skill, &P2, P1, &Arr, &P2.IsET);;
+                UseSkill(&P2.Skill, &P2, &P1, &Arr, &P2.IsET);;
                 Askill(P2) = true;
                 Aend(P2) = false;
             }
@@ -178,7 +177,7 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah1);
-            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, FAkhir, Kondisi, &P2, &P1);
+            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, Kondisi, &P2, &P1, Arr);
             printf("\nPress Enter to Continue...\n");
             INPUTENTER();
             //clear;              //untuk clear console di ubuntu

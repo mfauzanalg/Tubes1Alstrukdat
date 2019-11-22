@@ -76,6 +76,7 @@ void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P1, PLAYER *P2, stackp *SPlaye
         Pop (&*SBang, &*Arr);
         Popp (&*SPlayer1, &*P1);
         Popp (&*SPlayer2, &*P2);
+        printf("Anda Berhasil Meng-Undo Command Terakhir\n");
     }
 }
 
@@ -84,10 +85,10 @@ void HitungJum (JumlahB *Jumlah, PLAYER P1, TabBang Arr){
     int i;
     boolean found;
     JCastle(*Jumlah) = 0;
-    JTotal(*Jumlah) = 0;
+    JTower(*Jumlah) = 0;
     JVillage(*Jumlah) = 0;
     JFort(*Jumlah) = 0;
-    JTotal(*Jumlah) =0;
+    JTotal(*Jumlah) = 0;
 
     P = First(P1.ListB);
     while (P != NilList){
@@ -116,6 +117,7 @@ void HitungJum (JumlahB *Jumlah, PLAYER P1, TabBang Arr){
 		P = Next(P);
     }
     JTotal(*Jumlah) = JCastle(*Jumlah) + JFort(*Jumlah) + JVillage(*Jumlah) + JTower(*Jumlah);
+    printf("ini jumlah total : %d\n", JTotal(*Jumlah));
 }
 
 void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
@@ -123,6 +125,7 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     (*Kondisi).S = false;
     (*Kondisi).B = false;
     (*Kondisi).ET = true;
+    printf("masuk cek kondisi\n");
     
     if (JTotal(jumlahlawan) == 3){
         (*Kondisi).S = true;
@@ -180,6 +183,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     printf("Masukan jumlah pasukan yang ingin digunakan untuk menyerang : ");
                 }
             }while (Z > Elmt(*Arr,ElmtStat(*T1,*X)).jum || Z < 0);
+
             // Z itu jumlah penyerang
             // Bangunan asal nya dikurangin sama Z dulu
             Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z;
@@ -197,6 +201,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     InsertFirst(&((*P3)).ListB, A);
                     Tujuan *= -1;
                     printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                    KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                 }
                 else{
                     printf("Bangunan gagal di rebut\n");
@@ -213,6 +218,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     InsertFirst(&((*P3)).ListB, A);
                     Tujuan *= -1;
                     printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                    KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                     }
                     else{                   //Tidak berpindah kepemilikan
                         printf("Bangunan gagal di rebut\n");
@@ -230,6 +236,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                             InsertFirst(&((*P3)).ListB, A);
                             Tujuan = (Tujuan*4)/3*-1;
                             printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                            KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                         }
                         else{               //Tidak berpindah kepemilikan
                             printf("Bangunan gagal di rebut\n");
@@ -247,6 +254,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                                 InsertFirst(&((*P3)).ListB, A);
                                 Tujuan = (Tujuan*4)/3*-1;
                                 printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                                KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                             }
                             else{               //Tidak berpindah kepemilikan
                                 printf("Bangunan gagal di rebut\n");
@@ -262,6 +270,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                                 InsertFirst(&((*P3)).ListB, A);
                                 Tujuan *= -1;
                                 printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+                                KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                             }
                             else{                   //Tidak berpindah kepemilikan
                                 printf("Bangunan gagal di rebut\n");
@@ -281,6 +290,30 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
     }
     else{
         printf("Bangunan sudah menyerang pada turn ini\n");
+    }
+}
+
+void KeLevel1(Bangunan *Bang){
+    (*Bang).lev = 1;
+    if ((*Bang).type == 'C'){
+        (*Bang).A = 10;
+        (*Bang).M = 40;
+        (*Bang).P = false;
+    }
+    else if ((*Bang).type == 'T'){
+        (*Bang).A = 5;
+        (*Bang).M = 20;
+        (*Bang).P = true;
+    }
+    else if ((*Bang).type == 'F'){
+        (*Bang).A = 10;
+        (*Bang).M = 20;
+        (*Bang).P = false;
+    }
+    else if ((*Bang).type == 'V'){
+        (*Bang).A = 5;
+        (*Bang).M = 20;
+        (*Bang).P = true;
     }
 }
 
@@ -376,10 +409,13 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
     }
 }
 
-void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhir, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan){
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr){
+    boolean stop = false;
+    addresslist PP = First((*Paku).ListB);
+
     if (Kondisi.S){
         if (JTotal(Jumlahlawan) == 2){
-            AddQueue(&(*Paku).Skill, 2);
+            AddQueue(&(*Plawan).Skill, 2);
         }
     }
     if (Kondisi.AU){
@@ -389,11 +425,23 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int FAkhi
     }
     if (Kondisi.B){
         if (JTotal(Jumlahku) == 10){
-            AddQueue(&(*Plawan).Skill, 8);
+            AddQueue(&(*Plawan).Skill, 7);
         }
     }
-    if (FAkhir == FAwal-1){
-        AddQueue(&(*Paku).Skill, 3);
+    if (JFort(Jumlahlawan) == FAwal-1){
+        AddQueue(&(*Plawan).Skill, 3);
+    }
+    while (PP != NilList && !(stop)){
+        if (Elmt(Arr, Info(PP)).lev != 4){
+            stop = true;
+        }
+        else{ 
+            PP = Next(PP);
+        }
+    }
+
+    if (PP == NilList){
+        AddQueue(&(*Paku).Skill, 6);
     }
 }
 

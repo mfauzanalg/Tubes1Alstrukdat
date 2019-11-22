@@ -120,7 +120,7 @@ void Barrage(PLAYER Enemy, TabBang *Bang){
     }
 }
 
-void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER Enemy, TabBang *Bang, boolean *ET){
+void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER *Enemy, TabBang *Bang, boolean *ET){
 /* procedure yang dipanggil setelah command *Skill */
     infotypequeue Q;
     if (InfoHead(*Skill) == 1){
@@ -131,6 +131,7 @@ void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER Enemy, TabBang *Bang, boolean *ET
         printf ("Anda berhasil menggunakan Skill Shield!\n");
     } else if(InfoHead(*Skill) == 3){
         ExtraTurn(&(*ET));
+        AddQueue(&(*Enemy).Skill, 5);
         printf ("Anda berhasil menggunakan SKill Extra Turn!\n");
     } else if(InfoHead(*Skill) == 4){
         AttackUp(&(*Pl));
@@ -142,7 +143,7 @@ void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER Enemy, TabBang *Bang, boolean *ET
         InstantReinforcement((*Pl),&(*Bang));
         printf ("Anda berhasil menggunakan Skill Instant Reinforcement!\n");
     } else if(InfoHead(*Skill) == 7){
-        Barrage(Enemy, &(*Bang));
+        Barrage(*Enemy, &(*Bang));
         printf ("Anda berhasil menggunakan Skill Barrage!\n");
     }
     else{

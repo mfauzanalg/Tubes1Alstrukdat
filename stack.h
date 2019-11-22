@@ -6,7 +6,7 @@
 #define stackt_H
 
 #include "boolean.h"
-#include "array.h"
+#include "Array/array.h"
 
 #define NilStack 0
 #define MaxElStack 100

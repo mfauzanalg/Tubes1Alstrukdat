@@ -2,7 +2,7 @@
 #define __OLAHFILE_H__
 
 #include "boolean.h"
-#include "array.h"
+#include "Array/array.h"
 #include "typebentukan.h"
 #include "graph.h"
 

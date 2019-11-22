@@ -83,14 +83,32 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	}
 	CLOSE();
 
+	P = Alokasi(11);
+	InsertFirst(&*L1, P);
+	P = Alokasi(12);
+	InsertFirst(&*L1, P);
+
+
 	P = Alokasi(1);
-	InsertFirst(&*L1, P);
-	P = Alokasi(17);
-	InsertFirst(&*L1, P);
+	InsertFirst(&*L2, P);
 	P = Alokasi(2);
 	InsertFirst(&*L2, P);
 	P = Alokasi(3);
 	InsertFirst(&*L2, P);
+	P = Alokasi(4);
+	InsertFirst(&*L2, P);
+	P = Alokasi(5);
+	InsertFirst(&*L2, P);
+	P = Alokasi(6);
+	InsertFirst(&*L2, P);
+	P = Alokasi(7);
+	InsertFirst(&*L2, P);
+	P = Alokasi(8);
+	InsertFirst(&*L2, P);
+	P = Alokasi(9);
+	InsertFirst(&*L2, P);
+
+
 
 	CreateEmptyGraph(Graph, *Mat);
 
@@ -134,7 +152,7 @@ void CetakPeta(int N, int M, TabBang Arr, PLAYER P1, PLAYER P2){ //N itu baris M
 						print_red(Elmt(Arr,k).type);
 					}
 					else if (owner(k, P1.ListB, P2.ListB) == 2){
-						print_yellow(Elmt(Arr,k).type);
+						print_green(Elmt(Arr,k).type);
 					}
 					else
 					{
