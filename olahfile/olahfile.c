@@ -31,7 +31,6 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	for (i = 1; i <= *J; i++){		// Mengambil type bangunan
 		ADVKATA();
 		Elmt(*Arr,i).lev = 1;
-		Elmt(*Arr,i).nomor = i;
 		Elmt(*Arr,i).attack = false;
 		Elmt(*Arr,i).move = false;
 
@@ -158,7 +157,7 @@ void CetakPeta(int N, int M, TabBang Arr, PLAYER P1, PLAYER P2){
 }
 
 void DaftarBangunan(List L, TabBang Arr, TabInt *TOut){
-	// Mencetak Daftar Bangunan yang dimiliki oleh Playe P
+	// Mencetak Daftar Bangunan yang dimiliki oleh Player P
 	int i = 1;
 	int j = 1;
 	int num = 1;
@@ -242,7 +241,7 @@ void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAY
 		i = 1;
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
-			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) != player){
+			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) != player){ //Menampilkan bangunan yang bukan milik player dan terhubung dengan bangunan yang dipilih
 				printf("%d. ", num);
 				num++;
 				ElmtStat(*TOut,j) = i;
@@ -272,6 +271,8 @@ void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAY
 }
 
 void AdaMove (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER P2){
+// Apakah ada bangunan yang dapat menjadi target pemindahan pasukan
+// Mangubah nilai boolean ada
 	int i = 1;
 	boolean found;
 	addresslist P;
@@ -295,6 +296,7 @@ void AdaMove (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER P
 }
 
 void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER P2){
+	//Mencetak Daftar Bangunan yang dapat dipindahkan
 	int i = 1;
 	int j = 1;
 	int num = 1;
@@ -308,7 +310,7 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 		i = 1;
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
-			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) == player){
+			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) == player){ // Menampilkan bangunan yang terhubung dengan bangunan yang dipilih dan milik player
 				printf("%d. ", num);
 				num++;
 				ElmtStat(*TOut,j) = i;
@@ -339,14 +341,9 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 }
 
 void StartPlayer (PLAYER *P){
+	// Set status player waktu baru memulai permainan
 	CreateEmptyQueue(&(*P).Skill, 10);
-	// AddQueue(&(*P).Skill, 1);
-	// AddQueue(&(*P).Skill, 2);
-	// AddQueue(&(*P).Skill, 3);
-	// AddQueue(&(*P).Skill, 4);
-	// AddQueue(&(*P).Skill, 5);
-	// AddQueue(&(*P).Skill, 6);
-	// AddQueue(&(*P).Skill, 7);
+	AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
 	IsShield(*P) = false;
 	IsAttackUp(*P) = false;
 	IsCriticalHit(*P) = false;
@@ -357,12 +354,14 @@ void StartPlayer (PLAYER *P){
 }
 
 void UpdateBangunan (PLAYER *Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr){
+	// Penambahan jumlah pasukan tiap turnnya
+	// Pegecekan Extra Turn
 	int i =1;
 	boolean found;
 	addresslist P;
 	P = First((*Pl).ListB);
 
-	if ((*Enemy).IsET){
+	if ((*Enemy).IsET){		// Jika extra turn active maka di akhir turn akan kembali ke player yg memiliki skill extra turn yang active
         if (*P1turn) {
             *P1turn = false;
 			(*Enemy).IsET = false;
@@ -399,6 +398,7 @@ void UpdateBangunan (PLAYER *Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr){
 }
 
 void CetakSkill (int x){
+	// Menampilkan Skill yang dapat digunakan oleh player
 	if (x == 1){
 		printf ("IU");
 	}
@@ -426,6 +426,9 @@ void CetakSkill (int x){
 }
 
 int owner (int i, List P1, List P2){
+// Mengembalikan 1 jika bangunan berindeks i milik player 1
+// Mengembalikan 2 jika bangunan berindeks i milik player 2
+// Mengembalikan 0 jika bangunan berindeks i bukan milik siapa pun
 	addresslist addr1 = Search(P1, i);
 	addresslist addr2 = Search(P2, i);
 	if(addr1 != NilList && addr2 == NilList){

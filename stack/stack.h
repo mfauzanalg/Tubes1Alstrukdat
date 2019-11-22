@@ -59,9 +59,12 @@ void Pop (Stack * S, infotypestack* X);
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
 Stack InverseStack (Stack Stackin);
+// Menghasilkan Invers dari Stack input
 
 Stack CopyStack (Stack Stackin);
+// Mengcopy Stackin ke Stack
 
 Stack FPush (Stack Sinput, infotypestack X);
+// Push TabBangunan ke Stack
 
 #endif

@@ -26,19 +26,21 @@ void DaftarSerang(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAY
 //Mencetak Daftar Bangunan yang dapat diserang
 
 void AdaMove (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER P2);
-//Apakah ada bangunan yang menjadi tujuan pemindahan
+// Apakah ada bangunan yang dapat menjadi target pemindahan pasukan
+// Mangubah nilai boolean ada
 
 void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER P2);
 //Mencetak Daftar Bangunan yang dapat dipindahkan
 
 void StartPlayer (PLAYER *P);
-// Status player waktu baru mulai
+// Set status player waktu baru memulai permainan
 
 void UpdateBangunan (PLAYER *Pl, PLAYER *Enemy, boolean *P1turn, TabBang *Arr);
-// Penambahan tiap turnnya
+// Penambahan jumlah pasukan tiap turnnya
+// Pengecekan Extra Turn
 
 void CetakSkill (int x);
-// Cetak skill karena di queue isinya integer
+// Menampilkan Skill yang dapat digunakan oleh player
 
 int owner (int i, List P1, List P2);
 // Mengembalikan 1 jika bangunan berindeks i milik player 1

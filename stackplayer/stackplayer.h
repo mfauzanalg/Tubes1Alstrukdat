@@ -59,6 +59,7 @@ void Popp (stackp * S, infotypestackp* X);
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
 void CopyPlayer (PLAYER Pin, PLAYER *Pout);
+//Copy Player in ke Player out
 
 
 #endif

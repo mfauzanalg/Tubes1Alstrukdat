@@ -1,5 +1,3 @@
-/* File: point.h */
-/* Tanggal: 28 Agustus 2016 */
 /* *** Definisi ABSTRACT DATA TYPE POINT *** */
 
 #ifndef POINT_H
@@ -20,6 +18,9 @@ POINT MakePOINT (float X, float Y);
 /* Membentuk sebuah POINT dari komponen X dan Y */
 
 void BacaPOINT (POINT * P);
+// Membaca input Point dari user
 
-POINT MakePOINT (float X, float Y);
+void TulisPOINT (POINT P);
+// Menuliskan point dengan format (X,Y)
+
 #endif
