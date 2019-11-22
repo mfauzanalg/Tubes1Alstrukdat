@@ -130,13 +130,17 @@ for (i = IdxMin;i <= MaxElArr(*Arr); i++){
 int
 main(){
 TabBang arr1, arr2;
-int maxel = 2;
+int maxel;
 int jum, pertama, terakhir;
+printf("Masukkan jumlah bangunan yang ingin dibuat : ");
+scanf("%d", &maxel);
+printf("\n");
 CreateEmptyArray(&arr1, maxel);
 printf("Check array kosong......\n");
 printf("\n");
 print_array(&arr1, maxel);
 printf("\n");
+printf("Input elemen-elemen bangunan :\n\n");
 isiarray(&arr1, maxel);
 printf("Check array yang sudah di input....\n");
 printf("\n");

@@ -12,5 +12,8 @@ typedef struct {
 	int Y; /* ordinat */
 } POINT;
 
+/* *** Konstruktor membentuk POINT *** */
+POINT MakePOINT (float X, float Y);
+/* Membentuk sebuah POINT dari komponen X dan Y */
 
 #endif
