@@ -140,6 +140,7 @@ printf("Check array kosong......\n");
 printf("\n");
 print_array(&arr1, maxel);
 printf("\n");
+printf("Input elemen-elemen bangunan :\n\n");
 isiarray(&arr1, maxel);
 printf("Check array yang sudah di input....\n");
 printf("\n");
