@@ -39,6 +39,7 @@ void InsVFirstGraph (GraphList *Graph, infotypelist X, List L){
 }
 /****************** Konstruktor ******************/
 List CreateListNeighbors(int n, MATRIKS Mat){
+/*Mengembalikan List yang bertetangga dengan n dari Matriks*/
 	List L;
 	CreateEmptyList(&L);
 	for (int j = KolMin; j <= GetLastIdxKol(Mat); j++){
@@ -50,8 +51,7 @@ List CreateListNeighbors(int n, MATRIKS Mat){
 }
 
 void CreateEmptyGraph(GraphList *Graph, MATRIKS Mat)
-/* array untuk representasi graph, array berisikan list of bangunan yang terhubung */
-{
+/*Membuat Graph kosong*/{
 	FirstG(*Graph) = NilList;
 	//Tetangga(FirstG(*Graph)) = NilList;
 	for (int i=GetLastIdxBrs(Mat); i >= BrsMin; i--){
@@ -81,6 +81,7 @@ boolean IsAdjacent(GraphList Graph, int a, int b)
 
 
 List Neighbors(GraphList Graph, int n){
+// Mengembalikan list yang terhubung dengan n pada graph
 	List L;
 	addresslistG P;
 	addresslist Q, precR,R;

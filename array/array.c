@@ -74,6 +74,7 @@ IdxType GetLastIdx(TabBang T){
 }
 
 void CopyArr (TabBang Tabin, TabBang *Tabout){
+/*Mengcopy isi Tabin ke Tabout*/
 	int i;
 	CreateEmptyArray (&*Tabout, MaxElArr(Tabin));
 	for (i = 1; i <= GetLastIdx(Tabin); i++){

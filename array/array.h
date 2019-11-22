@@ -72,5 +72,6 @@ IdxType GetLastIdx(TabBang T);
 /* Mengirimkan indeks elemen T terakhir */
 
 void CopyArr (TabBang Tabin, TabBang *Tabout);
+/*Mengcopy isi Tabin ke Tabout*/
 
 #endif

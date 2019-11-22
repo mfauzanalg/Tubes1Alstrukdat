@@ -35,17 +35,28 @@ typedef struct {
 
 /****************** Manajemen Memori ******************/
 addresslistG AlokasiGraph (infotypelist X);
+/* Mengirimkan addresslist hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka addresslist tidak nil, dan misalnya */
+/* menghasilkan P, maka InfoG(P)=X, Next(P)=NilList */
+/* Jika alokasi gagal, mengirimkan NilList */
 
 /****************** Penambahan Elemen ******************/
 void InsVFirstGraph (GraphList *Graph, infotypelist X, List L);
+/* I.S. L mungkin kosong */
+/* F.S. Melakukan alokasi sebuah elemen dan */
+/* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
 
 /****************** Konstruktor ******************/
 List CreateListNeighbors(int n, MATRIKS Mat);
+/*Mengembalikan List yang bertetangga dengan n dari Matriks*/
 
 void CreateEmptyGraph(GraphList *Graph, MATRIKS Mat);
+/*Membuat Graph kosong*/
 
 boolean IsAdjacent(GraphList Graph, int a, int b);
+/* mengecek apakah bangunan a bersambung dengan bangunan b */
 
 List Neighbors(GraphList Graph, int n);
+// Mengembalikan list yang terhubung dengan n pada graph
 
 #endif
