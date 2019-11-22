@@ -89,13 +89,10 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	}
 	CLOSE();
 
-	P = Alokasi(11);			//Alokasi kepenilikan bangunan ke list
-	InsertFirst(&*L2, P);
-
-	P = Alokasi(1);
+	P = Alokasi(1);			//Alokasi kepenilikan bangunan ke list
 	InsertFirst(&*L1, P);
 	P = Alokasi(2);
-	InsertFirst(&*L1, P);
+	InsertFirst(&*L2, P);
 	
 	CreateEmptyGraph(Graph, *Mat);
 }

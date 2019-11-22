@@ -4,26 +4,26 @@
 
 void Art1(){
     // Untuk menampilkan Ascii Art player 1
-    printf("       _                         __\n"); 
-    printf("      | |                       /_ |\n"); 
-    printf(" _ __ | | __ _ _   _  ___ _ __   | |\n"); 
-    printf("| '_ \\| |/ _` | | | |/ _ \\ '__|  | |\n"); 
-    printf("| |_) | | (_| | |_| |  __/ |     | |\n"); 
-    printf("| .__/|_|\\__,_|\\__, |\\___|_|     |_|\n"); 
-    printf("| |             __/ |\n"); 
-    printf("|_|            |___/\n\n");                
+    printf(ANSI_COLOR_RED "       _                         __\n" ANSI_COLOR_RESET); 
+    printf(ANSI_COLOR_RED "      | |                       /_ |\n" ANSI_COLOR_RESET); 
+    printf(ANSI_COLOR_RED " _ __ | | __ _ _   _  ___ _ __   | |\n" ANSI_COLOR_RESET); 
+    printf(ANSI_COLOR_RED "| '_ \\| |/ _` | | | |/ _ \\ '__|  | |\n" ANSI_COLOR_RESET); 
+    printf(ANSI_COLOR_RED "| |_) | | (_| | |_| |  __/ |     | |\n" ANSI_COLOR_RESET); 
+    printf(ANSI_COLOR_RED "| .__/|_|\\__,_|\\__, |\\___|_|     |_|\n" ANSI_COLOR_RESET); 
+    printf(ANSI_COLOR_RED "| |             __/ |\n" ANSI_COLOR_RESET); 
+    printf(ANSI_COLOR_RED "|_|            |___/\n\n" ANSI_COLOR_RESET);                
 }
 
 void Art2(){
     // Untuk menampilkan Ascii Art player 2
-    printf("       _                         ___\n");
-    printf("      | |                       |__ \\\n");
-    printf(" _ __ | | __ _ _   _  ___ _ __     ) |\n");
-    printf("| '_ \\| |/ _` | | | |/ _ \\ '__|   / /\n");
-    printf("| |_) | | (_| | |_| |  __/ |     / /_\n");
-    printf("| .__/|_|\\__,_|\\__, |\\___|_|    |____|\n");
-    printf("| |             __/ |\n");
-    printf("|_|            |___/\n\n");
+    printf(ANSI_COLOR_GREEN"       _                         ___\n"ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN"      | |                       |__ \\\n"ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN" _ __ | | __ _ _   _  ___ _ __     ) |\n"ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN"| '_ \\| |/ _` | | | |/ _ \\ '__|   / /\n"ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN"| |_) | | (_| | |_| |  __/ |     / /_\n"ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN"| .__/|_|\\__,_|\\__, |\\___|_|    |____|\n"ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN"| |             __/ |\n"ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN"|_|            |___/\n\n"ANSI_COLOR_RESET);
 }
 
 
@@ -47,7 +47,7 @@ void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, PLAY
     // Cetak Daftar bangunan yang dimiliki oleh player
     // Cetak status skill
     CetakPeta(N,M,Arr,P1,P2);
-    printf("PLayer %d\n", Curr);
+    printf("Player %d\n", Curr);
     DaftarBangunan(P3.ListB, Arr, &*T1);
 
     printf("Skill Aktif : \n");
