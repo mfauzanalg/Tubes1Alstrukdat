@@ -3,16 +3,16 @@
 
 /* *** Konstruktor membentuk POINT *** */
 void BacaPOINT (POINT * P){
-        float X,Y;
+        int X,Y;
         printf("Masukkan X : ");
-        scanf("%f", &X);
+        scanf("%d", &X);
         printf("Masukkan Y : ");
-        scanf("%f", &Y);
+        scanf("%d", &Y);
         *P = MakePOINT(X,Y);
     }
 
 void TulisPOINT (POINT P){
-        printf("(%.2f,%.2f)", Absis(P), Ordinat(P));
+        printf("(%d,%d)", Absis(P), Ordinat(P));
     }
 
 POINT MakePOINT (float X, float Y){
@@ -20,4 +20,4 @@ POINT MakePOINT (float X, float Y){
         Absis(P) = X;
         Ordinat(P) = Y;
         return P;
-    
+}

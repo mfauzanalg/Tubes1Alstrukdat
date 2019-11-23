@@ -1,12 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "../olahfile/olahfile.h"
+#include "../typebentukan/typebentukan.h"
+#include "../stack/stack.h"
+#include "../command/command.h"
 #include "../matriks/matriks.h"
 #include "../list/list.h"
 #include "graph.h"
 
 
 int main(){
+    printf("Masukkan elemen matriks 4x4 yang ada di file graph_driver.c (di copas saja)\n");
     /*  MATRIKS ADJACENCY
 0 1 0 1
 1 0 1 0
@@ -45,6 +51,4 @@ int main(){
     else{
         printf("Tidak\n");
     }
-
-
 }

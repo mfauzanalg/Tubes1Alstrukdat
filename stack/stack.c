@@ -52,33 +52,3 @@ void Pop (Stack * S, infotypestack* X){
 		Top(*S) -= 1;
 	}
 }
-
-Stack InverseStack (Stack Stackin){
-	// Menghasilkan Invers dari Stack input
-	Stack Stackout;
-	infotypestack X;
-	while (!(IsEmptyStack(Stackin))){
-		Pop(&Stackin, &X);
-		Push(&Stackout, X);
-	}
-	return Stackout;
-}
-
-Stack CopyStack (Stack Stackin){
-	// Mengcopy Stackin ke Stack
-	Stack Stackout;
-	infotypestack X;
-	Stack Stacktemp;
-	Stacktemp = InverseStack(Stackin);
-	Stackout = InverseStack(Stacktemp);
-	return Stackout;
-}
-
-Stack FPush (Stack Sinput, infotypestack X){
-	// Push TabBangunan ke Stack
-	Stack Shasil;
-	Shasil = CopyStack(Sinput);
-	Top(Shasil)++;
-  	InfoTop(Shasil) = X;
-  	return Shasil;
-}

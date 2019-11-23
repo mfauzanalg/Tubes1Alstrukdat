@@ -8,12 +8,13 @@
 
 int main(){
     //KAMUS
-    int N, M, J, X, Y, FAwal;
+    int N, M, J, X, Y, FAwal, TAwal;
     // N adalah tinggi peta
     // M adalah lebar peta
     // J adalah jumlah bangunan dalam peta
     // X dan Y digunakan untuk memilih bangunan
-    // FAwal adalah jumlah Fort lawan di awal            		            
+    // FAwal adalah jumlah Fort lawan di awal  
+    // TAwal adalah jumlah Tower lawan di awal          		            
     boolean Playing, P1turn, ada;
     // P1turn untuk menentukan turn siapa yang bermain
     // Playing untuk menentukan apakah masih bermain atau tidak
@@ -70,6 +71,7 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             FAwal = JFort(Jumlah2);
+            TAwal = JTower(Jumlah2);
             CetakAwal(N,M,Arr, P1, P2, P1, P2, 1, &T1);                     // Mencetak peta daninformasi lainnya
             STARTWORD();                                                    // Input command dari user
     
@@ -128,7 +130,7 @@ int main(){
             
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
-            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, Kondisi, &P1, &P2, Arr, J, P1turn);
+            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, TAwal, Kondisi, &P1, &P2, Arr, J, P1turn);
             printf("\n<Tekan ENTER untuk melanjutkan permainan>");
             INPUTENTER();
         } 
@@ -143,6 +145,7 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah2, Jumlah1, &Kondisi);                        // Mencetak peta daninformasi lainnya
             FAwal = JFort(Jumlah1);
+            TAwal = JTower(Jumlah1);
 
             CetakAwal(N,M,Arr, P1, P2, P2, P1, 2, &T1); 
             STARTWORD();                                                    // Input command dari user
@@ -203,11 +206,9 @@ int main(){
 
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
-            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, Kondisi, &P2, &P1, Arr, J, P1turn);
+            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, TAwal, Kondisi, &P2, &P1, Arr, J, P1turn);
             printf("\n<Tekan ENTER untuk melanjutkan permainan>");
             INPUTENTER();
-            //clear;              //untuk clear console di ubuntu
-            //system("CLS");    //untuk clear console di windows
         }
     } 
 	return 0;

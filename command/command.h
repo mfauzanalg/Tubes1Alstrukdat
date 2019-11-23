@@ -56,7 +56,7 @@ void KeLevel1(Bangunan *Bang);
 void Move(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga, PLAYER P1, PLAYER P2, int P, boolean *ada, GraphList Graph, PLAYER P3);
 // Memindahkan pasukan dari bangunan ke bangunan lain yang masih milik player
 
-void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr, int J, boolean P1Turn);
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int TAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr, int J, boolean P1Turn);
 // Mengecek kondisi yang mungkin terjadi di akhir command
 // Mengecek apakah akan terjadi penambahan skill
 // Mengecek apakah player 1/2 sudah memenangkan permainan

@@ -50,12 +50,12 @@ void menuAwal(){
 
 void ArtWin(){
     // Untuk menampilkan Ascii Art Win
-	printf(ANSI_COLOR_CYAN"           _\n" ANSI_COLOR_RESET);       
-	printf(ANSI_COLOR_CYAN"          (_)\n" ANSI_COLOR_RESET);      
-	printf(ANSI_COLOR_CYAN" __      ___\\ _ __\n" ANSI_COLOR_RESET);  
-	printf(ANSI_COLOR_CYAN" \\ \\ /\\ / / | '_ \\\n" ANSI_COLOR_RESET); 
-	printf(ANSI_COLOR_CYAN"  \\ V  V /| | | | |\n" ANSI_COLOR_RESET);
-	printf(ANSI_COLOR_CYAN"   \\_/\\_/ |_|_| |_|\n" ANSI_COLOR_RESET);
+	printf(ANSI_COLOR_YELLOW"           _\n" ANSI_COLOR_RESET);       
+	printf(ANSI_COLOR_YELLOW"          (_)\n" ANSI_COLOR_RESET);      
+	printf(ANSI_COLOR_YELLOW" __      ___\\ _ __\n" ANSI_COLOR_RESET);  
+	printf(ANSI_COLOR_YELLOW" \\ \\ /\\ / / | '_ \\\n" ANSI_COLOR_RESET); 
+	printf(ANSI_COLOR_YELLOW"  \\ V  V /| | | | |\n" ANSI_COLOR_RESET);
+	printf(ANSI_COLOR_YELLOW"   \\_/\\_/ |_|_| |_|\n\n\n" ANSI_COLOR_RESET);
                   
 }
 
@@ -178,7 +178,7 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     if (JTotal(jumlahlawan) == 3){
         (*Kondisi).S = true;
     }
-    else if (JTower(jumlahlawan) == 4){
+    else if (JTower(jumlahku) == 2){
         (*Kondisi).AU = true;
     }
     else if (JTotal(jumlahku) == 9){
@@ -559,7 +559,7 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
     }
 }
 
-void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr, int J, boolean P1Turn){
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int TAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr, int J, boolean P1Turn){
     // Mengecek kondisi yang mungkin terjadi di akhir command
     // Mengecek apakah akan terjadi penambahan skill
     // Mengecek apakah player 1/2 sudah memenangkan permainan
@@ -571,8 +571,8 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition
             AddQueue(&(*Plawan).Skill, 2);
         }
     }
-    if (Kondisi.AU){ // Menambahkan skill Attack Up
-        if (JTower(Jumlahlawan) == 3){
+    if (Kondisi.AU && (JTower(Jumlahlawan) == TAwal - 1)){ // Menambahkan skill Attack Up
+        if (JTower(Jumlahku) == 3){
             AddQueue(&(*Paku).Skill, 4);
         }
     }
@@ -595,7 +595,7 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition
     if (PP == NilList){ // Jika semua bangunan level 4 maka menambahkan skill Instant Reinforcement
         AddQueue(&(*Paku).Skill, 6);
     }
-    if (JTotal(Jumlahku) == J){ // Jika salah satu player sudah berhasil memiliki semua bangunan
+    if (JTotal(Jumlahlawan) == 0){ // Jika salah satu player sudah berhasil memiliki semua bangunan
         if(P1Turn){
             printf("Selamat, Player 1! Anda telah Menang!\n");
             Art1();
