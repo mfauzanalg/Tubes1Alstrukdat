@@ -6,15 +6,16 @@
 #include "command/command.h"
 
 int main(){
+    //KAMUS
     int N, M, J, X, Y, FAwal;
     // N adalah tinggi peta
     // M adalah lebar peta
     // J adalah jumlah bangunan dalam peta
     // X dan Y digunakan untuk memilih bangunan
     // FAwal adalah jumlah Fort lawan di awal            		            
-    boolean playing, P1turn, ada;
+    boolean Playing, P1turn, ada;
     // P1turn untuk menentukan turn siapa yang bermain
-    // playing untuk menentukan apakah masih bermain atau tidak
+    // Playing untuk menentukan apakah masih bermain atau tidak
     // ada untuk mengecek ada/tidaknya bangunan target saat move/attack
     TabBang Arr, Arr2; 	        
     // Arr untuk menyimpang data-data bangunan
@@ -48,7 +49,7 @@ int main(){
     LoadFile (&N, &M, &J, &Arr, &Graph, &Mat, &P1.ListB, &P2.ListB);
     StartPlayer(&P1);
     StartPlayer(&P2);
-    playing = true;
+    Playing = true;
     P1turn = true;
     CreateEmptystackp(&SP1);
     CreateEmptystackp(&SP2);
@@ -57,11 +58,11 @@ int main(){
     HELP();
 
     //Permainan dimulai    
-    while (playing){
+    while (Playing){
         //PLAYER 1
-        Art1();
         UpdateBangunan (&P1, &P2, &P1turn, &Arr);                           // Melakukan penambahan pasukan
-        while ((playing) && (P1turn)){
+        while ((Playing) && (P1turn)){
+            Art1();
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
@@ -70,7 +71,7 @@ int main(){
             STARTWORD();                                                    // Input command dari user
     
             if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
-                playing = false;
+                Playing = false;
                 exitGame();
             }
 
@@ -123,14 +124,14 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, Kondisi, &P1, &P2, Arr, J, P1turn);
-            printf("\nPress Enter to Continue...\n");
+            printf("\nPress Enter to Continue...");
             INPUTENTER();
         } 
 
         //PLAYER 2
-        Art2();
         UpdateBangunan (&P2, &P1, &P1turn, &Arr);                           // Melakukan penambahan pasukan
-        while ((playing) && !(P1turn)){
+        while ((Playing) && !(P1turn)){
+            Art2();
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah2, Jumlah1, &Kondisi);                        // Mencetak peta daninformasi lainnya
@@ -139,7 +140,7 @@ int main(){
             CetakAwal(N,M,Arr, P1, P2, P2, P1, 2, &T1); 
             STARTWORD();                                                    // Input command dari user
             if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
-                playing = false;
+                Playing = false;
                 exitGame();
             }
 
@@ -191,7 +192,7 @@ int main(){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, Kondisi, &P2, &P1, Arr, J, P1turn);
-            printf("\nPress Enter to Continue...\n");
+            printf("\nPress Enter to Continue...");
             INPUTENTER();
         } 
 

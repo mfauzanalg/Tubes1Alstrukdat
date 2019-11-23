@@ -1,14 +1,4 @@
 BLM OKE
-5.  SKILL
-Penggunaan
-a. instant upgrade (ok)
-b. Shield (ok)
-c. Extra Turn (ok)
-d. Attack Up (ok)
-e. Critical Hit (ok)
-f. Instant Reinforcement (ok)
-g. Barrage (ok)
-
 Skenario penambahan skill
 a. instant upgrade  (ok)
 b. Shield (ok)
@@ -19,20 +9,22 @@ f. Instant Reinforcement (ok)
 g. Barrage (ok)
 h. kalo udh sampe 10
 
-
 6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
 7. coba jangan pake strcmp
 9. Beresin fungsi2 sampah dari file
 10. SAVE
 11. LOAD
-12. Validasi input pilih bangunan
 13. UNDONYA KOK GAK BISA ABIS ATTACK TADI
 14. Masih PrintInfo yang abis Attack jangan lupa diilangin
-16. Jumlah pasukan awal
 18. Jangan lupa apus skill, player, list yang di print atau edit coba2
-22. Rapihin folder sesuai spek
-23. Kondisi menang
 24. Beresin file attack exit save
+
+25. Driver
+a. array
+b. command
+c. graph
+d. list
+e. 
 
 OKE
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
@@ -47,12 +39,26 @@ d. attack up (ok)
 e. critical hit (ok)
 f. Kalo drebut jadi level 1 lagi (ok)
 
+5.  SKILL
+Penggunaan
+a. instant upgrade (ok)
+b. Shield (ok)
+c. Extra Turn (ok)
+d. Attack Up (ok)
+e. Critical Hit (ok)
+f. Instant Reinforcement (ok)
+g. Barrage (ok)
+
 8. mesin yg bisa input enter (ok)
+12. Validasi input pilih bangunan (ok)
 15. Validasi Level Up kalo udh level 4 (ok)
+16. Jumlah pasukan awal (ok)
 17. Kalo attack up sama critical hit (ok)
 19. Validasi pemilihan bangunan di move dan attack (ok)
 20. Keterangan setelah attack masih ccd (ok)
 21. Keterangan SKILL apa aja yang masih aktif (ok)
+22. Rapihin folder sesuai spek (ok)
+23. Kondisi menang (ok)
 
 Yang harus diperhatikan saat penyerangan adalah
 1. Apakah Critical hit aktif ->  ada di player
