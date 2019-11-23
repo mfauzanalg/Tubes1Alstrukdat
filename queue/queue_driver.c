@@ -44,10 +44,11 @@ int main(){
         } else if(code == 'X'){
             stop = true;
         } else{
-            printf("Masukkan salah, hehe...");
+            printf("Masukkan salah, hehe...\n");
         }
         printf("Head : %d\n", InfoHead(Q));
         printf("Tail : %d\n", InfoTail(Q));
+        printf("\n\n");
     }
     return 0;
 }
