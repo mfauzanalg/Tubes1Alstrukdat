@@ -3,6 +3,7 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
+
 #include "../typebentukan/typebentukan.h"
 #include "../stack/stack.h"
 
