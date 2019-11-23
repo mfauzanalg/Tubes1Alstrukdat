@@ -53,7 +53,7 @@ void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
         awal1 = InfoTop(P1).Skill.HEAD;
         akhir1 = InfoTop(P1).Skill.TAIL;
         if(IsEmptyQueue(InfoTop(P1).Skill)){
-            fprint(fp,"%d\n", 0);
+            fprintf(fp,"%d\n", 0);
         } else{
             for(j = awal1; j <= akhir1; j++){
                 fprintf(fp,"%d\n", InfoTop(P1).Skill.T[j]);
@@ -78,7 +78,7 @@ void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
         awal2 = InfoTop(P2).Skill.HEAD;
         akhir2 = InfoTop(P2).Skill.TAIL;
         if(IsEmptyQueue(InfoTop(P2).Skill)){
-            fprint(fp,"%d\n", 0);
+            fprintf(fp,"%d\n", 0);
         } else{
             for(k = awal2; k <= akhir2; k++){
                 fprintf(fp,"%d\n", InfoTop(P2).Skill.T[k]);

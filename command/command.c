@@ -48,6 +48,8 @@ void menuAwal(){
     printf("Ayo mulai permainan! Apakah Anda siap untuk menguasai keempat negara?\n ");
     printf("<Tekan ENTER untuk melanjutkan permainan>");
     INPUTENTER();
+}
+
 void ArtWin(){
     // Untuk menampilkan Ascii Art Win
 	printf(ANSI_COLOR_CYAN"           _\n" ANSI_COLOR_RESET);       
@@ -82,10 +84,7 @@ void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, PLAY
     // Cetak Daftar bangunan yang dimiliki oleh player
     // Cetak status skill
     CetakPeta(N,M,Arr,P1,P2);
-<<<<<<< HEAD
     printf("\n");
-=======
->>>>>>> e88b21dba303b6ae31fcc8b128d0413737447169
     printf("Player %d\n", Curr);
     DaftarBangunan(P3.ListB, Arr, &*T1);
 

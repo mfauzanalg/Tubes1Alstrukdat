@@ -10,8 +10,6 @@ void print_array(TabBang *Arr, int maxel){
     int f;
     char input2;
     for (i = IdxMin;i <= MaxElArr(*Arr); i++){
-        printf("nomor bangunan ke-%d",i);
-        printf(" = %d.\n",Elmt(*Arr,i).nomor);
         printf("Type bangunan ke-%d = ",i);
         input2 = Elmt(*Arr,i).type;
         if (input2 == 'C'){
@@ -49,7 +47,7 @@ void print_array(TabBang *Arr, int maxel){
         printf(" = %d.\n",Elmt(*Arr,i).letak.X);
         printf("Posisi vertikal bangunan ke-%d",i);
         printf(" = %d.\n",Elmt(*Arr,i).letak.Y);
-        printf("Masih bisa pake command move, bangunan ke-%d = ",i);
+        printf("Masih bisa command move, bangunan ke-%d = ",i);
         f = Elmt(*Arr,i).move;
         if (f == 0){
             printf(" false");
@@ -58,13 +56,13 @@ void print_array(TabBang *Arr, int maxel){
             printf(" true");
         }
         printf("\n");
-        printf("Masih bisa pake command attack, bangunan ke-%d = ",i);
+        printf("Masih bisa command attack, bangunan ke-%d = ",i);
         f = Elmt(*Arr,i).move;
         if (f == 0){
-            printf(" false");
+            printf(" false\n");
         }
         else{
-            printf(" true");
+            printf(" true\n");
         }
         printf("\n");
 
@@ -72,16 +70,12 @@ void print_array(TabBang *Arr, int maxel){
 }
 
 void isiarray (TabBang *Arr, int maxel){
-int i;
-int G;
-char input2;
-for (i = IdxMin;i <= MaxElArr(*Arr); i++){
-        printf("Masukkan nomor bangunan ke-%d = ",i);
-        scanf(" %d",&G);
-        Elmt(*Arr,i).nomor = G;
-        printf("\n");
+    int i;
+    int G;
+    char input2;
+    for (i = IdxMin;i <= MaxElArr(*Arr); i++){
         printf("Masukkan Type bangunan ke-%d (C/T/F/V) = ",i);
-        scanf(" %C", &input2);
+        scanf(" %c", &input2);
         Elmt(*Arr,i).type = input2;
         printf("\n");
         printf("Masukkan jumlah Pasukan bangunan ke-%d = ",i);
@@ -135,26 +129,22 @@ int main(){
     scanf("%d", &maxel);
     printf("\n");
     CreateEmptyArray(&arr1, maxel);
-    printf("Check array kosong......\n");
-    printf("\n");
-    print_array(&arr1, maxel);
-    printf("\n");
     printf("Input elemen-elemen bangunan :\n\n");
     isiarray(&arr1, maxel);
     printf("Check array yang sudah di input....\n");
     printf("\n");
     print_array(&arr1, maxel);
     printf("\n");
-    printf("banyak bangunan= ");
+    printf("banyak bangunan = ");
     jum = NbElmtArr(arr1);
     printf("%d\n", jum);
     printf("\n");
-    printf("bangunan pertama= ");
-    pertama= GetFirstIdx(arr1);
+    printf("bangunan pertama = ");
+    pertama = GetFirstIdx(arr1);
     printf("%d\n", pertama);
     printf("\n");
-    printf("bangunan terakhir= ");
-    terakhir= GetLastIdx(arr1);
+    printf("bangunan terakhir = ");
+    terakhir = GetLastIdx(arr1);
     printf("%d\n", terakhir);
     printf("\n");
     CopyArr(arr1, &arr2);
@@ -168,7 +158,8 @@ int main(){
     printf("Hasil array arr1 yang baru di dealokasi.....\n");
     printf("\n");
     print_array(&arr1, maxel);
-    printf("karena arr1 di dealokasi, sehingga tidak mengeprint array apa2");
+    printf("karena arr1 di dealokasi, sehingga tidak mencetak apa-apa\n");
+    return 0;
 }
 
 
