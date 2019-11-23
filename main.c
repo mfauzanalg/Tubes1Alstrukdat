@@ -4,6 +4,7 @@
 
 #include "olahfile/olahfile.h"
 #include "command/command.h"
+#include "save/coba_save.h"
 
 int main(){
 	int i;
@@ -36,12 +37,14 @@ int main(){
     CreateEmptystackp(&SP2);
     CreateEmptyStack(&SBang);
     Aend(P1) = true;
+    menuAwal();
     HELP();
-    
     while (playing){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
         Art1();
+        printf("\nPlayer 1, sekarang giliran Anda!\n");
+        printf("Apakah Anda siap untuk menaklukkan dunia?\n");
         UpdateBangunan (&P1, &P2, &P1turn, &Arr);
         while ((playing) && (P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
@@ -57,7 +60,8 @@ int main(){
             }
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
-                printf("Anda Berhasil Mengakhiri Turn Ini\n");
+                printf("Anda berhasil mengakhiri turn ini\n");
+                printf("Player 2, ayo bersiap!\n");
                 P1turn = false;
                 Aend(P2) = true;
                 Askill(P1) = false;
@@ -65,6 +69,7 @@ int main(){
 
             else if (strcmp(CWord.TabKata, "ATTACK") == 0){
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
+                printf("\n");
                 Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, &P1, &P2);
                 Aend(P1) = false;
                 Askill(P1) = false;
@@ -106,7 +111,7 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             // FAkhir = JFort(Jumlah2);
             CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, Kondisi, &P1, &P2, Arr, J, P1turn);
-            printf("\nPress Enter to Continue...\n");
+            printf("\n<Tekan ENTER untuk melanjutkan permainan>");
             INPUTENTER();
             //clear;              //untuk clear console di ubuntu
             //system("CLS");    //untuk clear console di windows
@@ -115,6 +120,8 @@ int main(){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 2
         Art2();
+        printf("\nPlayer 2, sekarang giliran Anda!\n");
+        printf("Apakah Anda siap untuk menaklukkan dunia?\n");
         UpdateBangunan (&P2, &P1, &P1turn, &Arr);
         while ((playing) && !(P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
@@ -129,8 +136,13 @@ int main(){
                 exitGame();
             }
 
+            else if(strcmp(CWord.TabKata, "SAVE") == 0){
+                SaveAll(SBang,SP1,SP2,playing,P1turn);
+            }
+
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){
-                printf("Anda Berhasil Mengakhiri Turn Ini\n");
+                printf("Anda berhasil mengakhiri turn ini\n");
+                printf("Player 1, ayo bersiap!\n");
                 P1turn = true;
                 Aend(P1) = true;
                 Askill(P2) = false;
@@ -178,12 +190,11 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             FAkhir = JFort(Jumlah1);
             CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, Kondisi, &P2, &P1, Arr, J, P1turn);
-            printf("\nPress Enter to Continue...\n");
+            printf("\n<Tekan ENTER untuk melanjutkan permainan>");
             INPUTENTER();
             //clear;              //untuk clear console di ubuntu
             //system("CLS");    //untuk clear console di windows
-        } 
-
+        }
     } 
 	return 0;
 }

@@ -26,19 +26,45 @@ void Art2(){
     printf("|_|            |___/\n\n");
 }
 
+void menuAwal(){
+    printf("\n");
+    printf("   #    #     #    #    #######    #    ######     #     # ####### ######  #       ######     #     #    #    ######  \n");
+    printf("  # #   #     #   # #      #      # #   #     #    #  #  # #     # #     # #       #     #    #  #  #   # #   #     # \n");
+    printf(" #   #  #     #  #   #     #     #   #  #     #    #  #  # #     # #     # #       #     #    #  #  #  #   #  #     # \n");
+    printf("#     # #     # #     #    #    #     # ######     #  #  # #     # ######  #       #     #    #  #  # #     # ######  \n");
+    printf("#######  #   #  #######    #    ####### #   #      #  #  # #     # #   #   #       #     #    #  #  # ####### #   #   \n");
+    printf("#     #   # #   #     #    #    #     # #    #     #  #  # #     # #    #  #       #     #    #  #  # #     # #    #  \n");
+    printf("#     #    #    #     #    #    #     # #     #     ## ##  ####### #     # ####### ######      ## ##  #     # #     # \n\n\n");
+    printf("Selamat datang di Dunia Avatar!\n\n");
+    printf("Saat avatar Aang belum muncul, dunia menjadi kacau dan terjadi perang dunia. Perang ini diikuti oleh 4 negara - API, AIR, \n");
+    printf("TANAH, dan UDARA. Pada mulanya, keempat negara berada di keempat penjuru dunia. Mereka memiliki pasukan masing-masing dan \n");
+    printf("jumlahnya terus bertambah. Tiap negara dapat bergerak dan menduduki sebuah kota. Untuk menduduki sebuah kota, sebuah negara\n");
+    printf("harus menyerang dengan pasukan lebih banyak dari penghuni kota tersebut. Ketika sebuah kota diduduki, kota tersebut akan \n");
+    printf("menghasilkan pasukan untuk negara yang berhasil mendudukinya. Pemenangnya adalah negara yang berhasil menduduki seluruh kota.\n\n");
+    printf("Permainan ini dapat dimainkan oleh dua orang pemain. Di awal permainan, pemain 1 akan diberikan 2 buah bangunan,\n");                                                                               
+    printf("sedangkan pemain kedua akan diberikan 1 buah bangunan. Dalam peta, bangunan milik pemain 1 berwarna merah, sedangkan pemain\n");
+    printf("dua berwarna hijau\n\n");
+
+    printf("Ayo mulai permainan! Apakah Anda siap untuk menguasai keempat negara?\n ");
+    printf("<Tekan ENTER untuk melanjutkan permainan>");
+    INPUTENTER();
+}
 
 void HELP(){
     // Untuk menampilkan command apa saja yang dapat dilakukan pada program
-    printf("Daftar Command yang dapat dilakukan : \n");
-    printf("1. ATTACK \n");
-    printf("2. LEVEL_UP \n");
-    printf("3. SKILL \n");
-    printf("4. UNDO \n");
-    printf("5. END_TURN \n");
-    printf("6. MOVE\n");
-    printf("7. EXIT\n");
-    printf("8. SAVE (Mungkin)\n");
     printf("\n");
+    printf("Daftar Command yang dapat dilakukan : \n");
+    printf("1. ATTACK      - menyerang bangunan milik lawan dengan mengirim pasukan yang dimiliki\n");
+    printf("2. LEVEL_UP    - menaikkan level suatu bangunan \n");
+    printf("3. SKILL       - memakai skill yang dimiliki pemain\n");
+    printf("4. UNDO        - membatalkan perintah terakhir\n");
+    printf("5. END_TURN    - mengakhiri giliran pemain\n");
+    printf("6. MOVE        - memindahkan pasukan ke bangunan lain\n");
+    printf("7. EXIT        - keluar dari permainan\n");
+    printf("8. SAVE (Mungkin)\n\n");
+    printf("<Tekan ENTER untuk melanjutkan permainan>");
+    INPUTENTER();
+
 }
 
 void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, PLAYER P4, int Curr, TabInt *T1){
@@ -47,16 +73,17 @@ void CetakAwal (int N, int M, TabBang Arr, PLAYER P1, PLAYER P2, PLAYER P3, PLAY
     // Cetak Daftar bangunan yang dimiliki oleh player
     // Cetak status skill
     CetakPeta(N,M,Arr,P1,P2);
-    printf("PLayer %d\n", Curr);
+    printf("\n");
+    printf("Player %d\n", Curr);
     DaftarBangunan(P3.ListB, Arr, &*T1);
 
-    printf("Skill Aktif : \n");
+    printf("Ini adalah skill sedang diaktifkan!\n");
     printf("Shield Lawan : "); if (P4.IsShield) printf("Aktif, sisa %d turn\n", P4.CountShield); else printf("Tidak aktif\n");
     printf("Critical Hit : "); if (P3.IsCriticalHit) printf("Aktif\n"); else printf("Tidak aktif\n");
     printf("Attack Up    : "); if (P3.IsAttackUp) printf("Aktif\n\n"); else printf("Tidak aktif\n\n");
 
     printf("Banyaknya skill yang dimiliki player : %d\n", NBElmtQueue(P3.Skill));
-    printf("Skill Available : "); 
+    printf("Skill yang tersedia : "); 
     CetakSkill(InfoHead(P3.Skill));
     printf("\n");
     printf("ENTER COMMAND : ");
