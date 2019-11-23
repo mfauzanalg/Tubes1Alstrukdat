@@ -1,18 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "olahfile.h"
-#include "typebentukan.h"
-#include "stack.h"
-#include "command.h"
+#include "../matriks/matriks.h"
+#include "../list/list.h"
 #include "graph.h"
+
 
 int main(){
     /*  MATRIKS ADJACENCY
-    0 1 0 1
-    1 0 1 0
-    0 1 0 0
-    1 0 0 0 
+0 1 0 1
+1 0 1 0
+0 1 0 0
+1 0 0 0 
     */
     MATRIKS Mat;
     GraphList Graph;
