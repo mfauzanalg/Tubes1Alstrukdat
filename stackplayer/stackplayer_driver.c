@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "stackplayer.h"
 #include "queue.h"
-#include "typebentukan.h"
+#include "../typebentukan/typebentukan.h"
 #include "list.h"
 
 

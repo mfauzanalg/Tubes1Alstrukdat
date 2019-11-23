@@ -7,31 +7,50 @@
 #include "save/coba_save.h"
 
 int main(){
-	int i;
-    int N; 			            //Jumlah baris
-    int M;			            //Jumlah kolom
-    int J; 			            //Jumlah bangunan
-    boolean playing;            //Status bermain
-    boolean P1turn;
-    boolean ada;                //Ada bangunan yang dapat diserang atau ngga
-    TabBang Arr, Arr2; 	        //Array menyimpan tipe data bangunan
-    GraphList Graph;            //Array menyimpan graf
-    Stack SBang;                //Stack menyimpan Array Bangunan
-    stackp SP1, SP2;            //Stack menyimpan data Player
-    MATRIKS Mat;                //Matriks menyimpan data untk graf
-    PLAYER P1, P2, P3;          //Pemain P3 untuk push aja
-    addresslist P;
-    JumlahB Jumlah1, Jumlah2;   //Jumlah bangunan yang dimiliki pemain1
-    TabInt T1, T2;              //Tab untuk membuat bangunan yang dapat dipilih
-    List Tetangga;              //List yang berisi tetangga dari suatu bangunan
-    int X, Y;                   //Untuk input memilih bangunan
-    int FAwal, FAkhir;          //Untuk mengecek jumlah fort apakah berkurang 1
+    //KAMUS
+    int N, M, J, X, Y, FAwal;
+    // N adalah tinggi peta
+    // M adalah lebar peta
+    // J adalah jumlah bangunan dalam peta
+    // X dan Y digunakan untuk memilih bangunan
+    // FAwal adalah jumlah Fort lawan di awal            		            
+    boolean Playing, P1turn, ada;
+    // P1turn untuk menentukan turn siapa yang bermain
+    // Playing untuk menentukan apakah masih bermain atau tidak
+    // ada untuk mengecek ada/tidaknya bangunan target saat move/attack
+    TabBang Arr, Arr2; 	        
+    // Arr untuk menyimpang data-data bangunan
+    // Arr2 sebagai wadah sekunder TabBang sebelum di push
+    GraphList Graph;            
+    // Graph Untuk merepresentasikan keterhubungan antar bangunan
+    Stack SBang;                
+    // Sbang Untuk menyimpan data bangunan yang di push
+    stackp SP1, SP2;            
+    // SP1 Stack meyimpan data player 1 yang di push
+    // SP2 Stack meyimpan data player 2 yang di push
+    MATRIKS Mat;
+    // Mat untuk menyimpan data matriks 
+    PLAYER P1, P2, P3;          
+    // P1 menyimpan data Player 1
+    // P2 menyimpan data Player 2
+    // P3 sebagai wadah sekunder PLAYER sebelum di push
+    JumlahB Jumlah1, Jumlah2;   
+    // Jumlah 1 menampung jumlah bangunan player 1
+    // Jumlah 2 menampung jumlah bangunan player 2
+    TabInt T1, T2;              
+    // T1 untuk menampung bangunan yang dapat dipilih saat level up/move/battle
+    // T2 untuk menampung bangunan yang dapat dipilih saat level up/move/battle
+    List Tetangga;
+    // Tetangga list yang berisi tettangga dari suatu bangunan                 
     Condition Kondisi;
+    // Pengecekan apakah ada kemungkinan bertambah skillnya atau tidak
 
+    // ALGORITMA
+    // Inisialisasi awal data-data
     LoadFile (&N, &M, &J, &Arr, &Graph, &Mat, &P1.ListB, &P2.ListB);
     StartPlayer(&P1);
     StartPlayer(&P2);
-    playing = true;
+    Playing = true;
     P1turn = true;
     CreateEmptystackp(&SP1);
     CreateEmptystackp(&SP2);
@@ -51,11 +70,11 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             FAwal = JFort(Jumlah2);
-            CetakAwal(N,M,Arr, P1, P2, P1, P2, 1, &T1);
-            STARTWORD();
+            CetakAwal(N,M,Arr, P1, P2, P1, P2, 1, &T1);                     // Mencetak peta daninformasi lainnya
+            STARTWORD();                                                    // Input command dari user
     
-            if (strcmp(CWord.TabKata, "EXIT") == 0){ //sudah jalan
-                playing = false;
+            if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
+                Playing = false;
                 exitGame();
             }
 
@@ -67,7 +86,7 @@ int main(){
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "ATTACK") == 0){
+            else if (strcmp(CWord.TabKata, "ATTACK") == 0){                 // ATTACK
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 printf("\n");
                 Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, &P1, &P2);
@@ -75,49 +94,45 @@ int main(){
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
+            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){               // LEVEL_UP
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 LevelUpUp(&Arr, P1, &X, &T1, 1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "SKILL") == 0){
+            else if (strcmp(CWord.TabKata, "SKILL") == 0){                  // SKILL
                 UseSkill(&P1.Skill, &P1, &P2, &Arr, &P1.IsET);
                 Askill(P1) = true;
                 Aend(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "UNDO") == 0){
+            else if (strcmp(CWord.TabKata, "UNDO") == 0){                   // UNDO
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P1);
             }
 
-            else if (strcmp(CWord.TabKata, "MOVE") == 0){
+            else if (strcmp(CWord.TabKata, "MOVE") == 0){                   // MOVE
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "HELP") == 0){
+            else if (strcmp(CWord.TabKata, "HELP") == 0){                   // HELP
                 HELP();
             }
             
-            else{
+            else{                                                           // Jika input salah
                 printf("Input Salah, jalankan command HELP untuk bantuan\n");
             }
             
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
-            // FAkhir = JFort(Jumlah2);
             CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, Kondisi, &P1, &P2, Arr, J, P1turn);
             printf("\n<Tekan ENTER untuk melanjutkan permainan>");
             INPUTENTER();
-            //clear;              //untuk clear console di ubuntu
-            //system("CLS");    //untuk clear console di windows
         } 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 2
         Art2();
         printf("\nPlayer 2, sekarang giliran Anda!\n");
@@ -126,13 +141,13 @@ int main(){
         while ((playing) && !(P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
-            CekKondisi (Jumlah2, Jumlah1, &Kondisi);
+            CekKondisi (Jumlah2, Jumlah1, &Kondisi);                        // Mencetak peta daninformasi lainnya
             FAwal = JFort(Jumlah1);
 
             CetakAwal(N,M,Arr, P1, P2, P2, P1, 2, &T1); 
-            STARTWORD();
-            if (strcmp(CWord.TabKata, "EXIT") == 0){
-                playing = false;
+            STARTWORD();                                                    // Input command dari user
+            if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
+                Playing = false;
                 exitGame();
             }
 
@@ -148,38 +163,38 @@ int main(){
                 Askill(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "ATTACK") == 0){
+            else if (strcmp(CWord.TabKata, "ATTACK") == 0){                 // ATTACK
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, &P2, &P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){
+            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){                // LEVEL_UP
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 LevelUpUp(&Arr, P2, &X, &T1, 1);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "SKILL") == 0){
+            else if (strcmp(CWord.TabKata, "SKILL") == 0){                   // SKILL
                 UseSkill(&P2.Skill, &P2, &P1, &Arr, &P2.IsET);;
                 Askill(P2) = true;
                 Aend(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "UNDO") == 0){
+            else if (strcmp(CWord.TabKata, "UNDO") == 0){                   // UNDO
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P2);
                 printf("Anda Berhasil Meng-Undo Command Terakhir");
             }
 
-            else if (strcmp(CWord.TabKata, "MOVE") == 0){
+            else if (strcmp(CWord.TabKata, "MOVE") == 0){                   // MOVE
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, P2);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
-            else if (strcmp(CWord.TabKata, "HELP") == 0){
+            else if (strcmp(CWord.TabKata, "HELP") == 0){                   // HELP
                 HELP();
             }
             else{
@@ -188,7 +203,6 @@ int main(){
 
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
-            FAkhir = JFort(Jumlah1);
             CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, Kondisi, &P2, &P1, Arr, J, P1turn);
             printf("\n<Tekan ENTER untuk melanjutkan permainan>");
             INPUTENTER();

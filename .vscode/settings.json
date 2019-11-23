@@ -16,6 +16,7 @@
         "list.h": "c",
         "matriks.h": "c",
         "point.h": "c",
-        "queue.h": "c"
+        "queue.h": "c",
+        "pcolor.h": "c"
     }
 }
