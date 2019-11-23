@@ -75,12 +75,12 @@ int main(){
             CetakAwal(N,M,Arr, P1, P2, P1, P2, 1, &T1);                     // Mencetak peta daninformasi lainnya
             STARTWORD();                                                    // Input command dari user
     
-            if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
+            if (CompareTwoStrings(CWord.TabKata, "EXIT") == 0){                        // EXIT
                 Playing = false;
                 exitGame();
             }
 
-            else if (strcmp(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
+            else if (CompareTwoStrings(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
                 printf("Anda berhasil mengakhiri turn ini\n");
                 printf("Player 2, ayo bersiap!\n");
                 P1turn = false;
@@ -88,7 +88,7 @@ int main(){
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "ATTACK") == 0){                 // ATTACK
+            else if (CompareTwoStrings(CWord.TabKata, "ATTACK") == 0){                 // ATTACK
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 printf("\n");
                 Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, &P1, &P2);
@@ -96,31 +96,31 @@ int main(){
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){               // LEVEL_UP
+            else if (CompareTwoStrings(CWord.TabKata, "LEVEL_UP") == 0){               // LEVEL_UP
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 LevelUpUp(&Arr, P1, &X, &T1, 1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "SKILL") == 0){                  // SKILL
+            else if (CompareTwoStrings(CWord.TabKata, "SKILL") == 0){                  // SKILL
                 UseSkill(&P1.Skill, &P1, &P2, &Arr, &P1.IsET);
                 Askill(P1) = true;
                 Aend(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "UNDO") == 0){                   // UNDO
+            else if (CompareTwoStrings(CWord.TabKata, "UNDO") == 0){                   // UNDO
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P1);
             }
 
-            else if (strcmp(CWord.TabKata, "MOVE") == 0){                   // MOVE
+            else if (CompareTwoStrings(CWord.TabKata, "MOVE") == 0){                   // MOVE
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "HELP") == 0){                   // HELP
+            else if (CompareTwoStrings(CWord.TabKata, "HELP") == 0){                   // HELP
                 HELP();
             }
             
@@ -149,16 +149,16 @@ int main(){
 
             CetakAwal(N,M,Arr, P1, P2, P2, P1, 2, &T1); 
             STARTWORD();                                                    // Input command dari user
-            if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
+            if (CompareTwoStrings(CWord.TabKata, "EXIT") == 0){                        // EXIT
                 Playing = false;
                 exitGame();
             }
 
-            else if(strcmp(CWord.TabKata, "SAVE") == 0){
+            else if(CompareTwoStrings(CWord.TabKata, "SAVE") == 0){
                 SaveAll(SBang,SP1,SP2,Playing,P1turn);
             }
 
-            else if (strcmp(CWord.TabKata, "END_TURN") == 0){
+            else if (CompareTwoStrings(CWord.TabKata, "END_TURN") == 0){
                 printf("Anda berhasil mengakhiri turn ini\n");
                 printf("Player 1, ayo bersiap!\n");
                 P1turn = true;
@@ -166,38 +166,38 @@ int main(){
                 Askill(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "ATTACK") == 0){                 // ATTACK
+            else if (CompareTwoStrings(CWord.TabKata, "ATTACK") == 0){                 // ATTACK
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, &P2, &P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){                // LEVEL_UP
+            else if (CompareTwoStrings(CWord.TabKata, "LEVEL_UP") == 0){                // LEVEL_UP
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 LevelUpUp(&Arr, P2, &X, &T1, 1);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "SKILL") == 0){                   // SKILL
+            else if (CompareTwoStrings(CWord.TabKata, "SKILL") == 0){                   // SKILL
                 UseSkill(&P2.Skill, &P2, &P1, &Arr, &P2.IsET);;
                 Askill(P2) = true;
                 Aend(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "UNDO") == 0){                   // UNDO
+            else if (CompareTwoStrings(CWord.TabKata, "UNDO") == 0){                   // UNDO
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P2);
                 printf("Anda Berhasil Meng-Undo Command Terakhir");
             }
 
-            else if (strcmp(CWord.TabKata, "MOVE") == 0){                   // MOVE
+            else if (CompareTwoStrings(CWord.TabKata, "MOVE") == 0){                   // MOVE
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, P2);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
-            else if (strcmp(CWord.TabKata, "HELP") == 0){                   // HELP
+            else if (CompareTwoStrings(CWord.TabKata, "HELP") == 0){                   // HELP
                 HELP();
             }
             else{
