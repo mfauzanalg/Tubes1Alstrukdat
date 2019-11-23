@@ -26,6 +26,16 @@ void Art2(){
     printf(ANSI_COLOR_GREEN"|_|            |___/\n\n"ANSI_COLOR_RESET);
 }
 
+void ArtWin(){
+    // Untuk menampilkan Ascii Art Win
+	printf(ANSI_COLOR_CYAN"           _\n" ANSI_COLOR_RESET);       
+	printf(ANSI_COLOR_CYAN"          (_)\n" ANSI_COLOR_RESET);      
+	printf(ANSI_COLOR_CYAN" __      ___\\ _ __\n" ANSI_COLOR_RESET);  
+	printf(ANSI_COLOR_CYAN" \\ \\ /\\ / / | '_ \\\n" ANSI_COLOR_RESET); 
+	printf(ANSI_COLOR_CYAN"  \\ V  V /| | | | |\n" ANSI_COLOR_RESET);
+	printf(ANSI_COLOR_CYAN"   \\_/\\_/ |_|_| |_|\n" ANSI_COLOR_RESET);
+                  
+}
 
 void HELP(){
     // Untuk menampilkan command apa saja yang dapat dilakukan pada program
@@ -462,10 +472,14 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition
     if (JTotal(Jumlahku) == J){ // Jika salah satu player sudah berhasil memiliki semua bangunan
         if(P1Turn){
             printf("Player 1 Menang\n");
+            Art1();
+            ArtWin();
             exit(0);
         }
         else{
             printf("Player 2 Menang\n");
+            Art2();
+            ArtWin();
             exit(0);
         }
     }
