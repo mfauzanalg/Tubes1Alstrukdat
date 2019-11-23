@@ -1,8 +1,3 @@
-// Nama  : Muhammad Fauzan Al-Ghifari
-// NIM   : 13518112
-// Topik : Mesin kata
-// Tanggal : 21 Septemer 2019
-
 #include "mesinword.h"
 #include <stdio.h>
 
@@ -138,4 +133,30 @@ int WCharToInt(char CC){
 	else if (CC == '9'){
 		return 9;
 	}
+}
+
+int StringLength(char *S){
+  int i =0;
+  int sum=0;
+  char c = S[0];
+  while (c != '\0'){
+    sum += 1;
+    i += 1;
+    c = S[i];
+  }
+  return sum;
+}
+
+int CompareTwoStrings(char *S1, char *S2){
+  if (StringLength(S1) != StringLength(S2)){
+    return 0;
+  }
+  else{
+    for (int i = 1; i <= StringLength(S1); i++){
+      if (S1[i] != S2[i]){
+        return 0;
+      }
+    }
+    return 1;
+  }
 }

@@ -55,4 +55,8 @@ int WStringToInteger (Word CWord);
 
 int WCharToInt(char CC);
 
+int StringLength(char *S);
+
+int CompareTwoStrings(char *S1, char *S2);
+
 #endif
