@@ -39,7 +39,7 @@ int main(){
     printf("\n");
 
     printf("Apakah elemen 1 terhubung dengan elemen 3?\n");
-    if (IsAdjacent(Graph, 1,3)){
+    if (IsAdjacent(Graph,1,3)){
         printf("Ya\n");
     }
     else{

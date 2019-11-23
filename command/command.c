@@ -28,22 +28,20 @@ void Art2(){
 
 void menuAwal(){
     printf("\n");
-    printf("   #    #     #    #    #######    #    ######     #     # ####### ######  #       ######     #     #    #    ######  \n");
-    printf("  # #   #     #   # #      #      # #   #     #    #  #  # #     # #     # #       #     #    #  #  #   # #   #     # \n");
-    printf(" #   #  #     #  #   #     #     #   #  #     #    #  #  # #     # #     # #       #     #    #  #  #  #   #  #     # \n");
-    printf("#     # #     # #     #    #    #     # ######     #  #  # #     # ######  #       #     #    #  #  # #     # ######  \n");
-    printf("#######  #   #  #######    #    ####### #   #      #  #  # #     # #   #   #       #     #    #  #  # ####### #   #   \n");
-    printf("#     #   # #   #     #    #    #     # #    #     #  #  # #     # #    #  #       #     #    #  #  # #     # #    #  \n");
-    printf("#     #    #    #     #    #    #     # #     #     ## ##  ####### #     # ####### ######      ## ##  #     # #     # \n\n\n");
+    printf("                     __                                     .__       .___                   \n");     
+    printf("_____ ___  _______ _/  |______ _______  __  _  _____________|  |    __| _/ __  _  _______ _______ \n");
+    printf("\\__  \\\\  \\/ /\\__  \\\\   __\\__  \\\\_  __ \\ \\ \\/ \\/ /  _ \\_  __ \\  |   / __ |  \\ \\/ \\/ /\\__  \\\\_  __ \\\n");
+    printf(" / __ \\\\   /  / __ \\|  |  / __ \\|  | \\/  \\     (  <_> )  | \\/  |__/ /_/ |   \\     /  / __ \\|  | \\/\n");
+    printf("(____  /\\_/  (____  /__| (____  /__|      \\/\\_/ \\____/|__|  |____/\\____ |    \\/\\_/  (____  /__|   \n");
+    printf("     \\/           \\/          \\/                                       \\/                \\/ \n\n");
     printf("Selamat datang di Dunia Avatar!\n\n");
-    printf("Saat avatar Aang belum muncul, dunia menjadi kacau dan terjadi perang dunia. Perang ini diikuti oleh 4 negara - API, AIR, \n");
-    printf("TANAH, dan UDARA. Pada mulanya, keempat negara berada di keempat penjuru dunia. Mereka memiliki pasukan masing-masing dan \n");
+    printf("Saat avatar Aang belum muncul, dunia menjadi kacau dan terjadi perang dunia. Perang ini diikuti oleh 4 negara - ");printf(ANSI_COLOR_RED "API" ANSI_COLOR_RESET); printf(", "); printf(ANSI_COLOR_BLUE "AIR" ANSI_COLOR_RESET); printf(", \n");
+    printf(ANSI_COLOR_GREEN "TANAH" ANSI_COLOR_RESET); printf(", dan "); printf(ANSI_COLOR_CYAN "UDARA" ANSI_COLOR_RESET); printf(". Pada mulanya, keempat negara berada di keempat penjuru dunia. Mereka memiliki pasukan masing-masing dan \n");
     printf("jumlahnya terus bertambah. Tiap negara dapat bergerak dan menduduki sebuah kota. Untuk menduduki sebuah kota, sebuah negara\n");
     printf("harus menyerang dengan pasukan lebih banyak dari penghuni kota tersebut. Ketika sebuah kota diduduki, kota tersebut akan \n");
     printf("menghasilkan pasukan untuk negara yang berhasil mendudukinya. Pemenangnya adalah negara yang berhasil menduduki seluruh kota.\n\n");
-    printf("Permainan ini dapat dimainkan oleh dua orang pemain. Di awal permainan, pemain 1 akan diberikan 2 buah bangunan,\n");                                                                               
-    printf("sedangkan pemain kedua akan diberikan 1 buah bangunan. Dalam peta, bangunan milik pemain 1 berwarna merah, sedangkan pemain\n");
-    printf("dua berwarna hijau\n\n");
+    printf("Permainan ini dapat dimainkan oleh dua orang pemain. Di awal permainan, pemain 1 dan 2 akan diberikan masing-masing 1 buah bangunan.\n");                                                                               
+    printf("Dalam peta, bangunan milik pemain 1 berwarna "); printf(ANSI_COLOR_RED "merah" ANSI_COLOR_RESET); printf(", sedangkan pemain 2 berwarna "); printf(ANSI_COLOR_GREEN "hijau" ANSI_COLOR_RESET);printf("\n\n");
 
     printf("Ayo mulai permainan! Apakah Anda siap untuk menguasai keempat negara?\n ");
     printf("<Tekan ENTER untuk melanjutkan permainan>");
@@ -244,7 +242,17 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                 Z *= 2;
                 Tujuan -= Z;
                 if (Tujuan <= 0){               //Berpindah kepemilikan
-                    printf("Bangunan menjadi milikmu!!!\n");
+                    printf("\n     ___________ \n");
+                    printf("    '._==_==_=_.'\n");
+                    printf("    .-\\:      /-.\n");
+                    printf("   | (|:.     |) |\n");
+                    printf("    '-|:.     |-'\n");
+                    printf("      \\::.    /\n");
+                    printf("       '::. .'\n");
+                    printf("         ) (\n");
+                    printf("       _.' '._\n");
+                    printf("      `'''''''`\n\n");
+                    printf("Bangunan berhasil menjadi milikmu!!!\n");
                     Tujuan *= (0.5);
                     A = Alokasi(ElmtStat(*T2,*Y));
                     DelP(&((*P4)).ListB, ElmtStat(*T2,*Y));
@@ -254,7 +262,16 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                 }
                 else{
-                    printf("Bangunan gagal di rebut\n");
+                    printf("\n     .......... \n");
+                    printf("   .'          '.\n");
+                    printf("  /   O      O   \\\n");
+                    printf(" :                :\n");
+                    printf(" |                |   \n");
+                    printf(" :    .------.    :\n");
+                    printf("  \\  '        '  /\n");
+                    printf("   '.          .'\n");
+                    printf("     '-......-'\n\n");
+                    printf("Sayang sekali, bangunan gagal direbut!\n");
                     printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
                 }
             }
@@ -262,7 +279,17 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                 if((*P3).IsAttackUp){           //Jika AttackUp Aktif
                     Tujuan -= Z;
                     if (Tujuan <= 0){           //Berpindah kepemilikan
-                    printf("Bangunan menjadi milikmu!!!\n");
+                    printf("\n     ___________ \n"); 
+                    printf("    '._==_==_=_.'\n");
+                    printf("    .-\\:      /-.\n");
+                    printf("   | (|:.     |) |\n");
+                    printf("    '-|:.     |-'\n");
+                    printf("      \\::.    /\n");
+                    printf("       '::. .'\n");
+                    printf("         ) (\n");
+                    printf("       _.' '._\n");
+                    printf("      `'''''''`\n\n");        
+                    printf("Bangunan berhasil menjadi milikmu!!!\n");
                     A = Alokasi(ElmtStat(*T2,*Y));
                     DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
                     InsertFirst(&((*P3)).ListB, A);
@@ -271,7 +298,16 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                     }
                     else{                       //Tidak berpindah kepemilikan
-                        printf("Bangunan gagal di rebut\n");
+                        printf("\n     .......... \n");
+                        printf("   .'          '.\n");
+                        printf("  /   O      O   \\\n");
+                        printf(" :                :\n");
+                        printf(" |                |   \n");
+                        printf(" :    .------.    :\n");
+                        printf("  \\  '        '  /\n");
+                        printf("   '.          .'\n");
+                        printf("     '-......-'\n\n");
+                        printf("Sayang sekali, bangunan gagal direbut!\n");
                         printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
                     }
                 }
@@ -279,8 +315,18 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     if((*P4).IsShield){         //Jika lawan memiliki shield
                         Z *= (0.75);
                         Tujuan -= Z;
-                        if (Tujuan <= 0){       //Berpindah kepemilikan
-                            printf("Bangunan menjadi milikmu!!!\n");
+                        if (Tujuan <= 0){  
+                            printf("\n     ___________ \n");
+                            printf("    '._==_==_=_.'\n");
+                            printf("    .-\\:      /-.\n");
+                            printf("   | (|:.     |) |\n");
+                            printf("    '-|:.     |-'\n");
+                            printf("      \\::.    /\n");
+                            printf("       '::. .'\n");
+                            printf("         ) (\n");
+                            printf("       _.' '._\n");
+                            printf("      `'''''''`\n\n");     //Berpindah kepemilikan
+                            printf("Bangunan berhasil menjadi milikmu!!!\n");
                             A = Alokasi(ElmtStat(*T2,*Y));
                             DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
                             InsertFirst(&((*P3)).ListB, A);
@@ -289,7 +335,16 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                             KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                         }
                         else{                   //Tidak berpindah kepemilikan
-                            printf("Bangunan gagal di rebut\n");
+                            printf("\n     .......... \n");
+                            printf("   .'          '.\n");
+                            printf("  /   O      O   \\\n");
+                            printf(" :                :\n");
+                            printf(" |                |   \n");
+                            printf(" :    .------.    :\n");
+                            printf("  \\  '        '  /\n");
+                            printf("   '.          .'\n");
+                            printf("     '-......-'\n\n");
+                            printf("Sayang sekali, bangunan gagal direbut!\n");
                             printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
                         }
                     }
@@ -297,8 +352,18 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                         if(Elmt(*Arr,ElmtStat(*T2,*Y)).P){  //Jika lawan memiliki pertahanan
                             Z *= (0.75);
                             Tujuan -= Z;
-                            if (Tujuan <= 0){   //Berpindah kepemilikan
-                                printf("Bangunan menjadi milikmu!!!\n");
+                            if (Tujuan <= 0){
+                                printf("\n     ___________ \n");
+                                printf("    '._==_==_=_.'\n");
+                                printf("    .-\\:      /-.\n");
+                                printf("   | (|:.     |) |\n");
+                                printf("    '-|:.     |-'\n");
+                                printf("      \\::.    /\n");
+                                printf("       '::. .'\n");
+                                printf("         ) (\n");
+                                printf("       _.' '._\n");
+                                printf("      `'''''''`\n\n");   //Berpindah kepemilikan
+                                printf("Bangunan berhasil menjadi milikmu!!!\n");
                                 A = Alokasi(ElmtStat(*T2,*Y));
                                 DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
                                 InsertFirst(&((*P3)).ListB, A);
@@ -307,14 +372,33 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                                 KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                             }
                             else{               //Tidak berpindah kepemilikan
-                                printf("Bangunan gagal di rebut\n");
+                                printf("\n     .......... \n");
+                                printf("   .'          '.\n");
+                                printf("  /   O      O   \\\n");
+                                printf(" :                :\n");
+                                printf(" |                |   \n");
+                                printf(" :    .------.    :\n");
+                                printf("  \\  '        '  /\n");
+                                printf("   '.          .'\n");
+                                printf("     '-......-'\n\n");
+                                printf("Sayang sekali, bangunan gagal direbut!\n");
                                 printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
                             }
                         }
                         else{                        //Jika lawan tidak memiliki pertahanan
                             Tujuan -= Z;
-                            if (Tujuan <= 0){       //Berpindah kepemilikan
-                                printf("Bangunan menjadi milikmu!!!\n");
+                            if (Tujuan <= 0){  
+                                printf("\n     ___________ \n");
+                                printf("    '._==_==_=_.'\n");
+                                printf("    .-\\:      /-.\n");
+                                printf("   | (|:.     |) |\n");
+                                printf("    '-|:.     |-'\n");
+                                printf("      \\::.    /\n");
+                                printf("       '::. .'\n");
+                                printf("         ) (\n");
+                                printf("       _.' '._\n");
+                                printf("      `'''''''`\n\n");     //Berpindah kepemilikan
+                                printf("Bangunan berhasil menjadi milikmu!!!\n");
                                 A = Alokasi(ElmtStat(*T2,*Y));
                                 DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
                                 InsertFirst(&((*P3)).ListB, A);
@@ -323,7 +407,16 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                                 KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                             }
                             else{                   //Tidak berpindah kepemilikan
-                                printf("Bangunan gagal di rebut\n");
+                                printf("\n     .......... \n");
+                                printf("   .'          '.\n");
+                                printf("  /   O      O   \\\n");
+                                printf(" :                :\n");
+                                printf(" |                |   \n");
+                                printf(" :    .------.    :\n");
+                                printf("  \\  '        '  /\n");
+                                printf("   '.          .'\n");
+                                printf("     '-......-'\n\n");
+                                printf("Sayang sekali, bangunan gagal direbut!\n");
                                 printf("Sisa pasukan di bangunan target : %d\n", Tujuan);
                             }
                         }
@@ -449,7 +542,12 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
 
                 Elmt(*Arr,ElmtStat(*T1,*X)).jum -= Z; //Bangunan Asal
                 Elmt(*Arr,ElmtStat(*T2,*Y)).jum += Z; //Banguann Tujuan
-            
+
+                printf("\n            ________ \n");
+                printf("    _-_-  _/\\______\\__\n");
+                printf(" _-_-__  / ,-. -|-  ,-.`-.\n");
+                printf("    _-_- `( o )----( o )-'\n");
+                printf("           `-'      `-' \n");
                 printf("%d pasukan dari %s (%d,%d) telah berpindah ke %s (%d,%d)\n", Z, Bang1, Elmt(*Arr,ElmtStat(*T1,*X)).letak.X, Elmt(*Arr,ElmtStat(*T1,*X)).letak.Y, Bang2, Elmt(*Arr,ElmtStat(*T2,*Y)).letak.X, Elmt(*Arr,ElmtStat(*T2,*Y)).letak.Y);
             }
             else {  //  Jika tidak ada bangunan milik player yang terhubung dengan bangunan yang dipilih
@@ -499,13 +597,13 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition
     }
     if (JTotal(Jumlahku) == J){ // Jika salah satu player sudah berhasil memiliki semua bangunan
         if(P1Turn){
-            printf("Player 1 Menang\n");
+            printf("Selamat, Player 1! Anda telah Menang!\n");
             Art1();
             ArtWin();
             exit(0);
         }
         else{
-            printf("Player 2 Menang\n");
+            printf("Selamat, Player 2! Anda telah Menang!\n");
             Art2();
             ArtWin();
             exit(0);
@@ -631,6 +729,11 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
                 Elmt(*(Arr), *i).A=ElmtMat(MC,Elmt(*(Arr), *i).lev,1);
                 Elmt(*(Arr), *i).M=ElmtMat(MC,Elmt(*(Arr), *i).lev,2);
                 Elmt(*(Arr), *i).P=ElmtMat(MC,Elmt(*(Arr), *i).lev,3);
+                printf("\n  _   |~  _\n");
+                printf(" [_]--'--[_]\n");
+                printf(" |'|''`''|'|\n");
+                printf(" | | /^\\ | |\n");
+                printf(" |_|_|I|_|_|\n");
                 printf("Level Castle-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
             }
         }
@@ -655,6 +758,16 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
                 Elmt(*(Arr), *i).A=ElmtMat(MT,Elmt(*(Arr), *i).lev,1);
                 Elmt(*(Arr), *i).M=ElmtMat(MT,Elmt(*(Arr), *i).lev,2);
                 Elmt(*(Arr), *i).P=ElmtMat(MT,Elmt(*(Arr), *i).lev,3);
+                printf("\n           |\n");
+                printf("          /o\\n");
+                printf("          |~|\n");
+                printf("       ,  | |  ,\n");
+                printf("       /\\/ _ \\/\\n");
+                printf(" .-.-.-|| (_) ||-.-.-.\n");
+                printf(" | # # ||  _  || # # |\n");
+                printf("_|     || ||| ||     |_\n");
+                printf(" '''''''''==='''''''''\n");
+                printf("          ===\n");
                 printf("Level Tower-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
             }
         }
@@ -680,6 +793,12 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
                 Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
                 Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
                 Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
+                printf("\n [][][] /""\\ [][][]\n");
+                printf("  |::| /____\\ |::|\n");
+                printf("  |[]|_|::::|_|[]|\n");
+                printf("  |::::::__::::::|\n");
+                printf("  |:::::/||\\:::::|\n");
+                printf("  |:#:::||||::#::|\n");
                 printf("Level Fort-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
             }
         }
@@ -705,6 +824,13 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
                 Elmt(*(Arr), *i).A=ElmtMat(MF,Elmt(*(Arr), *i).lev,1);
                 Elmt(*(Arr), *i).M=ElmtMat(MF,Elmt(*(Arr), *i).lev,2);
                 Elmt(*(Arr), *i).P=ElmtMat(MF,Elmt(*(Arr), *i).lev,3);
+                printf("       ':.  \n");
+                printf("         []_____\n");
+                printf("        /\\      \\n");
+                printf("    ___/  \\__/\\__\\__\n");
+                printf("---/\\___\\ |''''''|__\\-- ---\n");
+                printf("   ||'''| |''||''|''|\n");
+                printf("   ``---`'`--))--`--`\n");
                 printf("Level Village-mu meningkat menjadi %d!\n", Elmt(*(Arr), *i).lev);
             }
         }
@@ -719,6 +845,9 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
 
 void exitGame(){
     //Untuk keluar dari game
+    printf("Sampai jumpa di pertarungan berikutnya!\n");
+    printf("<Tekan ENTER untuk KELUAR dari permainan>");
+    INPUTENTER();
     exit(0);
 }
 
@@ -842,25 +971,67 @@ void UseSkill(Queue *Skill, PLAYER *Pl, PLAYER *Enemy, TabBang *Bang, boolean *E
     infotypequeue Q;
     if (InfoHead(*Skill) == 1){
         InstantUpgrade(*Pl,&(*Bang));
+        printf("\n     _    _ _ _              _   _            _           _ \n");
+        printf("    | |  (_) | |            | | (_)          | |         | |\n");
+        printf(" ___| | ___| | |   __ _  ___| |_ ___   ____ _| |_ ___  __| |\n");
+        printf("/ __| |/ / | | |  / _` |/ __| __| \\ \\ / / _` | __/ _ \\/ _` |\n");
+        printf("\\__ \\   <| | | | | (_| | (__| |_| |\\ V / (_| | ||  __/ (_| |\n");
+        printf("|___/_|\\_\\_|_|_|  \\__,_|\\___|\\__|_| \\_/ \\__,_|\\__\\___|\\__,_|\n\n");
         printf ("Anda berhasil menggunakan Skill Instant Upgrade!\n");
     } else if(InfoHead(*Skill) == 2){
         Shield(&(*Pl));
+        printf("\n     _    _ _ _              _   _            _           _ \n");
+        printf("    | |  (_) | |            | | (_)          | |         | |\n");
+        printf(" ___| | ___| | |   __ _  ___| |_ ___   ____ _| |_ ___  __| |\n");
+        printf("/ __| |/ / | | |  / _` |/ __| __| \\ \\ / / _` | __/ _ \\/ _` |\n");
+        printf("\\__ \\   <| | | | | (_| | (__| |_| |\\ V / (_| | ||  __/ (_| |\n");
+        printf("|___/_|\\_\\_|_|_|  \\__,_|\\___|\\__|_| \\_/ \\__,_|\\__\\___|\\__,_|\n\n");
         printf ("Anda berhasil menggunakan Skill Shield!\n");
     } else if(InfoHead(*Skill) == 3){
         ExtraTurn(&(*ET));
         AddQueue(&(*Enemy).Skill, 5);
+        printf("\n     _    _ _ _              _   _            _           _ \n");
+        printf("    | |  (_) | |            | | (_)          | |         | |\n");
+        printf(" ___| | ___| | |   __ _  ___| |_ ___   ____ _| |_ ___  __| |\n");
+        printf("/ __| |/ / | | |  / _` |/ __| __| \\ \\ / / _` | __/ _ \\/ _` |\n");
+        printf("\\__ \\   <| | | | | (_| | (__| |_| |\\ V / (_| | ||  __/ (_| |\n");
+        printf("|___/_|\\_\\_|_|_|  \\__,_|\\___|\\__|_| \\_/ \\__,_|\\__\\___|\\__,_|\n\n");
         printf ("Anda berhasil menggunakan SKill Extra Turn!\n");
     } else if(InfoHead(*Skill) == 4){
         AttackUp(&(*Pl));
+        printf("\n     _    _ _ _              _   _            _           _ \n");
+        printf("    | |  (_) | |            | | (_)          | |         | |\n");
+        printf(" ___| | ___| | |   __ _  ___| |_ ___   ____ _| |_ ___  __| |\n");
+        printf("/ __| |/ / | | |  / _` |/ __| __| \\ \\ / / _` | __/ _ \\/ _` |\n");
+        printf("\\__ \\   <| | | | | (_| | (__| |_| |\\ V / (_| | ||  __/ (_| |\n");
+        printf("|___/_|\\_\\_|_|_|  \\__,_|\\___|\\__|_| \\_/ \\__,_|\\__\\___|\\__,_|\n\n");
         printf ("Anda berhasil menggunakan Skill Attack UP!\n");
     } else if(InfoHead(*Skill) == 5){
         CriticalHit(&(*Pl));
+        printf("\n     _    _ _ _              _   _            _           _ \n");
+        printf("    | |  (_) | |            | | (_)          | |         | |\n");
+        printf(" ___| | ___| | |   __ _  ___| |_ ___   ____ _| |_ ___  __| |\n");
+        printf("/ __| |/ / | | |  / _` |/ __| __| \\ \\ / / _` | __/ _ \\/ _` |\n");
+        printf("\\__ \\   <| | | | | (_| | (__| |_| |\\ V / (_| | ||  __/ (_| |\n");
+        printf("|___/_|\\_\\_|_|_|  \\__,_|\\___|\\__|_| \\_/ \\__,_|\\__\\___|\\__,_|\n\n");
         printf ("Anda berhasil menggunakan Skill Critical Hit!\n");
     } else if(InfoHead(*Skill) == 6){
         InstantReinforcement((*Pl),&(*Bang));
+        printf("\n     _    _ _ _              _   _            _           _ \n");
+        printf("    | |  (_) | |            | | (_)          | |         | |\n");
+        printf(" ___| | ___| | |   __ _  ___| |_ ___   ____ _| |_ ___  __| |\n");
+        printf("/ __| |/ / | | |  / _` |/ __| __| \\ \\ / / _` | __/ _ \\/ _` |\n");
+        printf("\\__ \\   <| | | | | (_| | (__| |_| |\\ V / (_| | ||  __/ (_| |\n");
+        printf("|___/_|\\_\\_|_|_|  \\__,_|\\___|\\__|_| \\_/ \\__,_|\\__\\___|\\__,_|\n\n");
         printf ("Anda berhasil menggunakan Skill Instant Reinforcement!\n");
     } else if(InfoHead(*Skill) == 7){
         Barrage(*Enemy, &(*Bang));
+        printf("\n     _    _ _ _              _   _            _           _ \n");
+        printf("    | |  (_) | |            | | (_)          | |         | |\n");
+        printf(" ___| | ___| | |   __ _  ___| |_ ___   ____ _| |_ ___  __| |\n");
+        printf("/ __| |/ / | | |  / _` |/ __| __| \\ \\ / / _` | __/ _ \\/ _` |\n");
+        printf("\\__ \\   <| | | | | (_| | (__| |_| |\\ V / (_| | ||  __/ (_| |\n");
+        printf("|___/_|\\_\\_|_|_|  \\__,_|\\___|\\__|_| \\_/ \\__,_|\\__\\___|\\__,_|\n\n");
         printf ("Anda berhasil menggunakan Skill Barrage!\n");
     }
     else{

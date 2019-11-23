@@ -26,8 +26,8 @@ int main(){
     Stack SBang;                
     // Sbang Untuk menyimpan data bangunan yang di push
     stackp SP1, SP2;            
-    // SP1 Stack meyimpan data player 1 yang di push
-    // SP2 Stack meyimpan data player 2 yang di push
+    // SP1 Stack menyimpan data player 1 yang di push
+    // SP2 Stack menyimpan data player 2 yang di push
     MATRIKS Mat;
     // Mat untuk menyimpan data matriks 
     PLAYER P1, P2, P3;          
