@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#include "boolean.h"
+#include "../boolean/boolean.h"
 #include "point.h"
 
 int main(){
@@ -11,7 +11,6 @@ int main(){
     printf("Hasil point yang dimaksud   :  ");
     TulisPOINT(p1);
     printf("\n");
-
 
 return 0;
 }

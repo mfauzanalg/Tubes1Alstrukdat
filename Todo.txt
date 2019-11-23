@@ -31,8 +31,8 @@ h. mesinkar
 i. mesinkata
 j. olahfile
 h. pcolor (ok)
-i. point
-j. queue
+i. point (ok)
+j. queue (ok)
 k. save
 l. stack
 m. stackplayer
