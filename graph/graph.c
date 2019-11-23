@@ -42,7 +42,8 @@ List CreateListNeighbors(int n, MATRIKS Mat){
 /*Mengembalikan List yang bertetangga dengan n dari Matriks*/
 	List L;
 	CreateEmptyList(&L);
-	for (int j = KolMin; j <= GetLastIdxKol(Mat); j++){
+	int j;
+	for (j = KolMin; j <= GetLastIdxKol(Mat); j++){
 		if (ElmtMat(Mat, n, j) == 1){
 			InsVLast(&L,j);
 		}
@@ -53,8 +54,9 @@ List CreateListNeighbors(int n, MATRIKS Mat){
 void CreateEmptyGraph(GraphList *Graph, MATRIKS Mat)
 /*Membuat Graph kosong*/{
 	FirstG(*Graph) = NilList;
+	int i;
 	//Tetangga(FirstG(*Graph)) = NilList;
-	for (int i=GetLastIdxBrs(Mat); i >= BrsMin; i--){
+	for (i = GetLastIdxBrs(Mat); i >= BrsMin; i--){
 		InsVFirstGraph(Graph, i, (CreateListNeighbors(i, Mat)));
 	}
 }
