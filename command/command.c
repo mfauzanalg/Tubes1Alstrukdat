@@ -52,12 +52,12 @@ void menuAwal(){
 
 void ArtWin(){
     // Untuk menampilkan Ascii Art Win
-	printf(ANSI_COLOR_CYAN"           _\n" ANSI_COLOR_RESET);       
-	printf(ANSI_COLOR_CYAN"          (_)\n" ANSI_COLOR_RESET);      
-	printf(ANSI_COLOR_CYAN" __      ___\\ _ __\n" ANSI_COLOR_RESET);  
-	printf(ANSI_COLOR_CYAN" \\ \\ /\\ / / | '_ \\\n" ANSI_COLOR_RESET); 
-	printf(ANSI_COLOR_CYAN"  \\ V  V /| | | | |\n" ANSI_COLOR_RESET);
-	printf(ANSI_COLOR_CYAN"   \\_/\\_/ |_|_| |_|\n" ANSI_COLOR_RESET);
+	printf(ANSI_COLOR_YELLOW"           _\n" ANSI_COLOR_RESET);       
+	printf(ANSI_COLOR_YELLOW"          (_)\n" ANSI_COLOR_RESET);      
+	printf(ANSI_COLOR_YELLOW" __      ___\\ _ __\n" ANSI_COLOR_RESET);  
+	printf(ANSI_COLOR_YELLOW" \\ \\ /\\ / / | '_ \\\n" ANSI_COLOR_RESET); 
+	printf(ANSI_COLOR_YELLOW"  \\ V  V /| | | | |\n" ANSI_COLOR_RESET);
+	printf(ANSI_COLOR_YELLOW"   \\_/\\_/ |_|_| |_|\n\n\n" ANSI_COLOR_RESET);
                   
 }
 
@@ -497,7 +497,7 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int TAwal
     if (PP == NilList){ // Jika semua bangunan level 4 maka menambahkan skill Instant Reinforcement
         AddQueue(&(*Paku).Skill, 6);
     }
-    if (JTotal(Jumlahku) == J){ // Jika salah satu player sudah berhasil memiliki semua bangunan
+    if (JTotal(Jumlahlawan) == 0){ // Jika salah satu player sudah berhasil memiliki semua bangunan
         if(P1Turn){
             printf("Player 1 Menang\n");
             Art1();
