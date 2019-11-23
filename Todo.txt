@@ -24,7 +24,7 @@ a. array (ok)
 b. command
 c. graph (ok)
 d. list
-e. matriks
+e. matriks (ok)
 f.  mesinchar
 g. mesinword
 h. mesinkar

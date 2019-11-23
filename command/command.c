@@ -180,7 +180,7 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     if (JTotal(jumlahlawan) == 3){
         (*Kondisi).S = true;
     }
-    else if (JTower(jumlahlawan) == 4){
+    else if (JTower(jumlahku) == 2){
         (*Kondisi).AU = true;
     }
     else if (JTotal(jumlahku) == 9){
@@ -461,7 +461,7 @@ void Move (TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga,
     }
 }
 
-void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr, int J, boolean P1Turn){
+void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, int TAwal, Condition Kondisi, PLAYER *Paku, PLAYER *Plawan, TabBang Arr, int J, boolean P1Turn){
     // Mengecek kondisi yang mungkin terjadi di akhir command
     // Mengecek apakah akan terjadi penambahan skill
     // Mengecek apakah player 1/2 sudah memenangkan permainan
@@ -473,8 +473,8 @@ void CekKondisiAkhir(JumlahB Jumlahku, JumlahB Jumlahlawan, int FAwal, Condition
             AddQueue(&(*Plawan).Skill, 2);
         }
     }
-    if (Kondisi.AU){ // Menambahkan skill Attack Up
-        if (JTower(Jumlahlawan) == 3){
+    if (Kondisi.AU && (JTower(Jumlahlawan) == TAwal - 1)){ // Menambahkan skill Attack Up
+        if (JTower(Jumlahku) == 3){
             AddQueue(&(*Paku).Skill, 4);
         }
     }

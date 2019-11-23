@@ -343,7 +343,7 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 void StartPlayer (PLAYER *P){
 	// Set status player waktu baru memulai permainan
 	CreateEmptyQueue(&(*P).Skill, 10);
-	AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
+	//AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
 	IsShield(*P) = false;
 	IsAttackUp(*P) = false;
 	IsCriticalHit(*P) = false;
