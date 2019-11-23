@@ -54,6 +54,7 @@ void Pop (Stack * S, infotypestack* X){
 }
 
 Stack InverseStack (Stack Stackin){
+	// Menghasilkan Invers dari Stack input
 	Stack Stackout;
 	infotypestack X;
 	while (!(IsEmptyStack(Stackin))){
@@ -64,6 +65,7 @@ Stack InverseStack (Stack Stackin){
 }
 
 Stack CopyStack (Stack Stackin){
+	// Mengcopy Stackin ke Stack
 	Stack Stackout;
 	infotypestack X;
 	Stack Stacktemp;
@@ -73,6 +75,7 @@ Stack CopyStack (Stack Stackin){
 }
 
 Stack FPush (Stack Sinput, infotypestack X){
+	// Push TabBangunan ke Stack
 	Stack Shasil;
 	Shasil = CopyStack(Sinput);
 	Top(Shasil)++;

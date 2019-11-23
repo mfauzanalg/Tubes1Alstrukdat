@@ -30,9 +30,8 @@ typedef struct{
 } Condition;
 
 typedef struct {
-    int nomor; //indeks bangunan
-	char type; //type bangunann
-    int jum; //jumlah pasukan dalam bangunan
+	char type;    //type bangunann
+    int jum;    //jumlah pasukan dalam bangunan
     int lev; //level bangunan
     int A; //nilai penambahan pasukan
     int M; //maksimum penambahan pasukan

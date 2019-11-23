@@ -21,5 +21,6 @@ int main() {
     printf("\n");
     print_blue('B');
     printf("\n");
+
     return 0;
 }
