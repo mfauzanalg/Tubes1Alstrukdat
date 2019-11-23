@@ -34,7 +34,7 @@ h. pcolor (ok)
 i. point (ok)
 j. queue (ok)
 k. save
-l. stack
+l. stack (ok)
 m. stackplayer
 
 OKE
