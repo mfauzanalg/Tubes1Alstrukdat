@@ -2,12 +2,9 @@
 #define __TYPEBENTUKAN_H__
 
 #include "../point/point.h"
-#include "../matriks/matriks.h"
-#include "../mesinkata/mesinkata.h"
 #include "../queue/queue.h"
 #include "../list/list.h"
-#include "../pcolor/pcolor.h"
-#include "../mesinword/mesinword.h"
+#include "../boolean/boolean.h"
 
 typedef struct { 
   int TI[1000]; /* memori tempat penyimpan elemen (container) */

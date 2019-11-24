@@ -5,13 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../typebentukan/typebentukan.h"
-#include "../stack/stack.h"
-#include "../array/array.h"
 #include "../olahfile/olahfile.h"
-#include "../graph/graph.h"
-#include "../queue/queue.h"
-#include "../command/command.h"
+
 
 void Art1();
 // Untuk menampilkan Ascii Art player 1
