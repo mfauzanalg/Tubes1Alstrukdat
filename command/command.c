@@ -129,7 +129,7 @@ void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P1, PLAYER *P2, stackp *SPlaye
     else if (Askill(P3)){
         printf("Anda baru saja menggunakan skill, tidak bisa UNDO\n");
     }
-    else{            
+    else if (!(Aend(P3) && !(Askill(P3)))){            
         Pop (&*SBang, &*Arr);
         Popp (&*SPlayer1, &*P1);
         Popp (&*SPlayer2, &*P2);

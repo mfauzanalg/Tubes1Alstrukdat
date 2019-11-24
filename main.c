@@ -189,8 +189,8 @@ int main(){
             else if (CompareTwoStrings(CWord.TabKata, "ATTACK") == 1){                 // ATTACK
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, &P2, &P1);
-                Aend(P1) = false;
-                Askill(P1) = false;
+                Aend(P2) = false;
+                Askill(P2) = false;
             }
 
             else if (CompareTwoStrings(CWord.TabKata, "LEVEL_UP") == 1){                // LEVEL_UP
@@ -208,7 +208,6 @@ int main(){
 
             else if (CompareTwoStrings(CWord.TabKata, "UNDO") == 1){                   // UNDO
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P2);
-                printf("Anda Berhasil Meng-Undo Command Terakhir");
             }
 
             else if (CompareTwoStrings(CWord.TabKata, "MOVE") == 1){                   // MOVE
