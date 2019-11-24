@@ -129,7 +129,7 @@ void UndoAll (TabBang *Arr, Stack *SBang, PLAYER *P1, PLAYER *P2, stackp *SPlaye
     else if (Askill(P3)){
         printf("Anda baru saja menggunakan skill, tidak bisa UNDO\n");
     }
-    else{            
+    else if (!(Aend(P3) && !(Askill(P3)))){            
         Pop (&*SBang, &*Arr);
         Popp (&*SPlayer1, &*P1);
         Popp (&*SPlayer2, &*P2);
@@ -184,14 +184,13 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     (*Kondisi).S = false;
     (*Kondisi).B = false;
     (*Kondisi).ET = true;
-    
     if (JTotal(jumlahlawan) == 3){
         (*Kondisi).S = true;
     }
-    else if (JTower(jumlahku) == 2){
+    if (JTower(jumlahku) == 2){
         (*Kondisi).AU = true;
     }
-    else if (JTotal(jumlahku) == 9){
+    if (JTotal(jumlahku) == 9){
         (*Kondisi).B = true;
     }
 }
