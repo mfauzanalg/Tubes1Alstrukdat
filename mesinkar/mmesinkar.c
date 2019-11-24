@@ -8,6 +8,7 @@ int main()
 {
     START();
     printf("%c", CC);
+    
     while (CC!='.')
     {
         ADV();
@@ -15,6 +16,8 @@ int main()
 
 
     }
+    
+
 
 
 
