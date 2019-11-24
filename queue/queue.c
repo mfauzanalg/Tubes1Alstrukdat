@@ -64,18 +64,20 @@ void AddQueue (Queue * Q, infotypequeue X){
 /* Proses: Menambahkan X pada Q dengan aturan FIFO */
 /* I.S. Q mungkin kosong, tabel penampung elemen Q TIDAK penuh */
 /* F.S. X menjadi TAIL yang baru, TAIL "maju" dengan mekanisme circular buffer */
-	if (IsEmptyQueue(*Q)){
-		Head(*Q)++;
-		Tail(*Q)++;
-		InfoTail(*Q) = X;
-	}
-	else if (Tail(*Q) == MaxElQueue(*Q)){
-		Tail(*Q) = 1;
-		InfoTail(*Q) = X;
-	}
-	else{
-		Tail(*Q) += 1;
-		InfoTail(*Q) = X;
+	if(NBElmtQueue(*Q) < 10){
+		if (IsEmptyQueue(*Q)){
+			Head(*Q)++;
+			Tail(*Q)++;
+			InfoTail(*Q) = X;
+		}
+		else if (Tail(*Q) == MaxElQueue(*Q)){
+			Tail(*Q) = 1;
+			InfoTail(*Q) = X;
+		}
+		else{
+			Tail(*Q) += 1;
+			InfoTail(*Q) = X;
+		}
 	}
 }
 

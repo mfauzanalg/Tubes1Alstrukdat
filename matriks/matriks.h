@@ -45,11 +45,6 @@ indeks GetLastIdxBrs (MATRIKS M);
 indeks GetLastIdxKol (MATRIKS M);
 /* Mengirimkan indeks kolom terbesar M */
 
-
-/* ********** Assignment  MATRIKS ********** */
-void CopyMATRIKS (MATRIKS MIn, MATRIKS * MHsl);
-/* Melakukan assignment MHsl  MIn */
-
 void TulisMATRIKS (MATRIKS M);
 /* I.S. M terdefinisi */
 /* F.S. Nilai M(i,j) ditulis ke layar per baris per kolom, masing-masing elemen per baris

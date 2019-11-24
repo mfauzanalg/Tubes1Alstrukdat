@@ -4,16 +4,18 @@
 
 #include "olahfile/olahfile.h"
 #include "command/command.h"
-#include "save/coba_save.h"
+#include "save/save.h"
+#include "load/load.h"
 
 int main(){
     //KAMUS
-    int N, M, J, X, Y, FAwal;
+    int N, M, J, X, Y, FAwal, TAwal;
     // N adalah tinggi peta
     // M adalah lebar peta
     // J adalah jumlah bangunan dalam peta
     // X dan Y digunakan untuk memilih bangunan
-    // FAwal adalah jumlah Fort lawan di awal            		            
+    // FAwal adalah jumlah Fort lawan di awal  
+    // TAwal adalah jumlah Tower lawan di awal          		            
     boolean Playing, P1turn, ada;
     // P1turn untuk menentukan turn siapa yang bermain
     // Playing untuk menentukan apakah masih bermain atau tidak
@@ -26,8 +28,8 @@ int main(){
     Stack SBang;                
     // Sbang Untuk menyimpan data bangunan yang di push
     stackp SP1, SP2;            
-    // SP1 Stack meyimpan data player 1 yang di push
-    // SP2 Stack meyimpan data player 2 yang di push
+    // SP1 Stack menyimpan data player 1 yang di push
+    // SP2 Stack menyimpan data player 2 yang di push
     MATRIKS Mat;
     // Mat untuk menyimpan data matriks 
     PLAYER P1, P2, P3;          
@@ -45,6 +47,9 @@ int main(){
     Condition Kondisi;
     // Pengecekan apakah ada kemungkinan bertambah skillnya atau tidak
 
+    char isLoad;
+    // Input pmain apakah ingin load data game sebelumnya atau tidak.
+
     // ALGORITMA
     // Inisialisasi awal data-data
     LoadFile (&N, &M, &J, &Arr, &Graph, &Mat, &P1.ListB, &P2.ListB);
@@ -58,6 +63,16 @@ int main(){
     Aend(P1) = true;
     menuAwal();
     HELP();
+    
+    //LOAD GAME YANG PERNAH DISIMPAN
+    // do{
+        // printf("Apakah kamu ingin melanjutkan permainan yang telah disimpan? [y/n]\n");
+        // STARTWORD();
+        // if(CompareTwoStrings(CWord.TabKata, "y") == 1){
+        //     load(&SBang,&SP1,&SP2,&Playing,&P1turn);
+        // }
+    // } while ((isLoad != 'y') || (isLoad != 'n'));
+
     while (Playing){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
@@ -70,15 +85,21 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
             FAwal = JFort(Jumlah2);
+            TAwal = JTower(Jumlah2);
             CetakAwal(N,M,Arr, P1, P2, P1, P2, 1, &T1);                     // Mencetak peta daninformasi lainnya
             STARTWORD();                                                    // Input command dari user
     
-            if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
+            if (CompareTwoStrings(CWord.TabKata, "EXIT") == 1){                        // EXIT
                 Playing = false;
                 exitGame();
             }
 
-            else if (strcmp(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
+            else if(CompareTwoStrings(CWord.TabKata, "SAVE") == 1){
+                SaveAll(SBang,SP1,SP2,Playing,P1turn);
+                printf("Anda ");
+            }
+
+            else if (CompareTwoStrings(CWord.TabKata, "END_TURN") == 1){
                 printf("Anda berhasil mengakhiri turn ini\n");
                 printf("Player 2, ayo bersiap!\n");
                 P1turn = false;
@@ -86,7 +107,7 @@ int main(){
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "ATTACK") == 0){                 // ATTACK
+            else if (CompareTwoStrings(CWord.TabKata, "ATTACK") == 1){                 // ATTACK
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 printf("\n");
                 Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, &P1, &P2);
@@ -94,31 +115,31 @@ int main(){
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){               // LEVEL_UP
+            else if (CompareTwoStrings(CWord.TabKata, "LEVEL_UP") == 1){               // LEVEL_UP
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 LevelUpUp(&Arr, P1, &X, &T1, 1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "SKILL") == 0){                  // SKILL
+            else if (CompareTwoStrings(CWord.TabKata, "SKILL") == 1){                  // SKILL
                 UseSkill(&P1.Skill, &P1, &P2, &Arr, &P1.IsET);
                 Askill(P1) = true;
                 Aend(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "UNDO") == 0){                   // UNDO
+            else if (CompareTwoStrings(CWord.TabKata, "UNDO") == 1){                   // UNDO
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P1);
             }
 
-            else if (strcmp(CWord.TabKata, "MOVE") == 0){                   // MOVE
+            else if (CompareTwoStrings(CWord.TabKata, "MOVE") == 1){                   // MOVE
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 1, &ada, Graph, P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "HELP") == 0){                   // HELP
+            else if (CompareTwoStrings(CWord.TabKata, "HELP") == 1){                   // HELP
                 HELP();
             }
             
@@ -128,7 +149,7 @@ int main(){
             
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
-            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, Kondisi, &P1, &P2, Arr, J, P1turn);
+            CekKondisiAkhir(Jumlah1, Jumlah2, FAwal, TAwal, Kondisi, &P1, &P2, Arr, J, P1turn);
             printf("\n<Tekan ENTER untuk melanjutkan permainan>");
             INPUTENTER();
         } 
@@ -143,19 +164,20 @@ int main(){
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah2, Jumlah1, &Kondisi);                        // Mencetak peta daninformasi lainnya
             FAwal = JFort(Jumlah1);
+            TAwal = JTower(Jumlah1);
 
             CetakAwal(N,M,Arr, P1, P2, P2, P1, 2, &T1); 
             STARTWORD();                                                    // Input command dari user
-            if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
+            if (CompareTwoStrings(CWord.TabKata, "EXIT") == 1){                        // EXIT
                 Playing = false;
                 exitGame();
             }
 
-            else if(strcmp(CWord.TabKata, "SAVE") == 0){
+            else if(CompareTwoStrings(CWord.TabKata, "SAVE") == 1){
                 SaveAll(SBang,SP1,SP2,Playing,P1turn);
             }
 
-            else if (strcmp(CWord.TabKata, "END_TURN") == 0){
+            else if (CompareTwoStrings(CWord.TabKata, "END_TURN") == 1){
                 printf("Anda berhasil mengakhiri turn ini\n");
                 printf("Player 1, ayo bersiap!\n");
                 P1turn = true;
@@ -163,38 +185,38 @@ int main(){
                 Askill(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "ATTACK") == 0){                 // ATTACK
+            else if (CompareTwoStrings(CWord.TabKata, "ATTACK") == 1){                 // ATTACK
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Attack(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, &P2, &P1);
                 Aend(P1) = false;
                 Askill(P1) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "LEVEL_UP") == 0){                // LEVEL_UP
+            else if (CompareTwoStrings(CWord.TabKata, "LEVEL_UP") == 1){                // LEVEL_UP
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 LevelUpUp(&Arr, P2, &X, &T1, 1);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "SKILL") == 0){                   // SKILL
+            else if (CompareTwoStrings(CWord.TabKata, "SKILL") == 1){                   // SKILL
                 UseSkill(&P2.Skill, &P2, &P1, &Arr, &P2.IsET);;
                 Askill(P2) = true;
                 Aend(P2) = false;
             }
 
-            else if (strcmp(CWord.TabKata, "UNDO") == 0){                   // UNDO
+            else if (CompareTwoStrings(CWord.TabKata, "UNDO") == 1){                   // UNDO
                 UndoAll (&Arr, &SBang, &P1, &P2, &SP1, &SP2, P2);
                 printf("Anda Berhasil Meng-Undo Command Terakhir");
             }
 
-            else if (strcmp(CWord.TabKata, "MOVE") == 0){                   // MOVE
+            else if (CompareTwoStrings(CWord.TabKata, "MOVE") == 1){                   // MOVE
                 PushAll(Arr, &Arr2, &SBang, P1, P2, &P3, &SP1, &SP2);
                 Move(&Arr, &X, &Y, &T1, &T2, &Tetangga, P1, P2, 2, &ada, Graph, P2);
                 Aend(P2) = false;
                 Askill(P2) = false;
             }
-            else if (strcmp(CWord.TabKata, "HELP") == 0){                   // HELP
+            else if (CompareTwoStrings(CWord.TabKata, "HELP") == 1){                   // HELP
                 HELP();
             }
             else{
@@ -203,11 +225,9 @@ int main(){
 
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
-            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, Kondisi, &P2, &P1, Arr, J, P1turn);
+            CekKondisiAkhir(Jumlah2, Jumlah1, FAwal, TAwal, Kondisi, &P2, &P1, Arr, J, P1turn);
             printf("\n<Tekan ENTER untuk melanjutkan permainan>");
             INPUTENTER();
-            //clear;              //untuk clear console di ubuntu
-            //system("CLS");    //untuk clear console di windows
         }
     } 
 	return 0;

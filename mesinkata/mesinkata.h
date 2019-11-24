@@ -21,9 +21,8 @@ extern boolean EndKata;
 extern Kata CKata;
 
 void IgnoreBlank();
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : CC sembarang
-   F.S. : CC ≠ BLANK atau CC = MARK */
+/* Mengabaikan satu atau beberapa BLANK ENTER dan \r*/
+
 
 void STARTKATA();
 /* I.S. : CC sembarang
@@ -42,14 +41,14 @@ void SalinKata();
 /* Mengakuisisi kata, menyimpan dalam CKata
    I.S. : CC adalah karakter pertama dari kata
    F.S. : CKata berisi kata yang sudah diakuisisi;
-          CC = BLANK atau CC = MARK;
-          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+          CC = BLANK atau CC = ENTER atau /r;
+          CC adalah karakter sesudah karakter terakhir yang diakuisisi.*/
 
 int CharToInt(char CC);
 // Mengubah  Char ke Integer
 
 void SalinLast();
+// Seperti Salin kata tetapi untuk character terakhir
 
 int StringToInteger(Kata CKata);
 // Mengubah String ke Integer

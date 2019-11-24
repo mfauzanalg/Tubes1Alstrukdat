@@ -1,8 +1,3 @@
-// Nama  : Muhammad Fauzan Al-Ghifari
-// NIM   : 13518112
-// Topik : Mesin kata
-// Tanggal : 21 Septemer 2019
-
 #include "mesinword.h"
 #include <stdio.h>
 
@@ -10,20 +5,14 @@ Word CWord;
 boolean EndWord;
 
 void IgnoreBlankWord(){
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : CC sembarang
-   F.S. : CC ≠ BLANK atau CC = MARK */
-  //  char CC;
+/* Mengabaikan satu atau beberapa BLANK*/
     while ((CC == BLANK) || (CC == ENTER)){
         ADVCHAR();
     }
 }
 
 void STARTWORD(){
-/* I.S. : CC sembarang
-   F.S. : EndKata = true, dan CC = MARK;
-          atau EndKata = false, CKata adalah kata yang sudah diakuisisi,          
-          CC karakter pertama sesudah karakter terakhir kata */
+// untuk membaca input dari user dan memasukkannya ke Cword
     STARTCHAR();
     IgnoreBlankWord();
 
@@ -37,10 +26,7 @@ void STARTWORD(){
 }
 
 void INPUTENTER(){
-/* I.S. : CC sembarang
-   F.S. : EndKata = true, dan CC = MARK;
-          atau EndKata = false, CKata adalah kata yang sudah diakuisisi,          
-          CC karakter pertama sesudah karakter terakhir kata */
+//Input enter untuk melanjutkan game
     STARTCHAR();
 
     if (CC == MARK){
@@ -53,11 +39,7 @@ void INPUTENTER(){
 }
 
 void ADVWORD(){
-/* I.S. : CC adalah karakter pertama kata yang akan diakuisisi
-   F.S. : CKata adalah kata terakhir yang sudah diakuisisi,
-          CC adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika CC = MARK, EndKata = true.
-   Proses : Akuisisi kata menggunakan procedure SalinKata */
+// Membaca huruf satu persatu
   IgnoreBlankWord();
   if (CC == MARK){
     EndWord = true;
@@ -69,12 +51,7 @@ void ADVWORD(){
 }
 
 void SalinWord(){
-/* Mengakuisisi kata, menyimpan dalam CKata
-   I.S. : CC adalah karakter pertama dari kata
-   F.S. : CKata berisi kata yang sudah diakuisisi;
-          CC = BLANK atau CC = MARK;
-          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+// Menyambung per huruf menjadi suatu kata
     int i = 0;
     MakeEmptyWord();
     CWord.Length = 0;
@@ -89,6 +66,7 @@ void SalinWord(){
 }
 
 void MakeEmptyWord(){
+// membuat cword kosong kembali
   int i;
   for (i = 0; i <= 10; i++){
     CWord.TabKata[i] = '\0';
@@ -96,6 +74,7 @@ void MakeEmptyWord(){
 }
 
 int WStringToInteger (Word CWord){
+// mengubah string menjadi integer
 	int i = 0;
 	int hasil = 0;
 	int CI = 0;
@@ -108,6 +87,7 @@ int WStringToInteger (Word CWord){
 }
 
 int WCharToInt(char CC){
+// mengubah karakter menjadi integer
 	if (CC == '0'){
 		return 0;
 	}
@@ -138,4 +118,33 @@ int WCharToInt(char CC){
 	else if (CC == '9'){
 		return 9;
 	}
+}
+
+int StringLength(char *S){
+// mengembalikan panjang string
+  int i =0;
+  int sum=0;
+  char c = S[0];
+  while (c != '\0'){
+    sum += 1;
+    i += 1;
+    c = S[i];
+  }
+  return sum;
+}
+
+int CompareTwoStrings(char *S1, char *S2){
+// compare 2 string apakah sama
+  int i;
+  if (StringLength(S1) != StringLength(S2)){
+    return 0;
+  }
+  else{
+    for (i = 1; i <= StringLength(S1); i++){
+      if (S1[i] != S2[i]){
+        return 0;
+      }
+    }
+    return 1;
+  }
 }
