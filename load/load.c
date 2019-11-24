@@ -27,7 +27,7 @@ void load (Stack *SB, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn)
 	ADVKATAl();
 
     maxel = 17;
-    InfoTop(S).MaxElArr = 17;
+    S.MaxElArr = 17;
     ADVKATAl();
     
     CreateEmptyStack(&(*SB));
