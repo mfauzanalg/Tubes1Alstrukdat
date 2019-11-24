@@ -17,6 +17,7 @@
         "matriks.h": "c",
         "point.h": "c",
         "queue.h": "c",
-        "pcolor.h": "c"
+        "pcolor.h": "c",
+        "coba_save.h": "c"
     }
 }

@@ -70,7 +70,7 @@ void HELP(){
     printf("5. END_TURN    - mengakhiri giliran pemain\n");
     printf("6. MOVE        - memindahkan pasukan ke bangunan lain\n");
     printf("7. EXIT        - keluar dari permainan\n");
-    printf("8. SAVE (Mungkin)\n\n");
+    printf("8. SAVE        - menyimpan permainan\n");
     printf("<Tekan ENTER untuk melanjutkan permainan>");
     INPUTENTER();
 

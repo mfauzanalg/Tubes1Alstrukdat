@@ -5,6 +5,7 @@
 #include "olahfile/olahfile.h"
 #include "command/command.h"
 #include "save/coba_save.h"
+#include "load/load.h"
 
 int main(){
     //KAMUS
@@ -46,6 +47,9 @@ int main(){
     Condition Kondisi;
     // Pengecekan apakah ada kemungkinan bertambah skillnya atau tidak
 
+    char isLoad;
+    // Input pmain apakah ingin load data game sebelumnya atau tidak.
+
     // ALGORITMA
     // Inisialisasi awal data-data
     LoadFile (&N, &M, &J, &Arr, &Graph, &Mat, &P1.ListB, &P2.ListB);
@@ -59,6 +63,16 @@ int main(){
     Aend(P1) = true;
     menuAwal();
     HELP();
+    
+    //LOAD GAME YANG PERNAH DISIMPAN
+    // do{
+        printf("Apakah kamu ingin melanjutkan permainan yang telah disimpan? [y/n]\n");
+        scanf(" %c", &isLoad);
+        if(isLoad == 'y'){
+            load(&SBang,&SP1,&SP2,&Playing,&P1turn);
+        }
+    // } while ((isLoad != 'y') || (isLoad != 'n'));
+
     while (Playing){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
@@ -80,7 +94,11 @@ int main(){
                 exitGame();
             }
 
-            else if (CompareTwoStrings(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
+            else if(CompareTwoStrings(CWord.TabKata, "SAVE") == 0){
+                SaveAll(SBang,SP1,SP2,Playing,P1turn);
+            }
+
+            else if (CompareTwoStrings(CWord.TabKata, "END_TURN") == 0){
                 printf("Anda berhasil mengakhiri turn ini\n");
                 printf("Player 2, ayo bersiap!\n");
                 P1turn = false;
