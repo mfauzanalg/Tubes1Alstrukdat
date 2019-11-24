@@ -184,14 +184,13 @@ void CekKondisi (JumlahB jumlahku, JumlahB jumlahlawan, Condition *Kondisi){
     (*Kondisi).S = false;
     (*Kondisi).B = false;
     (*Kondisi).ET = true;
-    
     if (JTotal(jumlahlawan) == 3){
         (*Kondisi).S = true;
     }
-    else if (JTower(jumlahku) == 2){
+    if (JTower(jumlahku) == 2){
         (*Kondisi).AU = true;
     }
-    else if (JTotal(jumlahku) == 9){
+    if (JTotal(jumlahku) == 9){
         (*Kondisi).B = true;
     }
 }
