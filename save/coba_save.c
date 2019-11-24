@@ -14,7 +14,7 @@ int BooleanToInteger(boolean x){
 void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
     FILE *fp;
     //open
-    fp = fopen("demo.txt", "w");
+    fp = fopen("coba_save.txt", "w");
 
     char c;
     int i,j,k;
