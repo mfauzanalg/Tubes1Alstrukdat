@@ -40,11 +40,17 @@ boolean IntegerToBoolean(int x){
 
 void load (Stack *S, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn){
     int i;
+    FILE *fp;
+
+    fp = fopen("coba_save.txt","r");
 	STARTKATA();
 	*playing = IntegerToBoolean(StringToInteger(CKata));
 	ADVKATA();
 	*P1turn = IntegerToBoolean(StringToInteger(CKata));
 	ADVKATA();
+    CreateEmptyStack(&(*S));
+    CreateEmptystackp(&(*P1));
+    CreateEmptystackp(&(*P2));
     InfoTop(*S).MaxElArr = StringToInteger(CKata);
     ADVKATA();
     for(i = 1; i <= InfoTop(*S).MaxElArr; i++){
