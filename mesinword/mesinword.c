@@ -136,14 +136,14 @@ int StringLength(char *S){
 int CompareTwoStrings(char *S1, char *S2){
 // compare 2 string apakah sama
   if (StringLength(S1) != StringLength(S2)){
-    return 0;
+    return 1;
   }
   else{
     for (int i = 1; i <= StringLength(S1); i++){
       if (S1[i] != S2[i]){
-        return 0;
+        return 1;
       }
     }
-    return 1;
+    return 0;
   }
 }

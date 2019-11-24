@@ -90,10 +90,16 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	CLOSE();
 
 
-	P = Alokasi(1);			//Alokasi kepenilikan bangunan ke list
+	P = Alokasi(17);			
+	InsertFirst(&*L1, P);
+	P = Alokasi(12);			
+	InsertFirst(&*L1, P);
+	P = Alokasi(9);			
 	InsertFirst(&*L1, P);
 
-	P = Alokasi(2);
+	P = Alokasi(6);
+	InsertFirst(&*L2, P);
+	P = Alokasi(5);
 	InsertFirst(&*L2, P);
 	
 	Elmt(*Arr,1).jum = 0;
@@ -345,7 +351,15 @@ void DaftarMove(List L, TabBang Arr, TabInt *TOut, int player, PLAYER P1, PLAYER
 void StartPlayer (PLAYER *P){
 	// Set status player waktu baru memulai permainan
 	CreateEmptyQueue(&(*P).Skill, 10);
-	//AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 2);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 3);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 4);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 5);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 6);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 7);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 2);		// Menambahkan skill Instant Upgrade
 	IsShield(*P) = false;
 	IsAttackUp(*P) = false;
 	IsCriticalHit(*P) = false;
