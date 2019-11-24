@@ -3,7 +3,7 @@ Skenario penambahan skill
 a. instant upgrade  (ok)
 b. Shield (ok)
 c. Extra Turn  (ok)
-d. Attack Up,  masih belum ok ternyataaaaa
+d. Attack Up (ok)
 e. Critical Hit  (ok)
 f. Instant Reinforcement (ok)
 g. Barrage (ok)
@@ -21,9 +21,9 @@ h. kalo udh sampe 10
 
 25. Driver
 a. array (ok)
-b. command
+b. command (ok)
 c. graph (ok)
-d. list
+d. list (ok)
 e. matriks (ok)
 f.  mesinchar
 g. mesinword
