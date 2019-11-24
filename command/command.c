@@ -59,6 +59,16 @@ void ArtWin(){
                   
 }
 
+void ArtSave(){
+    // Menampilkan tampilan setelah save
+    printf(ANSI_COLOR_BLUE"            ________                          _________                      .___\n" ANSI_COLOR_RESET);       
+    printf(ANSI_COLOR_BLUE"            /  _____/_____    _____   ____    /   _____/____ ___  __ ____   __| _/\n" ANSI_COLOR_RESET);       
+    printf(ANSI_COLOR_BLUE"            /   \\  ___\\__  \\  /     \\_/ __ \\   \\_____  \\__  \\  \\/ // __ \\ / __ | \n" ANSI_COLOR_RESET);       
+    printf(ANSI_COLOR_BLUE"            \\    \\_\\  \\/ __ \\|  Y Y  \\  ___/   /        \\/ __ \\   /\\  ___// /_/ | \n" ANSI_COLOR_RESET);       
+    printf(ANSI_COLOR_BLUE"            \\______  (____  /__|_|  /\\___  > /_______  (____  /\\_/  \\___  >____ | \n" ANSI_COLOR_RESET);       
+    printf(ANSI_COLOR_BLUE"                    \\/     \\/      \\/     \\/          \\/     \\/          \\/     \\/ \n" ANSI_COLOR_RESET);       
+}
+
 void HELP(){
     // Untuk menampilkan command apa saja yang dapat dilakukan pada program
     printf("\n");
@@ -206,8 +216,8 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
 
     if (Elmt(*Arr,ElmtStat(*T1,*X)).attack){
         *Tetangga = Neighbors(Graph, ElmtStat(*T1,*X));
-        AdaSerang (*Tetangga, *Arr, 1, &*ada,P1,P2);
-        if (ada){
+        AdaSerang (*Tetangga, *Arr, P, &*ada,P1,P2);
+        if (*ada){
             Elmt(*Arr,ElmtStat(*T1,*X)).attack = false;
             DaftarSerang(*Tetangga, *Arr, &*T2, P, P1, P2);
             printf("\nPilih bangunan yang ingin diserang : ");

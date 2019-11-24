@@ -6,21 +6,14 @@
 
 int main()
 {
+    int i;
     START();
     printf("%c", CC);
-    
-    while (CC!='.')
+    for (i = 1; i <= 20; i++)
     {
         ADV();
         printf("%c", CC);
-
-
     }
     CLOSE();
-    
-
-
-
-
     return 0;
 }

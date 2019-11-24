@@ -92,12 +92,12 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 
 	P = Alokasi(1);			
 	InsertFirst(&*L1, P);
-	P = Alokasi(9);			
+	P = Alokasi(13);			
+	InsertFirst(&*L1, P);
+	P = Alokasi(17);			
 	InsertFirst(&*L1, P);
 
 	P = Alokasi(2);
-	InsertFirst(&*L2, P);
-	P = Alokasi(6);
 	InsertFirst(&*L2, P);
 	
 	Elmt(*Arr,1).jum = 0;
@@ -221,6 +221,7 @@ void AdaSerang (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
 			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) != player){
+				printf("ini apa %d\n",i);
 				*ada = true;
 				found = true;
 			}

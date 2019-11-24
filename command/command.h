@@ -21,8 +21,12 @@ void Art2();
 
 void menuAwal();
 // Untuk menampilkan tampilan awal berisi deskripsi alur permainan dan lain-lain
+
 void ArtWin();
 // Untuk menampilkan Ascii Art Win
+
+void ArtSave();
+// // Untuk menampilkan Ascii Save Game
 
 void HELP();
 // Untuk menampilkan command apa saja yang dapat dilakukan pada program
