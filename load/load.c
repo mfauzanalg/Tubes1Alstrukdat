@@ -42,8 +42,10 @@ void load (Stack *S, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn){
     int i;
     FILE *fp;
 
-    fp = fopen("coba_save.txt","r");
+    
 	STARTKATA();
+    CLOSE();
+    fp = fopen("SaveGame.txt","r");
 	*playing = IntegerToBoolean(StringToInteger(CKata));
 	ADVKATA();
 	*P1turn = IntegerToBoolean(StringToInteger(CKata));

@@ -96,6 +96,7 @@ int main(){
 
             else if(CompareTwoStrings(CWord.TabKata, "SAVE") == 1){
                 SaveAll(SBang,SP1,SP2,Playing,P1turn);
+                printf("Anda ");
             }
 
             else if (CompareTwoStrings(CWord.TabKata, "END_TURN") == 1){
