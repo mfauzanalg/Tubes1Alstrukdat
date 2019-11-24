@@ -3,7 +3,7 @@
 #include "../olahfile/olahfile.h"
 
 int main(){
-    int N, M, J, X, Y, FAwal;
+    int N, M, J, X, Y, FAwal, TAwal;
     boolean Playing, P1turn, ada;
     TabBang Arr, Arr2; 
     GraphList Graph;
@@ -32,6 +32,7 @@ int main(){
     HitungJum (&Jumlah2, P2, Arr);
     CekKondisi (Jumlah1, Jumlah2, &Kondisi);
     FAwal = JFort(Jumlah2);
+    TAwal = JFort(Jumlah2);
     printf("================== Kondisi Awal ==================\n");
     CetakAwal(N,M,Arr, P1, P2, P1, P2, 1, &T1);
 

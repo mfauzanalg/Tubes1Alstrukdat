@@ -7,11 +7,13 @@ int main(){
 	infotypelist a, b, c, d, e, f;
 	addresslist P1, P2, P3, P4, P5, P6;
 
+	printf("Pengecekan fungsi Create Empty List dan IsEmpy List\n");
+	printf("Apakah List Kosong? ");
 	CreateEmptyList(&L);
 	if (IsEmptyList(L)){
 		printf("List kosong\n");
 	}
-
+	printf("Masukan 6 buah integer\n");
 	scanf("%d", &a);
 	scanf("%d", &b);
 	scanf("%d", &c);

@@ -22,41 +22,35 @@ extern boolean EndKata;
 extern Word CWord;
 
 void IgnoreBlankWord();
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : CC sembarang
-   F.S. : CC ≠ BLANK atau CC = MARK */
+/* Mengabaikan satu atau beberapa BLANK*/
 
 void STARTWORD();
-/* I.S. : CC sembarang
-   F.S. : EndKata = true, dan CC = MARK;
-          atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
-          CC karakter pertama sesudah karakter terakhir kata */
+// untuk membaca input dari user dan memasukkannya ke Cword
+
 
 void INPUTENTER();
+//Input enter untuk melanjutkan game
 
 void ADVWORD();
-/* I.S. : CC adalah karakter pertama kata yang akan diakuisisi
-   F.S. : CKata adalah kata terakhir yang sudah diakuisisi,
-          CC adalah karakter pertama dari kata berikutnya, mungkin MARK
-          Jika CC = MARK, EndKata = true.
-   Proses : Akuisisi kata menggunakan procedure SalinKata */
+// Membaca huruf satu persatu
+
 
 void SalinWord();
-/* Mengakuisisi kata, menyimpan dalam CKata
-   I.S. : CC adalah karakter pertama dari kata
-   F.S. : CKata berisi kata yang sudah diakuisisi;
-          CC = BLANK atau CC = MARK;
-          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+// Menyambung per huruf menjadi suatu kata
 
 void MakeEmptyWord();
+// Membuat Cword menjadi kosong kembali
 
 int WStringToInteger (Word CWord);
+// mengubah string menjadi integer
 
 int WCharToInt(char CC);
+// mengubah char ke integer
 
 int StringLength(char *S);
+// membaca panjang string
 
 int CompareTwoStrings(char *S1, char *S2);
+// compare 2 string apakah sama
 
 #endif

@@ -3,7 +3,7 @@ Skenario penambahan skill
 a. instant upgrade  (ok)
 b. Shield (ok)
 c. Extra Turn  (ok)
-d. Attack Up,  masih belum ok ternyataaaaa
+d. Attack Up (ok)
 e. Critical Hit  (ok)
 f. Instant Reinforcement (ok)
 g. Barrage (ok)
@@ -21,21 +21,22 @@ h. kalo udh sampe 10
 
 25. Driver
 a. array (ok)
-b. command
+b. command (ok)
 c. graph (ok)
-d. list
+d. list (ok)
 e. matriks (ok)
 f.  mesinchar
 g. mesinword
 h. mesinkar
 i. mesinkata
-j. olahfile
+j. olahfile (ok)
 h. pcolor (ok)
 i. point (ok)
 j. queue (ok)
 k. save
 l. stack (ok)
 m. stackplayer (ok)
+n. load
 
 OKE
 1. Push sama Pop kayaknya baru buat status dari 1 player aja ya blm dua2nya (ok)
