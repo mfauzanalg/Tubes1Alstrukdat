@@ -1,6 +1,6 @@
 BLM OKE
 
-6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
+
 9. Beresin fungsi2 sampah dari file
 10. SAVE
 11. LOAD
@@ -50,6 +50,8 @@ e. Critical Hit (ok)
 f. Instant Reinforcement (ok)
 g. Barrage (ok)
 
+6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
+
 Skenario penambahan skill
 a. instant upgrade  (ok)
 b. Shield (ok)
@@ -89,7 +91,16 @@ Yang harus diperhatikan saat penyerangan adalah
 
 
 
+#include "../graph/graph.h"
+#include "../stackplayer/stackplayer.h"
+#include "../stack/stack.h"
+#include "../boolean/boolean.h"
+#include "../typebentukan/typebentukan.h"
 
+#include "../point/point.h"
+#include "../queue/queue.h"
+#include "../list/list.h"
+#include "../pcolor/pcolor.h"
 
 
 

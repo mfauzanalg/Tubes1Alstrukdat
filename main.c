@@ -63,17 +63,8 @@ int main(){
     menuAwal();
     HELP();
     
-    //LOAD GAME YANG PERNAH DISIMPAN
-    // do{
-        // printf("Apakah kamu ingin melanjutkan permainan yang telah disimpan? [y/n]\n");
-        // STARTWORD();
-        // if(CompareTwoStrings(CWord.TabKata, "y") == 1){
-        //     load(&SBang,&SP1,&SP2,&Playing,&P1turn);
-        // }
-    // } while ((isLoad != 'y') || (isLoad != 'n'));
 
     while (Playing){
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
         Art1();
         printf("\nPlayer 1, sekarang giliran Anda!\n");
