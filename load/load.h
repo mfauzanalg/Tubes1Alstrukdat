@@ -3,10 +3,8 @@
 #include "../stackplayer/stackplayer.h"
 #include "../boolean/boolean.h"
 #include "../list/list.h"
-#include "mesinkata/mesinkata.h"
-#include "mesinword/mesinword.h"
-#include "mesinchar/mesinchar.h"
-#include "mesinkar/mesinkar.h"
+#include "../mesinkatal/mesinkatal.h"
+#include "../mesinkarl/mesinkarl.h"
 
 boolean IntegerToBoolean(int x);
 

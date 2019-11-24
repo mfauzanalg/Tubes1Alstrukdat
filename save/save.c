@@ -45,19 +45,19 @@ void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
         awal1 = InfoTop(P1).Skill.HEAD;
         akhir1 = InfoTop(P1).Skill.TAIL;
         if(IsEmptyQueue(InfoTop(P1).Skill)){
-            fprintf(fp,"%d\n", -999);    //penanda akhir queue
+            fprintf(fp,"%c\n", 'X');    //penanda akhir queue
         } else{
             for(j = awal1; j <= akhir1; j++){
                 fprintf(fp,"%d\n", InfoTop(P1).Skill.T[j]);
             }
-            fprintf(fp,"%d\n", -999);       //penanda akhir queue
+            fprintf(fp,"%c\n", 'X');       //penanda akhir queue
         }
         L = InfoTop(P1).ListB.First;
         while(L != NilList){
             fprintf(fp,"%d\n", Info(L));
             L = Next(L);
         }
-        fprintf(fp,"%d\n", -888);       //penanda akhir list
+        fprintf(fp,"%c\n", 'Y');       //penanda akhir list
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P1).IsShield));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P1).IsAttackUp));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P1).IsCriticalHit));
@@ -72,19 +72,19 @@ void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
         awal2 = InfoTop(P2).Skill.HEAD;
         akhir2 = InfoTop(P2).Skill.TAIL;
         if(IsEmptyQueue(InfoTop(P2).Skill)){
-            fprintf(fp,"%d\n", -999);    //penanda akhir queue
+            fprintf(fp,"%c\n", 'X');    //penanda akhir queue
         } else{
             for(k = awal2; k <= akhir2; k++){
                 fprintf(fp,"%d\n", InfoTop(P2).Skill.T[k]);
             }
-            fprintf(fp,"%d\n", -999);       //penanda akhir queue
+            fprintf(fp,"%c\n", 'X');       //penanda akhir queue
         }
         L = InfoTop(P2).ListB.First;
         while(L != NilList){
             fprintf(fp,"%d\n", Info(L));
             L = Next(L);
         }
-        fprintf(fp,"%d\n", -888);       //penanda akhir list
+        fprintf(fp,"%c\n", 'Y');       //penanda akhir list
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).IsShield));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).IsAttackUp));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).IsCriticalHit));
@@ -92,7 +92,12 @@ void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).Askill));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).Aend));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).IsET));
-        fprintf(fp,"%d\n", InfoTop(P2).CountShield);
+        if(InfoTop(P2).CountShield == 0){
+            fprintf(fp,"%d\n", 0);            
+        } else{
+            fprintf(fp,"%d\n", InfoTop(P2).CountShield);
+        }
+
     //close
     fclose(fp);
 }

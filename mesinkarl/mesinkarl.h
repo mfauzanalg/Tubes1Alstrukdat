@@ -5,14 +5,12 @@
 #define __MESIN_KAR_H_
 
 #include "../boolean/boolean.h"
-#include "../mesinchar/mesinchar.h"
-#include "../mesinword/mesinword.h"
 
 /* State Mesin */
 extern char CC;
 extern boolean EOP;
 
-void START();
+void STARTl();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -20,12 +18,12 @@ void START();
           Jika CC != MARK maka EOP akan padam (false)
           Jika CC = MARK maka EOP akan menyala (true) */
 
-void ADV();
+void ADVl();
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = CC, CC != MARK
    F.S. : CC adalah karakter berikutnya dari CC yang lama,
           CC mungkin = MARK
           Jika  CC = MARK maka EOP akan menyala (true) */
 
-void CLOSE();
+void CLOSEl();
 #endif

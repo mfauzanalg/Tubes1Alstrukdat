@@ -1,7 +1,7 @@
 /* File: mesinkar.c */
 /* Implementasi Mesin Karakter */
 
-#include "mesinkar.h"
+#include "mesinkarl.h"
 #include <stdio.h>
 
 char CC;
@@ -9,7 +9,7 @@ char CC;
 static FILE * pita;
 static int retval;
 
-void START() {
+void STARTl() {
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    I.S. : sembarang
@@ -20,11 +20,11 @@ void START() {
   //printf("Masukan nama file konfigurasi : ");
   //STARTWORD();
   //CWord.TabKata
-	pita = fopen("coba_save.txt","r");
-	ADV();
+	pita = fopen("SaveGame.txt","r");
+	ADVl();
 }
 
-void ADV() {
+void ADVl() {
 /* Pita dimajukan satu karakter. 
    I.S. : Karakter pada jendela = 
           CC, CC != MARK
@@ -36,6 +36,6 @@ void ADV() {
 	retval = fscanf(pita,"%c",&CC);
 }
 
-void CLOSE(){
+void CLOSEl(){
        fclose (pita);
 }

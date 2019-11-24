@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "load.h"
-#include "../save/save.h"
-#include "../boolean/boolean.h"
 
 boolean IntegerToBoolean(int x){
     boolean out;
@@ -13,154 +11,123 @@ boolean IntegerToBoolean(int x){
     }
 }
 
-// void load2(boolean playing, boolean P1turn){
-//     FILE *fp;
-
-//     fp = fopen("coba.txt","r+");
-//     int i,temp1,temp2;
-//     fscanf(fp, "%d", &temp1);
-//     playing = IntegerToBoolean(temp1);
-//     fscanf(fp, "%d", &temp2);
-//     P1turn = IntegerToBoolean(temp2);
-
-//     fclose(fp);
-// }
-
-// void save2(boolean playing, boolean P1turn);
-/*{
-    FILE *fp;
-
-    fp = fopen("out.txt","w+");
-    fprintf(fp,"%d\n", BooleanToInteger(playing));
-    fprintf(fp,"%d\n", BooleanToInteger(P1turn));
-
-    fclose(fp);
-}
-*/
-
-void load (Stack *S, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn){
+void load (Stack *SB, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn){
+    
     int i,maxel;
-    static FILE * pita;
-    static int retval;
-    // FILE *fp;
+    infotypestack S;
+    infotypestackp SP1,SP2;
+	STARTKATAl();
+    // ADVKATA();
     
-    // fp = fopen("coba_save.txt","r");
-	pita = fopen("coba_save.txt","r");
+    // SalinKata();
     
-	STARTKATA();
-    ADVKATA();
+	*playing = IntegerToBoolean(StringToIntegerl(CKatal));
+	ADVKATAl();
+	*P1turn = IntegerToBoolean(StringToIntegerl(CKatal));
+	ADVKATAl();
+
+    maxel = 17;
+    InfoTop(S).MaxElArr = 17;
+    ADVKATAl();
     
-    SalinKata();
-    
-	*playing = IntegerToBoolean(StringToInteger(CKata));
-	ADVKATA();
-    
-	*P1turn = IntegerToBoolean(StringToInteger(CKata));
-	ADVKATA();
-    
-    CreateEmptyStack(&(*S));
+    CreateEmptyStack(&(*SB));
     CreateEmptystackp(&(*P1));
     CreateEmptystackp(&(*P2));
     
-    InfoTop(*S).MaxElArr = StringToInteger(CKata);
-    
-    
-    maxel = InfoTop(*S).MaxElArr;
-    CreateEmptyArray(&InfoTop(*S),maxel);
+    CreateEmptyArray(&S,maxel);
     
     for(i = 1; i <= maxel; i++){
-        ADVKATA();
-        if(CKata.TabKata[1] == 'C'){
-            Elmt(InfoTop(*S),i).type = 'C';
-        } else if(CKata.TabKata[1] == 'T'){
-            Elmt(InfoTop(*S),i).type = 'T';
-        } else if(CKata.TabKata[1] == 'V'){
-            Elmt(InfoTop(*S),i).type = 'V';
-        } else if(CKata.TabKata[1] == 'F'){
-            Elmt(InfoTop(*S),i).type = 'F';
+        
+        if(CKatal.TabKatal[1] == 'C'){
+            Elmt(S,i).type = 'C';
+        } else if(CKatal.TabKatal[1] == 'T'){
+            Elmt(S,i).type = 'T';
+        } else if(CKatal.TabKatal[1] == 'V'){
+            Elmt(S,i).type = 'V';
+        } else if(CKatal.TabKatal[1] == 'F'){
+            Elmt(S,i).type = 'F';
         }
-
-        
-        ADVKATA();
-        
-        Elmt(InfoTop(*S),i).jum = StringToInteger(CKata);
-        
-        ADVKATA();
-        Elmt(InfoTop(*S),i).lev = StringToInteger(CKata);
-        ADVKATA();
-        Elmt(InfoTop(*S),i).A = StringToInteger(CKata);
-        ADVKATA();
-        Elmt(InfoTop(*S),i).M = StringToInteger(CKata);
-        ADVKATA();
-        Elmt(InfoTop(*S),i).P = IntegerToBoolean(StringToInteger(CKata));
-        ADVKATA();
-        Elmt(InfoTop(*S),i).U = StringToInteger(CKata);
-        ADVKATA();
-        Elmt(InfoTop(*S),i).letak.X = StringToInteger(CKata);
-        ADVKATA();
-        Elmt(InfoTop(*S),i).letak.Y = StringToInteger(CKata);
-        ADVKATA();
-        Elmt(InfoTop(*S),i).attack = IntegerToBoolean(StringToInteger(CKata));
-        ADVKATA();
-        Elmt(InfoTop(*S),i).move = IntegerToBoolean(StringToInteger(CKata));
-        // ADVKATA();
-        
+        ADVKATAl();
+        Elmt(S,i).jum = StringToIntegerl(CKatal);
+        ADVKATAl();
+        Elmt(S,i).lev = StringToIntegerl(CKatal);
+        ADVKATAl();
+        Elmt(S,i).A = StringToIntegerl(CKatal);
+        ADVKATAl();
+        Elmt(S,i).M = StringToIntegerl(CKatal);
+        ADVKATAl();
+        Elmt(S,i).P = IntegerToBoolean(StringToIntegerl(CKatal));
+        ADVKATAl();
+        Elmt(S,i).U = StringToIntegerl(CKatal);
+        ADVKATAl();
+        Elmt(S,i).letak.X = StringToIntegerl(CKatal);
+        ADVKATAl();
+        Elmt(S,i).letak.Y = StringToIntegerl(CKatal);
+        ADVKATAl();
+        Elmt(S,i).attack = IntegerToBoolean(StringToIntegerl(CKatal));
+        ADVKATAl();
+        Elmt(S,i).move = IntegerToBoolean(StringToIntegerl(CKatal));
+        ADVKATAl();
     }
-    ADVKATA();
-    CreateEmptyQueue(&(InfoTop(*P1).Skill),10);
-    while(CKata.TabKata[1] != 'X'){
-        AddQueue(&InfoTop(*P1).Skill,StringToInteger(CKata));
-        ADVKATA();
-        
+    Push(&(*SB),S);
+    
+    CreateEmptyQueue(&(SP1.Skill),10);
+    while(CKatal.TabKatal[1] != 'X'){
+        AddQueue(&(SP1.Skill),StringToIntegerl(CKatal));
+        ADVKATAl();
     }
     
-    CreateEmptyList(&InfoTop(*P1).ListB);
-    while(CKata.TabKata[1] != 'X'){
-        InsVLast(&InfoTop(*P1).ListB,StringToInteger(CKata));
-        ADVKATA();
+    CreateEmptyList(&(SP1.ListB));
+    while(CKatal.TabKatal[1] != 'Y'){
+        InsVLast(&(SP1.ListB),StringToIntegerl(CKatal));
+        ADVKATAl();
     }
-    
-    InfoTop(*P1).IsShield = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P1).IsAttackUp = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P1).IsCriticalHit = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P1).IsAttack = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P1).Askill = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P1).Aend = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P1).IsET = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P1).IsShield = StringToInteger(CKata);
-    ADVKATA();
+    SP1.IsShield = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP1.IsAttackUp = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP1.IsCriticalHit = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP1.IsAttack = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP1.Askill = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP1.Aend = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP1.IsET = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP1.IsShield = StringToIntegerl(CKatal);
+    ADVKATAl();
 
-    CreateEmptyQueue(&(InfoTop(*P2).Skill),10);
-    while(StringToInteger(CKata) != -999){
-        AddQueue(&InfoTop(*P2).Skill,StringToInteger(CKata));
-        ADVKATA();
+    Pushp(&(*P1),SP1);
+
+
+    CreateEmptyQueue(&(SP2.Skill),10);
+    while(CKatal.TabKatal[1] != 'X'){
+        AddQueue(&(SP2.Skill),StringToIntegerl(CKatal));
+        ADVKATAl();
     }
-    CreateEmptyList(&InfoTop(*P2).ListB);
-    while(StringToInteger(CKata) != -999){
-        InsVLast(&InfoTop(*P2).ListB,StringToInteger(CKata));
-        ADVKATA();
+    CreateEmptyList(&(SP2.ListB));
+    while(CKatal.TabKatal[1] != 'Y'){
+        InsVLast(&(SP2.ListB),StringToIntegerl(CKatal));
+        ADVKATAl();
     }
-    InfoTop(*P2).IsShield = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P2).IsAttackUp = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P2).IsCriticalHit = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P2).IsAttack = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P2).Askill = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P2).Aend = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P2).IsET = IntegerToBoolean(StringToInteger(CKata));
-    ADVKATA();
-    InfoTop(*P2).IsShield = StringToInteger(CKata);
-    CLOSE();
+    SP2.IsShield = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP2.IsAttackUp = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP2.IsCriticalHit = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP2.IsAttack = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP2.Askill = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP2.Aend = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP2.IsET = IntegerToBoolean(StringToIntegerl(CKatal));
+    ADVKATAl();
+    SP2.IsShield = StringToIntegerl(CKatal);
+    Pushp(&(*P2),SP2);
+
+    CLOSEl();
 }

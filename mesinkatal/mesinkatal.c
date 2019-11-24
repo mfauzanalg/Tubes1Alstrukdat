@@ -1,37 +1,37 @@
-#include "mesinkata.h"
+#include "mesinkatal.h"
 #include <stdio.h>
 
-Kata CKata;
+Katal CKatal;
 
-void IgnoreBlank(){
+void IgnoreBlankl(){
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : CC sembarang
    F.S. : CC ≠ BLANK*/
   //  char CC;
-    while (CC == BLANK || CC == ENTER || CC == '\r'){
-        ADV();
+    while (CC == BLANKl || CC == ENTERl || CC == '\r'){
+        ADVl();
     }
 }
 
-void STARTKATA(){
+void STARTKATAl(){
 /* I.S. : CC sembarang
    F.S. : atau EndKata = false, CKata adalah kata yang sudah diakuisisi,          
           CC karakter pertama sesudah karakter terakhir kata */
-    START();
-    SalinKata();
+    STARTl();
+    SalinKatal();
 }
 
 
-void ADVKATA(){
+void ADVKATAl(){
 /* I.S. : CC adalah karakter pertama kata yang akan diakuisisi
    F.S. : CKata adalah kata terakhir yang sudah diakuisisi,
           CC adalah karakter pertama dari kata berikutnya
    Proses : Akuisisi kata menggunakan procedure SalinKata */
-  IgnoreBlank();
-  SalinKata();
+  IgnoreBlankl();
+  SalinKatal();
 }
 
-void SalinKata(){
+void SalinKatal(){
 /* Mengakuisisi kata, menyimpan dalam CKata
    I.S. : CC adalah karakter pertama dari kata
    F.S. : CKata berisi kata yang sudah diakuisisi;
@@ -39,44 +39,44 @@ void SalinKata(){
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
     int i = 1;
-    CKata.Length = 0;
-    while (CC != ENTER && CC != BLANK && CC != '\r'){
-        CKata.TabKata[i] = CC;
-        CKata.Length++;
+    CKatal.Lengthl = 0;
+    while (CC != ENTERl && CC != BLANKl && CC != '\r'){
+        CKatal.TabKatal[i] = CC;
+        CKatal.Lengthl++;
         i++;
-        ADV();
+        ADVl();
     }
-	IgnoreBlank();
+	IgnoreBlankl();
 }
 
-void SalinLast(){
+void SalinLastl(){
 /* Mengakuisisi Token dan menyimpan hasilnya dalam CToken
    I.S. : CC adalah karakter pertama dari Token
    F.S. : CToken berisi Token yang sudah diakuisisi;
           CC = BLANK
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
-    IgnoreBlank();
+    IgnoreBlankl();
 	if (CC == '0'){
-		CKata.TabKata[1] = 0;
+		CKatal.TabKatal[1] = 0;
 	}
 	else{
-		CKata.TabKata[1] = 1;
+		CKatal.TabKatal[1] = 1;
 	}
 }
 
-int StringToInteger (Kata CKata){
+int StringToIntegerl (Katal CKatal){
 	int i;
 	int hasil = 0;
 	int CI;
-	for (i = 1; i <= CKata.Length; i++){
-		CI = CharToInt(CKata.TabKata[i]);
+	for (i = 1; i <= CKatal.Lengthl; i++){
+		CI = CharToIntl(CKatal.TabKatal[i]);
 		hasil = (hasil*10) + CI;
 	}
 	return hasil;
 }
 
-int CharToInt(char CC){
+int CharToIntl(char CC){
 	if (CC == '0'){
 		return 0;
 	}

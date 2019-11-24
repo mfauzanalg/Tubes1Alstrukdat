@@ -1,44 +1,43 @@
 /* File: mesinkata.h */
 /* Definisi Mesin Kata: Model Akuisisi Versi I */
 
-#ifndef __MESINKATA_H__
-#define __MESINKATA_H__
+#ifndef __MESINKATAl_H__
+#define __MESINKATAl_H__
 
-#include "../boolean/boolean.h"
-#include "../mesinkar/mesinkar.h"
+#include "../mesinkarl/mesinkarl.h"
 
-#define NMax 50
-#define BLANK ' '
-#define ENTER 0x0A
+#define NMaxl 50
+#define BLANKl ' '
+#define ENTERl 0x0A
 
 typedef struct {
-  char TabKata[NMax+1];
-  int Length;
-} Kata;
+  char TabKatal[NMaxl+1];
+  int Lengthl;
+} Katal;
 
 /* State Mesin Kata */
-extern boolean EndKata;
-extern Kata CKata;
+extern boolean EndKatal;
+extern Katal CKatal;
 
-void IgnoreBlank();
+void IgnoreBlankl();
 /* Mengabaikan satu atau beberapa BLANK
    I.S. : CC sembarang
    F.S. : CC ≠ BLANK atau CC = MARK */
 
-void STARTKATA();
+void STARTKATAl();
 /* I.S. : CC sembarang
    F.S. : EndKata = true, dan CC = MARK;
           atau EndKata = false, CKata adalah kata yang sudah diakuisisi,
           CC karakter pertama sesudah karakter terakhir kata */
 
-void ADVKATA();
+void ADVKATAl();
 /* I.S. : CC adalah karakter pertama kata yang akan diakuisisi
    F.S. : CKata adalah kata terakhir yang sudah diakuisisi,
           CC adalah karakter pertama dari kata berikutnya, mungkin MARK
           Jika CC = MARK, EndKata = true.
    Proses : Akuisisi kata menggunakan procedure SalinKata */
 
-void SalinKata();
+void SalinKatal();
 /* Mengakuisisi kata, menyimpan dalam CKata
    I.S. : CC adalah karakter pertama dari kata
    F.S. : CKata berisi kata yang sudah diakuisisi;
@@ -46,12 +45,12 @@ void SalinKata();
           CC adalah karakter sesudah karakter terakhir yang diakuisisi.
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 
-int CharToInt(char CC);
+int CharToIntl(char CC);
 // Mengubah  Char ke Integer
 
-void SalinLast();
+void SalinLastl();
 
-int StringToInteger(Kata CKata);
+int StringToIntegerl(Katal CKata);
 // Mengubah String ke Integer
 
 #endif
