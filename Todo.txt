@@ -1,21 +1,10 @@
 BLM OKE
-Skenario penambahan skill
-a. instant upgrade  (ok)
-b. Shield (ok)
-c. Extra Turn  (ok)
-d. Attack Up (ok)
-e. Critical Hit  (ok)
-f. Instant Reinforcement (ok)
-g. Barrage (ok)
-h. kalo udh sampe 10
 
 6. Undo masih ccd gitu masih bisa undo walau stacknya kosong
-7. coba jangan pake strcmp
 9. Beresin fungsi2 sampah dari file
 10. SAVE
 11. LOAD
 13. UNDONYA KOK GAK BISA ABIS ATTACK TADI
-14. Masih PrintInfo yang abis Attack jangan lupa diilangin
 18. Jangan lupa apus skill, player, list yang di print atau edit coba2
 24. Beresin file attack exit save
 
@@ -61,8 +50,20 @@ e. Critical Hit (ok)
 f. Instant Reinforcement (ok)
 g. Barrage (ok)
 
+Skenario penambahan skill
+a. instant upgrade  (ok)
+b. Shield (ok)
+c. Extra Turn  (ok)
+d. Attack Up (ok)
+e. Critical Hit  (ok)
+f. Instant Reinforcement (ok)
+g. Barrage (ok)
+h. kalo udh sampe 10 (ok)
+
+7. coba jangan pake strcmp
 8. mesin yg bisa input enter (ok)
 12. Validasi input pilih bangunan (ok)
+14. Masih PrintInfo yang abis Attack jangan lupa diilangin
 15. Validasi Level Up kalo udh level 4 (ok)
 16. Jumlah pasukan awal (ok)
 17. Kalo attack up sama critical hit (ok)
