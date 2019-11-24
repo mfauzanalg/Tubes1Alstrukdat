@@ -360,6 +360,9 @@ void StartPlayer (PLAYER *P){
 	AddQueue(&(*P).Skill, 7);		// Menambahkan skill Instant Upgrade
 	AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
 	AddQueue(&(*P).Skill, 2);		// Menambahkan skill Instant Upgrade
+	AddQueue(&(*P).Skill, 3);		// Menambahkan skill Instant Upgrade
+	
+
 	IsShield(*P) = false;
 	IsAttackUp(*P) = false;
 	IsCriticalHit(*P) = false;
