@@ -39,38 +39,52 @@ boolean IntegerToBoolean(int x){
 */
 
 void load (Stack *S, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn){
-    int i;
+    int i,maxel;
     static FILE * pita;
     static int retval;
     // FILE *fp;
-    printf("static int retval;\n");
+    
     // fp = fopen("coba_save.txt","r");
-	//pita = fopen("coba_save.txt","r");
-    printf("pita = fopen\n");
+	pita = fopen("coba_save.txt","r");
+    
 	STARTKATA();
-    //ADVKATA();
-    printf("ADV();\n");
-    //SalinKata();
-    printf("SalinKata();\n");
+    ADVKATA();
+    
+    SalinKata();
+    
 	*playing = IntegerToBoolean(StringToInteger(CKata));
 	ADVKATA();
-    printf("ADVKATA();\n");
+    
 	*P1turn = IntegerToBoolean(StringToInteger(CKata));
 	ADVKATA();
-    printf("ADVKATA() 2;\n");
+    
     CreateEmptyStack(&(*S));
     CreateEmptystackp(&(*P1));
     CreateEmptystackp(&(*P2));
-    printf("CreateEmptystackp(&(*P2));\n");
+    
     InfoTop(*S).MaxElArr = StringToInteger(CKata);
-    printf("InfoTop(*S).MaxElArr = StringToInteger(CKata);\n");
-    ADVKATA();
-    printf("ADVKATA();\n");
-    for(i = 1; i <= InfoTop(*S).MaxElArr; i++){
-        Elmt(InfoTop(*S),i).type = CKata.TabKata[1];
-        printf("Elmt(InfoTop(*S),i).type = CC; %d\n", i);
+    
+    
+    maxel = InfoTop(*S).MaxElArr;
+    CreateEmptyArray(&InfoTop(*S),maxel);
+    
+    for(i = 1; i <= maxel; i++){
         ADVKATA();
+        if(CKata.TabKata[1] == 'C'){
+            Elmt(InfoTop(*S),i).type = 'C';
+        } else if(CKata.TabKata[1] == 'T'){
+            Elmt(InfoTop(*S),i).type = 'T';
+        } else if(CKata.TabKata[1] == 'V'){
+            Elmt(InfoTop(*S),i).type = 'V';
+        } else if(CKata.TabKata[1] == 'F'){
+            Elmt(InfoTop(*S),i).type = 'F';
+        }
+
+        
+        ADVKATA();
+        
         Elmt(InfoTop(*S),i).jum = StringToInteger(CKata);
+        
         ADVKATA();
         Elmt(InfoTop(*S),i).lev = StringToInteger(CKata);
         ADVKATA();
@@ -89,98 +103,64 @@ void load (Stack *S, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn){
         Elmt(InfoTop(*S),i).attack = IntegerToBoolean(StringToInteger(CKata));
         ADVKATA();
         Elmt(InfoTop(*S),i).move = IntegerToBoolean(StringToInteger(CKata));
-        ADVKATA();
-        printf("ADVKATA(); terakhir\n");
+        // ADVKATA();
+        
     }
-    // CreateEmptyQueue(&(InfoTop(*P1).Skill),10);
-    // while(StringToInteger(CKata) != -999){
-    //     AddQueue(&InfoTop(*P1).Skill,StringToInteger(CKata));
-    //     ADVKATA();
-    // }
-    // CreateEmptyList(&InfoTop(*P1).ListB);
-    // while(StringToInteger(CKata) != -999){
-    //     InsVLast(&InfoTop(*P1).ListB,StringToInteger(CKata));
-    //     ADVKATA();
-    // }
-    // InfoTop(*P1).IsShield = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P1).IsAttackUp = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P1).IsCriticalHit = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P1).IsAttack = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P1).Askill = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P1).Aend = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P1).IsET = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P1).IsShield = StringToInteger(CKata);
-    // ADVKATA();
-
-    // CreateEmptyQueue(&(InfoTop(*P2).Skill),10);
-    // while(StringToInteger(CKata) != -999){
-    //     AddQueue(&InfoTop(*P2).Skill,StringToInteger(CKata));
-    //     ADVKATA();
-    // }
-    // CreateEmptyList(&InfoTop(*P2).ListB);
-    // while(StringToInteger(CKata) != -999){
-    //     InsVLast(&InfoTop(*P2).ListB,StringToInteger(CKata));
-    //     ADVKATA();
-    // }
-    // InfoTop(*P2).IsShield = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P2).IsAttackUp = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P2).IsCriticalHit = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P2).IsAttack = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P2).Askill = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P2).Aend = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P2).IsET = IntegerToBoolean(StringToInteger(CKata));
-    // ADVKATA();
-    // InfoTop(*P2).IsShield = StringToInteger(CKata);
-    // CLOSE();
-}
-
-// int main(){
-//     // stackp SP1,SP2;
-//     // Stack SBang;
-//     boolean playing;
-//     boolean P1turn;
-//     load2(playing,P1turn);
-//     if(playing){
-//         printf("ya\n");
-//     }else{
-//         printf("tidak\n");
-//     }
-//     if(P1turn){
-//         printf("ya\n");
-//     }else{
-//         printf("tidak\n");
-//     }
+    ADVKATA();
+    CreateEmptyQueue(&(InfoTop(*P1).Skill),10);
+    while(CKata.TabKata[1] != 'X'){
+        AddQueue(&InfoTop(*P1).Skill,StringToInteger(CKata));
+        ADVKATA();
+        
+    }
     
-//     // save2(playing,P1turn);
-//     return 0;
-// }
+    CreateEmptyList(&InfoTop(*P1).ListB);
+    while(CKata.TabKata[1] != 'X'){
+        InsVLast(&InfoTop(*P1).ListB,StringToInteger(CKata));
+        ADVKATA();
+    }
+    
+    InfoTop(*P1).IsShield = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P1).IsAttackUp = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P1).IsCriticalHit = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P1).IsAttack = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P1).Askill = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P1).Aend = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P1).IsET = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P1).IsShield = StringToInteger(CKata);
+    ADVKATA();
 
-// int main () {
-//    char str1[10], str2[10], str3[10];
-//    int year,yes;
-//    FILE * fp;
-
-//    fp = fopen ("coba.txt", "w+");
-
-//    fscanf(fp, "%d", &year);
-//    yes = year+7;
-//     printf("Read Integer |%d|\n", year );
-//    printf("Read Integer |%d|\n", yes );
-
-//    fclose(fp);
-   
-//    return(0);
-// }
+    CreateEmptyQueue(&(InfoTop(*P2).Skill),10);
+    while(StringToInteger(CKata) != -999){
+        AddQueue(&InfoTop(*P2).Skill,StringToInteger(CKata));
+        ADVKATA();
+    }
+    CreateEmptyList(&InfoTop(*P2).ListB);
+    while(StringToInteger(CKata) != -999){
+        InsVLast(&InfoTop(*P2).ListB,StringToInteger(CKata));
+        ADVKATA();
+    }
+    InfoTop(*P2).IsShield = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P2).IsAttackUp = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P2).IsCriticalHit = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P2).IsAttack = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P2).Askill = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P2).Aend = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P2).IsET = IntegerToBoolean(StringToInteger(CKata));
+    ADVKATA();
+    InfoTop(*P2).IsShield = StringToInteger(CKata);
+    CLOSE();
+}

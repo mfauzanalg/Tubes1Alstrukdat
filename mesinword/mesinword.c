@@ -140,7 +140,7 @@ int CompareTwoStrings(char *S1, char *S2){
     return 0;
   }
   else{
-    for (i = 1; i <= StringLength(S1); i++){
+    for (i = 0; i <= StringLength(S1); i++){
       if (S1[i] != S2[i]){
         return 0;
       }
