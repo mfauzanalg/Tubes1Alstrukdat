@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "stackplayer.h"
-#include "queue.h"
+#include "../queue/queue.h"
 #include "../typebentukan/typebentukan.h"
-#include "list.h"
+#include "../list/list.h"
 
 
 void printBool(boolean X){
@@ -24,7 +24,7 @@ int main(){
     CreateEmptyQueue(&(inp.Skill),10);
     CreateEmptyList(&(inp.ListB));
     while(!stop){
-        printf("Masukkan kode!\n");
+        printf("\nMasukkan kode!\n");
         printf("A = Push\n");
         printf("D = Pop\n");
         printf("E = Cek Kosong\n");
@@ -100,7 +100,7 @@ int main(){
             }
         } else if(code == 'C'){
             CopyPlayer(InfoTop(S),&out);
-            if(InfoTop(S) <= 0){
+            if(IsEmptystackp(S)){
                 printf("Stack Kosong cuy");
             } else{
                 printf("Coppied!\n");

@@ -17,7 +17,7 @@ typedef struct {
 POINT MakePOINT (float X, float Y);
 /* Membentuk sebuah POINT dari komponen X dan Y */
 
-void BacaPOINT (POINT * P);
+void BacaPOINT (POINT *P);
 // Membaca input Point dari user
 
 void TulisPOINT (POINT P);

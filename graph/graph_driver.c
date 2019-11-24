@@ -1,18 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "olahfile.h"
-#include "typebentukan.h"
-#include "stack.h"
-#include "command.h"
+
+#include "../olahfile/olahfile.h"
+#include "../typebentukan/typebentukan.h"
+#include "../stack/stack.h"
+#include "../command/command.h"
+#include "../matriks/matriks.h"
+#include "../list/list.h"
 #include "graph.h"
 
+
 int main(){
+    printf("Masukkan elemen matriks 4x4 yang ada di file graph_driver.c (di copas saja)\n");
     /*  MATRIKS ADJACENCY
-    0 1 0 1
-    1 0 1 0
-    0 1 0 0
-    1 0 0 0 
+0 1 0 1
+1 0 1 0
+0 1 0 0
+1 0 0 0 
     */
     MATRIKS Mat;
     GraphList Graph;
@@ -40,12 +45,10 @@ int main(){
     printf("\n");
 
     printf("Apakah elemen 1 terhubung dengan elemen 3?\n");
-    if (IsAdjacent(Graph, 1,3)){
+    if (IsAdjacent(Graph,1,3)){
         printf("Ya\n");
     }
     else{
         printf("Tidak\n");
     }
-
-
 }

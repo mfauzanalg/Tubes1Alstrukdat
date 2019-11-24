@@ -1,9 +1,9 @@
 #include "stack.h"
 #include <stdio.h>
-#include "typebentukan.h"
-#include "array.h"
-#include "point.h"
-#include "boolean.h"
+#include "../typebentukan/typebentukan.h"
+#include "../array/array.h"
+#include "../point/point.h"
+#include "../boolean/boolean.h"
 
 void printBool(boolean X){
     if(X){
@@ -30,9 +30,6 @@ int main(){
         printf("D = Pop\n");
         printf("E = Cek Kosong\n");
         printf("F = Cek Full\n");
-        printf("I = Inverse\n");
-        printf("C = Copy\n");
-        printf("V = FPush\n");
         printf("X = Stop\n");
         printf(">> ");
         scanf(" %c", &code);
@@ -47,10 +44,7 @@ int main(){
             scanf("%d", &N);
             if(N <= inp.MaxElArr){
                 for(i = 1; i <= N; i++){
-                    printf("Masukkan no bangunan : ");
-                    scanf("%d", &input);
-                    Elmt(inp,i).nomor = input;
-                    printf("Masukkan type bangunan : ");
+                    printf("\nMasukkan type bangunan : ");
                     scanf(" %c", &inputchar);
                     Elmt(inp,i).type = inputchar;
                     printf("Masukkan jum bangunan : ");
@@ -112,76 +106,8 @@ int main(){
             } else{
                 printf("Stack tak kosong\n\n");
             }
-        } else if(code == 'I'){
-            SI = InverseStack(S);
-            printf("Success to Inverse!\n");
-            printf("Stack Inverse: \n");
-            // while (Top(SI) != NilStack){
-                for(i = 1; i <= N; i++){
-                    printf("%d\n\n",i);
-                    printf("No Bangunan : %d\n", Elmt(InfoTop(SI),i).nomor);
-                    printf("Type Bangunan : %c\n", Elmt(InfoTop(SI),i).type);
-                    printf("Jum Bangunan : %d\n", Elmt(InfoTop(SI),i).jum);
-                    printf("Lev Bangunan : %d\n", Elmt(InfoTop(SI),i).lev);
-                    printf("A Bangunan : %d\n", Elmt(InfoTop(SI),i).A);
-                    printf("M Bangunan : %d\n", Elmt(InfoTop(SI),i).M);
-                    printf("P Bangunan : ");
-                    printBool(Elmt(InfoTop(SI),i).P);
-                    printf("U Bangunan : %d\n", Elmt(InfoTop(SI),i).U);
-                    printf("P Bangunan (x,y) : (%d,%d)\n ", Elmt(InfoTop(SI),i).letak.X,Elmt(InfoTop(SI),i).letak.Y);
-                    printf("Attack Bangunan : ");
-                    printBool(Elmt(InfoTop(SI),i).attack);
-                    printf("Move Bangunan : ");
-                    printBool(Elmt(InfoTop(SI),i).move);
-                }
-            // }
-        } else if(code == 'C'){
-            SC = CopyStack(S);
-            printf("Coppied!\n");
-            printf("Stack Copy: \n");
-            // while (Top(SC) != NilStack){
-                for(i = 1; i <= N; i++){
-                    printf("%d\n\n", i);
-                    printf("No Bangunan : %d\n", Elmt(InfoTop(SC),i).nomor);
-                    printf("Type Bangunan : %c\n", Elmt(InfoTop(SC),i).type);
-                    printf("Jum Bangunan : %d\n", Elmt(InfoTop(SC),i).jum);
-                    printf("Lev Bangunan : %d\n", Elmt(InfoTop(SC),i).lev);
-                    printf("A Bangunan : %d\n", Elmt(InfoTop(SC),i).A);
-                    printf("M Bangunan : %d\n", Elmt(InfoTop(SC),i).M);
-                    printf("P Bangunan : ");
-                    printBool(Elmt(InfoTop(SC),i).P);
-                    printf("U Bangunan : %d\n", Elmt(InfoTop(SC),i).U);
-                    printf("P Bangunan (x,y) : (%d,%d)\n ", Elmt(InfoTop(SC),i).letak.X,Elmt(InfoTop(SC),i).letak.Y);
-                    printf("Attack Bangunan : ");
-                    printBool(Elmt(InfoTop(SC),i).attack);
-                    printf("Move Bangunan : ");
-                    printBool(Elmt(InfoTop(SC),i).move);
-                }
-            // }
-        } else if(code == 'V'){
-            SV = FPush(S,inp);
-            printf("Stack FPush : \n");
-            // while (Top(SV) != NilStack){
-                for(i = 1; i <= N; i++){
-                    printf("%d\n\n", i);
-                    printf("No Bangunan : %d\n", Elmt(InfoTop(SV),i).nomor);
-                    printf("Type Bangunan : %c\n", Elmt(InfoTop(SV),i).type);
-                    printf("Jum Bangunan : %d\n", Elmt(InfoTop(SV),i).jum);
-                    printf("Lev Bangunan : %d\n", Elmt(InfoTop(SV),i).lev);
-                    printf("A Bangunan : %d\n", Elmt(InfoTop(SV),i).A);
-                    printf("M Bangunan : %d\n", Elmt(InfoTop(SV),i).M);
-                    printf("P Bangunan : ");
-                    printBool(Elmt(InfoTop(SV),i).P);
-                    printf("U Bangunan : %d\n", Elmt(InfoTop(SV),i).U);
-                    printf("P Bangunan (x,y) : (%d,%d)\n ", Elmt(InfoTop(SV),i).letak.X,Elmt(InfoTop(SV),i).letak.Y);
-                    printf("Attack Bangunan : ");
-                    printBool(Elmt(InfoTop(SV),i).attack);
-                    printf("Move Bangunan : ");
-                    printBool(Elmt(InfoTop(SV),i).move);
-                }
-            //     Pop(&SV,&X);
-            // }
-        } else if(code == 'X'){
+        }  
+        else if(code == 'X'){
             stop = true;
         } else{
             printf("Masukkan salah, hehe...\n");
@@ -191,7 +117,6 @@ int main(){
     while (Top(S) > NilStack){
         for(i = 1; i <= N; i++){
             printf("%d\n\n", i);
-            printf("No Bangunan : %d\n", Elmt(InfoTop(S),i).nomor);
             printf("Type Bangunan : %c\n", Elmt(InfoTop(S),i).type);
             printf("Jum Bangunan : %d\n", Elmt(InfoTop(S),i).jum);
             printf("Lev Bangunan : %d\n", Elmt(InfoTop(S),i).lev);
