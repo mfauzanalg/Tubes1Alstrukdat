@@ -72,6 +72,11 @@ int main()
 
 
     }
+    printf("\n");
+    printf("StringToInteger\n");
+
+    printf("%d\n", StringToInteger(K[1])*10+2);
+
 
 
     return 0;
