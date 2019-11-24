@@ -4,10 +4,7 @@
 Kata CKata;
 
 void IgnoreBlank(){
-/* Mengabaikan satu atau beberapa BLANK
-   I.S. : CC sembarang
-   F.S. : CC ≠ BLANK*/
-  //  char CC;
+/* Mengabaikan satu atau beberapa BLANK ENTER dan \r*/
     while (CC == BLANK || CC == ENTER || CC == '\r'){
         ADV();
     }
@@ -35,9 +32,8 @@ void SalinKata(){
 /* Mengakuisisi kata, menyimpan dalam CKata
    I.S. : CC adalah karakter pertama dari kata
    F.S. : CKata berisi kata yang sudah diakuisisi;
-          CC = BLANK atau CC = MARK;
-          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+          CC = BLANK atau CC = ENTER atau /r;
+          CC adalah karakter sesudah karakter terakhir yang diakuisisi.*/
     int i = 1;
     CKata.Length = 0;
     while (CC != ENTER && CC != BLANK && CC != '\r'){
@@ -50,12 +46,7 @@ void SalinKata(){
 }
 
 void SalinLast(){
-/* Mengakuisisi Token dan menyimpan hasilnya dalam CToken
-   I.S. : CC adalah karakter pertama dari Token
-   F.S. : CToken berisi Token yang sudah diakuisisi;
-          CC = BLANK
-          CC adalah karakter sesudah karakter terakhir yang diakuisisi.
-          Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
+// Seperti Salin kata tetapi untuk character terakhir
     IgnoreBlank();
 	if (CC == '0'){
 		CKata.TabKata[1] = 0;
@@ -66,6 +57,7 @@ void SalinLast(){
 }
 
 int StringToInteger (Kata CKata){
+// Mengubah String ke Integer
 	int i;
 	int hasil = 0;
 	int CI;
@@ -77,6 +69,7 @@ int StringToInteger (Kata CKata){
 }
 
 int CharToInt(char CC){
+// Mengubah character ke integer
 	if (CC == '0'){
 		return 0;
 	}
