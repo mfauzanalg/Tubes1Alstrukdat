@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "coba_save.h"
+#include "save.h"
 
 int BooleanToInteger(boolean x){
     int out;
