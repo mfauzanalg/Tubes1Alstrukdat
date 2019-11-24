@@ -18,6 +18,8 @@
         "point.h": "c",
         "queue.h": "c",
         "pcolor.h": "c",
-        "coba_save.h": "c"
+        "coba_save.h": "c",
+        "mesinkata.h": "c",
+        "stackplayer.h": "c"
     }
 }

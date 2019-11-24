@@ -9,7 +9,6 @@
 
 #include "../boolean/boolean.h"
 #include "../typebentukan/typebentukan.h"
-#include "../stackplayer/stackplayer.h"
 
 
 /*  Kamus Umum */

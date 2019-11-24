@@ -78,3 +78,46 @@ Yang harus diperhatikan saat penyerangan adalah
 2. Apakah Attack up aktif -> ada di player
 3. Apakah Shield Aktif -> ada di player
 4. Apakah Bangunan memiliki ->  ada di bangunan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

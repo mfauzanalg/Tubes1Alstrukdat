@@ -2,6 +2,7 @@
 #define __OLAHFILE_H__
 
 #include "../graph/graph.h"
+#include "../stackplayer/stackplayer.h"
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *Mat, List *L1, List *L2);
 // Load file data inisialisasi awal
