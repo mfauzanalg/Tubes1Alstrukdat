@@ -10,19 +10,11 @@ int BooleanToInteger(boolean x){
     }
 }
 
-boolean IntegerToBoolean(int x){
-    boolean out;
-    if(x == 0){
-        return false;
-    } else{
-        return true;
-    }
-}
 
 void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
     FILE *fp;
     //open
-    fp = fopen("coba_save.txt", "w");
+    fp = fopen("demo.txt", "w");
 
     char c;
     int i,j,k;
@@ -53,17 +45,19 @@ void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
         awal1 = InfoTop(P1).Skill.HEAD;
         akhir1 = InfoTop(P1).Skill.TAIL;
         if(IsEmptyQueue(InfoTop(P1).Skill)){
-            fprint(fp,"%d\n", 0);
+            fprintf(fp,"%d\n", -999);    //penanda akhir queue
         } else{
             for(j = awal1; j <= akhir1; j++){
                 fprintf(fp,"%d\n", InfoTop(P1).Skill.T[j]);
             }
+            fprintf(fp,"%d\n", -999);       //penanda akhir queue
         }
         L = InfoTop(P1).ListB.First;
         while(L != NilList){
             fprintf(fp,"%d\n", Info(L));
             L = Next(L);
         }
+        fprintf(fp,"%d\n", -888);       //penanda akhir list
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P1).IsShield));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P1).IsAttackUp));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P1).IsCriticalHit));
@@ -78,17 +72,19 @@ void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn){
         awal2 = InfoTop(P2).Skill.HEAD;
         akhir2 = InfoTop(P2).Skill.TAIL;
         if(IsEmptyQueue(InfoTop(P2).Skill)){
-            fprint(fp,"%d\n", 0);
+            fprintf(fp,"%d\n", -999);    //penanda akhir queue
         } else{
             for(k = awal2; k <= akhir2; k++){
                 fprintf(fp,"%d\n", InfoTop(P2).Skill.T[k]);
             }
+            fprintf(fp,"%d\n", -999);       //penanda akhir queue
         }
         L = InfoTop(P2).ListB.First;
         while(L != NilList){
             fprintf(fp,"%d\n", Info(L));
             L = Next(L);
         }
+        fprintf(fp,"%d\n", -888);       //penanda akhir list
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).IsShield));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).IsAttackUp));
         fprintf(fp,"%d\n", BooleanToInteger(InfoTop(P2).IsCriticalHit));

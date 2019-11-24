@@ -5,6 +5,7 @@
 #include "olahfile/olahfile.h"
 #include "command/command.h"
 #include "save/coba_save.h"
+#include "load/load.h"
 
 int main(){
     //KAMUS
@@ -45,6 +46,9 @@ int main(){
     Condition Kondisi;
     // Pengecekan apakah ada kemungkinan bertambah skillnya atau tidak
 
+    char isLoad;
+    // Input pmain apakah ingin load data game sebelumnya atau tidak.
+
     // ALGORITMA
     // Inisialisasi awal data-data
     LoadFile (&N, &M, &J, &Arr, &Graph, &Mat, &P1.ListB, &P2.ListB);
@@ -58,14 +62,24 @@ int main(){
     Aend(P1) = true;
     menuAwal();
     HELP();
-    while (playing){
+    
+    //LOAD GAME YANG PERNAH DISIMPAN
+    // do{
+        printf("Apakah kamu ingin melanjutkan permainan yang telah disimpan? [y/n]\n");
+        scanf(" %c", &isLoad);
+        if(isLoad == 'y'){
+            load(&SBang,&SP1,&SP2,&Playing,&P1turn);
+        }
+    // } while ((isLoad != 'y') || (isLoad != 'n'));
+
+    while (Playing){
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
         Art1();
         printf("\nPlayer 1, sekarang giliran Anda!\n");
         printf("Apakah Anda siap untuk menaklukkan dunia?\n");
         UpdateBangunan (&P1, &P2, &P1turn, &Arr);
-        while ((playing) && (P1turn)){
+        while ((Playing) && (P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah1, Jumlah2, &Kondisi);
@@ -76,6 +90,10 @@ int main(){
             if (strcmp(CWord.TabKata, "EXIT") == 0){                        // EXIT
                 Playing = false;
                 exitGame();
+            }
+
+            else if (strcmp(CWord.TabKata, "SAVE") == 0){                        // EXIT
+                SaveAll(SBang,SP1,SP2,Playing,P1turn);
             }
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){ //sudah jalan
@@ -138,7 +156,7 @@ int main(){
         printf("\nPlayer 2, sekarang giliran Anda!\n");
         printf("Apakah Anda siap untuk menaklukkan dunia?\n");
         UpdateBangunan (&P2, &P1, &P1turn, &Arr);
-        while ((playing) && !(P1turn)){
+        while ((Playing) && !(P1turn)){
             HitungJum (&Jumlah1, P1, Arr);
             HitungJum (&Jumlah2, P2, Arr);
             CekKondisi (Jumlah2, Jumlah1, &Kondisi);                        // Mencetak peta daninformasi lainnya
@@ -152,7 +170,7 @@ int main(){
             }
 
             else if(strcmp(CWord.TabKata, "SAVE") == 0){
-                SaveAll(SBang,SP1,SP2,playing,P1turn);
+                SaveAll(SBang,SP1,SP2,Playing,P1turn);
             }
 
             else if (strcmp(CWord.TabKata, "END_TURN") == 0){
