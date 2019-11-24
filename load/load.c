@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "load.h"
-#include "../save/coba_save.h"
+#include "../save/save.h"
 #include "../boolean/boolean.h"
 
 boolean IntegerToBoolean(int x){

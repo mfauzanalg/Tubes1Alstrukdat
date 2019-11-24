@@ -4,7 +4,7 @@
 
 #include "olahfile/olahfile.h"
 #include "command/command.h"
-#include "save/coba_save.h"
+#include "save/save.h"
 #include "load/load.h"
 
 int main(){

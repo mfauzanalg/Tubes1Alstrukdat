@@ -346,16 +346,6 @@ void StartPlayer (PLAYER *P){
 	// Set status player waktu baru memulai permainan
 	CreateEmptyQueue(&(*P).Skill, 10);
 	AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 2);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 3);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 4);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 5);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 6);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 7);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 1);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 2);		// Menambahkan skill Instant Upgrade
-	AddQueue(&(*P).Skill, 3);		// Menambahkan skill Instant Upgrade
-	
 
 	IsShield(*P) = false;
 	IsAttackUp(*P) = false;
