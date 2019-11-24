@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "boolean.h"
+#include "../stack/stack.h"
+#include "../stackplayer/stackplayer.h"
+#include "../boolean/boolean.h"
+#include "../list/list.h"
 
 
-
-
-void Tulis(boolean *playing, boolean *P1turn, FILE *fptr);
-
-
-
+int BooleanToInteger(boolean x);
+boolean IntegerToBoolean(int x);
+void SaveAll(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn);
+void Saveee(Stack S, stackp P1, stackp P2, boolean playing, boolean P1turn);
