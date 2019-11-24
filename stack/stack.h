@@ -5,8 +5,10 @@
 #ifndef stackt_H
 #define stackt_H
 
-#include "../boolean/boolean.h"
+#include "../typebentukan/typebentukan.h"
 #include "../array/array.h"
+#include "../point/point.h"
+#include "../boolean/boolean.h"
 
 #define NilStack 0
 #define MaxElStack 100

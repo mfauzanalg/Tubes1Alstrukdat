@@ -1,8 +1,13 @@
 #ifndef __OLAHFILE_H__
 #define __OLAHFILE_H__
 
-#include "../graph/graph.h"
+#include "../pcolor/pcolor.h"
+#include "../point/point.h"
 #include "../stackplayer/stackplayer.h"
+#include "../stack/stack.h"
+#include "../graph/graph.h"
+#include "../mesinkata/mesinkata.h"
+#include "../mesinkar/mesinkar.h"
 
 void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *Mat, List *L1, List *L2);
 // Load file data inisialisasi awal

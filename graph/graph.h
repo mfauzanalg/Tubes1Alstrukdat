@@ -4,9 +4,8 @@
 #define GRAPH_H
 
 
-#include "../typebentukan/typebentukan.h"
-#include "../stack/stack.h"
-
+#include "../list/list.h"
+#include "../matriks/matriks.h"
 
 #define NilList NULL
 

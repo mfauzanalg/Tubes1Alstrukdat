@@ -782,10 +782,10 @@ void LevelUpUp(TabBang *(Arr), PLAYER P, int *i, TabInt *T1, int IsCommand){
                 Elmt(*(Arr), *i).M=ElmtMat(MT,Elmt(*(Arr), *i).lev,2);
                 Elmt(*(Arr), *i).P=ElmtMat(MT,Elmt(*(Arr), *i).lev,3);
                 printf("\n           |\n");
-                printf("          /o\\n");
+                printf("          /o\\\n");
                 printf("          |~|\n");
                 printf("       ,  | |  ,\n");
-                printf("       /\\/ _ \\/\\n");
+                printf("       /\\/ _ \\/\\\n");
                 printf(" .-.-.-|| (_) ||-.-.-.\n");
                 printf(" | # # ||  _  || # # |\n");
                 printf("_|     || ||| ||     |_\n");

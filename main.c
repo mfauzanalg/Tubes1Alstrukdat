@@ -2,7 +2,6 @@
 #include "stdlib.h"
 #include "string.h"
 
-#include "olahfile/olahfile.h"
 #include "command/command.h"
 #include "save/save.h"
 #include "load/load.h"
@@ -74,7 +73,6 @@ int main(){
     // } while ((isLoad != 'y') || (isLoad != 'n'));
 
     while (Playing){
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //PLAYER 1
         Art1();
         printf("\nPlayer 1, sekarang giliran Anda!\n");

@@ -7,6 +7,8 @@
 
 #include "../boolean/boolean.h"
 #include "../typebentukan/typebentukan.h"
+#include "../queue/queue.h"
+#include "../list/list.h"
 
 #define Nilstackp 0
 #define MaxElstackp 100
