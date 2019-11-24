@@ -33,26 +33,26 @@ int main()
         for (j=1;j<=CKata.Length;j++)
         {
             K[i].TabKata[j]=CKata.TabKata[j];
-            printf("for (j=1;j<=CKata.Length;j++) %d bawah\n", j);
+            //printf("for (j=1;j<=CKata.Length;j++) %d bawah\n", j);
 
 
         }
-        printf("for (i=2;i<=150;i++) %d\n", i);
+        //printf("for (i=2;i<=150;i++) %d\n", i);
         K[i].Length=CKata.Length;
-        printf("K[i].Length=CKata.Length;\n");
+        //printf("K[i].Length=CKata.Length;\n");
 
     }
     SalinLast();
     for (j=1;j<=CKata.Length;j++)
     {
         K[i].TabKata[j]=CKata.TabKata[j];
-        printf("for (j=1;j<=CKata.Length;j++) %d bawah\n", j);
+        //printf("for (j=1;j<=CKata.Length;j++) %d bawah\n", j);
 
 
     }
-    printf("for (i=2;i<=150;i++) %d\n", i);
+    //printf("for (i=2;i<=150;i++) %d\n", i);
     K[i].Length=CKata.Length;
-    printf("K[i].Length=CKata.Length;\n");
+    //printf("K[i].Length=CKata.Length;\n");
 
     //ADVKATA();
     //printf("tengah\n");
