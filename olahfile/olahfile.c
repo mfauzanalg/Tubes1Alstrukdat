@@ -90,16 +90,10 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	CLOSE();
 
 
-	P = Alokasi(17);			
-	InsertFirst(&*L1, P);
-	P = Alokasi(12);			
-	InsertFirst(&*L1, P);
-	P = Alokasi(9);			
+	P = Alokasi(1);			
 	InsertFirst(&*L1, P);
 
-	P = Alokasi(6);
-	InsertFirst(&*L2, P);
-	P = Alokasi(5);
+	P = Alokasi(2);
 	InsertFirst(&*L2, P);
 	
 	Elmt(*Arr,1).jum = 0;

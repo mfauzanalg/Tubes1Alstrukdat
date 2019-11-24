@@ -40,10 +40,15 @@ boolean IntegerToBoolean(int x){
 
 void load (Stack *S, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn){
     int i;
-    FILE *fp;
-
-    fp = fopen("coba_save.txt","r");
-	STARTKATA();
+    static FILE * pita;
+    static int retval;
+    // FILE *fp;
+    printf("Helo");
+    // fp = fopen("coba_save.txt","r");
+	pita = fopen("coba_save.txt","r");
+    printf("Helo");
+	ADV();
+    SalinKata();
 	*playing = IntegerToBoolean(StringToInteger(CKata));
 	ADVKATA();
 	*P1turn = IntegerToBoolean(StringToInteger(CKata));
@@ -129,7 +134,6 @@ void load (Stack *S, stackp *P1, stackp *P2, boolean *playing, boolean *P1turn){
     InfoTop(*P2).IsET = IntegerToBoolean(StringToInteger(CKata));
     ADVKATA();
     InfoTop(*P2).IsShield = StringToInteger(CKata);
-    
     CLOSE();
 }
 
