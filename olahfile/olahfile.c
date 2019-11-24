@@ -96,8 +96,8 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	P = Alokasi(2);
 	InsertFirst(&*L2, P);
 	
-	//Elmt(*Arr,1).jum = 0;
-	//Elmt(*Arr,2).jum = 0;
+	Elmt(*Arr,1).jum = 0;
+	Elmt(*Arr,2).jum = 0;
 	
 	CreateEmptyGraph(Graph, *Mat);
 }
