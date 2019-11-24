@@ -216,8 +216,8 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
 
     if (Elmt(*Arr,ElmtStat(*T1,*X)).attack){
         *Tetangga = Neighbors(Graph, ElmtStat(*T1,*X));
-        AdaSerang (*Tetangga, *Arr, 1, &*ada,P1,P2);
-        if (ada){
+        AdaSerang (*Tetangga, *Arr, P, &*ada,P1,P2);
+        if (*ada){
             Elmt(*Arr,ElmtStat(*T1,*X)).attack = false;
             DaftarSerang(*Tetangga, *Arr, &*T2, P, P1, P2);
             printf("\nPilih bangunan yang ingin diserang : ");
