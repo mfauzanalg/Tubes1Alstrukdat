@@ -92,6 +92,7 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 
 	P = Alokasi(1);			
 	InsertFirst(&*L1, P);
+<<<<<<< HEAD
 	P = Alokasi(3);			
 	InsertFirst(&*L1, P);
 	P = Alokasi(4);			
@@ -105,6 +106,11 @@ void LoadFile (int *N, int *M, int *J, TabBang *Arr, GraphList *Graph, MATRIKS *
 	P = Alokasi(8);			
 	InsertFirst(&*L1, P);
 	P = Alokasi(9);			
+=======
+	P = Alokasi(13);			
+	InsertFirst(&*L1, P);
+	P = Alokasi(17);			
+>>>>>>> 51bb4a139a4e29d7182284c9fd1abdcdcba668e5
 	InsertFirst(&*L1, P);
 
 	P = Alokasi(2);
@@ -243,6 +249,7 @@ void AdaSerang (List L, TabBang Arr, int player, boolean *ada, PLAYER P1, PLAYER
 		found = false;
 		while (i <= NbElmtArr(Arr) && !(found)){
 			if (Info(P) == i && owner(i, P1.ListB, P2.ListB) != player){
+				printf("ini apa %d\n",i);
 				*ada = true;
 				found = true;
 			}

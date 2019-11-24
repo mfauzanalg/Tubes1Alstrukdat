@@ -2,7 +2,9 @@
 #include <stdio.h>
 
 int main(){
+  printf("input kata OKE\n");
   STARTWORD();
+  printf("Apakah input sama dengan OKE? \n");
   //membandingkan input user dengan kata "OKE"
   if (CompareTwoStrings(CWord.TabKata, "OKE") == 1){
     printf("SAMA\n");
