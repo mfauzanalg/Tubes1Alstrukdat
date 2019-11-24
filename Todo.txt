@@ -29,7 +29,7 @@ f.  mesinchar
 g. mesinword
 h. mesinkar
 i. mesinkata
-j. olahfile
+j. olahfile (ok)
 h. pcolor (ok)
 i. point (ok)
 j. queue (ok)
