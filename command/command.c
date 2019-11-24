@@ -190,8 +190,8 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
     // Untuk melakukan command attack
 
     addresslist A;
-    int Z; //Jumlah Kita
-    int Tujuan; //Jumlah lawan
+    int Z, Z2; //Jumlah Kita
+    int Tujuan, Tujuan2, Serangan; //Jumlah lawan
     int Hasil;
     DaftarBangunan((*P3).ListB, *Arr, &*T1);
     printf("Pilih bangunan untuk menyerang : ");
@@ -239,6 +239,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
             printf("\n");
             //Mulai penyerangan
             if((*P3).IsCriticalHit){            //Jika critical hit aktif
+                Z2 = Z; Tujuan2 = Tujuan;
                 Z *= 2;
                 Tujuan -= Z;
                 if (Tujuan <= 0){               //Berpindah kepemilikan
@@ -253,11 +254,14 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     printf("       _.' '._\n");
                     printf("      `'''''''`\n\n");
                     printf("Bangunan berhasil menjadi milikmu!!!\n");
-                    Tujuan *= (0.5);
                     A = Alokasi(ElmtStat(*T2,*Y));
                     DelP(&((*P4)).ListB, ElmtStat(*T2,*Y));
                     InsertFirst(&((*P3)).ListB, A);
-                    Tujuan *= -1;
+
+                    Z = Z2; Tujuan = Tujuan2;
+                    Serangan = Tujuan/2;
+                    Tujuan = Z-Serangan;
+
                     printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
                     KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                 }
@@ -313,6 +317,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                 }
                 else{                           //Jika AttackUp tidak Aktif
                     if((*P4).IsShield){         //Jika lawan memiliki shield
+                        Z2 = Z; Tujuan2 = Tujuan;
                         Z *= (0.75);
                         Tujuan -= Z;
                         if (Tujuan <= 0){  
@@ -330,7 +335,11 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                             A = Alokasi(ElmtStat(*T2,*Y));
                             DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
                             InsertFirst(&((*P3)).ListB, A);
-                            Tujuan = (Tujuan*4)/3*-1;
+
+                            Z = Z2; Tujuan = Tujuan2;
+                            Serangan = 4*Tujuan/3;
+                            Tujuan = Z-Serangan;
+
                             printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
                             KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                         }
@@ -350,6 +359,7 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                     }
                     else{                       //Jika lawan tidak memiliki shield
                         if(Elmt(*Arr,ElmtStat(*T2,*Y)).P){  //Jika lawan memiliki pertahanan
+                            Z2 = Z; Tujuan2 = Tujuan;
                             Z *= (0.75);
                             Tujuan -= Z;
                             if (Tujuan <= 0){
@@ -367,8 +377,12 @@ void Attack(TabBang *Arr, int *X, int *Y, TabInt *T1, TabInt *T2, List *Tetangga
                                 A = Alokasi(ElmtStat(*T2,*Y));
                                 DelP(&((*P4).ListB), ElmtStat(*T2,*Y));
                                 InsertFirst(&((*P3)).ListB, A);
-                                Tujuan = (Tujuan*4)/3*-1;
-                                printf("Jumlah pasukan di bangunan baru : %d\n", Tujuan);
+
+                                Z = Z2; Tujuan = Tujuan2;
+                                Serangan = 4*Tujuan/3;
+                                Tujuan = Z-Serangan;
+
+                                printf("Jumlah pasukan di bangunan baru : %d\n",Tujuan);
                                 KeLevel1(&(Elmt(*Arr,ElmtStat(*T2,*Y))));
                             }
                             else{               //Tidak berpindah kepemilikan
